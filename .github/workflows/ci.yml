@@ -389,7 +389,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: windows-pytest-partition-*
           path: .work/windows-parts
@@ -417,7 +417,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -c constraints-ci.txt -e '.[test,trust]' coverage
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: alpha-evidence-*
           path: .work/alpha
@@ -448,17 +448,17 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust]' coverage
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: alpha-evidence-*
           path: .work/conops-evidence
           merge-multiple: true
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: campaign-evidence-*
           path: .work/conops-evidence
           merge-multiple: true
-      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: alpha-acceptance
           path: .work/alpha-acceptance
