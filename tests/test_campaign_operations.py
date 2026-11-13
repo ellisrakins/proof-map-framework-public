@@ -1449,7 +1449,7 @@ def test_configured_intake_shares_aggregate_queue_budget_across_calls_and_collec
         store.close()
 
 
-def _queued_model_stage(tmp_path, provider):
+def _queued_model_stage(tmp_path, provider, *, lease_seconds=1):
     source = tmp_path / "queued.tex"
     source.write_text(
         r"\documentclass{article}\begin{document}A retained manuscript.\end{document}",
@@ -1457,7 +1457,7 @@ def _queued_model_stage(tmp_path, provider):
     )
     policy = operation_policy(
         allowed_kinds=["EXTRACT_CONFIGURED"],
-        lease_seconds=1,
+        lease_seconds=lease_seconds,
         allow_model=True,
         model_max_requests=1,
         model_max_tokens=512,
@@ -1585,7 +1585,8 @@ def test_nonlean_changed_source_during_execution_cannot_promote_retained_run(
     tmp_path, protocol_provider
 ):
     protocol_provider["block"] = True
-    store, cid, task_id, source = _queued_model_stage(tmp_path, protocol_provider)
+    # Keep the lease valid while the worker finishes ingesting the captured source.
+    store, cid, task_id, source = _queued_model_stage(tmp_path, protocol_provider, lease_seconds=30)
     try:
         with ThreadPoolExecutor(max_workers=1) as pool:
             future = pool.submit(
@@ -1597,6 +1598,8 @@ def test_nonlean_changed_source_during_execution_cannot_promote_retained_run(
             outcome = future.result(timeout=10)
         assert outcome["outcomes"][0]["state"] == "FENCED", outcome
         assert queue._projection(store, task_id)["state"] == "STALE"
+        reasons = [event["reason"] for event in store.records(cid, "TaskEvent")]
+        assert "SUBJECT_OR_POLICY_CHANGED" in reasons and "FENCED_LATE_RESULT" not in reasons
         assert not store.records(cid, "TaskResult")
         assert not store.current_snapshot(cid)["selections"]
         assert store.db.execute("SELECT COUNT(*) FROM runs").fetchone()[0] == 1
