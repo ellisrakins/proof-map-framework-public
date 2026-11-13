@@ -13,5 +13,5 @@ jsonschema==4.26.0
 pylatexenc==2.11
 pypdf==6.21.4
 cryptography==50.0.1
-types-jsonschema==4.26.0.20260518
+types-jsonschema==4.26.0.20261006
 pip-audit==2.10.1
