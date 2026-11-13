@@ -73,6 +73,7 @@ def paper_response(bundle: dict[str, Any], name: str) -> dict[str, Any]:
 
     report = report_model(bundle)
     claims = report["claims"]
+    source_pages = sum(e.get("kind") == "PDF_PAGE_TEXT" for e in bundle["document_ir"]["elements"])
     nodes = [
         {
             "id": c["id"],
@@ -106,7 +107,8 @@ def paper_response(bundle: dict[str, Any], name: str) -> dict[str, Any]:
             0,
             {
                 "title": "No source assertions extracted",
-                "detail": "This parser did not identify theorem-like assertions. Text-bearing PDFs and supported TeX are bounded inputs; scanned PDFs need OCR outside this workflow.",
+                "detail": (f"Imported {source_pages} PDF pages. " if source_pages else "")
+                + "This deterministic parser did not identify theorem-like assertions. PDF text extraction does not yet create semantic claims or a proof-boundary map. Use supported theorem-structured TeX or a curated ProofMap JSON for claim exploration; scanned PDFs need OCR outside this workflow.",
             },
         )
     coverage = report["outcomes"]["coverage"]
@@ -118,6 +120,7 @@ def paper_response(bundle: dict[str, Any], name: str) -> dict[str, Any]:
         "edges": edges,
         "metrics": {
             **coverage,
+            "source_pages": source_pages,
             "node_count": len(nodes),
             "edge_count": len(edges),
             "boundary_count": len(nodes),
@@ -168,6 +171,11 @@ def decode_upload(payload: Any) -> tuple[str, bytes]:
         raise ValueError("Invalid base64 content") from exc
     if not raw or len(raw) > MAX_UPLOAD:
         raise ValueError("Upload must contain 1 byte to 8 MiB")
+    if Path(name).suffix.lower() in {".pdf", ".tex"}:
+        from .paper_sources import MAX_FILE_BYTES
+
+        if len(raw) > MAX_FILE_BYTES:
+            raise ValueError("Paper exceeds the 4,000,000-byte limit; JSON maps allow 8 MiB")
     return name, raw
 
 

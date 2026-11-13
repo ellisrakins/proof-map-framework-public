@@ -103,7 +103,8 @@ def test_paper_adapter_never_promotes_assertions(monkeypatch):
     }
     monkeypatch.setattr(paper_reports, "report_model", lambda _: report)
     result = studio.paper_response(
-        {"argument_map": {"inferences": []}, "findings": []}, "paper.tex"
+        {"argument_map": {"inferences": []}, "findings": [], "document_ir": {"elements": []}},
+        "paper.tex",
     )
     assert result["nodes"][0]["status"] == "AUTHOR_ASSERTED"
     assert result["nodes"][0]["uncertainty"] is None
@@ -211,6 +212,8 @@ def test_worker_real_pdf_analysis(tmp_path):
     document.drawString(50, 720, "Proof. This is the additive identity.")
     document.save()
     result = studio.analyze_upload(upload("paper.pdf", path.read_bytes()))
+    assert result["metrics"]["source_pages"] == 1
+    assert "Imported 1 PDF pages" in result["findings"][0]["detail"]
     assert result["mode"] == "paper"
     assert result["metrics"]["accepted_claims"] == 0
     assert result["outcomes"]["formal_statement_fidelity"] == "NOT_REVIEWED"
@@ -297,3 +300,9 @@ def test_worker_rejects_non_string_error(monkeypatch):
     monkeypatch.setattr(studio.subprocess, "run", malformed)
     with pytest.raises(ValueError, match="invalid error response"):
         studio.analyze_upload(upload("x.tex", b"x"))
+
+
+@pytest.mark.parametrize("name", ["paper.pdf", "paper.tex"])
+def test_paper_upload_enforces_parser_byte_limit(name):
+    with pytest.raises(ValueError, match="4,000,000-byte"):
+        studio.decode_upload(upload(name, b"x" * 4_000_001))

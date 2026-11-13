@@ -37,9 +37,13 @@ geometry. No unsupported mathematical certainty or uncertainty score is invented
 A map's authored uncertainty is displayed only when supplied. Absence of findings
 is not correctness. The reference map is labelled as a demonstration.
 
-PDF extraction requires the pinned paper extra. Scanned/image-only PDFs need OCR
+PDF extraction requires the pinned paper extra. The deterministic PDF parser reconstructs
+page text but does not convert it into theorem-like claims. Successful PDF intake can
+therefore report zero claim nodes; it is not a generated semantic boundary map.
+Use supported theorem-structured TeX or curated ProofMap JSON for claim exploration. Scanned/image-only PDFs need OCR
 outside the Studio. Multi-file TeX projects should use the existing CLI. Uploads
-are limited to 8 MiB per file, ten files per UI batch, and one active server
+are limited to 4,000,000 bytes per PDF/TeX file and 8 MiB per JSON map,
+250 pages per PDF, ten files per UI batch, and one active server
 analysis. Maps are capped at 2,000 nodes/8,000 edges; the graph and claim index show
 the first 500 matches, with search available to narrow the set. The analysis
 worker has a 90-second deadline. Missing dependencies or failed parsing remain

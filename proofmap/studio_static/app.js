@@ -215,7 +215,15 @@ function renderClaims() {
     list.append(b);
   });
   if (!nodes.length)
-    list.append(el("p", "No claims match these filters.", "library-footer"));
+    list.append(
+      el(
+        "p",
+        state.data.nodes.length
+          ? "No claims match these filters."
+          : "Source imported, but no theorem-like claims were extracted. See Analysis desk for extraction status.",
+        "library-footer",
+      ),
+    );
   if (nodes.length > 500)
     list.append(
       el(
@@ -452,7 +460,9 @@ async function importFiles(files) {
       if (!/\.(pdf|tex|json)$/i.test(file.name))
         throw Error("Use a PDF, TeX or Proof Map JSON file.");
       if (file.size > 8 * 1024 * 1024)
-        throw Error("File exceeds the 8 MB limit.");
+        throw Error("File exceeds the 8 MiB limit.");
+      if (/\.(pdf|tex)$/i.test(file.name) && file.size > 4000000)
+        throw Error("Paper exceeds the 4 MB limit (4,000,000 bytes).");
       const bytes = new Uint8Array(await file.arrayBuffer());
       let binary = "";
       for (let p = 0; p < bytes.length; p += 32768)

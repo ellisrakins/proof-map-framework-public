@@ -40,7 +40,7 @@ MAX_FILES = 256
 MAX_BYTES = 16_000_000
 MAX_FILE_BYTES = 4_000_000
 MAX_ELEMENTS = 20_000
-MAX_PAGES = 100
+MAX_PAGES = 250
 MAX_PARSE_OUTPUT = 64_000_000
 MAX_VALIDATION_PDFS = 16
 MAX_VALIDATION_TEXT_BYTES = MAX_BYTES
@@ -180,13 +180,21 @@ def _pdf_pages(raw: bytes) -> list[str]:
 
     Configuration.zlib_maximum_output_length = MAX_BYTES
     reader = PdfReader(io.BytesIO(raw), strict=True)
-    if reader.is_encrypted or len(reader.pages) > MAX_PAGES:
-        raise ValueError("UNSUPPORTED_OR_OVERSIZE_PDF")
+    if reader.is_encrypted:
+        raise ValueError("UNSUPPORTED_ENCRYPTED_PDF: encrypted PDFs are not supported")
+    page_count = len(reader.pages)
+    if page_count > MAX_PAGES:
+        raise ValueError(f"RESOURCE_LIMIT: PDF has {page_count} pages; maximum is {MAX_PAGES}")
     texts = []
+    total_text_bytes = 0
     for page in reader.pages:
         text = page.extract_text(extraction_mode="plain") or ""
-        if len(text.encode("utf-8")) > MAX_FILE_BYTES:
+        text_bytes = len(text.encode("utf-8"))
+        if text_bytes > MAX_FILE_BYTES:
             raise ValueError("RESOURCE_LIMIT: PDF text")
+        total_text_bytes += text_bytes
+        if total_text_bytes > MAX_BYTES:
+            raise ValueError(f"RESOURCE_LIMIT: aggregate PDF text exceeds {MAX_BYTES} UTF-8 bytes")
         texts.append(text)
     return texts
 
