@@ -1,0 +1,1396 @@
+"""Source-backed current-physics backbone map."""
+
+from __future__ import annotations
+
+from .model import Edge, EdgeKind, EdgeStatus, Layer, Node, NodeKind, NodeStatus, ProofMap
+from .sources import Source, SourceRegistry
+
+CURRENT_PHYSICS_CHECKED_DATE = "2026-06-05"
+
+
+def build_current_physics_source_registry() -> SourceRegistry:
+    registry = SourceRegistry()
+
+    def s(**kwargs) -> None:
+        registry.add(Source(**kwargs))
+
+    s(
+        id="pdg_rpp_2024",
+        title="Review of Particle Physics 2024",
+        url="https://pdg.lbl.gov/2024/index.html",
+        source_type="review",
+        publisher="Particle Data Group",
+        publication_date="2024",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["particle_physics", "standard_model", "constants"],
+    )
+    s(
+        id="pdg_neutrino_2025",
+        title="Neutrino Masses, Mixing, and Oscillations",
+        url="https://pdg.lbl.gov/2025/reviews/rpp2025-rev-neutrino-mixing.pdf",
+        source_type="review",
+        publisher="Particle Data Group",
+        publication_date="2025",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["neutrino", "standard_model"],
+    )
+    s(
+        id="cern_standard_model",
+        title="The Standard Model",
+        url="https://home.cern/science/physics/standard-model/",
+        source_type="official_overview",
+        publisher="CERN",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["standard_model", "collider"],
+        notes="Used for Standard Model scope and explicit incompleteness boundaries.",
+    )
+    s(
+        id="cern_higgs_2022",
+        title="The Higgs boson, ten years after its discovery",
+        url="https://www.home.cern/news/press-release/physics/higgs-boson-ten-years-after-its-discovery",
+        source_type="official_status",
+        publisher="CERN",
+        publication_date="2022-07-04",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["higgs", "standard_model"],
+    )
+    s(
+        id="planck_2018_parameters",
+        title="Planck 2018 results. VI. Cosmological parameters",
+        url="https://arxiv.org/abs/1807.06209",
+        source_type="collaboration_result",
+        publisher="Planck Collaboration",
+        publication_date="2018",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["cosmology", "cmb", "lambda_cdm"],
+    )
+    s(
+        id="desi_dr2_2025",
+        title="DESI DR2 BAO results guide",
+        url="https://www.desi.lbl.gov/2025/03/19/desi-dr2-results-march-19-guide/",
+        source_type="collaboration_result",
+        publisher="DESI Collaboration",
+        publication_date="2025-03-19",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["cosmology", "dark_energy", "bao"],
+    )
+    s(
+        id="lvk_gwtc5_2026",
+        title="GWTC-5.0 O4b catalog",
+        url="https://ligo.org/detections/o4b-catalog/",
+        source_type="collaboration_result",
+        publisher="LIGO-Virgo-KAGRA Collaboration",
+        publication_date="2026-05-26",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["gravity", "gravitational_waves", "astrophysics"],
+    )
+    s(
+        id="doe_muon_g2_2025",
+        title="Muon g-2 final result announcement",
+        url="https://www.energy.gov/science/articles/muon-g-2-announces-most-precise-measurement-magnetic-anomaly-muon",
+        source_type="collaboration_result",
+        publisher="U.S. Department of Energy / Fermilab",
+        publication_date="2025-06-03",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["precision_tests", "standard_model"],
+    )
+    s(
+        id="katrin_2025",
+        title="Latest KATRIN results",
+        url="https://www.katrin.kit.edu/1271.php",
+        source_type="collaboration_result",
+        publisher="KATRIN Collaboration / KIT",
+        publication_date="2025",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["neutrino", "direct_mass"],
+    )
+    s(
+        id="lz_2025",
+        title="LUX-ZEPLIN dark matter experiment status",
+        url="https://lz.lbl.gov/",
+        source_type="collaboration_result",
+        publisher="LZ Collaboration",
+        publication_date="2025",
+        checked_date=CURRENT_PHYSICS_CHECKED_DATE,
+        domains=["dark_matter", "direct_detection"],
+    )
+    return registry
+
+
+def build_current_physics_backbone_map() -> ProofMap:
+    pm = ProofMap(
+        title="Current Physics Backbone Map",
+        description=(
+            "A source-backed backbone of the current operational state of fundamental physics. "
+            "Core nodes are local theory-chart kernels, not claims of final truth; unresolved "
+            "frontiers are explicit boundary or exterior defects."
+        ),
+        metadata={
+            "version": "0.5",
+            "purpose": "current_physics_backbone",
+            "source_registry": "examples/sources/current_physics_sources.json",
+            "theory_catalog": "examples/theories/physics_theory_catalog.json",
+            "checked_date": CURRENT_PHYSICS_CHECKED_DATE,
+        },
+    )
+
+    def n(**kwargs) -> None:
+        defaults = {
+            "last_verified": CURRENT_PHYSICS_CHECKED_DATE,
+            "formalization_status": "scaffold",
+        }
+        defaults.update(kwargs)
+        pm.add_node(Node(**defaults))
+
+    def e(
+        source: str,
+        target: str,
+        kind=EdgeKind.PROVES,
+        status=EdgeStatus.ACTIVE,
+        uncertainty=0.1,
+        proof_cost=1.0,
+        source_ids: list[str] | None = None,
+        notes: str = "",
+        evidence_class: str = "derivation",
+        uncertainty_kind: str = "theoretical",
+    ) -> None:
+        pm.add_edge(
+            Edge(
+                source=source,
+                target=target,
+                kind=kind,
+                status=status,
+                uncertainty=uncertainty,
+                proof_cost=proof_cost,
+                notes=notes,
+                source_ids=source_ids or ["pdg_rpp_2024"],
+                evidence_class=evidence_class,
+                last_verified=CURRENT_PHYSICS_CHECKED_DATE,
+                uncertainty_kind=uncertainty_kind,
+                formalization_status="scaffold",
+            )
+        )
+
+    # Shared foundations and local core charts.
+    n(
+        id="core.quantum_mechanics",
+        label="Quantum mechanics",
+        kind=NodeKind.AXIOM,
+        status=NodeStatus.CORE,
+        layer=Layer.CORE,
+        domain="foundation",
+        explanatory_weight=8,
+        proof_cost=4,
+        uncertainty=0.03,
+        statement="State spaces, observables, amplitudes, unitary dynamics, and measurement probabilities define the quantum formal substrate.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="microscopic systems through tested quantum regimes",
+        uncertainty_kind="semantic",
+    )
+    n(
+        id="core.special_relativity",
+        label="Special relativity",
+        kind=NodeKind.PRIMITIVE_LAW,
+        status=NodeStatus.CORE,
+        layer=Layer.CORE,
+        domain="spacetime",
+        explanatory_weight=7,
+        proof_cost=3,
+        uncertainty=0.02,
+        statement="Lorentz symmetry and invariant light speed organize high-energy and spacetime kinematics.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="nongravitational local inertial frames",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="core.quantum_field_theory",
+        label="Quantum field theory",
+        kind=NodeKind.AXIOM,
+        status=NodeStatus.CORE,
+        layer=Layer.CORE,
+        domain="foundation",
+        explanatory_weight=9,
+        proof_cost=6,
+        uncertainty=0.08,
+        statement="Relativistic quantum fields provide the operational language for particle interactions.",
+        source_ids=["pdg_rpp_2024", "cern_standard_model"],
+        evidence_class="review",
+        validity_regime="tested collider and low-energy particle regimes",
+        uncertainty_kind="semantic",
+    )
+    n(
+        id="core.standard_model_gauge_structure",
+        label="Standard Model gauge structure",
+        kind=NodeKind.PRIMITIVE_LAW,
+        status=NodeStatus.CORE,
+        layer=Layer.CORE,
+        domain="standard_model",
+        explanatory_weight=10,
+        proof_cost=5,
+        uncertainty=0.04,
+        statement="SU(3)c x SU(2)L x U(1)Y gauge structure organizes known nongravitational fundamental interactions.",
+        source_ids=["pdg_rpp_2024", "cern_standard_model"],
+        evidence_class="review",
+        validity_regime="tested particle physics below direct new-physics thresholds",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="core.general_relativity",
+        label="General relativity",
+        kind=NodeKind.PRIMITIVE_LAW,
+        status=NodeStatus.CORE,
+        layer=Layer.CORE,
+        domain="gravity",
+        explanatory_weight=9,
+        proof_cost=5,
+        uncertainty=0.05,
+        statement="Classical spacetime geometry relates curvature to stress-energy and governs gravitation in its tested regime.",
+        source_ids=["planck_2018_parameters", "lvk_gwtc5_2026"],
+        evidence_class="collaboration_result",
+        validity_regime="classical gravitational fields outside quantum-gravity regime",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="core.statistical_mechanics",
+        label="Statistical mechanics",
+        kind=NodeKind.PRIMITIVE_LAW,
+        status=NodeStatus.CORE,
+        layer=Layer.CORE,
+        domain="thermodynamics",
+        explanatory_weight=7,
+        proof_cost=4,
+        uncertainty=0.06,
+        statement="Ensembles, entropy, coarse-graining, and thermodynamic limits bridge microphysics to macroscopic behavior.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="many-degree-of-freedom systems under controlled coarse-graining",
+        uncertainty_kind="approximation",
+    )
+    n(
+        id="core.measurement_statistics",
+        label="Measurement statistics",
+        kind=NodeKind.AXIOM,
+        status=NodeStatus.CORE,
+        layer=Layer.CORE,
+        domain="measurement",
+        explanatory_weight=6,
+        proof_cost=3,
+        uncertainty=0.05,
+        statement="Experimental claims are mediated by likelihoods, uncertainties, systematics, and reproducibility criteria.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="reported experimental measurements and limits",
+        uncertainty_kind="empirical",
+    )
+
+    # Interior bridges.
+    n(
+        id="bridge.lagrangian_field_theory",
+        label="Lagrangian field-theory bridge",
+        kind=NodeKind.BRIDGE,
+        status=NodeStatus.DERIVED,
+        layer=Layer.INTERIOR,
+        domain="foundation",
+        explanatory_weight=7,
+        proof_cost=4,
+        uncertainty=0.08,
+        statement="Symmetry, fields, and action principles generate equations of motion and interaction terms.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="local field-theory descriptions",
+        uncertainty_kind="semantic",
+    )
+    n(
+        id="bridge.renormalization_group",
+        label="Renormalization group",
+        kind=NodeKind.BRIDGE,
+        status=NodeStatus.DERIVED,
+        layer=Layer.INTERIOR,
+        domain="qft",
+        explanatory_weight=7,
+        proof_cost=5,
+        uncertainty=0.12,
+        statement="Scale dependence and effective descriptions connect high- and low-energy charts.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="QFT and EFT regimes with controlled scale separation",
+        uncertainty_kind="approximation",
+    )
+    n(
+        id="bridge.effective_field_theory",
+        label="Effective field theory",
+        kind=NodeKind.BRIDGE,
+        status=NodeStatus.DERIVED,
+        layer=Layer.INTERIOR,
+        domain="qft",
+        explanatory_weight=7,
+        proof_cost=5,
+        uncertainty=0.15,
+        statement="Local operators and power counting encode finite-regime physics without requiring UV completion.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="below explicit cutoff or breakdown scale",
+        uncertainty_kind="approximation",
+    )
+    n(
+        id="bridge.noether_symmetry_conservation",
+        label="Noether symmetry-conservation bridge",
+        kind=NodeKind.THEOREM,
+        status=NodeStatus.PROVED,
+        layer=Layer.INTERIOR,
+        domain="foundation",
+        explanatory_weight=6,
+        proof_cost=4,
+        uncertainty=0.04,
+        statement="Continuous symmetries yield conserved currents in appropriate variational systems.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="derivation",
+        validity_regime="field theories with applicable differentiable symmetries",
+        uncertainty_kind="logical",
+    )
+    n(
+        id="bridge.flrw_cosmology",
+        label="FLRW cosmology",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.DERIVED,
+        layer=Layer.INTERIOR,
+        domain="cosmology",
+        explanatory_weight=6,
+        proof_cost=4,
+        uncertainty=0.14,
+        statement="Homogeneous and isotropic spacetime models connect GR to expansion-history observables.",
+        source_ids=["planck_2018_parameters"],
+        evidence_class="collaboration_result",
+        validity_regime="large-scale cosmological averages",
+        uncertainty_kind="approximation",
+    )
+    n(
+        id="bridge.linear_perturbation_theory",
+        label="Cosmological perturbation theory",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.COMPUTED,
+        layer=Layer.INTERIOR,
+        domain="cosmology",
+        explanatory_weight=6,
+        proof_cost=5,
+        uncertainty=0.18,
+        statement="Perturbation calculations connect early-universe fluctuations to CMB anisotropies and structure formation.",
+        source_ids=["planck_2018_parameters"],
+        evidence_class="collaboration_result",
+        validity_regime="linear and weakly nonlinear cosmological perturbations",
+        uncertainty_kind="computational",
+    )
+    n(
+        id="bridge.lattice_qcd",
+        label="Lattice QCD",
+        kind=NodeKind.BRIDGE,
+        status=NodeStatus.COMPUTED,
+        layer=Layer.INTERIOR,
+        domain="qcd",
+        explanatory_weight=6,
+        proof_cost=7,
+        uncertainty=0.24,
+        statement="Numerical Euclidean-lattice calculations provide nonperturbative QCD estimates with discretization and finite-volume controls.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="simulation",
+        validity_regime="observables with controlled lattice systematics",
+        uncertainty_kind="computational",
+    )
+    n(
+        id="bridge.decoherence_effective_classicality",
+        label="Decoherence and effective classicality",
+        kind=NodeKind.BRIDGE,
+        status=NodeStatus.APPROXIMATION,
+        layer=Layer.INTERIOR,
+        domain="measurement",
+        explanatory_weight=5,
+        proof_cost=5,
+        uncertainty=0.30,
+        statement="Environment-induced decoherence explains stable effective classical records without by itself resolving all measurement-foundation questions.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="open quantum systems with environmental coupling",
+        uncertainty_kind="semantic",
+    )
+
+    # Standard Model structure.
+    n(
+        id="sm.qcd_color_sector",
+        label="QCD color sector",
+        kind=NodeKind.DEFINITION,
+        status=NodeStatus.DERIVED,
+        layer=Layer.INTERIOR,
+        domain="qcd",
+        explanatory_weight=7,
+        proof_cost=3,
+        uncertainty=0.06,
+        statement="SU(3)c gauge dynamics describes quarks and gluons.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="strong interactions in Standard Model regime",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="sm.electroweak_sector",
+        label="Electroweak sector",
+        kind=NodeKind.DEFINITION,
+        status=NodeStatus.DERIVED,
+        layer=Layer.INTERIOR,
+        domain="electroweak",
+        explanatory_weight=7,
+        proof_cost=3,
+        uncertainty=0.05,
+        statement="SU(2)L x U(1)Y gauge theory describes weak and electromagnetic interactions after symmetry breaking.",
+        source_ids=["pdg_rpp_2024", "cern_standard_model"],
+        evidence_class="review",
+        validity_regime="tested electroweak energies and precision observables",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="sm.higgs_mechanism",
+        label="Higgs mechanism",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="higgs",
+        explanatory_weight=8,
+        proof_cost=4,
+        uncertainty=0.08,
+        boundary_weight=2.5,
+        statement="The Higgs field mechanism accounts for electroweak symmetry breaking and observed massive W/Z bosons and fermion couplings.",
+        source_ids=["cern_higgs_2022", "pdg_rpp_2024"],
+        evidence_class="collaboration_result",
+        validity_regime="LHC-tested Higgs couplings and electroweak precision regime",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="sm.flavor_mixing_ckm",
+        label="CKM flavor mixing",
+        kind=NodeKind.CONSTANT,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="flavor",
+        explanatory_weight=5,
+        proof_cost=2,
+        uncertainty=0.18,
+        boundary_weight=2.5,
+        statement="Quark flavor mixing is encoded by empirical CKM parameters.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="quark charged-current weak interactions",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="sm.neutrino_oscillation_pmns",
+        label="Neutrino oscillation and PMNS mixing",
+        kind=NodeKind.PHENOMENON,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="neutrino",
+        explanatory_weight=6,
+        proof_cost=3,
+        uncertainty=0.18,
+        boundary_weight=3,
+        statement="Neutrino flavor oscillations require nonzero mass splittings and flavor/mass-basis mismatch.",
+        source_ids=["pdg_neutrino_2025"],
+        evidence_class="review",
+        validity_regime="three-active-neutrino oscillation phenomenology",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="obs.direct_neutrino_mass_limit",
+        label="Direct neutrino-mass limit",
+        kind=NodeKind.OBSERVATION,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="neutrino",
+        explanatory_weight=4,
+        proof_cost=2,
+        uncertainty=0.20,
+        boundary_weight=2.5,
+        statement="KATRIN sets a model-independent direct upper bound on effective electron-neutrino mass.",
+        source_ids=["katrin_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="tritium beta endpoint measurement",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="obs.muon_g2_precision",
+        label="Muon g-2 precision benchmark",
+        kind=NodeKind.OBSERVATION,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="precision_tests",
+        explanatory_weight=5,
+        proof_cost=4,
+        uncertainty=0.32,
+        boundary_weight=3,
+        statement="The final Fermilab Muon g-2 result is an extremely precise benchmark whose new-physics interpretation depends on theory-baseline resolution.",
+        source_ids=["doe_muon_g2_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="muon anomalous magnetic moment",
+        uncertainty_kind="theoretical",
+    )
+
+    # Gravity/cosmology anchors.
+    n(
+        id="obs.cmb_planck_lambdacdm",
+        label="Planck CMB LambdaCDM anchor",
+        kind=NodeKind.OBSERVATION,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="cosmology",
+        explanatory_weight=8,
+        proof_cost=4,
+        uncertainty=0.12,
+        boundary_weight=3.5,
+        statement="Planck CMB data support a six-parameter base LambdaCDM fit while constraining extensions.",
+        source_ids=["planck_2018_parameters"],
+        evidence_class="collaboration_result",
+        validity_regime="CMB anisotropy and lensing data interpreted through LambdaCDM",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="obs.bao_desi_dr2",
+        label="DESI DR2 BAO expansion history",
+        kind=NodeKind.OBSERVATION,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="cosmology",
+        explanatory_weight=7,
+        proof_cost=4,
+        uncertainty=0.22,
+        boundary_weight=3.5,
+        statement="DESI DR2 BAO measurements constrain expansion history and sharpen late-time dark-energy tests.",
+        source_ids=["desi_dr2_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="large-scale BAO standard ruler measurements",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="obs.gravitational_wave_catalog",
+        label="GWTC-5.0 gravitational-wave catalog",
+        kind=NodeKind.OBSERVATION,
+        status=NodeStatus.EMPIRICAL,
+        layer=Layer.BOUNDARY,
+        domain="gravity",
+        explanatory_weight=6,
+        proof_cost=4,
+        uncertainty=0.16,
+        boundary_weight=3,
+        statement="The LVK catalog provides strong-field GR and compact-binary population anchors.",
+        source_ids=["lvk_gwtc5_2026"],
+        evidence_class="collaboration_result",
+        validity_regime="compact binary coalescence observations",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="cosmo.lambda_cdm_model",
+        label="Base LambdaCDM model",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.COMPUTED,
+        layer=Layer.INTERIOR,
+        domain="cosmology",
+        explanatory_weight=8,
+        proof_cost=5,
+        uncertainty=0.18,
+        statement="A spatially flat six-parameter LambdaCDM model summarizes the dominant current cosmological fit.",
+        source_ids=["planck_2018_parameters", "desi_dr2_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="large-scale cosmology with cold dark matter and cosmological constant parameterization",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="cosmo.structure_formation",
+        label="Structure formation",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.COMPUTED,
+        layer=Layer.INTERIOR,
+        domain="cosmology",
+        explanatory_weight=6,
+        proof_cost=5,
+        uncertainty=0.25,
+        statement="Perturbation growth and simulations connect initial fluctuations to observed large-scale structure.",
+        source_ids=["planck_2018_parameters", "desi_dr2_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="linear plus calibrated nonlinear structure formation",
+        uncertainty_kind="computational",
+    )
+
+    # Effective/emergent domains.
+    n(
+        id="effective.thermodynamic_limit",
+        label="Thermodynamic limit",
+        kind=NodeKind.BRIDGE,
+        status=NodeStatus.APPROXIMATION,
+        layer=Layer.INTERIOR,
+        domain="thermodynamics",
+        explanatory_weight=5,
+        proof_cost=4,
+        uncertainty=0.22,
+        statement="Large-N limits and coarse-graining bridge reversible microdynamics to macroscopic thermodynamics.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="large systems with stable macroscopic variables",
+        uncertainty_kind="approximation",
+    )
+    n(
+        id="effective.hydrodynamics",
+        label="Hydrodynamics",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.APPROXIMATION,
+        layer=Layer.INTERIOR,
+        domain="emergence",
+        explanatory_weight=5,
+        proof_cost=4,
+        uncertainty=0.24,
+        statement="Continuum fluid equations describe long-wavelength conserved densities under closure assumptions.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="near-continuum, near-equilibrium long-wavelength regimes",
+        uncertainty_kind="approximation",
+    )
+    n(
+        id="effective.condensed_matter",
+        label="Condensed-matter effective theories",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.APPROXIMATION,
+        layer=Layer.INTERIOR,
+        domain="emergence",
+        explanatory_weight=5,
+        proof_cost=4,
+        uncertainty=0.28,
+        statement="Many-body effective theories explain phases, quasiparticles, and collective phenomena in material systems.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="material-specific low-energy effective descriptions",
+        uncertainty_kind="approximation",
+    )
+    n(
+        id="effective.chemistry",
+        label="Chemistry from quantum many-body approximations",
+        kind=NodeKind.MODEL,
+        status=NodeStatus.COMPUTED,
+        layer=Layer.INTERIOR,
+        domain="emergence",
+        explanatory_weight=5,
+        proof_cost=5,
+        uncertainty=0.24,
+        statement="Electronic structure and many-body approximations bridge QED/QM to chemical bonding and reactions.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="molecular and condensed chemical regimes with approximation controls",
+        uncertainty_kind="computational",
+    )
+
+    # Open frontiers and tensions.
+    n(
+        id="gap.quantum_gravity",
+        label="Quantum gravity",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="gravity",
+        explanatory_weight=9,
+        proof_cost=10,
+        uncertainty=0.92,
+        boundary_weight=5,
+        statement="No experimentally confirmed theory unifies quantum mechanics and dynamical spacetime at Planck-scale regimes.",
+        source_ids=["planck_2018_parameters", "lvk_gwtc5_2026"],
+        evidence_class="review",
+        validity_regime="Planck-scale gravity, singularities, black-hole quantum regimes",
+        uncertainty_kind="logical",
+    )
+    n(
+        id="gap.dark_matter_identity",
+        label="Dark matter identity",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="dark_sector",
+        explanatory_weight=9,
+        proof_cost=8,
+        uncertainty=0.85,
+        boundary_weight=5,
+        statement="Cosmology and astrophysics require nonluminous gravitating matter, but the particle or field identity remains unknown.",
+        source_ids=["planck_2018_parameters", "lz_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="cosmological and direct-detection dark-matter searches",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="gap.dark_energy_microphysics",
+        label="Dark-energy microphysics",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="dark_sector",
+        explanatory_weight=8,
+        proof_cost=8,
+        uncertainty=0.82,
+        boundary_weight=5,
+        statement="Late-time acceleration is well parameterized, but the microphysical origin and possible dynamics of dark energy remain unresolved.",
+        source_ids=["planck_2018_parameters", "desi_dr2_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="late-time cosmic acceleration and expansion history",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="gap.baryon_asymmetry",
+        label="Baryon asymmetry",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="cosmology",
+        explanatory_weight=7,
+        proof_cost=7,
+        uncertainty=0.78,
+        boundary_weight=4,
+        statement="The observed matter-antimatter asymmetry lacks a confirmed complete origin within the established Standard Model history.",
+        source_ids=["cern_standard_model", "pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="early-universe baryogenesis",
+        uncertainty_kind="theoretical",
+    )
+    n(
+        id="gap.neutrino_mass_mechanism",
+        label="Neutrino mass mechanism",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="neutrino",
+        explanatory_weight=7,
+        proof_cost=7,
+        uncertainty=0.76,
+        boundary_weight=4,
+        statement="Neutrino masses are established phenomenologically, but the underlying Dirac/Majorana and mass-generation mechanism remains open.",
+        source_ids=["pdg_neutrino_2025", "katrin_2025"],
+        evidence_class="review",
+        validity_regime="beyond-minimal-SM neutrino mass generation",
+        uncertainty_kind="theoretical",
+    )
+    n(
+        id="gap.hierarchy_naturalness",
+        label="Higgs hierarchy/naturalness",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="higgs",
+        explanatory_weight=6,
+        proof_cost=7,
+        uncertainty=0.70,
+        boundary_weight=3.5,
+        statement="The stability and naturalness of the Higgs mass remain an organizing open problem for beyond-Standard-Model physics.",
+        source_ids=["cern_higgs_2022", "pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="Higgs-sector UV sensitivity",
+        uncertainty_kind="semantic",
+    )
+    n(
+        id="gap.confinement_mass_gap",
+        label="Confinement and Yang-Mills mass gap",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="qcd",
+        explanatory_weight=7,
+        proof_cost=8,
+        uncertainty=0.82,
+        boundary_weight=4,
+        statement="Nonperturbative confinement is physically established, but a rigorous four-dimensional Yang-Mills mass-gap proof remains open.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="four-dimensional nonabelian gauge theory",
+        uncertainty_kind="logical",
+    )
+    n(
+        id="gap.initial_conditions_inflation",
+        label="Initial conditions and inflation selection",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="cosmology",
+        explanatory_weight=7,
+        proof_cost=7,
+        uncertainty=0.74,
+        boundary_weight=4,
+        statement="The initial-condition problem and specific inflationary model selection remain open in early-universe cosmology.",
+        source_ids=["planck_2018_parameters"],
+        evidence_class="collaboration_result",
+        validity_regime="early-universe pre-recombination physics",
+        uncertainty_kind="theoretical",
+    )
+    n(
+        id="gap.measurement_problem",
+        label="Quantum measurement problem",
+        kind=NodeKind.GAP,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="measurement",
+        explanatory_weight=6,
+        proof_cost=7,
+        uncertainty=0.72,
+        boundary_weight=3.5,
+        statement="The relation between unitary quantum dynamics, definite outcomes, and interpretation remains a foundational seam.",
+        source_ids=["pdg_rpp_2024"],
+        evidence_class="review",
+        validity_regime="foundations of quantum mechanics",
+        uncertainty_kind="semantic",
+    )
+    n(
+        id="tension.hubble_constant",
+        label="Hubble-constant tension",
+        kind=NodeKind.UNCERTAINTY,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="cosmology",
+        explanatory_weight=6,
+        proof_cost=5,
+        uncertainty=0.62,
+        boundary_weight=3.5,
+        statement="Early- and late-universe inferences of H0 remain a live cosmological tension.",
+        source_ids=["planck_2018_parameters", "desi_dr2_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="cosmic distance ladder and CMB-inferred expansion",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="tension.s8_growth",
+        label="S8/growth tension",
+        kind=NodeKind.UNCERTAINTY,
+        status=NodeStatus.GAP,
+        layer=Layer.BOUNDARY,
+        domain="cosmology",
+        explanatory_weight=5,
+        proof_cost=5,
+        uncertainty=0.58,
+        boundary_weight=3,
+        statement="Matter clustering amplitude comparisons create a boundary tension between probes and modeling assumptions.",
+        source_ids=["planck_2018_parameters", "desi_dr2_2025"],
+        evidence_class="collaboration_result",
+        validity_regime="large-scale structure and weak-lensing growth inference",
+        uncertainty_kind="empirical",
+    )
+    n(
+        id="external.bsm_frameworks",
+        label="Beyond-Standard-Model frameworks",
+        kind=NodeKind.GAP,
+        status=NodeStatus.EXTERNAL,
+        layer=Layer.EXTERIOR,
+        domain="beyond_standard_model",
+        explanatory_weight=6,
+        proof_cost=8,
+        uncertainty=0.78,
+        boundary_weight=4,
+        statement="Supersymmetry, hidden sectors, axions, sterile neutrinos, modified gravity, and related frameworks remain candidate exterior charts constrained but not confirmed.",
+        source_ids=["pdg_rpp_2024", "lz_2025", "desi_dr2_2025"],
+        evidence_class="review",
+        validity_regime="beyond-current-standard-framework hypotheses",
+        uncertainty_kind="theoretical",
+    )
+
+    # Edges from core to shared bridges.
+    e(
+        "core.quantum_mechanics",
+        "core.quantum_field_theory",
+        EdgeKind.BRIDGES,
+        EdgeStatus.ACTIVE,
+        0.08,
+        3,
+        ["pdg_rpp_2024"],
+    )
+    e(
+        "core.special_relativity",
+        "core.quantum_field_theory",
+        EdgeKind.BRIDGES,
+        EdgeStatus.ACTIVE,
+        0.06,
+        2,
+        ["pdg_rpp_2024"],
+    )
+    e(
+        "core.quantum_field_theory",
+        "bridge.lagrangian_field_theory",
+        EdgeKind.DEFINES,
+        EdgeStatus.PROVED,
+        0.05,
+        2,
+        ["pdg_rpp_2024"],
+    )
+    e(
+        "bridge.lagrangian_field_theory",
+        "bridge.noether_symmetry_conservation",
+        EdgeKind.PROVES,
+        EdgeStatus.PROVED,
+        0.04,
+        2,
+        ["pdg_rpp_2024"],
+    )
+    e(
+        "core.quantum_field_theory",
+        "bridge.renormalization_group",
+        EdgeKind.PROVES,
+        EdgeStatus.ACTIVE,
+        0.12,
+        4,
+        ["pdg_rpp_2024"],
+    )
+    e(
+        "bridge.renormalization_group",
+        "bridge.effective_field_theory",
+        EdgeKind.BRIDGES,
+        EdgeStatus.ACTIVE,
+        0.15,
+        3,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="approximation",
+    )
+    e(
+        "core.statistical_mechanics",
+        "effective.thermodynamic_limit",
+        EdgeKind.BRIDGES,
+        EdgeStatus.APPROXIMATE,
+        0.22,
+        3,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="approximation",
+    )
+    e(
+        "effective.thermodynamic_limit",
+        "effective.hydrodynamics",
+        EdgeKind.LIMITS_TO,
+        EdgeStatus.APPROXIMATE,
+        0.25,
+        3,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="approximation",
+    )
+
+    # Standard Model interior and anchors.
+    e(
+        "core.standard_model_gauge_structure",
+        "sm.qcd_color_sector",
+        EdgeKind.DEFINES,
+        EdgeStatus.PROVED,
+        0.04,
+        2,
+        ["pdg_rpp_2024"],
+    )
+    e(
+        "core.standard_model_gauge_structure",
+        "sm.electroweak_sector",
+        EdgeKind.DEFINES,
+        EdgeStatus.PROVED,
+        0.04,
+        2,
+        ["pdg_rpp_2024", "cern_standard_model"],
+    )
+    e(
+        "sm.electroweak_sector",
+        "sm.higgs_mechanism",
+        EdgeKind.BRIDGES,
+        EdgeStatus.EMPIRICAL,
+        0.10,
+        3,
+        ["cern_higgs_2022", "pdg_rpp_2024"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "sm.electroweak_sector",
+        "sm.flavor_mixing_ckm",
+        EdgeKind.DEFINES,
+        EdgeStatus.EMPIRICAL,
+        0.18,
+        2,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "sm.electroweak_sector",
+        "sm.neutrino_oscillation_pmns",
+        EdgeKind.BRIDGES,
+        EdgeStatus.EMPIRICAL,
+        0.20,
+        3,
+        ["pdg_neutrino_2025"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "sm.neutrino_oscillation_pmns",
+        "gap.neutrino_mass_mechanism",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.75,
+        4,
+        ["pdg_neutrino_2025"],
+        notes="Oscillation data establish mass splittings but do not close the underlying mass-generation mechanism.",
+    )
+    e(
+        "obs.direct_neutrino_mass_limit",
+        "gap.neutrino_mass_mechanism",
+        EdgeKind.EMPIRICALLY_CONSTRAINS,
+        EdgeStatus.EMPIRICAL,
+        0.24,
+        2,
+        ["katrin_2025"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "sm.qcd_color_sector",
+        "gap.confinement_mass_gap",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.82,
+        5,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="logical",
+    )
+    e(
+        "bridge.lattice_qcd",
+        "gap.confinement_mass_gap",
+        EdgeKind.EMPIRICALLY_CONSTRAINS,
+        EdgeStatus.COMPUTED,
+        0.32,
+        4,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="computational",
+    )
+    e(
+        "sm.higgs_mechanism",
+        "gap.hierarchy_naturalness",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.68,
+        4,
+        ["cern_higgs_2022", "pdg_rpp_2024"],
+    )
+    e(
+        "core.standard_model_gauge_structure",
+        "obs.muon_g2_precision",
+        EdgeKind.PROVES,
+        EdgeStatus.APPROXIMATE,
+        0.34,
+        4,
+        ["doe_muon_g2_2025", "pdg_rpp_2024"],
+        notes="Interpretation depends on hadronic/theory-baseline work.",
+        uncertainty_kind="theoretical",
+    )
+    e(
+        "core.standard_model_gauge_structure",
+        "gap.baryon_asymmetry",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.76,
+        4,
+        ["cern_standard_model", "pdg_rpp_2024"],
+    )
+
+    # Gravity and cosmology.
+    e(
+        "core.general_relativity",
+        "bridge.flrw_cosmology",
+        EdgeKind.LIMITS_TO,
+        EdgeStatus.ACTIVE,
+        0.12,
+        3,
+        ["planck_2018_parameters"],
+        uncertainty_kind="approximation",
+    )
+    e(
+        "bridge.flrw_cosmology",
+        "cosmo.lambda_cdm_model",
+        EdgeKind.BRIDGES,
+        EdgeStatus.COMPUTED,
+        0.18,
+        4,
+        ["planck_2018_parameters"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "cosmo.lambda_cdm_model",
+        "obs.cmb_planck_lambdacdm",
+        EdgeKind.EMPIRICALLY_CONSTRAINS,
+        EdgeStatus.EMPIRICAL,
+        0.12,
+        2,
+        ["planck_2018_parameters"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "cosmo.lambda_cdm_model",
+        "obs.bao_desi_dr2",
+        EdgeKind.EMPIRICALLY_CONSTRAINS,
+        EdgeStatus.EMPIRICAL,
+        0.22,
+        3,
+        ["desi_dr2_2025"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "bridge.linear_perturbation_theory",
+        "cosmo.structure_formation",
+        EdgeKind.PROVES,
+        EdgeStatus.COMPUTED,
+        0.24,
+        4,
+        ["planck_2018_parameters", "desi_dr2_2025"],
+        uncertainty_kind="computational",
+    )
+    e(
+        "cosmo.structure_formation",
+        "tension.s8_growth",
+        EdgeKind.BRIDGES,
+        EdgeStatus.GAP,
+        0.58,
+        3,
+        ["planck_2018_parameters", "desi_dr2_2025"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "obs.cmb_planck_lambdacdm",
+        "tension.hubble_constant",
+        EdgeKind.BRIDGES,
+        EdgeStatus.GAP,
+        0.62,
+        3,
+        ["planck_2018_parameters", "desi_dr2_2025"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "obs.bao_desi_dr2",
+        "gap.dark_energy_microphysics",
+        EdgeKind.BRIDGES,
+        EdgeStatus.GAP,
+        0.78,
+        4,
+        ["desi_dr2_2025", "planck_2018_parameters"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "cosmo.lambda_cdm_model",
+        "gap.dark_matter_identity",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.82,
+        4,
+        ["planck_2018_parameters"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "core.general_relativity",
+        "obs.gravitational_wave_catalog",
+        EdgeKind.PROVES,
+        EdgeStatus.EMPIRICAL,
+        0.16,
+        3,
+        ["lvk_gwtc5_2026"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "core.general_relativity",
+        "gap.quantum_gravity",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.90,
+        5,
+        ["planck_2018_parameters", "lvk_gwtc5_2026"],
+        uncertainty_kind="logical",
+    )
+    e(
+        "bridge.flrw_cosmology",
+        "gap.initial_conditions_inflation",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.74,
+        4,
+        ["planck_2018_parameters"],
+    )
+
+    # Dark sector and emergence.
+    e(
+        "obs.bao_desi_dr2",
+        "external.bsm_frameworks",
+        EdgeKind.EMPIRICALLY_CONSTRAINS,
+        EdgeStatus.EMPIRICAL,
+        0.45,
+        2,
+        ["desi_dr2_2025"],
+        uncertainty_kind="empirical",
+    )
+    e(
+        "gap.dark_matter_identity",
+        "external.bsm_frameworks",
+        EdgeKind.BRIDGES,
+        EdgeStatus.GAP,
+        0.75,
+        3,
+        ["pdg_rpp_2024", "lz_2025"],
+    )
+    e(
+        "gap.dark_energy_microphysics",
+        "external.bsm_frameworks",
+        EdgeKind.BRIDGES,
+        EdgeStatus.GAP,
+        0.78,
+        3,
+        ["desi_dr2_2025"],
+    )
+    e(
+        "external.bsm_frameworks",
+        "gap.hierarchy_naturalness",
+        EdgeKind.BRIDGES,
+        EdgeStatus.GAP,
+        0.65,
+        3,
+        ["pdg_rpp_2024", "cern_higgs_2022"],
+    )
+    e(
+        "core.quantum_mechanics",
+        "bridge.decoherence_effective_classicality",
+        EdgeKind.BRIDGES,
+        EdgeStatus.APPROXIMATE,
+        0.28,
+        4,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="semantic",
+    )
+    e(
+        "bridge.decoherence_effective_classicality",
+        "gap.measurement_problem",
+        EdgeKind.BLOCKS,
+        EdgeStatus.GAP,
+        0.70,
+        4,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="semantic",
+    )
+    e(
+        "core.quantum_mechanics",
+        "effective.chemistry",
+        EdgeKind.APPROXIMATES,
+        EdgeStatus.COMPUTED,
+        0.24,
+        4,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="computational",
+    )
+    e(
+        "bridge.effective_field_theory",
+        "effective.condensed_matter",
+        EdgeKind.APPROXIMATES,
+        EdgeStatus.APPROXIMATE,
+        0.28,
+        4,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="approximation",
+    )
+    e(
+        "core.statistical_mechanics",
+        "effective.condensed_matter",
+        EdgeKind.BRIDGES,
+        EdgeStatus.APPROXIMATE,
+        0.26,
+        3,
+        ["pdg_rpp_2024"],
+        uncertainty_kind="approximation",
+    )
+
+    domain_theories = {
+        "spacetime": ["special_relativity"],
+        "standard_model": ["standard_model"],
+        "gravity": ["general_relativity"],
+        "thermodynamics": ["statistical_mechanics", "thermodynamics"],
+        "measurement": ["quantum_mechanics"],
+        "qft": ["effective_field_theory", "quantum_field_theory"],
+        "qcd": ["quantum_chromodynamics", "standard_model"],
+        "electroweak": ["electroweak_theory", "standard_model"],
+        "higgs": ["electroweak_theory", "standard_model"],
+        "flavor": ["standard_model"],
+        "neutrino": ["standard_model"],
+        "precision_tests": ["standard_model"],
+        "cosmology": ["general_relativity", "lambda_cdm"],
+        "dark_sector": ["lambda_cdm"],
+        "emergence": ["quantum_mechanics", "statistical_mechanics"],
+        "beyond_standard_model": [
+            "axion_models",
+            "composite_higgs",
+            "dark_photon_models",
+            "extra_dimensions",
+            "grand_unification",
+            "sterile_neutrino_models",
+            "supersymmetry",
+        ],
+    }
+    node_overrides = {
+        "core.quantum_mechanics": ["quantum_mechanics"],
+        "core.quantum_field_theory": ["quantum_field_theory"],
+        "core.standard_model_gauge_structure": ["standard_model"],
+        "core.general_relativity": ["general_relativity"],
+        "core.statistical_mechanics": ["statistical_mechanics"],
+        "bridge.lattice_qcd": ["lattice_gauge_theory", "quantum_chromodynamics"],
+        "bridge.flrw_cosmology": ["general_relativity", "lambda_cdm"],
+        "bridge.linear_perturbation_theory": ["inflationary_cosmology", "lambda_cdm"],
+        "cosmo.lambda_cdm_model": ["lambda_cdm"],
+        "cosmo.structure_formation": ["lambda_cdm"],
+        "effective.hydrodynamics": ["hydrodynamics", "statistical_mechanics"],
+        "effective.condensed_matter": [
+            "bcs_theory",
+            "density_functional_theory",
+            "quantum_mechanics",
+            "statistical_mechanics",
+        ],
+        "effective.chemistry": ["density_functional_theory", "quantum_mechanics"],
+        "gap.quantum_gravity": [
+            "asymptotic_safety",
+            "causal_dynamical_triangulations",
+            "causal_set_theory",
+            "emergent_spacetime",
+            "group_field_theory",
+            "holographic_duality",
+            "loop_quantum_gravity",
+            "noncommutative_geometry",
+            "string_m_theory",
+            "twistor_theory",
+        ],
+        "gap.dark_matter_identity": [
+            "axion_models",
+            "dark_photon_models",
+            "lambda_cdm",
+            "mond",
+            "sterile_neutrino_models",
+        ],
+        "gap.dark_energy_microphysics": [
+            "dynamical_dark_energy",
+            "lambda_cdm",
+            "modified_gravity",
+        ],
+        "gap.neutrino_mass_mechanism": ["standard_model", "sterile_neutrino_models"],
+        "gap.initial_conditions_inflation": ["inflationary_cosmology", "lambda_cdm"],
+        "gap.hierarchy_naturalness": [
+            "composite_higgs",
+            "extra_dimensions",
+            "standard_model",
+            "supersymmetry",
+        ],
+    }
+    for node in pm.nodes.values():
+        node.theory_ids = sorted(
+            set(node_overrides.get(node.id, domain_theories.get(node.domain, [])))
+        )
+        if node.validity_regime and not node.regime_dimensions:
+            node.regime_dimensions = {"description": node.validity_regime}
+        if node.energy_scale_gev is not None:
+            node.regime_dimensions["energy_scale_gev"] = node.energy_scale_gev
+    for edge in pm.edges:
+        edge.theory_ids = sorted(
+            set(pm.nodes[edge.source].theory_ids) | set(pm.nodes[edge.target].theory_ids)
+        )
+        if edge.validity_regime and not edge.regime_dimensions:
+            edge.regime_dimensions = {"description": edge.validity_regime}
+    pm.metadata["theory_profile_ids"] = sorted(
+        {theory_id for node in pm.nodes.values() for theory_id in node.theory_ids}
+    )
+
+    return pm

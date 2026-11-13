@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/proofmap.proof-attempt.schema.json",
+  "title": "Proof Map Verified Attempt Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "proof_map_path",
+    "proof_map_sha256",
+    "proof_map_source_sha256",
+    "target_node_id",
+    "target_snapshot_sha256",
+    "obligation_sha256",
+    "artifact_sha256",
+    "obligation",
+    "attempt",
+    "verification",
+    "receipt_sha256",
+    "semantic_caveat"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "proof_map_path": {"type": "string"},
+    "proof_map_sha256": {"$ref": "#/$defs/sha256"},
+    "proof_map_source_sha256": {
+      "type": "string",
+      "pattern": "^$|^[0-9a-f]{64}$"
+    },
+    "target_node_id": {"type": "string", "minLength": 1},
+    "target_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+    "obligation_sha256": {"$ref": "#/$defs/sha256"},
+    "artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "obligation": {"$ref": "#/$defs/formalObligation"},
+    "attempt": {
+      "type": "object",
+      "required": ["id", "obligation_id", "artifact_path", "artifact_sha256", "producer"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "obligation_id": {"type": "string", "minLength": 1},
+        "artifact_path": {"type": "string", "minLength": 1},
+        "producer": {"type": "string", "minLength": 1},
+        "provider": {"type": "string"},
+        "model": {"type": "string"},
+        "model_version": {"type": "string"},
+        "run_id": {"type": "string"},
+        "prompt_sha256": {
+          "type": "string",
+          "pattern": "^$|^[0-9a-f]{64}$"
+        },
+        "artifact_sha256": {"$ref": "#/$defs/sha256"},
+        "parent_attempt_ids": {"type": "array", "items": {"type": "string"}},
+        "strategy": {"type": "string"},
+        "created_at": {"type": "string"},
+        "input_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "generation_seconds": {"type": "number", "minimum": 0},
+        "estimated_cost_usd": {"type": "number", "minimum": 0},
+        "metadata": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "outcome",
+        "verified",
+        "checked_at",
+        "verifier",
+        "verifier_version",
+        "verification_scope",
+        "duration_seconds",
+        "command",
+        "returncode",
+        "stdout",
+        "stderr",
+        "axioms",
+        "allowed_axioms",
+        "policy_issues",
+        "wrapper_sha256"
+      ],
+      "properties": {
+        "outcome": {
+          "enum": [
+            "VERIFIED",
+            "POLICY_REJECTED",
+            "COMPILER_REJECTED",
+            "UNTRUSTED_AXIOMS",
+            "TIMEOUT",
+            "VERIFIER_UNAVAILABLE",
+            "VERIFIER_ERROR"
+          ]
+        },
+        "verified": {"type": "boolean"},
+        "checked_at": {"type": "string"},
+        "verifier": {"type": "string"},
+        "verifier_version": {"type": "string"},
+        "verification_scope": {"type": "string"},
+        "duration_seconds": {"type": "number", "minimum": 0},
+        "command": {"type": "array", "items": {"type": "string"}},
+        "returncode": {"type": ["integer", "null"]},
+        "stdout": {"type": "string"},
+        "stderr": {"type": "string"},
+        "axioms": {"type": "array", "items": {"type": "string"}},
+        "allowed_axioms": {"type": "array", "items": {"type": "string"}},
+        "policy_issues": {"type": "array", "items": {"type": "string"}},
+        "wrapper_sha256": {
+          "type": "string",
+          "pattern": "^$|^[0-9a-f]{64}$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"outcome": {"const": "VERIFIED"}}},
+          "then": {"properties": {"verified": {"const": true}}},
+          "else": {"properties": {"verified": {"const": false}}}
+        }
+      ],
+      "additionalProperties": false
+    },
+    "receipt_sha256": {"$ref": "#/$defs/sha256"},
+    "semantic_caveat": {"type": "string"}
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "formalObligation": {
+      "type": "object",
+      "required": [
+        "id",
+        "target_node_id",
+        "statement",
+        "declaration_name",
+        "imports",
+        "allowed_axioms",
+        "toolchain",
+        "statement_sha256",
+        "notes",
+        "metadata",
+        "formal_system"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "target_node_id": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "declaration_name": {"type": "string", "minLength": 1},
+        "imports": {"type": "array", "items": {"type": "string"}},
+        "allowed_axioms": {"type": "array", "items": {"type": "string"}},
+        "toolchain": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+:v[0-9]+\\.[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+        },
+        "statement_sha256": {"$ref": "#/$defs/sha256"},
+        "notes": {"type": "string"},
+        "metadata": {"type": "object"},
+        "formal_system": {"const": "lean4"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

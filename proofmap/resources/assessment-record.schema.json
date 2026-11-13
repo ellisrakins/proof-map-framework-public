@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:assessment-record:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["record_type", "schema_version", "id", "subject", "subject_kind", "subject_digest", "context_digest", "dimension", "status", "policy_digest", "method", "evidence_digests", "actor_id", "authentication", "authentication_digests", "authority_digest", "evaluation_time", "reasons"],
+  "properties": {
+    "record_type": {"const": "AssessmentRecord"},
+    "schema_version": {"const": "1.0"},
+    "id": {"$ref": "#/$defs/hash"},
+    "subject": {"$ref": "#/$defs/id"},
+    "subject_kind": {"enum": ["claim", "formal_encoding", "inference", "source_candidate"]},
+    "subject_digest": {"$ref": "#/$defs/hash"},
+    "context_digest": {"$ref": "#/$defs/hash"},
+    "dimension": {"enum": ["deductive", "computational", "empirical_support", "empirical_contradiction", "approximation", "source_fidelity", "formal_fidelity", "independent_review", "novelty"]},
+    "status": {"enum": ["NOT_ASSESSED", "PASS", "FAIL", "PARTIAL", "UNAVAILABLE", "INVALID", "STALE", "UNTRUSTED", "CONFLICT"]},
+    "policy_digest": {"$ref": "#/$defs/hash"},
+    "method": {"$ref": "#/$defs/id"},
+    "evidence_digests": {"$ref": "#/$defs/hashes"},
+    "actor_id": {"$ref": "#/$defs/id"},
+    "authentication": {"enum": ["NOT_CHECKED", "VERIFIED", "REJECTED"]},
+    "authentication_digests": {"$ref": "#/$defs/hashes"},
+    "authority_digest": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+    "evaluation_time": {"type": "string", "minLength": 1, "maxLength": 128},
+    "reasons": {"type": "array", "maxItems": 1000, "items": {"type": "string", "maxLength": 4096}}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "id": {"type": "string", "minLength": 1, "maxLength": 512},
+    "hashes": {"type": "array", "maxItems": 1000, "uniqueItems": true, "items": {"$ref": "#/$defs/hash"}}
+  }
+}

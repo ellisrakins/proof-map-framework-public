@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_type",
+    "schema_version",
+    "id",
+    "binding_digest",
+    "revision_id",
+    "assertion_id",
+    "obligation_digest",
+    "profile_digest",
+    "policy_digest",
+    "trust_digest",
+    "evaluation_time",
+    "execution_digest",
+    "review_digests",
+    "formal_status",
+    "source_fidelity",
+    "formal_fidelity",
+    "assessment",
+    "reasons"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "AcceptanceRecord"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "binding_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "assertion_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "obligation_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "policy_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "trust_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evaluation_time": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "execution_digest": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "review_digests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "uniqueItems": true
+    },
+    "formal_status": {
+      "enum": [
+        "VERIFIED",
+        "UNVERIFIED"
+      ]
+    },
+    "source_fidelity": {
+      "enum": [
+        "APPROVE",
+        "REJECT",
+        "NOT_REVIEWED"
+      ]
+    },
+    "formal_fidelity": {
+      "enum": [
+        "APPROVE",
+        "REJECT",
+        "NOT_REVIEWED"
+      ]
+    },
+    "assessment": {
+      "enum": [
+        "ACCEPTED_UNDER_POLICY",
+        "REVIEW_REQUIRED",
+        "UNVERIFIED",
+        "REJECTED"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 1000000
+      }
+    }
+  }
+}

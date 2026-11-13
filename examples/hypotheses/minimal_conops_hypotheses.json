@@ -1,0 +1,75 @@
+{
+  "title": "Minimal CONOPS competing mechanisms",
+  "description": "Candidate mechanisms for the intentional drop-time residual. The catalog is designed to demonstrate conditional structural value, prediction specificity, and falsifiability scoring.",
+  "metadata": {
+    "target_map": "examples/minimal_conops.json",
+    "warning": "Demonstration candidates only; ranking is not experimental evidence."
+  },
+  "hypotheses": [
+    {
+      "id": "hypothesis.quadratic_drag",
+      "label": "Quadratic air-drag model",
+      "description": "Add a velocity-squared drag term and fit its coefficient under controlled atmospheric conditions.",
+      "target_nodes": ["boundary.drag_residual"],
+      "input_nodes": ["core.motion_law", "boundary.sensor_measurement"],
+      "assumptions": [
+        "The object remains in the quadratic-drag regime.",
+        "Air density is measured independently."
+      ],
+      "predictions": [
+        "Residual magnitude scales approximately with velocity squared.",
+        "Residual changes predictably with air density.",
+        "Vacuum runs suppress the residual."
+      ],
+      "proposed_status": "APPROXIMATION",
+      "proposed_uncertainty": 0.16,
+      "complexity": 2.0,
+      "falsifiability": 0.95,
+      "prior_plausibility": 0.9,
+      "domain": "fluid_mechanics",
+      "source_ids": [],
+      "last_verified": "2026-07-14"
+    },
+    {
+      "id": "hypothesis.clock_bias",
+      "label": "Sensor clock-bias model",
+      "description": "Explain the residual as a fixed or drifting timestamp calibration offset.",
+      "target_nodes": ["boundary.drag_residual"],
+      "input_nodes": ["bridge.calibration_model", "boundary.sensor_measurement"],
+      "assumptions": [
+        "The timing offset is stable within each run."
+      ],
+      "predictions": [
+        "The residual is approximately independent of drop height.",
+        "An external timing reference reproduces the offset."
+      ],
+      "proposed_status": "APPROXIMATION",
+      "proposed_uncertainty": 0.22,
+      "complexity": 1.2,
+      "falsifiability": 0.85,
+      "prior_plausibility": 0.6,
+      "domain": "instrumentation",
+      "source_ids": [],
+      "last_verified": "2026-07-14"
+    },
+    {
+      "id": "hypothesis.free_correction",
+      "label": "Unconstrained empirical correction",
+      "description": "Fit an arbitrary correction term to remove the observed residual without a specified mechanism.",
+      "target_nodes": ["boundary.drag_residual"],
+      "input_nodes": ["boundary.sensor_measurement"],
+      "assumptions": [
+        "The fitted correction remains valid outside the observed sample."
+      ],
+      "predictions": [],
+      "proposed_status": "APPROXIMATION",
+      "proposed_uncertainty": 0.4,
+      "complexity": 1.0,
+      "falsifiability": 0.1,
+      "prior_plausibility": 0.4,
+      "domain": "phenomenology",
+      "source_ids": [],
+      "last_verified": "2026-07-14"
+    }
+  ]
+}

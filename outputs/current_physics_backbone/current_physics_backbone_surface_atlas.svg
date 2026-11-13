@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1080" viewBox="0 0 1680 1080">
+<defs>
+  <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#fbfdff'/><stop offset='100%' stop-color='#eef6ff'/></linearGradient>
+  <filter id='shadow'><feDropShadow dx='0' dy='4' stdDeviation='7' flood-opacity='0.15'/></filter>
+  <marker id='arrowDefault' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#8395a7'/></marker>
+  <marker id='arrowFlow' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#0b6efd'/></marker>
+  <marker id='arrowSeam' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#d97706'/></marker>
+  <marker id='arrowGap' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#b00020'/></marker>
+</defs>
+<rect width='100%' height='100%' fill='url(#bg)'/>
+<text x='840.0' y='58' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='36' font-weight='800' fill='#0b1f4d'>Current Physics Backbone Map — Proof Surface Atlas</text>
+<text x='840.0' y='88' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' fill='#4b5d78'>longitude = domain/local chart; latitude = derivational distance from core</text>
+<rect x='70' y='150' width='1080' height='650' rx='20' fill='#ffffff' stroke='#234f8d' stroke-width='2' filter='url(#shadow)'/>
+<clipPath id='atlasClip'><rect x='70' y='150' width='1080' height='650' rx='20'/></clipPath>
+<rect x='70' y='150' width='1080' height='650' rx='20' fill='#f3f8ff'/>
+<line x1='160.0' y1='150' x2='160.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='250.0' y1='150' x2='250.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='340.0' y1='150' x2='340.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='430.0' y1='150' x2='430.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='520.0' y1='150' x2='520.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='610.0' y1='150' x2='610.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='700.0' y1='150' x2='700.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='790.0' y1='150' x2='790.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='880.0' y1='150' x2='880.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='970.0' y1='150' x2='970.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='1060.0' y1='150' x2='1060.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='258.3' x2='1150' y2='258.3' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='366.7' x2='1150' y2='366.7' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='475.0' x2='1150' y2='475.0' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='583.3' x2='1150' y2='583.3' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='691.7' x2='1150' y2='691.7' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='475.0' x2='1150' y2='475.0' stroke='#9fb9dc' stroke-width='1.6' stroke-dasharray='8 6'/>
+<text x='101.8' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>beyond_standard_model</text>
+<text x='165.3' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>cosmology</text>
+<line x1='133.5' y1='150' x2='133.5' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='228.8' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>dark_sector</text>
+<line x1='197.1' y1='150' x2='197.1' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='292.4' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>electroweak</text>
+<line x1='260.6' y1='150' x2='260.6' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='355.9' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>emergence</text>
+<line x1='324.1' y1='150' x2='324.1' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='419.4' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>flavor</text>
+<line x1='387.6' y1='150' x2='387.6' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='482.9' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>foundation</text>
+<line x1='451.2' y1='150' x2='451.2' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='546.5' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>gravity</text>
+<line x1='514.7' y1='150' x2='514.7' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='610.0' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>higgs</text>
+<line x1='578.2' y1='150' x2='578.2' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='673.5' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>measurement</text>
+<line x1='641.8' y1='150' x2='641.8' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='737.1' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>neutrino</text>
+<line x1='705.3' y1='150' x2='705.3' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='800.6' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>precision_tests</text>
+<line x1='768.8' y1='150' x2='768.8' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='864.1' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>qcd</text>
+<line x1='832.4' y1='150' x2='832.4' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='927.6' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>qft</text>
+<line x1='895.9' y1='150' x2='895.9' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='991.2' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>spacetime</text>
+<line x1='959.4' y1='150' x2='959.4' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='1054.7' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>standard_model</text>
+<line x1='1022.9' y1='150' x2='1022.9' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='1118.2' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>thermodynamics</text>
+<line x1='1086.5' y1='150' x2='1086.5' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<g clip-path='url(#atlasClip)'>
+<path d='M 475.3,240.3 Q 467.7,250.3 460.1,240.3' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.82' marker-end='url(#arrowDefault)'/>
+<path d='M 991.2,240.3 Q 725.6,250.3 460.1,240.3' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.83' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 460.1,240.3 Q 475.3,311.7 490.6,363.1' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.84' marker-end='url(#arrowDefault)'/>
+<path d='M 490.6,363.1 Q 498.2,429.0 505.8,475.0' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.85' marker-end='url(#arrowDefault)'/>
+<path d='M 460.1,240.3 Q 705.3,311.7 950.5,363.1' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.80' marker-end='url(#arrowDefault)'/>
+<path d='M 950.5,363.1 Q 927.6,429.0 904.8,475.0' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.78' marker-end='url(#arrowDefault)'/>
+<path d='M 1095.4,240.3 Q 1118.2,311.7 1141.1,363.1' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.73' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 1054.7,240.3 Q 970.8,311.7 887.0,363.1' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.85' marker-end='url(#arrowDefault)'/>
+<path d='M 292.4,363.1 Q 439.7,429.0 587.1,475.0' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.81' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 292.4,363.1 Q 355.9,429.0 419.4,475.0' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.76' marker-end='url(#arrowDefault)'/>
+<path d='M 292.4,363.1 Q 514.7,429.0 737.1,475.0' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.75' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 737.1,475.0 Q 748.5,541.0 759.9,586.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.41' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 714.2,727.8 Q 737.1,667.4 759.9,586.9' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.72' marker-end='url(#arrowDefault)'/>
+<path d='M 887.0,363.1 Q 864.1,429.0 841.2,475.0' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.36' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 864.1,727.8 Q 852.7,611.4 841.2,475.0' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.67' marker-end='url(#arrowDefault)'/>
+<path d='M 587.1,475.0 Q 610.0,541.0 632.9,586.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.45' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 1054.7,240.3 Q 927.6,311.7 800.6,363.1' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.66' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 569.3,240.3 Q 378.8,311.7 188.2,363.1' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.80' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 188.2,363.1 Q 183.1,429.0 178.0,475.0' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.76' marker-end='url(#arrowDefault)'/>
+<path d='M 178.0,475.0 Q 162.8,541.0 147.5,586.9' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.80' marker-end='url(#arrowDefault)'/>
+<path d='M 178.0,475.0 Q 160.2,541.0 142.4,586.9' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.73' marker-end='url(#arrowDefault)'/>
+<path d='M 172.9,727.8 Q 178.0,737.8 183.1,727.8' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.72' marker-end='url(#arrowDefault)'/>
+<path d='M 183.1,727.8 Q 175.5,737.8 167.8,727.8' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.51' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 147.5,586.9 Q 155.1,652.9 162.8,698.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.49' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 142.4,586.9 Q 174.2,652.9 206.0,698.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.39' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 178.0,475.0 Q 214.8,541.0 251.7,586.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.36' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 569.3,240.3 Q 546.5,311.7 523.6,363.1' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.77' marker-end='url(#arrowDefault)'/>
+<path d='M 569.3,240.3 Q 557.9,311.7 546.5,363.1' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.31' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 188.2,363.1 Q 172.9,429.0 157.7,475.0' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.41' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 142.4,586.9 Q 122.1,652.9 101.8,698.9' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.59' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 251.7,586.9 Q 176.7,652.9 101.8,698.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.41' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 206.0,698.9 Q 153.9,708.9 101.8,698.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.39' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 101.8,698.9 Q 367.3,652.9 632.9,586.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.47' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 475.3,240.3 Q 585.9,311.7 696.4,363.1' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.70' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 696.4,363.1 Q 673.5,429.0 650.7,475.0' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.44' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+<path d='M 475.3,240.3 Q 427.0,311.7 378.8,363.1' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.72' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 904.8,475.0 Q 618.9,429.0 333.0,363.1' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.70' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+</g>
+<circle cx='587.1' cy='475.0' r='13.3' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='147.5' cy='586.9' r='14.7' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='523.6' cy='363.1' r='15.4' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='419.4' cy='475.0' r='15.7' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='737.1' cy='475.0' r='15.9' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='714.2' cy='727.8' r='16.2' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='142.4' cy='586.9' r='17.1' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='800.6' cy='363.1' r='19.3' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='167.8' cy='727.8' r='31.8' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='162.8' cy='698.9' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='632.9' cy='586.9' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='650.7' cy='475.0' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='157.7' cy='475.0' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='759.9' cy='586.9' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='152.6' cy='363.1' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='206.0' cy='698.9' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='841.2' cy='475.0' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='251.7' cy='586.9' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='546.5' cy='363.1' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='101.8' cy='698.9' r='32.0' fill='#D7D7D7' fill-opacity='0.17' stroke='#D7D7D7' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='142.4' cy='586.9' r='13.4' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='155.4' y='583.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>DESI DR2 BAO expansion</text>
+<text x='155.4' y='595.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>history</text>
+<circle cx='147.5' cy='586.9' r='13.4' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='160.5' y='583.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Planck CMB LambdaCDM</text>
+<text x='160.5' y='595.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>anchor</text>
+<circle cx='714.2' cy='727.8' r='12.1' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='727.2' y='724.8' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Direct neutrino-mass</text>
+<text x='727.2' y='736.8' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>limit</text>
+<circle cx='523.6' cy='363.1' r='12.8' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='536.6' y='360.1' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>GWTC-5.0</text>
+<text x='536.6' y='372.1' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>gravitational-wave</text>
+<circle cx='800.6' cy='363.1' r='12.8' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='813.6' y='360.1' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Muon g-2 precision</text>
+<text x='813.6' y='372.1' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>benchmark</text>
+<circle cx='419.4' cy='475.0' r='12.1' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='432.4' y='475.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>CKM flavor mixing</text>
+<circle cx='587.1' cy='475.0' r='12.1' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='600.1' y='475.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Higgs mechanism</text>
+<circle cx='737.1' cy='475.0' r='12.8' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='750.1' y='472.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Neutrino oscillation</text>
+<text x='750.1' y='484.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>and PMNS mixing</text>
+<circle cx='152.6' cy='363.1' r='14.0' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='165.6' y='363.1' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Baryon asymmetry</text>
+<circle cx='841.2' cy='475.0' r='14.0' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='854.2' y='472.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Confinement and</text>
+<text x='854.2' y='484.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Yang-Mills mass gap</text>
+<circle cx='206.0' cy='698.9' r='14.0' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='219.0' y='695.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Dark-energy</text>
+<text x='219.0' y='707.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>microphysics</text>
+<circle cx='251.7' cy='586.9' r='14.0' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='264.7' y='586.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Dark matter identity</text>
+<circle cx='632.9' cy='586.9' r='13.4' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='645.9' y='583.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Higgs hierarchy/</text>
+<text x='645.9' y='595.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>naturalness</text>
+<circle cx='157.7' cy='475.0' r='14.0' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='170.7' y='472.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Initial conditions and</text>
+<text x='170.7' y='484.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>inflation selection</text>
+<circle cx='650.7' cy='475.0' r='13.4' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='663.7' y='472.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Quantum measurement</text>
+<text x='663.7' y='484.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>problem</text>
+<circle cx='759.9' cy='586.9' r='14.0' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='772.9' y='583.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Neutrino mass</text>
+<text x='772.9' y='595.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>mechanism</text>
+<circle cx='546.5' cy='363.1' r='14.0' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='559.5' y='363.1' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Quantum gravity</text>
+<circle cx='162.8' cy='698.9' r='13.4' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='175.8' y='695.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Hubble-constant</text>
+<text x='175.8' y='707.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>tension</text>
+<circle cx='167.8' cy='727.8' r='12.8' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='180.8' y='727.8' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>S8/ growth tension</text>
+<circle cx='569.3' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='673.5' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='460.1' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='475.3' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='991.2' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='1054.7' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='1095.4' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='101.8' cy='698.9' r='13.0' fill='#D7D7D7' opacity='0.88' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='114.8' y='695.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Beyond-Standard-Model</text>
+<text x='114.8' y='707.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>frameworks</text>
+<circle cx='696.4' cy='363.1' r='7.8' fill='#F8B26A' opacity='0.6' stroke='#9a5a00' stroke-width='2.0' filter='url(#shadow)'/>
+<circle cx='333.0' cy='363.1' r='7.8' fill='#F8B26A' opacity='0.6' stroke='#9a5a00' stroke-width='2.0' filter='url(#shadow)'/>
+<circle cx='355.9' cy='475.0' r='7.8' fill='#F8B26A' opacity='0.6' stroke='#9a5a00' stroke-width='2.0' filter='url(#shadow)'/>
+<circle cx='1141.1' cy='363.1' r='7.8' fill='#F8B26A' opacity='0.6' stroke='#9a5a00' stroke-width='2.0' filter='url(#shadow)'/>
+<circle cx='864.1' cy='727.8' r='7.8' fill='#84DCC6' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='172.9' cy='727.8' r='7.8' fill='#84DCC6' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='178.0' cy='475.0' r='7.8' fill='#84DCC6' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='183.1' cy='727.8' r='7.8' fill='#84DCC6' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='378.8' cy='363.1' r='7.8' fill='#84DCC6' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='904.8' cy='475.0' r='7.8' fill='#4CC9F0' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='188.2' cy='363.1' r='7.8' fill='#4CC9F0' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='490.6' cy='363.1' r='7.8' fill='#4CC9F0' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='950.5' cy='363.1' r='7.8' fill='#4CC9F0' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='292.4' cy='363.1' r='7.8' fill='#4CC9F0' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='887.0' cy='363.1' r='7.8' fill='#4CC9F0' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='505.8' cy='475.0' r='7.8' fill='#63D471' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<rect x='78' y='159.0' width='188' height='21' rx='8' fill='#f8fbff' fill-opacity='0.82'/>
+<text x='88' y='174.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#53627a'>near core</text>
+<rect x='78' y='452.0' width='188' height='21' rx='8' fill='#f8fbff' fill-opacity='0.82'/>
+<text x='88' y='467.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#53627a'>interior derivation belt</text>
+<rect x='78' y='769.0' width='188' height='21' rx='8' fill='#f8fbff' fill-opacity='0.82'/>
+<text x='88' y='784.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#53627a'>boundary / disconnected gaps</text>
+<rect x='1190' y='150' width='420' height='330' rx='18' fill='#ffffff' stroke='#234f8d' stroke-width='2' filter='url(#shadow)'/>
+<rect x='1190' y='150' width='420' height='56' rx='18' fill='#123b79'/>
+<text x='1400.0' y='186' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='800' fill='white'>Surface Diagnostics</text>
+<text x='1214' y='238' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Volume</text>
+<text x='1586' y='238' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>83.7643</text>
+<line x1='1210' y1='250' x2='1590' y2='250' stroke='#e1e8f5'/>
+<text x='1214' y='274' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Surface area</text>
+<text x='1586' y='274' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>203.1651</text>
+<line x1='1210' y1='286' x2='1590' y2='286' stroke='#e1e8f5'/>
+<text x='1214' y='310' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Roundness</text>
+<text x='1586' y='310' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>0.1486</text>
+<line x1='1210' y1='322' x2='1590' y2='322' stroke='#e1e8f5'/>
+<text x='1214' y='346' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Closure</text>
+<text x='1586' y='346' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>0.175</text>
+<line x1='1210' y1='358' x2='1590' y2='358' stroke='#e1e8f5'/>
+<text x='1214' y='382' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Thickness</text>
+<text x='1586' y='382' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>0.6428</text>
+<line x1='1210' y1='394' x2='1590' y2='394' stroke='#e1e8f5'/>
+<text x='1214' y='418' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Gaps / seams / holes</text>
+<text x='1586' y='418' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>12 / 20 / 13</text>
+<line x1='1210' y1='430' x2='1590' y2='430' stroke='#e1e8f5'/>
+<rect x='1190' y='515' width='420' height='300' rx='18' fill='#ffffff' stroke='#58677d' stroke-width='1.7' filter='url(#shadow)'/>
+<text x='1212' y='549' font-family='Helvetica, Arial, sans-serif' font-size='19' font-weight='800' fill='#0b1f4d'>Visual grammar</text>
+<line x1='1214' y1='585' x2='1280' y2='585' stroke='#0b6efd' stroke-width='3' marker-end='url(#arrowDefault)'/>
+<text x='1295' y='580' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>solid arrow</text>
+<text x='1295' y='597' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>entropy/time or physical flow along surface</text>
+<line x1='1214' y1='632' x2='1280' y2='632' stroke='#d97706' stroke-width='3' marker-end='url(#arrowDefault)' stroke-dasharray='7 5'/>
+<text x='1295' y='627' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>dashed arrow</text>
+<text x='1295' y='644' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>seam: bridge, approximation, interface tension</text>
+<line x1='1214' y1='679' x2='1280' y2='679' stroke='#b00020' stroke-width='3' marker-end='url(#arrowDefault)' stroke-dasharray='7 5'/>
+<text x='1295' y='674' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>red dashed</text>
+<text x='1295' y='691' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>gap/blockage that deforms the boundary</text>
+<line x1='1214' y1='726' x2='1280' y2='726' stroke='#8395a7' stroke-width='3' marker-end='url(#arrowDefault)'/>
+<text x='1295' y='721' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>thin fiber</text>
+<text x='1295' y='738' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>proof dependency or radial support</text>
+<rect x='70' y='835' width='1540' height='175' rx='18' fill='#ffffff' stroke='#c7d6eb' stroke-width='1.6' filter='url(#shadow)'/>
+<text x='95' y='869' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='800' fill='#0b1f4d'>Surface interpretation</text>
+<text x='95' y='902' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>• Boundary nodes are surface contact points: observations, phenomena, interfaces, gaps, or empirical attachments.</text>
+<text x='95' y='927' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>• Halos are uncertainty thickness: probability, approximation, measurement, computation, or proof debt.</text>
+<text x='95' y='952' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>• A rounder map would show shorter, more uniform proof fibers and fewer thick seams or disconnected holes.</text>
+<text x='95' y='982' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#14539a'>Proof-depth read:</text>
+<text x='220' y='982' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>deep boundary points are farther from the compact core; exterior points are unclosed or speculative attachments.</text>
+</svg>

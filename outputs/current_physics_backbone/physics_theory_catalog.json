@@ -1,0 +1,2133 @@
+{
+  "metadata": {
+    "coverage_policy": "representative_not_exhaustive",
+    "last_verified": "2026-07-26",
+    "profile_contract": "schema/theory_catalog.schema.json"
+  },
+  "profiles": [
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Robust low-energy parameter correlations from UV fixed-point trajectories."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "renormalization"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Functional renormalization flow",
+        "Finite-dimensional ultraviolet critical surface"
+      ],
+      "id": "asymptotic_safety",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "renormalization_group",
+        "functional_methods",
+        "fixed_point_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Asymptotic safety",
+      "open_questions": [
+        "Establish truncation-independent fixed points, unitarity, and observable predictions."
+      ],
+      "source_ids": [
+        "niedermaier_reuter_2006",
+        "barrau_qg_overview_2017"
+      ],
+      "summary": "Ultraviolet completion through a non-Gaussian renormalization-group fixed point.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Ultraviolet gravity and matter flows, currently evaluated through controlled truncations.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Haloscopes, helioscopes, laboratory conversion, and astrophysical effects."
+      ],
+      "domains": [
+        "particle_physics",
+        "dark_matter",
+        "strong_cp"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "dark_sector",
+      "foundations": [
+        "Approximate shift symmetry",
+        "Model-dependent symmetry breaking scale"
+      ],
+      "id": "axion_models",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "effective_field_theory",
+        "topological_terms",
+        "cosmological_field_dynamics"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Axion and axion-like-particle models",
+      "open_questions": [
+        "Determine whether an axion exists and which production history applies."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Light pseudoscalar models including the QCD axion and broader axion-like particles.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Weakly coupled light-field regimes across laboratory, astrophysical, and cosmological scales.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "condensed_matter",
+        "superconductivity"
+      ],
+      "evidence_status": "EMPIRICALLY_SUPPORTED",
+      "family": "many_body",
+      "foundations": [
+        "Effective attractive fermion interaction",
+        "Cooper pairing and broken symmetry"
+      ],
+      "id": "bcs_theory",
+      "key_results": [
+        "Energy gap, critical behavior, and flux quantization"
+      ],
+      "kind": "EFFECTIVE_THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "many_body_quantum_theory",
+        "mean_field_theory",
+        "bogoliubov_transformations"
+      ],
+      "maturity": "EFFECTIVE",
+      "metadata": {},
+      "name": "BCS theory",
+      "open_questions": [
+        "Relate or replace BCS mechanisms in unconventional superconductors."
+      ],
+      "source_ids": [
+        "bcs_1957"
+      ],
+      "summary": "Microscopic pairing theory for conventional superconductivity.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Conventional paired superconductors where quasiparticle and pairing assumptions apply.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Universal continuum observables and cosmological consequences."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "computational_physics",
+        "discrete_spacetime"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Lorentzian causal triangulations",
+        "Continuum scaling limit"
+      ],
+      "id": "causal_dynamical_triangulations",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "simplicial_geometry",
+        "monte_carlo",
+        "statistical_field_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Causal dynamical triangulations",
+      "open_questions": [
+        "Establish a unique continuum limit with matter and observable predictions."
+      ],
+      "source_ids": [
+        "loll_cdt_2019",
+        "barrau_qg_overview_2017"
+      ],
+      "summary": "Nonperturbative lattice path integral over causally structured triangulated geometries.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Lattice-regularized quantum geometry near candidate continuum phases.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Nonlocal propagation, cosmological, and discreteness signatures."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "discrete_spacetime"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Causal order",
+        "Local finiteness",
+        "Continuum approximation"
+      ],
+      "id": "causal_set_theory",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "order_theory",
+        "stochastic_geometry",
+        "discrete_dynamics"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Causal set theory",
+      "open_questions": [
+        "Derive manifoldlike dynamics and recover local continuum physics generically."
+      ],
+      "source_ids": [
+        "surya_causal_sets_2019",
+        "barrau_qg_overview_2017"
+      ],
+      "summary": "Discrete spacetime model based on locally finite causal partial orders.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Fundamental discrete spacetime with manifoldlike continuum sectors.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "electromagnetism",
+        "optics"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "classical_physics",
+      "foundations": [
+        "Maxwell equations",
+        "Lorentz force law"
+      ],
+      "id": "classical_electrodynamics",
+      "key_results": [
+        "Electromagnetic waves",
+        "Classical radiation and optics"
+      ],
+      "kind": "THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "partial_differential_equations",
+        "differential_forms",
+        "gauge_potential"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Classical electrodynamics",
+      "open_questions": [
+        "Control point-charge self-interaction and radiation reaction across regimes."
+      ],
+      "source_ids": [
+        "feynman_lectures"
+      ],
+      "summary": "Classical electromagnetic fields and their interaction with charge and current.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Macroscopic electromagnetic fields where quantum fluctuations are negligible.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "mechanics",
+        "dynamical_systems"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "classical_physics",
+      "foundations": [
+        "State and equations of motion",
+        "Principle of stationary action"
+      ],
+      "id": "classical_mechanics",
+      "key_results": [
+        "Newtonian and Hamiltonian dynamics",
+        "Conservation laws under symmetries"
+      ],
+      "kind": "THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "differential_equations",
+        "symplectic_geometry",
+        "calculus_of_variations"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Classical mechanics",
+      "open_questions": [
+        "Derive classical behavior and irreversibility from quantum dynamics in general settings."
+      ],
+      "source_ids": [
+        "feynman_lectures"
+      ],
+      "summary": "Deterministic dynamics of bodies described by forces or stationary action.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Nonrelativistic, nonquantum systems at scales where continuum trajectories apply.",
+          "dimensions": {
+            "quantum_action_ratio": "large",
+            "velocity_over_c_max": 0.01
+          },
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Higgs coupling deviations and partner resonances."
+      ],
+      "domains": [
+        "particle_physics",
+        "higgs",
+        "strong_dynamics"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "beyond_standard_model",
+      "foundations": [
+        "New confining or strongly coupled sector",
+        "Emergent electroweak symmetry breaking"
+      ],
+      "id": "composite_higgs",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "strongly_coupled_qft",
+        "coset_geometry",
+        "effective_field_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Composite Higgs models",
+      "open_questions": [
+        "Identify viable strong dynamics and flavor structure."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Models in which the Higgs is a bound state or pseudo-Nambu-Goldstone mode of new dynamics.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Above compositeness scales with low-energy effective Higgs deviations.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Fixed-target, collider, beam-dump, astrophysical, and direct-detection signatures."
+      ],
+      "domains": [
+        "dark_sector",
+        "particle_physics",
+        "dark_matter"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "dark_sector",
+      "foundations": [
+        "Hidden gauge symmetry",
+        "Portal coupling to Standard Model fields"
+      ],
+      "id": "dark_photon_models",
+      "key_results": [],
+      "kind": "MODEL",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "abelian_gauge_theory",
+        "effective_field_theory",
+        "kinetic_mixing"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Dark-photon models",
+      "open_questions": [
+        "Identify dark-sector matter content and symmetry-breaking mechanism."
+      ],
+      "source_ids": [
+        "dark_photon_review_2020"
+      ],
+      "summary": "Hidden U(1) gauge-boson models coupled through kinetic or related portals.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Weak portal couplings over model-dependent dark-photon masses.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "condensed_matter",
+        "chemistry",
+        "materials"
+      ],
+      "evidence_status": "EMPIRICALLY_SUPPORTED",
+      "family": "many_body",
+      "foundations": [
+        "Hohenberg-Kohn mapping",
+        "Variational density functional"
+      ],
+      "id": "density_functional_theory",
+      "key_results": [
+        "Scalable electronic-structure predictions"
+      ],
+      "kind": "EFFECTIVE_THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "functional_analysis",
+        "variational_methods",
+        "numerical_methods"
+      ],
+      "maturity": "EFFECTIVE",
+      "metadata": {},
+      "name": "Density functional theory",
+      "open_questions": [
+        "Construct systematically accurate general exchange-correlation functionals."
+      ],
+      "source_ids": [
+        "hohenberg_kohn_1964"
+      ],
+      "summary": "Ground-state many-electron framework based on functionals of particle density.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Electronic ground states subject to approximation-dependent exchange-correlation control.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Redshift dependence of expansion and growth, clustering, and equivalence-principle effects."
+      ],
+      "domains": [
+        "cosmology",
+        "dark_energy"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "cosmology",
+      "foundations": [
+        "Time-dependent stress-energy component",
+        "Stable covariant dynamics"
+      ],
+      "id": "dynamical_dark_energy",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "dynamical_systems",
+        "general_relativity",
+        "effective_field_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Dynamical dark-energy models",
+      "open_questions": [
+        "Establish a technically natural microphysical origin and stable dynamics."
+      ],
+      "source_ids": [
+        "copeland_dark_energy_2006",
+        "planck_2018_parameters"
+      ],
+      "summary": "Models replacing a constant vacuum term with evolving fields or effective components.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Late-time cosmic acceleration under model-specific stability conditions.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "particle_physics",
+        "nuclear_physics",
+        "gravity"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "quantum_fields",
+      "foundations": [
+        "Local operators",
+        "Power counting",
+        "Explicit cutoff or breakdown scale"
+      ],
+      "id": "effective_field_theory",
+      "key_results": [
+        "Systematic low-energy corrections with uncertainty estimates"
+      ],
+      "kind": "FRAMEWORK",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "asymptotic_expansions",
+        "renormalization_group",
+        "operator_basis"
+      ],
+      "maturity": "EFFECTIVE",
+      "metadata": {},
+      "name": "Effective field theory",
+      "open_questions": [
+        "Determine UV completions and convergence or truncation limits case by case."
+      ],
+      "source_ids": [
+        "weinberg_eft_1979",
+        "pdg_rpp_2024"
+      ],
+      "summary": "Scale-separated expansion encoding low-energy physics without a specified ultraviolet completion.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Processes sufficiently below a controlled cutoff.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "electroweak",
+        "particle_physics",
+        "higgs"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "particle_physics",
+      "foundations": [
+        "Chiral gauge symmetry",
+        "Spontaneous electroweak symmetry breaking"
+      ],
+      "id": "electroweak_theory",
+      "key_results": [
+        "W and Z interactions",
+        "Higgs-mediated symmetry breaking"
+      ],
+      "kind": "THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "gauge_theory",
+        "representation_theory",
+        "renormalized_qft"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Electroweak theory",
+      "open_questions": [
+        "Determine whether the observed Higgs sector is elementary and minimal."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Unified SU(2)L x U(1)Y gauge description of weak and electromagnetic interactions.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Electroweak and lower-energy interactions within the Standard Model.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Distinct reconstruction relations or low-energy deviations in concrete models."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "quantum_information",
+        "emergence"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Pregeometric quantum degrees of freedom",
+        "Geometry-information correspondence"
+      ],
+      "id": "emergent_spacetime",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "quantum_information",
+        "tensor_networks",
+        "operator_algebras"
+      ],
+      "maturity": "SPECULATIVE",
+      "metadata": {},
+      "name": "Emergent-spacetime programs",
+      "open_questions": [
+        "Derive universal local dynamics, causal structure, and realistic matter."
+      ],
+      "source_ids": [
+        "van_raamsdonk_2010",
+        "barrau_qg_overview_2017"
+      ],
+      "summary": "Programs deriving geometry and gravity from entanglement, information, or collective degrees of freedom.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Controlled toy models and holographic sectors; general spacetime reconstruction remains open.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Kaluza-Klein states, missing energy, and short-distance gravity."
+      ],
+      "domains": [
+        "particle_physics",
+        "gravity",
+        "unification"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "beyond_standard_model",
+      "foundations": [
+        "Higher-dimensional spacetime",
+        "Compactification or localization mechanism"
+      ],
+      "id": "extra_dimensions",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "differential_geometry",
+        "kaluza_klein_decomposition",
+        "field_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Extra-dimensional models",
+      "open_questions": [
+        "Select geometry, stabilization, and Standard Model localization."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024",
+        "clifton_modified_gravity_2012"
+      ],
+      "summary": "Models with additional spatial dimensions, compactification, branes, or warped geometry.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Model-dependent compactification and Kaluza-Klein scales.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Strong-field consistency and polarization tests with gravitational waves."
+      ],
+      "domains": [
+        "gravity",
+        "spacetime",
+        "astrophysics",
+        "cosmology"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "relativity",
+      "foundations": [
+        "Equivalence principle",
+        "Diffeomorphism covariance",
+        "Einstein field equation"
+      ],
+      "id": "general_relativity",
+      "key_results": [
+        "Gravitational waves",
+        "Black-hole and cosmological solutions"
+      ],
+      "kind": "THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "lorentzian_geometry",
+        "tensor_calculus",
+        "partial_differential_equations"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "General relativity",
+      "open_questions": [
+        "Resolve singularities and obtain a confirmed quantum completion."
+      ],
+      "source_ids": [
+        "einstein_1916_gr",
+        "planck_2018_parameters"
+      ],
+      "summary": "Classical gravitation as dynamical Lorentzian spacetime geometry.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Classical spacetime outside regimes requiring quantum gravity.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Proton decay, coupling relations, and relic signatures."
+      ],
+      "domains": [
+        "particle_physics",
+        "unification"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "beyond_standard_model",
+      "foundations": [
+        "Unified gauge group",
+        "Symmetry breaking to the Standard Model"
+      ],
+      "id": "grand_unification",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "lie_groups",
+        "representation_theory",
+        "gauge_qft"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Grand unified theories",
+      "open_questions": [
+        "Select the gauge group, breaking chain, and matter content."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Gauge frameworks embedding Standard Model interactions in a larger symmetry.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "High-energy completion above unification and symmetry-breaking scales.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Condensate-cosmology and continuum-limit signatures."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "discrete_spacetime",
+        "cosmology"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Group-valued fields",
+        "Combinatorial quantum geometry",
+        "Many-body geometric states"
+      ],
+      "id": "group_field_theory",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "group_theory",
+        "quantum_field_theory",
+        "tensor_models"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Group field theory",
+      "open_questions": [
+        "Control renormalization, continuum emergence, and observationally distinct predictions."
+      ],
+      "source_ids": [
+        "baratin_oriti_gft_2011",
+        "barrau_qg_overview_2017"
+      ],
+      "summary": "Quantum field theories on group manifolds whose quanta encode discrete geometry.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Pregeometric many-body and condensate sectors with continuum reconstruction under study.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Internal duality checks and model-specific quantum-simulation analogues."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "quantum_field_theory",
+        "information"
+      ],
+      "evidence_status": "INDIRECTLY_SUPPORTED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Equivalent descriptions across dimensions",
+        "Boundary encoding of bulk observables"
+      ],
+      "id": "holographic_duality",
+      "key_results": [
+        "Nonperturbative definitions and calculational dictionaries in controlled examples"
+      ],
+      "kind": "FRAMEWORK",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "conformal_field_theory",
+        "differential_geometry",
+        "operator_algebras"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Holographic duality",
+      "open_questions": [
+        "Extend to realistic cosmology and finite-parameter quantum gravity."
+      ],
+      "source_ids": [
+        "maldacena_1997",
+        "van_raamsdonk_2010"
+      ],
+      "summary": "Dual descriptions relating gravitational theories to lower-dimensional quantum systems.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Best-controlled in specific asymptotic geometries, symmetries, and large-parameter limits.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "fluids",
+        "many_body",
+        "relativistic_matter"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "many_body",
+      "foundations": [
+        "Local conservation laws",
+        "Constitutive relations",
+        "Gradient expansion"
+      ],
+      "id": "hydrodynamics",
+      "key_results": [
+        "Fluid flow, sound, diffusion, and transport"
+      ],
+      "kind": "EFFECTIVE_THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "partial_differential_equations",
+        "continuum_mechanics",
+        "effective_theory"
+      ],
+      "maturity": "EFFECTIVE",
+      "metadata": {},
+      "name": "Hydrodynamics",
+      "open_questions": [
+        "Establish universal far-from-equilibrium closures."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Long-wavelength effective dynamics of conserved densities and fluid variables.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Scales long compared with microscopic relaxation lengths and times.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Primordial tensor modes and model-specific non-Gaussianity."
+      ],
+      "domains": [
+        "cosmology",
+        "early_universe"
+      ],
+      "evidence_status": "INDIRECTLY_SUPPORTED",
+      "family": "cosmology",
+      "foundations": [
+        "Accelerated expansion",
+        "Quantum origin of perturbations in common realizations"
+      ],
+      "id": "inflationary_cosmology",
+      "key_results": [
+        "Near-scale-invariant primordial perturbation framework"
+      ],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "general_relativity",
+        "quantum_fields_in_curved_spacetime",
+        "perturbation_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Inflationary cosmology",
+      "open_questions": [
+        "Identify the mechanism, initial conditions, reheating, and model selection."
+      ],
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "summary": "Accelerated early-universe expansion generating a smooth universe and primordial perturbations.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Pre-hot-Big-Bang early-universe epoch in model-dependent energy ranges.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Cross-probe expansion and growth consistency."
+      ],
+      "domains": [
+        "cosmology",
+        "dark_sector",
+        "structure_formation"
+      ],
+      "evidence_status": "EMPIRICALLY_SUPPORTED",
+      "family": "cosmology",
+      "foundations": [
+        "FLRW large-scale geometry",
+        "Cold dark matter",
+        "Cosmological constant"
+      ],
+      "id": "lambda_cdm",
+      "key_results": [
+        "CMB and large-scale-structure baseline fit"
+      ],
+      "kind": "MODEL",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "general_relativity",
+        "kinetic_theory",
+        "cosmological_perturbation_theory"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Lambda-CDM cosmology",
+      "open_questions": [
+        "Identify dark matter and explain dark energy and parameter tensions."
+      ],
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "summary": "Baseline cosmological model with general relativity, cold dark matter, and a cosmological constant.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Large-scale homogeneous cosmology and calibrated structure formation.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "qcd",
+        "gauge_theory",
+        "computation"
+      ],
+      "evidence_status": "EMPIRICALLY_SUPPORTED",
+      "family": "computational_physics",
+      "foundations": [
+        "Discretized Euclidean spacetime",
+        "Gauge-invariant lattice action"
+      ],
+      "id": "lattice_gauge_theory",
+      "key_results": [
+        "Nonperturbative hadron and thermodynamic observables"
+      ],
+      "kind": "FRAMEWORK",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "lattice_field_theory",
+        "monte_carlo",
+        "numerical_linear_algebra"
+      ],
+      "maturity": "EFFECTIVE",
+      "metadata": {},
+      "name": "Lattice gauge theory",
+      "open_questions": [
+        "Control sign problems and real-time dynamics generally."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Nonperturbative regularization and numerical evaluation of gauge theories on a lattice.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Finite lattice spacing and volume with controlled continuum extrapolation.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Model-specific cosmological, black-hole, or propagation signatures."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "spacetime"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "General relativity in connection variables",
+        "Nonperturbative canonical quantization"
+      ],
+      "id": "loop_quantum_gravity",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "spin_networks",
+        "constraint_algebras",
+        "representation_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Loop quantum gravity",
+      "open_questions": [
+        "Complete dynamics, semiclassical limit, matter coupling, and unique predictions."
+      ],
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "summary": "Background-independent canonical quantization of gravitational geometry using connection variables.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Planck-scale quantum geometry with classical and semiclassical limits under study.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Gravitational-wave propagation, growth-slip relations, screening, and strong-field tests."
+      ],
+      "domains": [
+        "gravity",
+        "cosmology",
+        "astrophysics"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "gravity",
+      "foundations": [
+        "Additional gravitational degrees of freedom or altered geometric dynamics"
+      ],
+      "id": "modified_gravity",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "differential_geometry",
+        "field_theory",
+        "dynamical_systems"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Modified-gravity models",
+      "open_questions": [
+        "Maintain consistency, stability, and agreement across all tested gravity regimes."
+      ],
+      "source_ids": [
+        "clifton_modified_gravity_2012"
+      ],
+      "summary": "Covariant alternatives or extensions to general relativity across gravitational scales.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Model-dependent departures from general relativity with screening or recovery limits.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "External-field effects, galaxy scaling laws, lensing, clusters, and cosmology."
+      ],
+      "domains": [
+        "galactic_dynamics",
+        "gravity",
+        "dark_matter"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "gravity",
+      "foundations": [
+        "Characteristic low-acceleration scale",
+        "Modified force or inertia law"
+      ],
+      "id": "mond",
+      "key_results": [],
+      "kind": "MODEL",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "modified_dynamics",
+        "nonlinear_field_equations"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Modified Newtonian dynamics",
+      "open_questions": [
+        "Provide a unique relativistic completion consistent with clusters and cosmology."
+      ],
+      "source_ids": [
+        "milgrom_mond_1983",
+        "clifton_modified_gravity_2012"
+      ],
+      "summary": "Low-acceleration modification introduced to describe galaxy dynamics without conventional dark matter.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Low-acceleration galactic systems; relativistic completion is model dependent.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Model-specific Lorentz, dispersion, or particle-physics signatures."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "mathematical_physics",
+        "particle_physics"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Noncommutative coordinate algebra",
+        "Spectral geometric data"
+      ],
+      "id": "noncommutative_geometry",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "operator_algebras",
+        "spectral_triples",
+        "noncommutative_geometry"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Noncommutative-geometry models",
+      "open_questions": [
+        "Select physical spectral data and derive unique testable corrections."
+      ],
+      "source_ids": [
+        "connes_ncg_1996",
+        "barrau_qg_overview_2017"
+      ],
+      "summary": "Geometric frameworks replacing coordinate algebras with noncommutative operator algebras.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Fundamental or effective noncommutative spacetime models with commutative low-energy limits.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "qcd",
+        "nuclear_physics",
+        "particle_physics"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "particle_physics",
+      "foundations": [
+        "Local SU(3) color gauge symmetry",
+        "Quark and gluon fields"
+      ],
+      "id": "quantum_chromodynamics",
+      "key_results": [
+        "Asymptotic freedom",
+        "Hadron phenomenology and lattice predictions"
+      ],
+      "kind": "THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "nonabelian_gauge_theory",
+        "renormalization_group",
+        "lattice_methods"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Quantum chromodynamics",
+      "open_questions": [
+        "Prove four-dimensional confinement and the Yang-Mills mass gap."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Nonabelian SU(3) gauge theory of quarks and gluons.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Strong interactions from perturbative high energy to nonperturbative hadronic scales.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "particle_physics",
+        "fields",
+        "many_body"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "quantum_fields",
+      "foundations": [
+        "Quantum states and fields",
+        "Locality or controlled nonlocality",
+        "Relativistic symmetry"
+      ],
+      "id": "quantum_field_theory",
+      "key_results": [
+        "Perturbative scattering",
+        "Renormalization and effective descriptions"
+      ],
+      "kind": "FRAMEWORK",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "operator_algebras",
+        "path_integrals",
+        "representation_theory",
+        "renormalization"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Quantum field theory",
+      "open_questions": [
+        "Construct interacting four-dimensional models rigorously in broad generality."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Relativistic quantum framework with fields, locality, symmetries, and particles.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Quantum field descriptions below their cutoff and within controlled sectors.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Precision tests of unitarity and proposed nonlinear modifications."
+      ],
+      "domains": [
+        "quantum_foundations",
+        "atomic_physics",
+        "information"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "quantum_physics",
+      "foundations": [
+        "Hilbert-space states",
+        "Observables and Born probabilities",
+        "Unitary dynamics"
+      ],
+      "id": "quantum_mechanics",
+      "key_results": [
+        "Atomic spectra",
+        "Interference, entanglement, and quantum information"
+      ],
+      "kind": "FRAMEWORK",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "functional_analysis",
+        "operator_algebras",
+        "complex_probability"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Quantum mechanics",
+      "open_questions": [
+        "Resolve or operationally delimit the measurement problem."
+      ],
+      "source_ids": [
+        "feynman_lectures",
+        "pdg_rpp_2024"
+      ],
+      "summary": "State-vector or operator framework for quantum probabilities and dynamics.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Nonrelativistic or finite-degree quantum systems within tested coherence scales.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "spacetime",
+        "high_energy"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "relativity",
+      "foundations": [
+        "Relativity principle",
+        "Invariant causal speed"
+      ],
+      "id": "special_relativity",
+      "key_results": [
+        "Lorentz transformations",
+        "Mass-energy relation"
+      ],
+      "kind": "THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "lorentzian_geometry",
+        "group_representations"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Special relativity",
+      "open_questions": [],
+      "source_ids": [
+        "feynman_lectures",
+        "pdg_rpp_2024"
+      ],
+      "summary": "Lorentz-invariant kinematics and dynamics in nongravitating inertial frames.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Local inertial frames with negligible spacetime curvature.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Precision deviations and direct production beyond Standard Model predictions."
+      ],
+      "domains": [
+        "particle_physics",
+        "standard_model"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "particle_physics",
+      "foundations": [
+        "SU(3)c x SU(2)L x U(1)Y gauge symmetry",
+        "Quantum fields and Higgs sector"
+      ],
+      "id": "standard_model",
+      "key_results": [
+        "Electroweak precision predictions",
+        "QCD and Higgs-sector phenomenology"
+      ],
+      "kind": "THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "gauge_theory",
+        "representation_theory",
+        "renormalized_qft"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Standard Model of particle physics",
+      "open_questions": [
+        "Explain neutrino masses, flavor parameters, dark matter, and baryon asymmetry."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Gauge quantum field theory of known nongravitational elementary particles and interactions.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Tested particle interactions below observed new-physics thresholds.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "statistical_physics",
+        "thermodynamics",
+        "complex_systems"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "many_body",
+      "foundations": [
+        "Probability measures over microstates",
+        "Coarse graining and ensembles"
+      ],
+      "id": "statistical_mechanics",
+      "key_results": [
+        "Equilibrium ensembles",
+        "Phase transitions and universality"
+      ],
+      "kind": "FRAMEWORK",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "probability",
+        "ergodic_theory",
+        "large_deviations",
+        "renormalization_group"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Statistical mechanics",
+      "open_questions": [
+        "Establish general nonequilibrium closure and thermalization conditions."
+      ],
+      "source_ids": [
+        "feynman_lectures"
+      ],
+      "summary": "Statistical description connecting microscopic states to macroscopic behavior.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Systems with many degrees of freedom and a justified ensemble or kinetic description.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Oscillation distortions, beta spectra, decays, and cosmological constraints."
+      ],
+      "domains": [
+        "neutrino",
+        "particle_physics",
+        "cosmology"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "beyond_standard_model",
+      "foundations": [
+        "Additional neutral fermions",
+        "Mixing with active neutrinos"
+      ],
+      "id": "sterile_neutrino_models",
+      "key_results": [],
+      "kind": "MODEL",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "mass_matrices",
+        "oscillation_theory",
+        "quantum_field_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Sterile-neutrino models",
+      "open_questions": [
+        "Determine the number, masses, mixings, and cosmological history of sterile states."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Neutrino-sector extensions containing gauge-singlet fermions.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Model-dependent mass and mixing ranges.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Model-specific cosmic, particle, gravitational, or compactification signatures."
+      ],
+      "domains": [
+        "quantum_gravity",
+        "unification",
+        "particle_physics"
+      ],
+      "evidence_status": "UNCONFIRMED",
+      "family": "quantum_gravity",
+      "foundations": [
+        "Fundamental strings or branes",
+        "Worldsheet or nonperturbative consistency",
+        "Extra dimensions"
+      ],
+      "id": "string_m_theory",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "conformal_field_theory",
+        "algebraic_geometry",
+        "supersymmetry",
+        "dualities"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "String and M-theory",
+      "open_questions": [
+        "Select a vacuum and derive unique low-energy physics with testable predictions."
+      ],
+      "source_ids": [
+        "barrau_qg_overview_2017",
+        "maldacena_1997"
+      ],
+      "summary": "Quantum framework based on extended objects, extra dimensions, dualities, and higher-dimensional completion.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Perturbative and nonperturbative sectors with background- and compactification-dependent limits.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [
+        "Direct superpartner production and precision virtual effects."
+      ],
+      "domains": [
+        "particle_physics",
+        "beyond_standard_model",
+        "quantum_gravity"
+      ],
+      "evidence_status": "CONSTRAINED",
+      "family": "beyond_standard_model",
+      "foundations": [
+        "Graded spacetime symmetry",
+        "Supermultiplets",
+        "Symmetry breaking in phenomenological models"
+      ],
+      "id": "supersymmetry",
+      "key_results": [],
+      "kind": "RESEARCH_PROGRAM",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "superalgebras",
+        "superspace",
+        "gauge_qft"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Supersymmetry",
+      "open_questions": [
+        "Determine the breaking mechanism and whether superpartners exist."
+      ],
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "summary": "Extensions relating bosonic and fermionic degrees of freedom through spacetime symmetry.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Model-dependent energies above superpartner thresholds or in exact formal sectors.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "thermodynamics",
+        "macroscopic_physics"
+      ],
+      "evidence_status": "PRECISION_TESTED",
+      "family": "many_body",
+      "foundations": [
+        "Zeroth through third laws",
+        "State functions and equations of state"
+      ],
+      "id": "thermodynamics",
+      "key_results": [
+        "Entropy inequalities",
+        "Equilibrium and response relations"
+      ],
+      "kind": "EFFECTIVE_THEORY",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "convex_analysis",
+        "differential_geometry",
+        "continuum_models"
+      ],
+      "maturity": "ESTABLISHED",
+      "metadata": {},
+      "name": "Thermodynamics",
+      "open_questions": [
+        "Characterize far-from-equilibrium thermodynamics generically."
+      ],
+      "source_ids": [
+        "feynman_lectures"
+      ],
+      "summary": "Macroscopic laws governing energy, entropy, work, heat, and equilibrium.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Macroscopic systems admitting stable thermodynamic state variables.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "discriminating_tests": [],
+      "domains": [
+        "mathematical_physics",
+        "scattering_amplitudes",
+        "quantum_gravity"
+      ],
+      "evidence_status": "NOT_APPLICABLE",
+      "family": "mathematical_physics",
+      "foundations": [
+        "Twistor correspondence",
+        "Complex projective geometry"
+      ],
+      "id": "twistor_theory",
+      "key_results": [
+        "Compact descriptions of field equations and scattering structures"
+      ],
+      "kind": "FRAMEWORK",
+      "last_verified": "2026-07-26",
+      "mathematical_frameworks": [
+        "complex_geometry",
+        "sheaf_cohomology",
+        "representation_theory"
+      ],
+      "maturity": "ACTIVE_RESEARCH",
+      "metadata": {},
+      "name": "Twistor theory",
+      "open_questions": [
+        "Establish a complete realistic quantum-gravity formulation."
+      ],
+      "source_ids": [
+        "penrose_twistor_1967"
+      ],
+      "summary": "Reformulation of spacetime and field structures in terms of complex twistor geometry.",
+      "tags": [],
+      "validity_regimes": [
+        {
+          "assumptions": [],
+          "description": "Especially effective for conformal, massless, and scattering-amplitude structures.",
+          "dimensions": {},
+          "id": "primary"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "asymptotic_safety",
+      "source_ids": [
+        "niedermaier_reuter_2006"
+      ],
+      "target": "general_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "asymptotic_safety",
+      "source_ids": [
+        "niedermaier_reuter_2006"
+      ],
+      "target": "quantum_field_theory"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "axion_models",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "bcs_theory",
+      "source_ids": [
+        "bcs_1957"
+      ],
+      "target": "quantum_mechanics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "causal_dynamical_triangulations",
+      "source_ids": [
+        "loll_cdt_2019"
+      ],
+      "target": "general_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "composite_higgs",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "dark_photon_models",
+      "source_ids": [
+        "dark_photon_review_2020"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "density_functional_theory",
+      "source_ids": [
+        "hohenberg_kohn_1964"
+      ],
+      "target": "quantum_mechanics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "dynamical_dark_energy",
+      "source_ids": [
+        "copeland_dark_energy_2006"
+      ],
+      "target": "lambda_cdm"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "effective_field_theory",
+      "source_ids": [
+        "weinberg_eft_1979"
+      ],
+      "target": "quantum_field_theory"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "emergent_spacetime",
+      "source_ids": [
+        "van_raamsdonk_2010"
+      ],
+      "target": "holographic_duality"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "extra_dimensions",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "REDUCES_TO",
+      "notes": "",
+      "source": "general_relativity",
+      "source_ids": [
+        "einstein_1916_gr"
+      ],
+      "target": "special_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "grand_unification",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "group_field_theory",
+      "source_ids": [
+        "baratin_oriti_gft_2011"
+      ],
+      "target": "loop_quantum_gravity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "holographic_duality",
+      "source_ids": [
+        "maldacena_1997"
+      ],
+      "target": "string_m_theory"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EFFECTIVE_LIMIT_OF",
+      "notes": "",
+      "source": "hydrodynamics",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "statistical_mechanics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "inflationary_cosmology",
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "target": "general_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "lambda_cdm",
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "target": "general_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "lattice_gauge_theory",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "quantum_chromodynamics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "loop_quantum_gravity",
+      "source_ids": [
+        "rovelli_lqg_2008"
+      ],
+      "target": "general_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "loop_quantum_gravity",
+      "source_ids": [
+        "rovelli_lqg_2008"
+      ],
+      "target": "quantum_mechanics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "modified_gravity",
+      "source_ids": [
+        "clifton_modified_gravity_2012"
+      ],
+      "target": "general_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "ALTERNATIVE_TO",
+      "notes": "",
+      "source": "mond",
+      "source_ids": [
+        "milgrom_mond_1983"
+      ],
+      "target": "lambda_cdm"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "noncommutative_geometry",
+      "source_ids": [
+        "connes_ncg_1996"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "REDUCES_TO",
+      "notes": "",
+      "source": "quantum_field_theory",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "quantum_mechanics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "quantum_field_theory",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "special_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "REDUCES_TO",
+      "notes": "",
+      "source": "special_relativity",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "classical_mechanics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "UNIFIES",
+      "notes": "",
+      "source": "standard_model",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "electroweak_theory"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "UNIFIES",
+      "notes": "",
+      "source": "standard_model",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "quantum_chromodynamics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "USES",
+      "notes": "",
+      "source": "standard_model",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "quantum_field_theory"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "REDUCES_TO",
+      "notes": "",
+      "source": "statistical_mechanics",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "thermodynamics"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "sterile_neutrino_models",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "UNIFIES",
+      "notes": "",
+      "source": "string_m_theory",
+      "source_ids": [
+        "barrau_qg_overview_2017"
+      ],
+      "target": "general_relativity"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "UNIFIES",
+      "notes": "",
+      "source": "string_m_theory",
+      "source_ids": [
+        "barrau_qg_overview_2017"
+      ],
+      "target": "quantum_field_theory"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "EXTENDS",
+      "notes": "",
+      "source": "supersymmetry",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "target": "standard_model"
+    },
+    {
+      "confidence": 0.8,
+      "kind": "COMPATIBLE_WITH",
+      "notes": "",
+      "source": "twistor_theory",
+      "source_ids": [
+        "penrose_twistor_1967"
+      ],
+      "target": "general_relativity"
+    }
+  ],
+  "scope": "Representative profiles spanning established theories, effective descriptions, Standard Model and cosmological frameworks, beyond-Standard-Model programs, and major quantum-gravity approaches. New profiles and relation kinds can be added as data.",
+  "title": "Standard and Emerging Physics Theory Catalog",
+  "version": "1.0"
+}

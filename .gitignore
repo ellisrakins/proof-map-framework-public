@@ -1,0 +1,60 @@
+# Python cache / build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local credentials or env files
+.env
+.env.*
+*.pem
+*.key
+*.token
+
+# Local logs
+*.log
+.baseline-coverage.json
+.hypothesis/
+.paper-store/
+.work/
+.work-*
+.lake/
+
+# Local manuscript intake, private stores and working credentials.
+# Put reviewed synthetic samples in dedicated fixture directories instead.
+/papers/
+/private/
+/local-data/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db-journal
+*.p12
+*.pfx
+*.jwk
+*.kdbx
+*.faiss
+*.npy
+*.npz

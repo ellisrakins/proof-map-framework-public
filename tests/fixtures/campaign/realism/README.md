@@ -1,0 +1,11 @@
+# Rights-backed historical mathematical excerpts
+
+This separately labelled realism corpus retains small excerpts from three independently authored mathematical books. These are historical source samples, not a representative sample of contemporary research papers or three newly authored synthetic manuscripts.
+
+The official Project Gutenberg catalogs for [Euclid/Casey](https://www.gutenberg.org/ebooks/21076), [Dedekind/Beman](https://www.gutenberg.org/ebooks/21016) and [Hardy](https://www.gutenberg.org/ebooks/38769) identify the works as public domain in the USA. These catalog pages and original source URLs were inspected on October 2, 2026. The retained excerpts omit Project Gutenberg trademarks and boilerplate. The provenance manifest records exact acquisition hashes, excerpt locations, retained file hashes and transformations. Reuse rights in another jurisdiction should be checked against its applicable term.
+
+Euclid is one original, text-bearing PDF page, extracted without OCR or regenerated text. Dedekind is a short TeX excerpt, split across a generated main file, definition file and claim/proof file. Its paragraph headings become labelled environments, and the German gloss in the definition is omitted. Hardy retains one complete short Remark with a minimal document wrapper. The wrapper structure is an adaptation; author text and mathematical domains do not become newly verified claims.
+
+PR CI reads these retained bytes offline. It downloads no external papers. The full books acquired to select excerpts stay in ignored local development storage, not the retained corpus. No modern scientific quality, fidelity or novelty labels are asserted. The expected supported-profile count is zero: geometric construction, transformations of sets and rational-number arguments exceed the admitted integer-polynomial profile.
+
+Run `proofmap campaign pilot --corpus tests/fixtures/campaign/realism --out .work/realism`. Optional live extraction additionally requires an explicit configuration, disclosure authorization and all request/input/output/time budgets. Its responses do not establish scientific accuracy, human review or mathematical acceptance. Reports retain per-document counts, equal-document macro metrics and every raw denominator.

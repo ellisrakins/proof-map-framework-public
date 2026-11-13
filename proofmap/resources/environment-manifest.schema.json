@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_type",
+    "schema_version",
+    "id",
+    "profile_digest",
+    "complete",
+    "actual",
+    "completeness_scope",
+    "reason"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "EnvironmentManifest"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "actual": {
+      "type": "object"
+    },
+    "completeness_scope": {
+      "const": "lean-std-int-polynomial-v1"
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 1000000
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "complete": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "actual": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lean_sha256",
+              "library_digest",
+              "checker_digest",
+              "version",
+              "platform",
+              "executable",
+              "search_path",
+              "image"
+            ],
+            "properties": {
+              "lean_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "library_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "checker_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              },
+              "platform": {
+                "enum": [
+                  "linux/amd64",
+                  "linux/arm64"
+                ]
+              },
+              "executable": {
+                "const": "/opt/lean/bin/lean"
+              },
+              "search_path": {
+                "const": "/opt/lean/lib/lean"
+              },
+              "image": {
+                "type": "string",
+                "pattern": "^(sha256:[a-f0-9]{64}|[a-zA-Z0-9./:_-]+@sha256:[a-f0-9]{64})$"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

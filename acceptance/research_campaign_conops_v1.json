@@ -1,0 +1,278 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "research-campaign-conops-v1",
+  "target_version": "0.9.0b1",
+  "evidence_identity_manifest": "acceptance/paper_ci_alpha.json",
+  "preserved_alpha_manifest_sha256": "7ff8e38f9fa0aad8a2eb396406dd8042817cef19add80c2475cd13985ca9dfc0",
+  "requirements": [
+    {
+      "id": "OP-01",
+      "description": "Automatically ingest three source-bound manuscripts, retain scoped context/citations/unknowns and select exact goals without authored graph JSON.",
+      "positive_tests": [
+        "tests/test_campaign_conops.py::test_offline_conops_records_source_bound_work"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_conops.py::test_uninstalled_diagnostics_never_qualify"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-offline",
+        "campaign-realism"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build",
+        "paper-ci-fixtures"
+      ],
+      "expected_artifacts": [
+        "campaign-offline-outcomes",
+        "campaign-realism-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-02",
+      "description": "Explicit bounded authorization executes the admitted isolated verifier; verified evidence never auto-approves fidelity.",
+      "positive_tests": [
+        "tests/test_campaign_operations.py::test_campaign_authorization_duplicate_and_human_handoff"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_conops.py::test_isolated_artifact_requires_authenticated_actual_events"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-isolated"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "campaign-isolated-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-03",
+      "description": "Apply exact explicit independent signed fidelity decisions and reject malformed, wrong-role, expired, revoked and altered authority.",
+      "positive_tests": [
+        "tests/test_campaign_operations.py::test_campaign_review_is_explicit_and_abstention_does_not_sign"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_conops.py::test_isolated_artifact_requires_authenticated_actual_events"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-isolated"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "campaign-isolated-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-04",
+      "description": "A used-definition revision invalidates affected queued work and fidelity, while an independent selected paper retains eligible work.",
+      "positive_tests": [
+        "tests/test_campaign_dossier.py::test_revision_impact_preserves_unresolved_goals_and_actual_reuse"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_operations.py::test_campaign_revision_stales_affected_members_only"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-isolated"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "campaign-isolated-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-05",
+      "description": "Duplicate enqueue, two-worker race, actual controller crash, expired lease, late result, actual container cancellation/output bounds and budget exhaustion retain audit data without duplicate publication.",
+      "positive_tests": [
+        "tests/test_campaign_operations.py::test_queue_two_worker_race_and_rebuild"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_operations.py::test_queue_expired_lease_fences_late_result"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-isolated"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "campaign-isolated-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-06",
+      "description": "Cross-paper similar wording with different domains creates an attributed candidate relation without claim merging or deductive closure.",
+      "positive_tests": [
+        "tests/test_campaign_dossier.py::test_candidate_relations_do_not_merge_claims_or_authorize_closure"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_dossier.py::test_candidate_relations_do_not_merge_claims_or_authorize_closure"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-offline"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "campaign-offline-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-07",
+      "description": "Offline dossier source, formal, action, execution and review navigation works in actual Chromium; hostile text cannot execute or disclose.",
+      "positive_tests": [
+        "tests/test_campaign_browser.py::test_campaign_links_and_hostile_text_in_chromium"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_dossier.py::test_shared_report_is_read_only_qualified_and_escapes_hostile_text"
+      ],
+      "required_profiles": [
+        "chromium",
+        "installed-campaign-offline"
+      ],
+      "test_profiles": [
+        "chromium"
+      ],
+      "required_jobs": [
+        "browser-security",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "campaign-offline-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-08",
+      "description": "Export intact retained bytes, reject corrupted archives before writes, restore into a clean store without imported authority or dispatch, and rebuild historical views.",
+      "positive_tests": [
+        "tests/test_campaign_dossier.py::test_export_restore_retains_history_without_authority"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_dossier.py::test_tampered_dossier_rejected_before_destination_writes"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-offline"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "campaign-offline-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-09",
+      "description": "Missing prepared verifier infrastructure leaves intake/planning useful, explicitly unavailable work and no verified/accepted claims; bounded resume has no host fallback.",
+      "positive_tests": [
+        "tests/test_campaign_operations.py::test_campaign_missing_runtime_bounded_resume"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_conops.py::test_uninstalled_diagnostics_never_qualify"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-offline"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "campaign-offline-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    },
+    {
+      "id": "OP-10",
+      "description": "Recorded decomposition stays source-bound, exact replay rejects altered requests, malformed interpretation remains unavailable, and optional live quality stays unknown.",
+      "positive_tests": [
+        "tests/test_campaign_conops.py::test_offline_conops_records_source_bound_work"
+      ],
+      "negative_tests": [
+        "tests/test_campaign_conops.py::test_recorded_replay_cannot_claim_live_quality"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-campaign-offline"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "campaign-offline-outcomes"
+      ],
+      "implementation_status": "implemented",
+      "gap": ""
+    }
+  ],
+  "optional_states": {
+    "live_model_quality": "NOT_MEASURED",
+    "external_user_pilot": "NOT_PERFORMED",
+    "production_authority": "NOT_CONFIGURED",
+    "publication": "NOT_REQUESTED"
+  }
+}

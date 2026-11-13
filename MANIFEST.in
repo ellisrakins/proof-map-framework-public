@@ -1,0 +1,54 @@
+recursive-include proofmap/resources *.json
+# Only the named, reviewed fixtures belong in the source distribution.
+include tests/fixtures/campaign/operational/expected.json
+include tests/fixtures/campaign/operational/identities.tex
+include tests/fixtures/campaign/operational/independent.tex
+include tests/fixtures/campaign/operational/unsupported.tex
+include tests/fixtures/campaign/realism/README.md
+include tests/fixtures/campaign/realism/dedekind/claims.tex
+include tests/fixtures/campaign/realism/dedekind/definition.tex
+include tests/fixtures/campaign/realism/dedekind/main.tex
+include tests/fixtures/campaign/realism/euclid/book-i-proposition-i.pdf
+include tests/fixtures/campaign/realism/hardy/rational-square.tex
+include tests/fixtures/campaign/realism/provenance.json
+include tests/fixtures/papers/README.md
+include tests/fixtures/papers/alpha_semantics/antecedent.tex
+include tests/fixtures/papers/alpha_semantics/branches.tex
+include tests/fixtures/papers/alpha_semantics/main.tex
+include tests/fixtures/papers/alpha_semantics/refs.bib
+include tests/fixtures/papers/golden.json
+include tests/fixtures/papers/heldout/agoh_synthetic.tex
+include tests/fixtures/papers/heldout/cubic_binomial.tex
+include tests/fixtures/papers/heldout/difference_squares.tex
+include tests/fixtures/papers/heldout/missing.tex
+include tests/fixtures/papers/heldout/negative_distribution.tex
+include tests/fixtures/papers/heldout/prose_only.tex
+include tests/fixtures/papers/heldout/revision_after.tex
+include tests/fixtures/papers/heldout/revision_before.tex
+include tests/fixtures/papers/heldout/semantic_interpretations.tex
+include tests/fixtures/papers/heldout/zero_power.tex
+include tests/fixtures/papers/pdf/born_digital.pdf
+include tests/fixtures/papers/pdf/scan.pdf
+include tests/fixtures/papers/review_override/main.tex
+include tests/fixtures/papers/revision_after/paper.tex
+include tests/fixtures/papers/revision_before/paper.tex
+include tests/fixtures/papers/train/basic.tex
+include tests/fixtures/papers/train/false_linear.tex
+include tests/fixtures/papers/train/implicit_reference.tex
+include tests/fixtures/papers/train/long_context.tex
+include tests/fixtures/papers/train/macro_scope.tex
+include tests/fixtures/papers/train/reflexivity.tex
+include tests/fixtures/papers/train/scope_bindings.tex
+include tests/fixtures/papers/train/shifted_square.tex
+recursive-include schema *.json
+recursive-include acceptance *.json
+recursive-include research/agoh_2026 *.py *.json *.lean *.md
+recursive-include examples *.json *.lean
+include lean-toolchain
+include constraints-ci.txt
+include lakefile.toml lake-manifest.json
+recursive-include scripts *.py
+include scripts/lean-release-lock.json
+recursive-include docs *.md
+recursive-include .github *.yml *.md CODEOWNERS
+include CHANGELOG.md CONTRIBUTING.md SECURITY.md REPO_STATUS.md FRAMEWORK_SPEC.md

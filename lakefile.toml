@@ -1,0 +1,3 @@
+# Dependency-free workspace for the repository's pinned Lean certificate checks.
+# scripts/verify_real.py runs the exact obligations; there is no library build.
+name = "proofmap_certificates"

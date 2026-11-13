@@ -1,0 +1,7 @@
+# Preserve exact PDF fixture bytes; PDF syntax is not a text diff format.
+*.pdf binary
+# Scientific receipts bind exact artifact bytes, including line endings.
+# Disable checkout/check-in conversion without disabling readable text diffs.
+*.json -text
+*.lean -text
+*.tex -text

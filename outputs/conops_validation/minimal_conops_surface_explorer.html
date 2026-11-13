@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Minimal CONOPS Validation Map — Proof Surface Explorer</title>
+<style>
+:root {
+  --ink: #0b1f4d;
+  --muted: #53627a;
+  --panel: #ffffff;
+  --line: #d9e5f6;
+  --blue: #0b6efd;
+  --orange: #d97706;
+  --red: #b00020;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(135deg,#fbfdff,#eef6ff); color: var(--ink); }
+header { padding: 24px 32px 12px; }
+h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; }
+.subtitle { margin-top: 8px; color: var(--muted); max-width: 1050px; }
+main { display: grid; grid-template-columns: minmax(620px, 1fr) 390px; gap: 20px; padding: 12px 28px 30px; }
+.card { background: rgba(255,255,255,0.92); border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(24,51,92,.10); border-radius: 20px; }
+#stageCard { padding: 18px; min-height: 720px; }
+canvas { width: 100%; height: 650px; display: block; border-radius: 16px; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f9ff 55%, #e9f2ff 100%); }
+.controls { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 12px; align-items: center; }
+.control { background: #f7faff; border: 1px solid #d9e5f6; padding: 10px 12px; border-radius: 12px; font-size: 13px; }
+.control label { display: block; font-weight: 700; margin-bottom: 4px; }
+input[type=range] { width: 100%; }
+.side { display: grid; gap: 16px; align-content: start; }
+.panel { padding: 18px; }
+.panel h2 { margin: 0 0 10px; font-size: 18px; }
+.metric { display:flex; justify-content:space-between; gap:10px; padding: 8px 0; border-bottom: 1px solid #edf2fb; font-size:14px; }
+.metric b { color:#17376c; }
+.legendRow { display:grid; grid-template-columns: 76px 1fr; gap:10px; align-items:center; margin: 12px 0; color:var(--muted); font-size: 13px; }
+.swatchLine { height:0; border-top: 4px solid #8395a7; position:relative; }
+.swatchLine.flow { border-color: var(--blue); }
+.swatchLine.seam { border-color: var(--orange); border-top-style:dashed; }
+.swatchLine.gap { border-color: var(--red); border-top-style:dashed; }
+.swatchNode { width: 18px; height: 18px; border-radius: 50%; background:#ff6b6b; border:2px solid #831c1c; }
+#infoBox { min-height: 148px; line-height: 1.45; color: var(--muted); }
+#infoBox strong { color: var(--ink); }
+.tableCard { grid-column: 1 / -1; padding: 16px 18px; }
+table { width:100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align:left; padding: 8px 7px; border-bottom: 1px solid #edf2fb; vertical-align:top; }
+th { color:#17376c; background:#f7faff; position: sticky; top: 0; }
+.badge { display:inline-block; padding:2px 7px; border-radius: 999px; background:#edf2fb; color:#17376c; font-weight:700; font-size:11px; }
+select { min-width: 190px; padding: 6px 8px; border: 1px solid #bdcbe0; background: #fff; color: var(--ink); }
+@media (max-width: 1100px) { main { grid-template-columns: 1fr; } canvas { height: 560px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Minimal CONOPS Validation Map — Proof Surface Explorer</h1>
+  <div class="subtitle">Interactive rendering of the theory surface. Longitude clusters domains/local charts; latitude is derivational distance from the core. Energy/entropy flow is tangent to the surface; proof fibers point through the explanatory volume.</div>
+</header>
+<main>
+  <section id="stageCard" class="card">
+    <canvas id="globe" width="1180" height="760" aria-label="Rotatable proof surface"></canvas>
+    <div class="controls">
+      <div class="control"><label for="rot">rotation</label><input id="rot" type="range" min="-180" max="180" value="0" /></div>
+      <div class="control"><label for="tilt">tilt</label><input id="tilt" type="range" min="-60" max="60" value="0" /></div>
+      <div class="control"><label>layers</label><label><input id="boundaryOnly" type="checkbox" /> boundary only</label></div>
+      <div class="control"><label for="theoryFilter">theory chart</label><select id="theoryFilter"><option value="">all theories</option></select></div>
+      <div class="control"><label>overlays</label><label><input id="showFlows" type="checkbox" checked /> flows</label> <label><input id="showSeams" type="checkbox" checked /> seams/gaps</label> <label><input id="showHalos" type="checkbox" checked /> uncertainty halos</label></div>
+      <div class="control" id="epochControl"><label for="epoch">epoch filter</label><input id="epoch" type="range" min="0" max="0" value="0" /><div id="epochLabel">all epochs</div></div>
+      <div class="control"><label>hover / click</label><span>Inspect a node to see its status, layer, uncertainty, and proof distance.</span></div>
+    </div>
+  </section>
+  <aside class="side">
+    <section class="card panel"><h2>Geometry metrics</h2><div id="metrics"></div></section>
+    <section class="card panel"><h2>Visual grammar</h2>
+      <div class="legendRow"><div class="swatchLine flow"></div><div>surface flow: entropy/time/physical sequence</div></div>
+      <div class="legendRow"><div class="swatchLine seam"></div><div>seam: approximation, bridge, force/domain interface</div></div>
+      <div class="legendRow"><div class="swatchLine gap"></div><div>gap/block: boundary defect or missing proof path</div></div>
+      <div class="legendRow"><div class="swatchLine"></div><div>proof fiber: dependency from core/interior to surface</div></div>
+      <div class="legendRow"><div class="swatchNode"></div><div>red node: open gap / blocked / external</div></div>
+    </section>
+    <section class="card panel"><h2>Selected point</h2><div id="infoBox">Move over a point on the surface.</div></section>
+  </aside>
+  <section class="card tableCard"><h2>Surface ledger</h2><div style="max-height:420px; overflow:auto"><table id="ledger"></table></div></section>
+</main>
+<script>
+const DATA = {"title": "Minimal CONOPS Validation Map", "description": "A compact proof-map used to validate the concept of operations: author a typed map, analyze its boundary, produce artifacts, export Lean obligations, and confirm the expected open proof debt is detected.", "coordinate_mode": "proof_depth", "domain_order": ["experiment", "instrumentation", "mechanics"], "metrics": {"node_count": 5, "edge_count": 5, "core_count": 1, "boundary_count": 2, "reachable_count": 4, "explanatory_volume": 4.4415, "surface_area": 14.1347, "roundness": 0.2132, "density": 0.3019, "closure_ratio": 0.2132, "uncertainty_thickness": 0.525, "hole_count": 1, "seam_count": 4, "gap_count": 1, "assumption_count": 1, "unexplained_parameter_count": 0, "cycle_count": 0, "proof_radius_mean": 2.0, "proof_radius_variance": 0.0, "proof_radius_max": 2.0, "notes": ["1 boundary/exterior nodes are gaplike or not reachable from the core.", "4 interface or cross-domain seam edges detected.", "1 gaplike nodes require closure work."]}, "epochs": [], "points": {"core.motion_law": {"id": "core.motion_law", "label": "Ideal motion law", "kind": "PRIMITIVE_LAW", "status": "CORE", "layer": "CORE", "domain": "mechanics", "longitude": 1.7343951023931958, "latitude": 1.1344640137963142, "radius": 0.18, "uncertainty": 0.02, "thickness": 0.031, "proof_distance": 0, "active_start": null, "active_end": null, "energy_scale_gev": null, "explanatory_weight": 4, "boundary_weight": 1.0, "statement": "A simplified constant-acceleration law governs the test object.", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}, "longitude_deg": 99.37351937529039, "latitude_deg": 65.0}, "model.drop_prediction": {"id": "model.drop_prediction", "label": "Drop-time prediction", "kind": "THEOREM", "status": "DERIVED", "layer": "INTERIOR", "domain": "mechanics", "longitude": 2.4543951023931956, "latitude": 0.0, "radius": 0.62, "uncertainty": 0.05, "thickness": 0.0675, "proof_distance": 1, "active_start": null, "active_end": null, "energy_scale_gev": null, "explanatory_weight": 3, "boundary_weight": 1.0, "statement": "The ideal law predicts a drop time from height and acceleration.", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}, "longitude_deg": 140.62648062470964, "latitude_deg": 0.0}, "boundary.sensor_measurement": {"id": "boundary.sensor_measurement", "label": "Sensor measurement", "kind": "OBSERVATION", "status": "EMPIRICAL", "layer": "BOUNDARY", "domain": "experiment", "longitude": -2.4543951023931956, "latitude": -1.0821041362364843, "radius": 1.0, "uncertainty": 0.18, "thickness": 0.31, "proof_distance": 2, "active_start": null, "active_end": null, "energy_scale_gev": null, "explanatory_weight": 3, "boundary_weight": 2, "statement": "A sensor reports the observed drop time in the validation run.", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}, "longitude_deg": -140.62648062470964, "latitude_deg": -62.0}, "boundary.drag_residual": {"id": "boundary.drag_residual", "label": "Air-drag residual", "kind": "GAP", "status": "GAP", "layer": "BOUNDARY", "domain": "experiment", "longitude": -1.7343951023931958, "latitude": -1.0821041362364843, "radius": 1.0, "uncertainty": 0.65, "thickness": 1.0, "proof_distance": 2, "active_start": null, "active_end": null, "energy_scale_gev": null, "explanatory_weight": 4, "boundary_weight": 3, "statement": "The residual between ideal prediction and measurement needs a drag or calibration closure.", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}, "longitude_deg": -99.37351937529039, "latitude_deg": -62.0}, "bridge.calibration_model": {"id": "bridge.calibration_model", "label": "Calibration bridge", "kind": "BRIDGE", "status": "APPROXIMATION", "layer": "INTERIOR", "domain": "instrumentation", "longitude": 0.0, "latitude": -1.2217304763960306, "radius": 0.62, "uncertainty": 0.25, "thickness": 0.3375, "proof_distance": null, "active_start": null, "active_end": null, "energy_scale_gev": null, "explanatory_weight": 2, "boundary_weight": 1.0, "statement": "A provisional sensor calibration maps raw timestamps into the measured drop time.", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}, "longitude_deg": 0.0, "latitude_deg": -70.0}}, "edges": [{"source": "core.motion_law", "target": "model.drop_prediction", "kind": "PROVES", "status": "PROVED", "uncertainty": 0.03, "weight": 1.0, "proof_cost": 1.0, "is_flow": false, "is_seam": false, "is_gaplike": false, "statement": "", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}}, {"source": "model.drop_prediction", "target": "boundary.sensor_measurement", "kind": "EMPIRICALLY_CONSTRAINS", "status": "EMPIRICAL", "uncertainty": 0.18, "weight": 1.0, "proof_cost": 1.0, "is_flow": false, "is_seam": true, "is_gaplike": false, "statement": "", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}}, {"source": "model.drop_prediction", "target": "boundary.drag_residual", "kind": "BLOCKS", "status": "GAP", "uncertainty": 0.65, "weight": 1.0, "proof_cost": 1.0, "is_flow": false, "is_seam": true, "is_gaplike": true, "statement": "Ideal prediction cannot close the empirical residual by itself.", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}}, {"source": "bridge.calibration_model", "target": "boundary.sensor_measurement", "kind": "BRIDGES", "status": "APPROXIMATE", "uncertainty": 0.25, "weight": 1.0, "proof_cost": 1.0, "is_flow": false, "is_seam": true, "is_gaplike": false, "statement": "", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}}, {"source": "boundary.drag_residual", "target": "boundary.sensor_measurement", "kind": "BRIDGES", "status": "GAP", "uncertainty": 0.6, "weight": 1.0, "proof_cost": 1.0, "is_flow": false, "is_seam": true, "is_gaplike": true, "statement": "Residual closure determines whether the measurement is explained or remains boundary debt.", "theory_ids": [], "formal_systems": [], "regime_dimensions": {}}]};
+const colors = {"CORE": "#FFD166", "PROVED": "#63D471", "DERIVED": "#4CC9F0", "COMPUTED": "#84DCC6", "EMPIRICAL": "#B9D6FF", "PROBABILISTIC": "#B8A7FF", "ASSUMPTION": "#FFE8A3", "APPROXIMATION": "#F8B26A", "GAP": "#FF6B6B", "BLOCKED": "#C1121F", "EXTERNAL": "#D7D7D7", "INDEPENDENT": "#D8C3A5"};
+const canvas = document.getElementById('globe');
+const ctx = canvas.getContext('2d');
+const rot = document.getElementById('rot');
+const tilt = document.getElementById('tilt');
+const boundaryOnly = document.getElementById('boundaryOnly');
+const showFlows = document.getElementById('showFlows');
+const showSeams = document.getElementById('showSeams');
+const showHalos = document.getElementById('showHalos');
+const theoryFilter = document.getElementById('theoryFilter');
+const epoch = document.getElementById('epoch');
+const epochLabel = document.getElementById('epochLabel');
+const infoBox = document.getElementById('infoBox');
+let selected = null;
+let projected = [];
+const points = Object.values(DATA.points);
+const edges = DATA.edges;
+const epochs = DATA.epochs || [];
+
+function fmt(x) {
+  if (x === null || x === undefined) return '—';
+  if (typeof x === 'number') {
+    if (Math.abs(x) >= 1e4 || (Math.abs(x) > 0 && Math.abs(x) < 1e-3)) return x.toExponential(2);
+    return String(Math.round(x * 1000) / 1000);
+  }
+  return String(x);
+}
+function activeAt(p) {
+  if (theoryFilter.value && !(p.theory_ids || []).includes(theoryFilter.value)) return false;
+  if (!epochs.length || Number(epoch.value) === 0) return true;
+  const t = epochs[Number(epoch.value)-1].t;
+  if (p.active_start !== null && p.active_start !== undefined && t < p.active_start) return false;
+  if (p.active_end !== null && p.active_end !== undefined && t > p.active_end) return false;
+  return true;
+}
+function project(p) {
+  const lambda = p.longitude + Number(rot.value) * Math.PI / 180;
+  const phi = p.latitude + Number(tilt.value) * Math.PI / 180;
+  const r = Math.min(1.16, Math.max(0.15, p.radius));
+  const cosPhi = Math.cos(phi), sinPhi = Math.sin(phi);
+  const cosLam = Math.cos(lambda), sinLam = Math.sin(lambda);
+  let x = r * cosPhi * sinLam;
+  let y = r * sinPhi;
+  let z = r * cosPhi * cosLam;
+  const R = Math.min(canvas.width, canvas.height) * 0.38;
+  return { id:p.id, x: canvas.width*0.47 + R*x, y: canvas.height*0.50 - R*y, z, visible: z > -0.08, p };
+}
+function drawGlobe() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const cx = canvas.width*0.47, cy = canvas.height*0.50, R = Math.min(canvas.width, canvas.height)*0.38;
+  // sphere body
+  const grad = ctx.createRadialGradient(cx-R*0.32, cy-R*0.34, R*0.05, cx, cy, R*1.08);
+  grad.addColorStop(0, '#ffffff'); grad.addColorStop(0.55, '#f4f9ff'); grad.addColorStop(1, '#dfeeff');
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2); ctx.fillStyle = grad; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = '#234f8d'; ctx.stroke();
+  // graticule
+  ctx.save(); ctx.globalAlpha = 0.26; ctx.strokeStyle = '#6f91c5'; ctx.lineWidth = 1;
+  for (let lat=-60; lat<=60; lat+=30) {
+    ctx.beginPath(); const yy = cy - R*Math.sin(lat*Math.PI/180); const rr = R*Math.cos(lat*Math.PI/180); ctx.ellipse(cx, yy, rr, rr*0.18, 0, 0, Math.PI*2); ctx.stroke();
+  }
+  for (let lon=0; lon<180; lon+=30) {
+    ctx.beginPath(); ctx.ellipse(cx, cy, R*Math.abs(Math.cos(lon*Math.PI/180)), R, 0, 0, Math.PI*2); ctx.stroke();
+  }
+  ctx.restore();
+
+  projected = points.map(project).filter(q => activeAt(q.p) && (!boundaryOnly.checked || q.p.layer === 'BOUNDARY' || q.p.layer === 'EXTERIOR'));
+  const byId = new Map(projected.map(q => [q.id, q]));
+  // edges behind nodes
+  for (const e of edges) {
+    if (e.is_flow && !showFlows.checked) continue;
+    if ((e.is_seam || e.is_gaplike) && !showSeams.checked) continue;
+    const a = byId.get(e.source), b = byId.get(e.target);
+    if (!a || !b || !a.visible || !b.visible) continue;
+    const ordinary = !e.is_flow && !e.is_seam && !e.is_gaplike;
+    if (ordinary && boundaryOnly.checked) continue;
+    ctx.save();
+    ctx.globalAlpha = 0.25 + 0.55*(1-Math.min(1,e.uncertainty));
+    ctx.lineWidth = e.is_gaplike ? 3 : e.is_flow ? 2.5 : e.is_seam ? 2.2 : 1.2;
+    ctx.strokeStyle = e.is_gaplike ? '#b00020' : e.is_flow ? '#0b6efd' : e.is_seam ? '#d97706' : '#8395a7';
+    if (e.is_gaplike || e.is_seam) ctx.setLineDash([8,6]);
+    ctx.beginPath();
+    ctx.moveTo(a.x,a.y);
+    const mx=(a.x+b.x)/2, my=(a.y+b.y)/2 - (e.is_flow?20:-8);
+    ctx.quadraticCurveTo(mx,my,b.x,b.y); ctx.stroke();
+    ctx.restore();
+  }
+  // halos and nodes
+  const ordered = projected.slice().sort((a,b)=>a.z-b.z);
+  for (const q of ordered) {
+    if (!q.visible) continue;
+    const p=q.p; const col=colors[p.status] || '#cccccc';
+    const base = p.layer==='CORE'?6:p.layer==='INTERIOR'?7:p.layer==='BOUNDARY'?10:9;
+    const nr = base + Math.min(5, 1.2*(p.boundary_weight||1));
+    if (showHalos.checked && (p.layer==='BOUNDARY' || p.layer==='EXTERIOR')) {
+      ctx.save(); ctx.globalAlpha = 0.14 + 0.10*p.thickness; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(q.x,q.y, nr + 28*p.thickness,0,Math.PI*2); ctx.fill(); ctx.restore();
+    }
+    ctx.save(); ctx.globalAlpha = p.layer==='INTERIOR'?0.68:p.layer==='CORE'?0.82:1;
+    ctx.beginPath(); ctx.arc(q.x,q.y,nr,0,Math.PI*2); ctx.fillStyle=col; ctx.fill();
+    ctx.lineWidth = (p.status==='GAP'||p.status==='BLOCKED'||p.status==='EXTERNAL')?2.6:(p.status==='ASSUMPTION'||p.status==='APPROXIMATION')?2.1:1.2;
+    ctx.strokeStyle = (p.status==='GAP'||p.status==='BLOCKED'||p.status==='EXTERNAL')?'#831c1c':'#1b2a41'; ctx.stroke();
+    if (selected && selected.id === p.id) { ctx.lineWidth=3.5; ctx.strokeStyle='#111827'; ctx.stroke(); }
+    ctx.restore();
+  }
+  // title note inside canvas
+  ctx.fillStyle = '#0b1f4d'; ctx.font = '700 22px system-ui, sans-serif'; ctx.fillText('rotatable proof surface', 26, 38);
+  ctx.fillStyle = '#53627a'; ctx.font = '14px system-ui, sans-serif';
+  ctx.fillText('time/entropy/energy flow moves tangent to surface; proof fibers point through the volume', 26, 63);
+}
+function nearestNode(evt) {
+  const rect = canvas.getBoundingClientRect();
+  const x = (evt.clientX - rect.left) * canvas.width / rect.width;
+  const y = (evt.clientY - rect.top) * canvas.height / rect.height;
+  let best=null, bestD=1e9;
+  for (const q of projected) {
+    if (!q.visible) continue;
+    const dx=q.x-x, dy=q.y-y; const d=Math.sqrt(dx*dx+dy*dy);
+    if (d<bestD && d<24) { best=q.p; bestD=d; }
+  }
+  return best;
+}
+function showInfo(p) {
+  if (!p) { infoBox.innerHTML = 'Move over a point on the surface.'; return; }
+  infoBox.innerHTML = `<strong>${p.label}</strong><br>` +
+    `<span class="badge">${p.status}</span> <span class="badge">${p.layer}</span> <span class="badge">${p.domain}</span><br>` +
+    `theories: <strong>${(p.theory_ids || []).join(', ') || 'shared / unclassified'}</strong><br>` +
+    `uncertainty: <strong>${fmt(p.uncertainty)}</strong>; thickness: <strong>${fmt(p.thickness)}</strong>; proof distance: <strong>${fmt(p.proof_distance)}</strong><br>` +
+    `<span>${p.statement || ''}</span>`;
+}
+function renderMetrics() {
+  const m = DATA.metrics; const rows = [
+    ['explanatory volume', m.explanatory_volume], ['surface area', m.surface_area], ['roundness', m.roundness], ['closure ratio', m.closure_ratio], ['uncertainty thickness', m.uncertainty_thickness], ['gaps / seams / holes', `${m.gap_count} / ${m.seam_count} / ${m.hole_count}`]
+  ];
+  document.getElementById('metrics').innerHTML = rows.map(r=>`<div class="metric"><b>${r[0]}</b><span>${fmt(r[1])}</span></div>`).join('');
+}
+function renderLedger() {
+  const boundary = points.filter(p=>activeAt(p) && (p.layer==='BOUNDARY'||p.layer==='EXTERIOR'||p.status==='GAP'||p.status==='BLOCKED')).sort((a,b)=>(b.thickness-a.thickness));
+  const rows = boundary.map(p=>`<tr><td><code>${p.id}</code><br><strong>${p.label}</strong></td><td>${p.domain}</td><td>${(p.theory_ids||[]).join(', ')||'—'}</td><td><span class="badge">${p.status}</span></td><td>${p.layer}</td><td>${fmt(p.proof_distance)}</td><td>${fmt(p.uncertainty)}</td><td>${fmt(p.thickness)}</td><td>${(p.statement||'').slice(0,130)}</td></tr>`).join('');
+  document.getElementById('ledger').innerHTML = `<thead><tr><th>point</th><th>domain</th><th>theories</th><th>status</th><th>layer</th><th>distance</th><th>uncertainty</th><th>thickness</th><th>statement</th></tr></thead><tbody>${rows}</tbody>`;
+}
+function setupTheories() {
+  const theoryIds = [...new Set(points.flatMap(p => p.theory_ids || []))].sort();
+  for (const theoryId of theoryIds) {
+    const option = document.createElement('option');
+    option.value = theoryId;
+    option.textContent = theoryId;
+    theoryFilter.appendChild(option);
+  }
+  if (!theoryIds.length) theoryFilter.parentElement.style.display = 'none';
+  theoryFilter.addEventListener('change', () => { selected=null; showInfo(null); renderLedger(); drawGlobe(); });
+}
+function setupEpochs() {
+  if (!epochs.length) { document.getElementById('epochControl').style.display='none'; return; }
+  epoch.max = String(epochs.length);
+  epochLabel.textContent = 'all epochs';
+  epoch.addEventListener('input', () => {
+    const i = Number(epoch.value);
+    epochLabel.textContent = i===0 ? 'all epochs' : `${epochs[i-1].label} · t=${fmt(epochs[i-1].t)}`;
+    drawGlobe();
+  });
+}
+[rot, tilt, boundaryOnly, showFlows, showSeams, showHalos].forEach(el => el.addEventListener('input', drawGlobe));
+canvas.addEventListener('mousemove', evt => { const p=nearestNode(evt); if (p) { selected=p; showInfo(p); } drawGlobe(); });
+canvas.addEventListener('mouseleave', () => { selected=null; showInfo(null); drawGlobe(); });
+renderMetrics(); setupTheories(); renderLedger(); setupEpochs(); drawGlobe();
+</script>
+</body>
+</html>

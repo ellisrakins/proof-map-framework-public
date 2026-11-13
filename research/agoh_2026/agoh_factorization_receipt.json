@@ -1,0 +1,81 @@
+{
+  "artifact_sha256": "c894993f0c677f808c239cd8ccf3cb269f8688862b93ae111bbe1d6ce4a6e657",
+  "attempt": {
+    "artifact_path": "research/agoh_2026/agoh_factorization_candidate.lean",
+    "artifact_sha256": "c894993f0c677f808c239cd8ccf3cb269f8688862b93ae111bbe1d6ce4a6e657",
+    "created_at": "2026-08-06T03:07:50Z",
+    "estimated_cost_usd": 0.0,
+    "generation_seconds": 0.0,
+    "id": "agoh_factorization_candidate.attempt",
+    "input_tokens": 0,
+    "metadata": {},
+    "model": "",
+    "model_version": "",
+    "obligation_id": "obligation.agoh_n2_factorization",
+    "output_tokens": 0,
+    "parent_attempt_ids": [],
+    "producer": "OpenAI Codex",
+    "prompt_sha256": "",
+    "provider": "OpenAI",
+    "run_id": "",
+    "strategy": "finite-difference counterexample algebra certificate"
+  },
+  "obligation": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "declaration_name": "agoh_n2_factorization",
+    "formal_system": "lean4",
+    "id": "obligation.agoh_n2_factorization",
+    "imports": [
+      "Std.Tactic"
+    ],
+    "metadata": {
+      "semantic_review": "The identity is the algebraic core of the explicit counterexample; reducedness and source fidelity are checked separately."
+    },
+    "notes": "This obligation proves the exact common-numerator factorization for f(t)=(t-2)^2 and n=2 over the integers. It permits Lean's three standard logical axioms but never sorryAx.",
+    "statement": "∀ x : Int, ((x - 2) ^ 2 * (x ^ 2 - 2) ^ 2 - 2 * (x ^ 2 - 2) ^ 2 + (x - 2) ^ 2) = (x - 1) ^ 2 * (x ^ 4 - 2 * x ^ 3 - 7 * x ^ 2 + 4 * x + 12)",
+    "statement_sha256": "6955e33027111b65ec195df1ab05f9a6eb31a77ebe4d2290f6c91c0d220778b7",
+    "target_node_id": "theorem.n2_factorization",
+    "toolchain": "leanprover/lean4:v4.30.0"
+  },
+  "obligation_sha256": "5a07c0848d92dad3a256b6d792e40f143d9d4e1f2b65d60ac656ac0ad7fd6c90",
+  "proof_map_path": "research/agoh_2026/agoh_counterexample_map.json",
+  "proof_map_sha256": "8d4eb3369134f4c756d6543e6f1155e12ebb7100c1d4d64a59a9d6092c82fcca",
+  "proof_map_source_sha256": "1f2c48818b600d4538018e3b21cb12e64bcf74ecb5d2cc323e5f3ba716b3abf9",
+  "receipt_sha256": "e51443f52bbba58ea1225edb9547600e9d0df22a63b715734c0d88a295c747d7",
+  "schema_version": "1.0",
+  "semantic_caveat": "Kernel verification establishes the encoded Lean statement only; it does not establish equivalence to the intended natural-language problem, novelty, or significance. Publication copy of a historical receipt: file and tool paths are anonymized, and its content hash was recalculated. This copy is not the original receipt or a new execution.",
+  "target_node_id": "theorem.n2_factorization",
+  "target_snapshot_sha256": "9b3f1a984a01875de78b8435e59b4999128a5831654b529c12a371c4ec52bc69",
+  "verification": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "checked_at": "2026-08-06T03:07:51Z",
+    "command": [
+      "lean",
+      "<temporary-verification-wrapper>.lean"
+    ],
+    "duration_seconds": 1.4493325000512414,
+    "outcome": "VERIFIED",
+    "policy_issues": [],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "'agoh_n2_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+    "verification_scope": "lean-kernel/exact-obligation-statement",
+    "verified": true,
+    "verifier": "lean",
+    "verifier_version": "Lean (version 4.30.0, x86_64-w64-windows-gnu, commit d024af099ca4bf2c86f649261ebf59565dc8c622, Release)",
+    "wrapper_sha256": "9ef656470c496c52f5a26f7a2d378ebc25a231f2ca6222118ddf034263570547"
+  }
+}

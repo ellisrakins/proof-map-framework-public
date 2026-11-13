@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<defs>
+  <radialGradient id='coreGlow' cx='50%' cy='50%' r='50%'><stop offset='0%' stop-color='#fff4b8'/><stop offset='60%' stop-color='#ffd166'/><stop offset='100%' stop-color='#f4a261'/></radialGradient>
+  <filter id='softShadow'><feDropShadow dx='0' dy='3' stdDeviation='5' flood-opacity='0.18'/></filter>
+</defs>
+<rect width='100%' height='100%' fill='#fbfdff'/>
+<text x='700.0' y='58' text-anchor='middle' font-size='34' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Current Physics Backbone Map</text>
+<text x='700.0' y='88' text-anchor='middle' font-size='14' font-family='Helvetica, Arial' fill='#3c4a66'>A source-backed backbone of the current operational state of fundamental physics. Core nodes</text>
+<text x='700.0' y='106' text-anchor='middle' font-size='14' font-family='Helvetica, Arial' fill='#3c4a66'>are local theory-chart kernels, not claims of final truth; unresolved frontiers are explicit</text>
+<text x='700.0' y='124' text-anchor='middle' font-size='14' font-family='Helvetica, Arial' fill='#3c4a66'>boundary or exterior defects.</text>
+<circle cx='588.0' cy='500.0' r='355' fill='#e8eef8' fill-opacity='0.42' stroke='#8ca6d9' stroke-width='2' stroke-dasharray='8 6'/>
+<text x='959.0' y='171.0' font-size='15' font-family='Helvetica, Arial' font-weight='700' fill='#8ca6d9'>Unexplained / speculative exterior</text>
+<circle cx='588.0' cy='500.0' r='275' fill='#edf5ff' fill-opacity='0.42' stroke='#3867c8' stroke-width='2'/>
+<text x='879.0' y='251.0' font-size='15' font-family='Helvetica, Arial' font-weight='700' fill='#3867c8'>Proof boundary / phenomena</text>
+<circle cx='588.0' cy='500.0' r='170' fill='#eaf9f4' fill-opacity='0.42' stroke='#00a38a' stroke-width='2'/>
+<text x='774.0' y='356.0' font-size='15' font-family='Helvetica, Arial' font-weight='700' fill='#00a38a'>Explanatory volume</text>
+<circle cx='588.0' cy='500.0' r='55' fill='#fff4cc' fill-opacity='0.85' stroke='#f4a100' stroke-width='2'/>
+<circle cx='588.0' cy='500.0' r='46' fill='url(#coreGlow)' stroke='#a66a00' stroke-width='2' filter='url(#softShadow)'/>
+<line x1='615.3' y1='524.9' x2='609.3' y2='513.2' stroke='#8aa3bd' stroke-width='1.1' opacity='0.83'/>
+<line x1='565.6' y1='488.9' x2='609.3' y2='513.2' stroke='#c0392b' stroke-width='2.4' opacity='0.84' stroke-dasharray='6 4'/>
+<line x1='609.3' y1='513.2' x2='732.5' y2='589.5' stroke='#8aa3bd' stroke-width='1.1' opacity='0.85'/>
+<line x1='732.5' y1='589.5' x2='713.6' y2='614.5' stroke='#8aa3bd' stroke-width='1.1' opacity='0.86'/>
+<line x1='609.3' y1='513.2' x2='420.9' y2='468.8' stroke='#7f8c8d' stroke-width='1.6' opacity='0.81' stroke-dasharray='4 4'/>
+<line x1='420.9' y1='468.8' x2='418.0' y2='500.0' stroke='#8aa3bd' stroke-width='1.1' opacity='0.79'/>
+<line x1='579.0' y1='476.7' x2='526.6' y2='341.5' stroke='#c0392b' stroke-width='2.4' opacity='0.75' stroke-dasharray='6 4'/>
+<line x1='526.6' y1='341.5' x2='758.0' y2='500.0' stroke='#c0392b' stroke-width='2.4' opacity='0.73' stroke-dasharray='6 4'/>
+<line x1='571.2' y1='481.5' x2='420.9' y2='531.2' stroke='#7f8c8d' stroke-width='1.6' opacity='0.86' stroke-dasharray='4 4'/>
+<line x1='571.2' y1='481.5' x2='740.2' y2='424.2' stroke='#7f8c8d' stroke-width='1.6' opacity='0.86' stroke-dasharray='4 4'/>
+<line x1='740.2' y1='424.2' x2='613.4' y2='773.8' stroke='#c0392b' stroke-width='2.4' opacity='0.82' stroke-dasharray='6 4'/>
+<line x1='740.2' y1='424.2' x2='852.5' y2='575.3' stroke='#7f8c8d' stroke-width='1.6' opacity='0.77' stroke-dasharray='4 4'/>
+<line x1='740.2' y1='424.2' x2='422.3' y2='719.5' stroke='#c0392b' stroke-width='2.4' opacity='0.76' stroke-dasharray='6 4'/>
+<line x1='422.3' y1='719.5' x2='465.4' y2='746.2' stroke='#8aa3bd' stroke-width='1.1' opacity='0.43'/>
+<line x1='443.2' y1='733.8' x2='465.4' y2='746.2' stroke='#8aa3bd' stroke-width='1.1' opacity='0.74'/>
+<line x1='420.9' y1='531.2' x2='323.5' y2='575.3' stroke='#8aa3bd' stroke-width='1.1' opacity='0.39'/>
+<line x1='429.5' y1='561.4' x2='323.5' y2='575.3' stroke='#8aa3bd' stroke-width='1.1' opacity='0.69'/>
+<line x1='613.4' y1='773.8' x2='663.3' y2='764.5' stroke='#8aa3bd' stroke-width='1.1' opacity='0.47'/>
+<line x1='571.2' y1='481.5' x2='368.5' y2='665.7' stroke='#c0392b' stroke-width='2.4' opacity='0.68' stroke-dasharray='6 4'/>
+<line x1='571.2' y1='481.5' x2='663.3' y2='235.5' stroke='#c0392b' stroke-width='2.4' opacity='0.42' stroke-dasharray='6 4'/>
+<line x1='601.2' y1='521.3' x2='634.5' y2='336.5' stroke='#c0392b' stroke-width='2.4' opacity='0.81' stroke-dasharray='6 4'/>
+<line x1='634.5' y1='336.5' x2='654.3' y2='343.4' stroke='#8aa3bd' stroke-width='1.1' opacity='0.77'/>
+<line x1='654.3' y1='343.4' x2='692.1' y2='245.4' stroke='#8aa3bd' stroke-width='1.1' opacity='0.81'/>
+<line x1='654.3' y1='343.4' x2='682.6' y2='241.8' stroke='#8aa3bd' stroke-width='1.1' opacity='0.75'/>
+<line x1='644.5' y1='339.7' x2='663.8' y2='347.8' stroke='#8aa3bd' stroke-width='1.1' opacity='0.74'/>
+<line x1='663.8' y1='347.8' x2='710.6' y2='253.8' stroke='#c0392b' stroke-width='2.4' opacity='0.53' stroke-dasharray='6 4'/>
+<line x1='692.1' y1='245.4' x2='701.4' y2='249.5' stroke='#c0392b' stroke-width='2.4' opacity='0.51' stroke-dasharray='6 4'/>
+<line x1='682.6' y1='241.8' x2='753.7' y2='280.5' stroke='#c0392b' stroke-width='2.4' opacity='0.41' stroke-dasharray='6 4'/>
+<line x1='654.3' y1='343.4' x2='791.2' y2='314.7' stroke='#c0392b' stroke-width='2.4' opacity='0.39' stroke-dasharray='6 4'/>
+<line x1='601.2' y1='521.3' x2='710.6' y2='746.2' stroke='#8aa3bd' stroke-width='1.1' opacity='0.78'/>
+<line x1='601.2' y1='521.3' x2='753.7' y2='719.5' stroke='#8aa3bd' stroke-width='1.1' opacity='0.34'/>
+<line x1='634.5' y1='336.5' x2='673.0' y2='238.5' stroke='#8aa3bd' stroke-width='1.1' opacity='0.44'/>
+<line x1='682.6' y1='241.8' x2='588.0' y2='145.0' stroke='#c0392b' stroke-width='2.4' opacity='0.61' stroke-dasharray='6 4'/>
+<line x1='791.2' y1='314.7' x2='588.0' y2='145.0' stroke='#c0392b' stroke-width='2.4' opacity='0.43' stroke-dasharray='6 4'/>
+<line x1='753.7' y1='280.5' x2='588.0' y2='145.0' stroke='#c0392b' stroke-width='2.4' opacity='0.41' stroke-dasharray='6 4'/>
+<line x1='588.0' y1='145.0' x2='663.3' y2='764.5' stroke='#c0392b' stroke-width='2.4' opacity='0.49' stroke-dasharray='6 4'/>
+<line x1='615.3' y1='524.9' x2='556.8' y2='667.1' stroke='#c0392b' stroke-width='2.4' opacity='0.71' stroke-dasharray='6 4'/>
+<line x1='556.8' y1='667.1' x2='537.5' y2='770.3' stroke='#8aa3bd' stroke-width='1.1' opacity='0.46'/>
+<line x1='615.3' y1='524.9' x2='755.1' y2='468.8' stroke='#c0392b' stroke-width='2.4' opacity='0.74' stroke-dasharray='6 4'/>
+<line x1='418.0' y1='500.0' x2='757.3' y2='484.3' stroke='#c0392b' stroke-width='2.4' opacity='0.71' stroke-dasharray='6 4'/>
+<line x1='579.0' y1='476.7' x2='757.3' y2='484.3' stroke='#c0392b' stroke-width='2.4' opacity='0.72' stroke-dasharray='6 4'/>
+<circle cx='615.3' cy='524.9' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='631.3' y='524.9' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Quantum mechanics</text>
+<circle cx='565.6' cy='488.9' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='549.6' y='488.9' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Special relativity</text>
+<circle cx='609.3' cy='513.2' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='625.3' y='509.2' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Quantum field</text>
+<text x='625.3' y='522.2' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>theory</text>
+<circle cx='571.2' cy='481.5' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='555.2' y='477.5' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Standard Model</text>
+<text x='555.2' y='490.5' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>gauge structure</text>
+<circle cx='601.2' cy='521.3' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='617.2' y='521.3' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>General relativity</text>
+<circle cx='579.0' cy='476.7' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='563.0' y='472.7' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Statistical</text>
+<text x='563.0' y='485.7' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>mechanics</text>
+<circle cx='583.4' cy='524.6' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='567.4' y='520.6' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Measurement</text>
+<text x='567.4' y='533.6' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>statistics</text>
+<circle cx='732.5' cy='589.5' r='11' fill='#7AD7F0' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='748.5' y='585.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Lagrangian</text>
+<text x='748.5' y='598.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>field-theory bridge</text>
+<circle cx='420.9' cy='468.8' r='11' fill='#7AD7F0' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='404.9' y='464.8' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Renormalization</text>
+<text x='404.9' y='477.8' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>group</text>
+<circle cx='418.0' cy='500.0' r='11' fill='#7AD7F0' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='402.0' y='496.0' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Effective field</text>
+<text x='402.0' y='509.0' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>theory</text>
+<circle cx='713.6' cy='614.5' r='11' fill='#63D471' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='729.6' y='606.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Noether</text>
+<text x='729.6' y='619.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>symmetry-conservation</text>
+<text x='729.6' y='632.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>bridge</text>
+<circle cx='634.5' cy='336.5' r='11' fill='#7AD7F0' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='650.5' y='336.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>FLRW cosmology</text>
+<circle cx='644.5' cy='339.7' r='11' fill='#9BE7C6' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='660.5' y='335.7' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Cosmological</text>
+<text x='660.5' y='348.7' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>perturbation theory</text>
+<circle cx='429.5' cy='561.4' r='11' fill='#9BE7C6' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='413.5' y='561.4' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Lattice QCD</text>
+<circle cx='556.8' cy='667.1' r='11' fill='#FFD6A5' stroke='#b36b00' stroke-width='2' filter='url(#softShadow)'/>
+<text x='540.8' y='659.1' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Decoherence and</text>
+<text x='540.8' y='672.1' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>effective</text>
+<text x='540.8' y='685.1' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>classicality</text>
+<circle cx='420.9' cy='531.2' r='11' fill='#7AD7F0' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='404.9' y='531.2' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>QCD color sector</text>
+<circle cx='740.2' cy='424.2' r='11' fill='#7AD7F0' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='756.2' y='424.2' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Electroweak sector</text>
+<circle cx='613.4' cy='773.8' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='629.4' y='773.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Higgs mechanism</text>
+<circle cx='852.5' cy='575.3' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='868.5' y='575.3' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>CKM flavor mixing</text>
+<circle cx='422.3' cy='719.5' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='406.3' y='711.5' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Neutrino</text>
+<text x='406.3' y='724.5' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>oscillation and</text>
+<text x='406.3' y='737.5' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>PMNS mixing</text>
+<circle cx='443.2' cy='733.8' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='427.2' y='729.8' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Direct</text>
+<text x='427.2' y='742.8' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>neutrino-mass limit</text>
+<circle cx='368.5' cy='665.7' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='352.5' y='661.7' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Muon g-2 precision</text>
+<text x='352.5' y='674.7' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>benchmark</text>
+<circle cx='692.1' cy='245.4' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='708.1' y='241.4' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Planck CMB</text>
+<text x='708.1' y='254.4' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>LambdaCDM anchor</text>
+<circle cx='682.6' cy='241.8' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='698.6' y='237.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>DESI DR2 BAO</text>
+<text x='698.6' y='250.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>expansion history</text>
+<circle cx='710.6' cy='746.2' r='11' fill='#B9D6FF' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='726.6' y='738.2' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>GWTC-5.0</text>
+<text x='726.6' y='751.2' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>gravitational-wave</text>
+<text x='726.6' y='764.2' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>catalog</text>
+<circle cx='654.3' cy='343.4' r='11' fill='#9BE7C6' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='670.3' y='339.4' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Base LambdaCDM</text>
+<text x='670.3' y='352.4' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>model</text>
+<circle cx='663.8' cy='347.8' r='11' fill='#9BE7C6' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='679.8' y='347.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Structure formation</text>
+<circle cx='526.6' cy='341.5' r='11' fill='#FFD6A5' stroke='#b36b00' stroke-width='2' filter='url(#softShadow)'/>
+<text x='510.6' y='341.5' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Thermodynamic limit</text>
+<circle cx='758.0' cy='500.0' r='11' fill='#FFD6A5' stroke='#b36b00' stroke-width='2' filter='url(#softShadow)'/>
+<text x='774.0' y='500.0' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Hydrodynamics</text>
+<circle cx='757.3' cy='484.3' r='11' fill='#FFD6A5' stroke='#b36b00' stroke-width='2' filter='url(#softShadow)'/>
+<text x='773.3' y='480.3' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Condensed-matter</text>
+<text x='773.3' y='493.3' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>effective theories</text>
+<circle cx='755.1' cy='468.8' r='11' fill='#9BE7C6' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='771.1' y='460.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Chemistry from</text>
+<text x='771.1' y='473.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>quantum many-body</text>
+<text x='771.1' y='486.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>approximations</text>
+<circle cx='753.7' cy='719.5' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='769.7' y='719.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Quantum gravity</text>
+<circle cx='791.2' cy='314.7' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='807.2' y='310.7' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Dark matter</text>
+<text x='807.2' y='323.7' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>identity</text>
+<circle cx='753.7' cy='280.5' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='769.7' y='276.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Dark-energy</text>
+<text x='769.7' y='289.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>microphysics</text>
+<circle cx='663.3' cy='235.5' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='679.3' y='235.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Baryon asymmetry</text>
+<circle cx='465.4' cy='746.2' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='449.4' y='742.2' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Neutrino mass</text>
+<text x='449.4' y='755.2' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>mechanism</text>
+<circle cx='663.3' cy='764.5' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='679.3' y='760.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Higgs hierarchy/</text>
+<text x='679.3' y='773.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>naturalness</text>
+<circle cx='323.5' cy='575.3' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='307.5' y='571.3' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Confinement and</text>
+<text x='307.5' y='584.3' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Yang-Mills mass gap</text>
+<circle cx='673.0' cy='238.5' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='689.0' y='230.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Initial conditions</text>
+<text x='689.0' y='243.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>and inflation</text>
+<text x='689.0' y='256.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>selection</text>
+<circle cx='537.5' cy='770.3' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='521.5' y='766.3' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Quantum measurement</text>
+<text x='521.5' y='779.3' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>problem</text>
+<circle cx='701.4' cy='249.5' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='717.4' y='245.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Hubble-constant</text>
+<text x='717.4' y='258.5' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>tension</text>
+<circle cx='710.6' cy='253.8' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='726.6' y='253.8' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>S8/ growth tension</text>
+<circle cx='588.0' cy='145.0' r='11' fill='#D7D7D7' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='604.0' y='141.0' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Beyond-Standard-Model</text>
+<text x='604.0' y='154.0' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>frameworks</text>
+<rect x='1010' y='135' width='340' height='390' rx='18' fill='#ffffff' stroke='#194b96' stroke-width='2' filter='url(#softShadow)'/>
+<rect x='1010' y='135' width='340' height='56' rx='18' fill='#123b79'/>
+<text x='1180.0' y='171' text-anchor='middle' font-size='20' font-family='Helvetica, Arial' font-weight='700' fill='white'>Boundary Metrics</text>
+<text x='1034' y='221' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Explanatory volume</text>
+<text x='1326' y='221' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>83.7643</text>
+<line x1='1030' y1='233' x2='1330' y2='233' stroke='#e1e8f5'/>
+<text x='1034' y='260' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Surface area</text>
+<text x='1326' y='260' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>203.1651</text>
+<line x1='1030' y1='272' x2='1330' y2='272' stroke='#e1e8f5'/>
+<text x='1034' y='299' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Roundness</text>
+<text x='1326' y='299' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.1486</text>
+<line x1='1030' y1='311' x2='1330' y2='311' stroke='#e1e8f5'/>
+<text x='1034' y='338' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Density</text>
+<text x='1326' y='338' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.2286</text>
+<line x1='1030' y1='350' x2='1330' y2='350' stroke='#e1e8f5'/>
+<text x='1034' y='377' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Closure ratio</text>
+<text x='1326' y='377' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.175</text>
+<line x1='1030' y1='389' x2='1330' y2='389' stroke='#e1e8f5'/>
+<text x='1034' y='416' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Uncertainty thickness</text>
+<text x='1326' y='416' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.6428</text>
+<line x1='1030' y1='428' x2='1330' y2='428' stroke='#e1e8f5'/>
+<text x='1034' y='455' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Gaps / seams / holes</text>
+<text x='1326' y='455' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>12 / 20 / 13</text>
+<line x1='1030' y1='467' x2='1330' y2='467' stroke='#e1e8f5'/>
+<rect x='1010' y='555' width='340' height='365' rx='18' fill='#ffffff' stroke='#9b1c31' stroke-width='2' filter='url(#softShadow)'/>
+<text x='1032' y='591' font-size='19' font-family='Helvetica, Arial' font-weight='700' fill='#9b1c31'>Highest-severity defects</text>
+<text x='1032' y='623' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: gap.dark_matter_identity</text>
+<text x='1326' y='623' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 17</text>
+<text x='1032' y='638' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<text x='1032' y='662' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: gap.dark_energy_microphysics</text>
+<text x='1326' y='662' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 16</text>
+<text x='1032' y='677' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<text x='1032' y='701' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: gap.quantum_gravity</text>
+<text x='1326' y='701' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 14</text>
+<text x='1032' y='716' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<text x='1032' y='740' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>blocked_or_external: external.bsm_frameworks</text>
+<text x='1326' y='740' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 11.5</text>
+<text x='1032' y='755' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<text x='1032' y='779' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: gap.baryon_asymmetry</text>
+<text x='1326' y='779' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 11</text>
+<text x='1032' y='794' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<text x='1032' y='818' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: gap.confinement_mass_gap</text>
+<text x='1326' y='818' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 11</text>
+<text x='1032' y='833' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<text x='1032' y='857' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: gap.initial_conditions_inflation</text>
+<text x='1326' y='857' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 11</text>
+<text x='1032' y='872' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<rect x='60' y='855' width='720' height='94' rx='14' fill='#ffffff' stroke='#bdcbe6' filter='url(#softShadow)'/>
+<text x='78' y='885' font-size='16' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Interpretation</text>
+<text x='78' y='909' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Time/entropy flow is tangent to boundary phenomena.</text>
+<text x='78' y='925' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Proof/explanation flow is radial from core to surface.</text>
+<text x='78' y='941' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Seams mark cross-domain or approximation interfaces.</text>
+<text x='78' y='957' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Holes mark unreachable or unresolved regions.</text>
+</svg>

@@ -1,0 +1,41 @@
+{
+  "title": "Verified Lean Attempt Demo",
+  "description": "A minimal map used to demonstrate verifier-gated proof attempts without changing map state.",
+  "metadata": {
+    "purpose": "attempt-check example"
+  },
+  "nodes": [
+    {
+      "id": "core.equality_reflexivity",
+      "label": "Equality reflexivity",
+      "kind": "AXIOM",
+      "status": "CORE",
+      "layer": "CORE",
+      "domain": "logic",
+      "statement": "Equality is reflexive.",
+      "formal_systems": ["lean4"]
+    },
+    {
+      "id": "theorem.nat_reflexivity",
+      "label": "Natural-number reflexivity",
+      "kind": "THEOREM",
+      "status": "GAP",
+      "layer": "BOUNDARY",
+      "domain": "arithmetic",
+      "statement": "Every natural number is equal to itself.",
+      "uncertainty": 0.0,
+      "formal_systems": ["lean4"],
+      "formalization_status": "obligation"
+    }
+  ],
+  "edges": [
+    {
+      "source": "core.equality_reflexivity",
+      "target": "theorem.nat_reflexivity",
+      "kind": "PROVES",
+      "status": "GAP",
+      "formal_systems": ["lean4"]
+    }
+  ],
+  "epochs": []
+}

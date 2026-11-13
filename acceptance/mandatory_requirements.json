@@ -1,0 +1,611 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "paper-ci-alpha",
+  "requirements": [
+    {
+      "id": "R001",
+      "original_section": "3.1 baseline, inventory, branch, old requirements",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C01",
+      "normative_behavior": "Identify the actual source checkout and reconcile every inherited mandatory requirement without overwriting local work.",
+      "supported_domain": "Current repository source and bounded-alpha requirement inventory."
+    },
+    {
+      "id": "R002",
+      "original_section": "3.1 threat model and scientific boundaries",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C01",
+      "normative_behavior": "Document and enforce the distinction between source assertions, candidate interpretations, verified formal subjects and policy acceptance.",
+      "supported_domain": "Offline source analysis and restricted authenticated Lean/Std evidence."
+    },
+    {
+      "id": "R003",
+      "original_section": "3.2 early CI",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Provide bounded mandatory CI with read-only permissions and fail-closed aggregation.",
+      "supported_domain": "Existing software workflow jobs; optional paid hosted features are excluded."
+    },
+    {
+      "id": "R004",
+      "original_section": "4.1 shared claims, contexts, inference, evidence, assessments",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Use shared typed claims, contexts, inferences, evidence and dimension-specific assessments with complete persistence and relation contracts.",
+      "supported_domain": "Legacy migration and supported paper argument maps."
+    },
+    {
+      "id": "R005",
+      "original_section": "4.2 AND/OR fixed point, no cyclic seeding",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Require all conjunctive premises, retain alternative derivations and never seed closure from unsupported cycles.",
+      "supported_domain": "Context-qualified shared-kernel deductive closure."
+    },
+    {
+      "id": "R006",
+      "original_section": "4.2 subject/context/policy/evidence matching",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Accept only evidence matching the exact subject, context and policy; reject stale, mismatched or untrusted artifacts.",
+      "supported_domain": "Shared-kernel evidence selection and authenticated restricted-profile bindings."
+    },
+    {
+      "id": "R007",
+      "original_section": "4.3 hypotheses, scope, explicit foundations",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Keep local hypotheses and optional research assumptions distinct from foundations and implement supported checked antecedent discharge.",
+      "supported_domain": "Bounded source scopes and restricted Lean/Std implication cases."
+    },
+    {
+      "id": "R008",
+      "original_section": "4.4 policies, independent dimensions",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Keep deductive, computational, fidelity, contradiction and novelty assessments independent and bind each to policy, evidence, actor and time.",
+      "supported_domain": "Named supported acceptance policies; novelty may remain NOT_ASSESSED."
+    },
+    {
+      "id": "R009",
+      "original_section": "4.5 support alternatives, assumptions, contradictions",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Report support alternatives, assumptions and contradictions while distinguishing missing, stale, invalid and untrusted evidence.",
+      "supported_domain": "Bounded shared-kernel support explanations."
+    },
+    {
+      "id": "R010",
+      "original_section": "5.1 strict parsing and semantic validation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Reject malformed serialized data and expose uniform structured validation issues at load, store, CLI and assessment boundaries.",
+      "supported_domain": "All supported serialized records and legacy compatibility boundaries."
+    },
+    {
+      "id": "R011",
+      "original_section": "5.2 identity and insertion invariance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Keep canonical structured graph identity invariant to unrelated collection order without asserting mathematical equivalence.",
+      "supported_domain": "Shared-kernel graph identity."
+    },
+    {
+      "id": "R012",
+      "original_section": "5.2 complete analysis/environment identities",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Separate source, formal, analysis, stage and run identities and fingerprint every admitted semantic and environment dependency.",
+      "supported_domain": "Supported parser/model/configuration/policy and restricted formal environment."
+    },
+    {
+      "id": "R013",
+      "original_section": "5.3 conservative idempotent migration",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Migrate legacy data idempotently without promoting authored status or inventing trusted foundations; preserve original provenance.",
+      "supported_domain": "Existing legacy map schema to shared kernel."
+    },
+    {
+      "id": "R014",
+      "original_section": "5.4 metrics and immutable scenarios",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C05",
+      "normative_behavior": "Propose evidence actions from actual closure failures and keep actual and hypothetical closure separate without fabricating authority.",
+      "supported_domain": "Named planning heuristics over supported kernel and paper evidence failures."
+    },
+    {
+      "id": "R015",
+      "original_section": "6.1 centralized receipt semantics",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Validate receipt verdict, return code, scope, policy, identities and axioms consistently before loading, signing or using it.",
+      "supported_domain": "Historical and current proof-attempt receipt contract."
+    },
+    {
+      "id": "R016",
+      "original_section": "6.2 exact-byte DSSE and external roles/scopes/revocation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Authenticate exact content bytes under external role/scope/time/revocation policy without equating content signatures with observed execution.",
+      "supported_domain": "DSSE content, execution and fidelity role contracts using ephemeral test keys."
+    },
+    {
+      "id": "R017",
+      "original_section": "6.2 production execution signatures/key lifecycle",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Implement scoped controller execution signatures and authority lifecycle checks while keeping private keys outside workers and committed fixtures.",
+      "supported_domain": "Software authority lifecycle tested with ephemeral keys; production provisioning is explicitly excluded by closeout section 2."
+    },
+    {
+      "id": "R018",
+      "original_section": "6.3 portable replay, inert historical paths, parent event",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Replay exact portable proof material in a fresh isolated run with parent lineage; treat historical paths as inert metadata.",
+      "supported_domain": "Restricted pinned Lean/Std replay; no host fallback."
+    },
+    {
+      "id": "R019",
+      "original_section": "6.3 complete resolved imports/compiler/environment",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Verify exact compiler, library, checker, tactic policy and all admitted imports before formal execution.",
+      "supported_domain": "Existing restricted Lean/Std profile; arbitrary Mathlib and metaprogramming are excluded."
+    },
+    {
+      "id": "R020",
+      "original_section": "6.4 pinned offline nonroot bounded worker",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Require pinned offline nonroot workers with read-only mounts and bounded time/output; refuse unavailable isolation.",
+      "supported_domain": "Generic Linux sandbox and restricted Lean worker controller."
+    },
+    {
+      "id": "R021",
+      "original_section": "6.4 actual isolation controls",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Actually exercise nonroot execution, network denial, protected mounts, secret/socket absence, timeout and output limits.",
+      "supported_domain": "Acquired pinned generic Python Linux container; this does not substitute for isolated paper verification."
+    },
+    {
+      "id": "R022",
+      "original_section": "6.4 separate TeX/Lean profiles and host compatibility",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Keep manuscript parsing nonexecuting, paper verification isolated-only and legacy trusted-host compatibility explicit with consistent exits.",
+      "supported_domain": "Supported TeX source analysis and legacy/restricted Lean modes."
+    },
+    {
+      "id": "R023",
+      "original_section": "6.5 legacy HTML injection",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Keep source-controlled labels and embedded explorer data inert in an actual browser.",
+      "supported_domain": "Existing offline proof-surface explorer."
+    },
+    {
+      "id": "R024",
+      "original_section": "6.5 report/CSV/Lean injection boundaries",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Escape report, Markdown, URL, CSV and generated Lean boundaries without changing mathematical source content.",
+      "supported_domain": "Supported offline exports and Lean scaffold generation."
+    },
+    {
+      "id": "R025",
+      "original_section": "7.1 stage schemas, provenance, resume/cache",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Validate versioned stage outputs, dependency identities and provenance and recover interrupted pure stages without trusting cached verdicts.",
+      "supported_domain": "All supported analysis stages; cache entries never supply execution authority."
+    },
+    {
+      "id": "R026",
+      "original_section": "7.2 local bounded input contracts",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Acquire bounded local TeX/PDF/directory/ZIP/tar inputs with unambiguous entrypoints and safe portable paths.",
+      "supported_domain": "Offline local manuscript acquisition; links, collisions, escapes and ambiguous roots fail closed."
+    },
+    {
+      "id": "R027",
+      "original_section": "7.3 real syntax parser, includes, labels/refs/proofs/math/macros",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Parse supported source syntax and includes with lexical definitions, local bibliography and justified proof associations.",
+      "supported_domain": "Customary LaTeX constructs without executing TeX or guessing unsupported scopes."
+    },
+    {
+      "id": "R028",
+      "original_section": "7.4 real offline PDF fallback",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Reconstruct born-digital PDF page text offline with exact excerpts and explicit NEEDS_OCR for unsupported scans.",
+      "supported_domain": "Existing pypdf adapter; no OCR, invented boxes or universal PDF theorem semantics."
+    },
+    {
+      "id": "R029",
+      "original_section": "7.5 locators and provenance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Validate exact TeX UTF-8 byte anchors and independently reconstructed PDF page excerpts against source artifacts.",
+      "supported_domain": "Supported TeX and born-digital PDF locators, including Unicode and CRLF."
+    },
+    {
+      "id": "R030",
+      "original_section": "8.1 source assertions versus accepted evidence",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Retain AUTHOR_ASSERTED source claims and unresolved interpretations independently from authenticated current-policy acceptance.",
+      "supported_domain": "Supported source statements, generated formal subjects and separate fidelity dimensions."
+    },
+    {
+      "id": "R031",
+      "original_section": "8.2 scoped symbols and argument structure",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Represent scoped symbols, hypotheses, quantifiers and explicit conjunctive/alternative inference groups without treating citations as proof.",
+      "supported_domain": "Supported lexical and discourse scope with conservative unresolved candidates."
+    },
+    {
+      "id": "R032",
+      "original_section": "8.3 genuine optional model protocol/replay",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Provide real configured HTTP extraction, offline none and exact recorded replay while rejecting forged IDs, statuses and stale responses.",
+      "supported_domain": "Existing Ollama protocol implementation tested against local fake provider; no paid/live model required."
+    },
+    {
+      "id": "R033",
+      "original_section": "8.3 prose/implicit-reference and formalization stages",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Produce anchored candidate quantifier/hypothesis/conclusion/reference/symbol decomposition and source-derived supported formal obligations.",
+      "supported_domain": "Bounded semantic candidates and restricted integer-polynomial/antecedent formalization."
+    },
+    {
+      "id": "R034",
+      "original_section": "8.4 source/citation/dependency checkers",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Use consistent checker records and trusted PASS/PARTIAL eligibility with supported citation and dependency analysis.",
+      "supported_domain": "Source-bound advisory and exact/formal checker contracts."
+    },
+    {
+      "id": "R035",
+      "original_section": "8.4 exact computation/counterexample",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Derive bounded exact checks from supported source and distinguish false identities from proof-search failure and unreviewed encoding.",
+      "supported_domain": "Restricted source integer-polynomial identities and bounded rational-polynomial computation."
+    },
+    {
+      "id": "R036",
+      "original_section": "8.4 author-required formal artifacts",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Execute required generated formal subjects only in the authenticated restricted isolated profile and fail explicitly if unavailable.",
+      "supported_domain": "Source-derived supported polynomial obligations; actual worker execution is required for success."
+    },
+    {
+      "id": "R037",
+      "original_section": "8.5 outcome vector/denominators/exit status",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Report source/formal/verified/reviewed/accepted denominators and distinct failure/capability outcomes without collapsing scientific states.",
+      "supported_domain": "All supported paper checker outcomes and public CLI exits."
+    },
+    {
+      "id": "R038",
+      "original_section": "8.6 automatic store/CAS/rebuild",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Persist immutable automatic ingestion, stage dependencies, audit records and queries so rebuild and interrupted transactions preserve lineage.",
+      "supported_domain": "Local SQLite/CAS and supported run/stage/evidence records."
+    },
+    {
+      "id": "R039",
+      "original_section": "8.7 review and acceptance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C07",
+      "normative_behavior": "Apply exact-bound authenticated fidelity reviews and immutable interpretation overrides, recomputing affected views and rejecting stale or forged input.",
+      "supported_domain": "Source/formal review roles and bounded interpretation changes; test authority is not production review."
+    },
+    {
+      "id": "R040",
+      "original_section": "8.8 useful offline reports/source browser",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C07",
+      "normative_behavior": "Provide navigable source/context/formal/evidence/review views and consistent accessible JSON, Markdown, HTML and SARIF.",
+      "supported_domain": "Offline CLI and local reports; no hosted web application."
+    },
+    {
+      "id": "R041",
+      "original_section": "9.1 revision diff and invalidation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Resolve dependency-aware revision changes and safely reuse independent pure/formal artifacts with fresh bindings and current trust/fidelity.",
+      "supported_domain": "Supported A/B independent theorem branches and conservative unresolved-scope fallback."
+    },
+    {
+      "id": "R042",
+      "original_section": "9.2 labeled golden evaluation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C09",
+      "normative_behavior": "Evaluate every original fixture category with independent labels, stratified counts, measured reuse/replay and honest unknown statistics.",
+      "supported_domain": "Original supported alpha corpus with separate development and held-out fixtures."
+    },
+    {
+      "id": "R043",
+      "original_section": "9.3 bounded processing/performance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Bound processing and resources while preserving interrupted recovery and measuring dependency-safe reuse at supported test sizes.",
+      "supported_domain": "Source parser/model/graph/expression limits and local stage persistence."
+    },
+    {
+      "id": "R044",
+      "original_section": "10 CLI/resources/bundle/exits",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Expose compatible public commands and complete installed schemas/resources with consistent validation and exit behavior.",
+      "supported_domain": "Installed wheel/sdist public CLI and API paths outside the source checkout."
+    },
+    {
+      "id": "R045",
+      "original_section": "11.1 workflow security",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Keep immutable action pins, read-only tokens, nonpersisted credentials, bounded jobs/artifacts and trusted manuscript separation.",
+      "supported_domain": "Software and manuscript workflows; no PR secrets or paid-feature dependency."
+    },
+    {
+      "id": "R046",
+      "original_section": "11.2 matrix/lint/types/tests/audit/package",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Qualify the actual candidate with existing Python/OS matrix, lint/types, dependency audit and installed distribution checks.",
+      "supported_domain": "Existing required software CI jobs and unchanged coverage thresholds."
+    },
+    {
+      "id": "R047",
+      "original_section": "11.3 fail-closed required status",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Require exact success from every fixed mandatory job and reject omitted, unexpected, skipped, cancelled or failed results.",
+      "supported_domain": "Existing ci-required aggregation, extended by the alpha-readiness contract."
+    },
+    {
+      "id": "R048",
+      "original_section": "11.4 trusted-base manuscript workflow",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Validate manuscript data through an installed trusted validator with recorded immutable revisions and guarded manual dispatch.",
+      "supported_domain": "Data-only manuscript workflow; source code from submission is never imported as validator."
+    },
+    {
+      "id": "R049",
+      "original_section": "11.5 optional hosted features",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Provide local downloadable diagnostics and capability-gate optional paid hosted scanning/attestation features.",
+      "supported_domain": "Local SARIF and manual optional CodeQL; no entitlement or native-attestation requirement."
+    },
+    {
+      "id": "R050",
+      "original_section": "11.6 updates/build-only release/protection",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C12",
+      "normative_behavior": "Keep dependency updates reviewable and release workflow build-only with documented protection guidance.",
+      "supported_domain": "Software configuration and unpublished artifacts only; server settings, tags and publication require separate authorization."
+    },
+    {
+      "id": "R051",
+      "original_section": "12 mandatory test catalog",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C09",
+      "normative_behavior": "Preserve all original mandatory supported fixture categories and integrated acceptance scenarios with actual execution evidence.",
+      "supported_domain": "Twelve corpus categories and five installed-package scenarios defined by closeout."
+    },
+    {
+      "id": "R052",
+      "original_section": "13 docs/release hygiene/evidence",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C12",
+      "normative_behavior": "Close the software alpha only after all capabilities/scenarios/readiness gates pass and qualify matching versioned distributions.",
+      "supported_domain": "Target 0.8.0a1 after capability gates; publication and production authority remain separate."
+    },
+    {
+      "id": "C01",
+      "original_section": "3; hierarchy in 2",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C01",
+      "normative_behavior": "Reconcile every inherited mandatory row into a deletion-resistant requirement/evidence contract and maintain truthful current and historical status.",
+      "supported_domain": "Bounded software-alpha requirements, excluding production setup and originally deferred domains."
+    },
+    {
+      "id": "C02",
+      "original_section": "4 C02",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C02",
+      "normative_behavior": "Provide strict versioned schemas, semantic validators and structured issues for every emitted record, preserving independent identities and assessment dimensions.",
+      "supported_domain": "Source/IR, symbol/scope, assertion/candidate, inference/context, stage/cache, formal/execution/review/evidence/assessment and run/revision records."
+    },
+    {
+      "id": "C03",
+      "original_section": "4 C03",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C03",
+      "normative_behavior": "Implement bounded lexical/discourse scopes, token-exact macro bindings, typed hypotheses, checked antecedents and relation-specific semantics.",
+      "supported_domain": "Supported static LaTeX declarations and restricted Lean/Std implication cases; dynamic TeX and arbitrary theory discharge are unsupported."
+    },
+    {
+      "id": "C04",
+      "original_section": "4 C04",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C04",
+      "normative_behavior": "Complete local bibliography, justified proof links, anchored candidate decomposition, independent candidate-fidelity and consistent checker outcomes.",
+      "supported_domain": "Existing-provider configured HTTP/replay and offline analysis; model interpretations remain advisory."
+    },
+    {
+      "id": "C05",
+      "original_section": "4 C05",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C05",
+      "normative_behavior": "Derive exact evidence actions from closure failures and simulate named counterfactual conditions without mutating accepted state.",
+      "supported_domain": "Supported evidence/review/context failures and versioned planning heuristics."
+    },
+    {
+      "id": "C06",
+      "original_section": "4 C06",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C06",
+      "normative_behavior": "Track dependencies, classify revisions and actually reuse independent pure/formal artifacts with fresh source bindings and current authority/fidelity checks.",
+      "supported_domain": "Source moves and statement/domain/definition/proof/citation/configuration/environment/trust changes, with conservative unresolved fallback."
+    },
+    {
+      "id": "C07",
+      "original_section": "4 C07",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C07",
+      "normative_behavior": "Complete navigable offline review/query/report paths and immutable scoped interpretation overrides with recomputation.",
+      "supported_domain": "Existing CLI, SQLite and escaped local HTML/Markdown/JSON/SARIF; no hosted application."
+    },
+    {
+      "id": "C08",
+      "original_section": "4 C08",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C08",
+      "normative_behavior": "Preserve and qualify exact restricted-profile materials, independent execution/replay, signature roles, isolated key boundaries and explicit host compatibility.",
+      "supported_domain": "Pinned Lean/Std approved programs and ephemeral test authority, not arbitrary hostile metaprogramming or production approval."
+    },
+    {
+      "id": "C09",
+      "original_section": "5 C09",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C09",
+      "normative_behavior": "Cover all twelve original fixture categories with independent labels, stratified quantitative results and honest unknowns.",
+      "supported_domain": "Original development/held-out corpus, bounded supported semantics and measured resource/reuse/replay outcomes."
+    },
+    {
+      "id": "C10",
+      "original_section": "6 C10",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C10",
+      "normative_behavior": "Make readiness consume same-candidate collected tests and execution artifacts, reject missing/stale/skipped evidence and gate every existing mandatory CI job.",
+      "supported_domain": "Read-only bounded CI, installed distributions and distinct source/run/manifest identities; no paid hosted requirement."
+    },
+    {
+      "id": "C11",
+      "original_section": "7 C11",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C11",
+      "normative_behavior": "Run all five integrated scenarios from an installed wheel outside checkout, demonstrating exact acceptance, independent reuse, offline behavior and edge-case review.",
+      "supported_domain": "Original fixtures and ephemeral test authority; real isolated execution is distinct from worker doubles."
+    },
+    {
+      "id": "C12",
+      "original_section": "8 C12",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C12",
+      "normative_behavior": "Advance to and qualify 0.8.0a1 only after all mandatory capabilities/scenarios pass, reporting separate readiness/production/publication/scholarly states.",
+      "supported_domain": "Software release readiness; publication/tagging and production identities remain separately authorized."
+    }
+  ],
+  "fixture_category_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F10",
+    "F11",
+    "F12"
+  ],
+  "scenario_ids": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "fixture_categories": [
+    {
+      "id": "F01",
+      "description": "Correct small LaTeX paper with theorem, definition, proof, equation and explicit dependency."
+    },
+    {
+      "id": "F02",
+      "description": "Multi-file source, custom environment, supported macro and use/definition provenance."
+    },
+    {
+      "id": "F03",
+      "description": "Same notation in distinct scopes with shadowing and restoration."
+    },
+    {
+      "id": "F04",
+      "description": "Source-derived conjunctive premises and an explicit alternative derivation."
+    },
+    {
+      "id": "F05",
+      "description": "Missing local citation/label and genuinely ambiguous proof association."
+    },
+    {
+      "id": "F06",
+      "description": "Explicit quantified antecedents and checked local hypothesis containment/discharge."
+    },
+    {
+      "id": "F07",
+      "description": "Unsupported macro and prose-only candidate analysis with honest coverage."
+    },
+    {
+      "id": "F08",
+      "description": "Archive/path/TeX hooks, HTML payloads and model prompt-injection boundaries."
+    },
+    {
+      "id": "F09",
+      "description": "Formatting/relocation, definition/hypothesis changes, independent-branch reuse and trust revocation."
+    },
+    {
+      "id": "F10",
+      "description": "Real born-digital PDF reconstruction and unsupported scan with NEEDS_OCR."
+    },
+    {
+      "id": "F11",
+      "description": "True and false exact identities derived from source."
+    },
+    {
+      "id": "F12",
+      "description": "Reflexivity and Agoh integration anchors with explicitly synthetic/adapted mini-paper provenance."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "A",
+      "description": "Manuscript to accepted-under-policy claim via anchored scopes, source formalization, real isolated Lean/replay and current authenticated fidelity decisions."
+    },
+    {
+      "id": "B",
+      "description": "Independent A/B branches: invalidate changed dependencies, actually reuse B artifacts, preserve historical evidence and require current fidelity/revocation handling."
+    },
+    {
+      "id": "C",
+      "description": "Installed public interfaces ingest/index/report without optional services and return explicit nonzero required-formal unavailability."
+    },
+    {
+      "id": "D",
+      "description": "Installed multi-file scope/citation/proof links, configured protocol/replay, real PDF and interpretation override update graphs/reports without source mutation or promotion."
+    },
+    {
+      "id": "E",
+      "description": "Complete installed package/regression qualification across kernel/schema/trust/security/math/provider/store/revision/CLI/workflow/benchmark boundaries at unchanged coverage gates."
+    }
+  ]
+}

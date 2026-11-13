@@ -1,0 +1,70 @@
+name: Paper CI
+on:
+  pull_request:
+    paths: ['papers/**', 'proofmap/**', 'tests/fixtures/papers/**', '.github/workflows/paper-ci.yml']
+  workflow_dispatch:
+    inputs:
+      validator-ref:
+        description: Reviewed public validator revision (configure before first dispatch)
+        type: choice
+        options: ['0000000000000000000000000000000000000000']
+        default: '0000000000000000000000000000000000000000'
+permissions:
+  contents: read
+concurrency:
+  group: paper-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  manuscript-conformance:
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Enforce approved dispatch validator
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          VALIDATOR_REF: ${{ inputs.validator-ref }}
+        run: |
+          test "$VALIDATOR_REF" != "0000000000000000000000000000000000000000" # Refuse an unconfigured export.
+          test "$VALIDATOR_REF" = "0000000000000000000000000000000000000000"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          ref: ${{ github.event.pull_request.base.sha || inputs.validator-ref }}
+          path: validator
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          path: manuscript
+          persist-credentials: false
+          sparse-checkout: papers
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - name: Detect whether manuscripts were submitted
+        id: manuscripts
+        shell: bash
+        run: |
+          if [ -d manuscript/papers ]; then
+            echo 'present=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'present=false' >> "$GITHUB_OUTPUT"
+            mkdir -p reports
+            printf '%s\n' '{"status":"NOT_APPLICABLE","reason":"No papers directory","proof":false}' > reports/summary.json
+          fi
+      - name: Record immutable validator and submission identities
+        run: |
+          mkdir -p reports
+          git -C validator rev-parse HEAD > reports/validator-sha.txt
+          git -C manuscript rev-parse HEAD > reports/manuscript-sha.txt
+      - name: Install validator from trusted base only
+        if: steps.manuscripts.outputs.present == 'true'
+        run: python -m pip install -c validator/constraints-ci.txt './validator[paper]'
+      - name: Treat manuscript checkout only as data
+        if: steps.manuscripts.outputs.present == 'true'
+        run: python -I validator/scripts/paper_ci_corpus.py manuscript/papers reports
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1; Dependabot PR #3
+        if: always()
+        with:
+          name: paper-ci-review
+          path: reports
+          retention-days: 7

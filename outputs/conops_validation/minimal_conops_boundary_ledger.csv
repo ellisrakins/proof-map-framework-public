@@ -1,0 +1,3 @@
+id,label,kind,status,layer,domain,theory_ids,formal_systems,regime_dimensions,proof_distance,uncertainty,boundary_weight,source_ids,evidence_class,last_verified,uncertainty_kind,statement,notes
+boundary.drag_residual,Air-drag residual,GAP,GAP,BOUNDARY,experiment,,,{},2,0.65,3,,,,,The residual between ideal prediction and measurement needs a drag or calibration closure.,This intentional gap proves the validator detects unresolved boundary debt.
+boundary.sensor_measurement,Sensor measurement,OBSERVATION,EMPIRICAL,BOUNDARY,experiment,,,{},2,0.18,2,,,,,A sensor reports the observed drop time in the validation run.,

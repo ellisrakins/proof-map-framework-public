@@ -1,0 +1,17 @@
+# Tested CI/verification dependency versions; public extras retain compatibility ranges.
+pytest==9.1.1
+pytest-cov==7.1.0
+coverage==7.16.1
+hypothesis==6.168.1
+ruff==0.16.8
+mypy==2.3.1
+build==1.6.1
+twine==7.0.0
+playwright==1.63.0
+reportlab==5.0.1
+jsonschema==4.26.0
+pylatexenc==2.11
+pypdf==6.19.0
+cryptography==50.0.1
+types-jsonschema==4.26.0.20260518
+pip-audit==2.10.1

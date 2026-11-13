@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:campaign-record:1",
+  "title": "Immutable research campaign record v1 (no trust authority)",
+  "type": "object",
+  "required": ["schema_version", "kind", "id"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"$ref": "#/$defs/digest"},
+    "kind": {"enum": ["Campaign", "CampaignSnapshot", "CampaignPaperSelection", "Goal", "QualifiedClaimRef", "CampaignRelationCandidate", "OperationPolicy", "CapabilityAssessment", "ActionRequest", "Task", "TaskAttempt", "TaskEvent", "TaskResult", "ReviewHandoff", "CampaignAssessmentSnapshot", "CampaignExportManifest", "CampaignPlan", "OperationAuthorization", "CampaignMembershipEvent", "GoalRebinding", "CampaignRevisionImpact", "CampaignImport", "CampaignRecovery", "CampaignPilot"]},
+    "campaign_id": {"$ref": "#/$defs/digest"},
+    "created_at": {"type": "string", "minLength": 1},
+    "actor": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1, "maxLength": 512},
+    "objective": {"type": "string", "minLength": 1, "maxLength": 32000}
+  },
+  "allOf": [
+    {"if": {"properties": {"kind": {"const": "Campaign"}}}, "then": {"required": ["name", "objective", "actor", "created_at"]}},
+    {"if": {"properties": {"kind": {"const": "CampaignSnapshot"}}}, "then": {"required": ["campaign_id", "objective", "selections", "goals", "operation_policy", "parent_snapshot", "created_at", "actor"], "properties": {"selections": {"type": "array", "maxItems": 1000, "items": {"type": "object", "required": ["paper_id", "run_id", "revision"], "additionalProperties": false, "properties": {"paper_id": {"type": "string", "minLength": 1}, "run_id": {"type": "string", "minLength": 1}, "revision": {"$ref": "#/$defs/digest"}}}}, "goals": {"type": "array", "maxItems": 10000}, "operation_policy": {"$ref": "#/$defs/digest"}, "parent_snapshot": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]}}}},
+    {"if": {"properties": {"kind": {"const": "Goal"}}}, "then": {"required": ["target", "question", "origin", "actor"], "properties": {"target": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/qualifiedRef"}]}, "question": {"type": ["string", "null"]}, "origin": {"enum": ["SOURCE_BOUND_CLAIM", "RESEARCHER_QUESTION"]}}}},
+    {"if": {"properties": {"kind": {"const": "Task"}}}, "then": {"required": ["campaign_id", "action", "action_id", "target", "work_key", "request_id", "authorization_id", "policy_id", "snapshot_id", "actor", "created_at"], "properties": {"action": {"type": "object", "required": ["target", "paper_action", "prerequisites"]}, "target": {"anyOf": [{"$ref": "#/$defs/qualifiedRef"}, {"$ref": "#/$defs/sourceStage"}]}, "work_key": {"$ref": "#/$defs/digest"}, "action_id": {"$ref": "#/$defs/digest"}, "request_id": {"$ref": "#/$defs/digest"}, "authorization_id": {"$ref": "#/$defs/digest"}, "policy_id": {"$ref": "#/$defs/digest"}, "snapshot_id": {"$ref": "#/$defs/digest"}}}},
+    {"if": {"properties": {"kind": {"const": "TaskEvent"}}}, "then": {"required": ["task_id", "campaign_id", "state", "actor", "reason", "projection", "created_at"], "properties": {"task_id": {"$ref": "#/$defs/digest"}, "state": {"$ref": "#/$defs/taskState"}, "projection": {"type": "object", "required": ["task_id", "state", "generation", "attempt_count"], "properties": {"task_id": {"$ref": "#/$defs/digest"}, "state": {"$ref": "#/$defs/taskState"}, "generation": {"type": "integer", "minimum": 0}, "attempt_count": {"type": "integer", "minimum": 0}}}}}},
+    {"if": {"properties": {"kind": {"const": "TaskAttempt"}}}, "then": {"required": ["task_id", "campaign_id", "phase", "parent_attempt", "generation"], "properties": {"phase": {"enum": ["STARTED", "FINISHED"]}, "generation": {"type": ["integer", "null"], "minimum": 0}}}},
+    {"if": {"properties": {"kind": {"const": "CampaignPlan"}}}, "then": {"required": ["campaign_id", "snapshot_id", "authority", "formal_scope", "actions", "papers", "blockers", "ranking_policy", "assessment_policy"], "properties": {"authority": {"const": "PLANNING_ONLY"}, "formal_scope": {"enum": ["supported", "selected", "all"]}, "actions": {"type": "array", "maxItems": 10000}, "papers": {"type": "array"}, "blockers": {"type": "array"}}}},
+    {"if": {"properties": {"kind": {"const": "OperationAuthorization"}}}, "then": {"required": ["campaign_id", "policy_id", "snapshot_id", "action_ids", "actor", "authorized_at"], "properties": {"action_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/digest"}}}}}
+  ],
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "taskState": {"enum": ["REQUESTED", "AUTHORIZED", "QUEUED", "RUNNING", "SUCCEEDED", "CHECK_FAILED", "UNAVAILABLE", "ERROR", "CANCELLED", "STALE", "BLOCKED", "AWAITING_REVIEW", "DECISION_RECORDED", "REJECTED"]},
+    "qualifiedRef": {"type": "object", "additionalProperties": false, "required": ["paper_id", "run_id", "revision", "assertion_id", "assertion_digest", "binding_digest", "interpretation_digest", "assessment_policy"], "properties": {"paper_id": {"type": "string", "minLength": 1}, "run_id": {"type": "string", "minLength": 1}, "revision": {"$ref": "#/$defs/digest"}, "assertion_id": {"$ref": "#/$defs/digest"}, "assertion_digest": {"$ref": "#/$defs/digest"}, "binding_digest": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]}, "interpretation_digest": {"$ref": "#/$defs/digest"}, "assessment_policy": {"$ref": "#/$defs/digest"}}},
+    "sourceStage": {"type": "object", "additionalProperties": false, "required": ["source_stage", "source_path", "revision", "paper_id", "entrypoint"], "properties": {"source_stage": {"enum": ["INGEST_SOURCE", "REPARSE_SOURCE", "EXTRACT_RECORDED", "EXTRACT_CONFIGURED"]}, "source_path": {"type": "string", "minLength": 1}, "revision": {"$ref": "#/$defs/digest"}, "paper_id": {"type": "string", "minLength": 1}, "entrypoint": {"type": ["string", "null"]}}}
+  }
+}

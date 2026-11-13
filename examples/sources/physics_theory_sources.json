@@ -1,0 +1,303 @@
+{
+  "sources": [
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "group_field_theory",
+        "quantum_gravity"
+      ],
+      "id": "baratin_oriti_gft_2011",
+      "notes": "",
+      "publication_date": "2011",
+      "publisher": "Journal of Physics: Conference Series",
+      "source_type": "review",
+      "title": "Ten questions on Group Field Theory",
+      "url": "https://arxiv.org/abs/1112.3270"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "quantum_gravity",
+        "cosmology"
+      ],
+      "id": "barrau_qg_overview_2017",
+      "notes": "",
+      "publication_date": "2017",
+      "publisher": "Comptes Rendus Physique",
+      "source_type": "review",
+      "title": "Testing different approaches to quantum gravity with cosmology",
+      "url": "https://arxiv.org/abs/1705.01597"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "condensed_matter",
+        "superconductivity"
+      ],
+      "id": "bcs_1957",
+      "notes": "",
+      "publication_date": "1957",
+      "publisher": "Physical Review",
+      "source_type": "foundational_paper",
+      "title": "Theory of Superconductivity",
+      "url": "https://doi.org/10.1103/PhysRev.108.1175"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "modified_gravity",
+        "cosmology"
+      ],
+      "id": "clifton_modified_gravity_2012",
+      "notes": "",
+      "publication_date": "2012",
+      "publisher": "Physics Reports",
+      "source_type": "review",
+      "title": "Modified Gravity and Cosmology",
+      "url": "https://arxiv.org/abs/1106.2476"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "noncommutative_geometry",
+        "quantum_gravity"
+      ],
+      "id": "connes_ncg_1996",
+      "notes": "",
+      "publication_date": "1996",
+      "publisher": "Communications in Mathematical Physics",
+      "source_type": "foundational_paper",
+      "title": "Gravity coupled with matter and the foundation of non-commutative geometry",
+      "url": "https://arxiv.org/abs/hep-th/9603053"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "dark_energy",
+        "cosmology"
+      ],
+      "id": "copeland_dark_energy_2006",
+      "notes": "",
+      "publication_date": "2006",
+      "publisher": "International Journal of Modern Physics D",
+      "source_type": "review",
+      "title": "Dynamics of dark energy",
+      "url": "https://arxiv.org/abs/hep-th/0603057"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "dark_sector",
+        "dark_photon"
+      ],
+      "id": "dark_photon_review_2020",
+      "notes": "",
+      "publication_date": "2020",
+      "publisher": "Physics Reports",
+      "source_type": "review",
+      "title": "The Dark Photon",
+      "url": "https://arxiv.org/abs/2005.01515"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "gravity",
+        "spacetime"
+      ],
+      "id": "einstein_1916_gr",
+      "notes": "",
+      "publication_date": "1916",
+      "publisher": "Annalen der Physik",
+      "source_type": "foundational_paper",
+      "title": "The Foundation of the General Theory of Relativity",
+      "url": "https://einsteinpapers.press.princeton.edu/vol6-trans/158"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "classical_mechanics",
+        "electromagnetism",
+        "thermodynamics",
+        "quantum_mechanics"
+      ],
+      "id": "feynman_lectures",
+      "notes": "",
+      "publication_date": "1963",
+      "publisher": "California Institute of Technology",
+      "source_type": "open_textbook",
+      "title": "The Feynman Lectures on Physics",
+      "url": "https://www.feynmanlectures.caltech.edu/"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "condensed_matter",
+        "density_functional_theory"
+      ],
+      "id": "hohenberg_kohn_1964",
+      "notes": "",
+      "publication_date": "1964",
+      "publisher": "Physical Review",
+      "source_type": "foundational_paper",
+      "title": "Inhomogeneous Electron Gas",
+      "url": "https://doi.org/10.1103/PhysRev.136.B864"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "causal_dynamical_triangulations",
+        "quantum_gravity"
+      ],
+      "id": "loll_cdt_2019",
+      "notes": "",
+      "publication_date": "2019",
+      "publisher": "Classical and Quantum Gravity",
+      "source_type": "review",
+      "title": "Quantum Gravity from Causal Dynamical Triangulations: A Review",
+      "url": "https://arxiv.org/abs/1905.08669"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "holography",
+        "quantum_gravity",
+        "string_theory"
+      ],
+      "id": "maldacena_1997",
+      "notes": "",
+      "publication_date": "1997",
+      "publisher": "Advances in Theoretical and Mathematical Physics",
+      "source_type": "foundational_paper",
+      "title": "The Large N Limit of Superconformal Field Theories and Supergravity",
+      "url": "https://arxiv.org/abs/hep-th/9711200"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "modified_gravity",
+        "dark_matter"
+      ],
+      "id": "milgrom_mond_1983",
+      "notes": "",
+      "publication_date": "1983",
+      "publisher": "The Astrophysical Journal",
+      "source_type": "foundational_paper",
+      "title": "A modification of the Newtonian dynamics as a possible alternative to hidden mass",
+      "url": "https://doi.org/10.1086/161130"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "asymptotic_safety",
+        "quantum_gravity"
+      ],
+      "id": "niedermaier_reuter_2006",
+      "notes": "",
+      "publication_date": "2006",
+      "publisher": "Living Reviews in Relativity",
+      "source_type": "living_review",
+      "title": "The Asymptotic Safety Scenario in Quantum Gravity",
+      "url": "https://link.springer.com/article/10.12942/lrr-2006-5"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "particle_physics",
+        "standard_model",
+        "beyond_standard_model"
+      ],
+      "id": "pdg_rpp_2024",
+      "notes": "",
+      "publication_date": "2024",
+      "publisher": "Particle Data Group",
+      "source_type": "authoritative_review",
+      "title": "Review of Particle Physics 2024",
+      "url": "https://pdg.lbl.gov/2024/"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "twistor_theory",
+        "mathematical_physics"
+      ],
+      "id": "penrose_twistor_1967",
+      "notes": "",
+      "publication_date": "1967",
+      "publisher": "Journal of Mathematical Physics",
+      "source_type": "foundational_paper",
+      "title": "Twistor algebra",
+      "url": "https://doi.org/10.1063/1.1705200"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "cosmology",
+        "lambda_cdm",
+        "inflation"
+      ],
+      "id": "planck_2018_parameters",
+      "notes": "",
+      "publication_date": "2018",
+      "publisher": "Planck Collaboration",
+      "source_type": "collaboration_result",
+      "title": "Planck 2018 results. VI. Cosmological parameters",
+      "url": "https://arxiv.org/abs/1807.06209"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "loop_quantum_gravity",
+        "quantum_gravity"
+      ],
+      "id": "rovelli_lqg_2008",
+      "notes": "",
+      "publication_date": "2008",
+      "publisher": "Living Reviews in Relativity",
+      "source_type": "living_review",
+      "title": "Loop Quantum Gravity",
+      "url": "https://link.springer.com/article/10.12942/lrr-2008-5"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "causal_sets",
+        "quantum_gravity"
+      ],
+      "id": "surya_causal_sets_2019",
+      "notes": "",
+      "publication_date": "2019",
+      "publisher": "Living Reviews in Relativity",
+      "source_type": "living_review",
+      "title": "The causal set approach to quantum gravity",
+      "url": "https://link.springer.com/article/10.1007/s41114-019-0023-1"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "emergent_spacetime",
+        "quantum_information"
+      ],
+      "id": "van_raamsdonk_2010",
+      "notes": "",
+      "publication_date": "2010",
+      "publisher": "General Relativity and Gravitation",
+      "source_type": "foundational_paper",
+      "title": "Building up spacetime with quantum entanglement",
+      "url": "https://arxiv.org/abs/1005.3035"
+    },
+    {
+      "checked_date": "2026-07-26",
+      "domains": [
+        "effective_field_theory",
+        "quantum_field_theory"
+      ],
+      "id": "weinberg_eft_1979",
+      "notes": "",
+      "publication_date": "1979",
+      "publisher": "Physica A",
+      "source_type": "foundational_paper",
+      "title": "Phenomenological Lagrangians",
+      "url": "https://doi.org/10.1016/0370-1573(79)90223-1"
+    }
+  ]
+}

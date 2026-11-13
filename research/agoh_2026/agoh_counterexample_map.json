@@ -1,0 +1,263 @@
+{
+  "title": "Agoh 2026 Alternating-Sum Conjecture: Counterexample Map",
+  "description": "A source-bound map separating the published conjecture, explicit n=2 counterexample, exact algebraic certificate, stronger finite-difference theorem, and unresolved priority review.",
+  "metadata": {
+    "result": "disproof_priority_unconfirmed",
+    "checked_date": "2026-08-05",
+    "priority_caveat": "No correction or resolution was found in targeted searches; author/editor confirmation remains external work."
+  },
+  "nodes": [
+    {
+      "id": "source.agoh_2026_a9",
+      "label": "Agoh 2026 paper",
+      "kind": "OBSERVATION",
+      "status": "EXTERNAL",
+      "layer": "EXTERIOR",
+      "domain": "publication",
+      "statement": "INTEGERS 26 (2026), A9 defines Q_n and states the final factor-characterization conjecture.",
+      "source_ids": [
+        "agoh_2026_a9",
+        "integers_volume_26"
+      ],
+      "last_verified": "2026-08-05",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "definition.agoh_qn",
+      "label": "Alternating rational sum Q_n",
+      "kind": "DEFINITION",
+      "status": "CORE",
+      "layer": "CORE",
+      "domain": "algebra",
+      "statement": "Q_n(x;f) = sum_{i=0}^n (-1)^i binom(n,i) / f(x^i).",
+      "source_ids": [
+        "agoh_2026_a9"
+      ],
+      "uncertainty": 0.0
+    },
+    {
+      "id": "conjecture.agoh_factor_characterization",
+      "label": "Agoh factor-characterization conjecture",
+      "kind": "GAP",
+      "status": "GAP",
+      "layer": "BOUNDARY",
+      "domain": "algebra",
+      "statement": "For nonzero real-rooted f, the numerator of Q_n has at least (x-1)^n iff f is a monomial or has only simple roots different from 1.",
+      "source_ids": [
+        "agoh_2026_a9"
+      ],
+      "uncertainty": 0.0
+    },
+    {
+      "id": "counterexample.repeated_root_square",
+      "label": "Repeated-root test polynomial",
+      "kind": "MODEL",
+      "status": "COMPUTED",
+      "layer": "INTERIOR",
+      "domain": "algebra",
+      "statement": "Take f(t)=(t-2)^2 and n=2; f is real-rooted with a repeated root and is not a monomial.",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "calculation.n2_reduced_fraction",
+      "label": "Exact reduced Q_2 fraction",
+      "kind": "THEOREM",
+      "status": "COMPUTED",
+      "layer": "INTERIOR",
+      "domain": "computer_algebra",
+      "statement": "Q_2=N/((x-2)^2(x^2-2)^2), with N=x^6-4x^5-2x^4+16x^3-3x^2-20x+12 and polynomial gcd 1.",
+      "formal_systems": [
+        "python-exact-rational"
+      ],
+      "formalization_status": "verified computational certificate",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "theorem.n2_factorization",
+      "label": "Load-bearing numerator factorization",
+      "kind": "THEOREM",
+      "status": "PROVED",
+      "layer": "INTERIOR",
+      "domain": "algebra",
+      "statement": "N=(x-1)^2(x^4-2x^3-7x^2+4x+12), with denominator value 1 and cofactor value 8 at x=1.",
+      "formal_systems": [
+        "lean4",
+        "python-exact-rational"
+      ],
+      "formalization_status": "Lean algebraic identity plus exact arithmetic certificate",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "theorem.general_finite_difference",
+      "label": "General finite-difference divisibility theorem",
+      "kind": "THEOREM",
+      "status": "PROVED",
+      "layer": "INTERIOR",
+      "domain": "analysis",
+      "statement": "For every polynomial f with f(1) nonzero and every n>=0, the reduced numerator of Q_n is divisible by (x-1)^n.",
+      "notes": "Proof uses h(t)=1/f(exp t) and the nth finite difference identity. Full all-n theorem is not yet formalized in Lean.",
+      "formalization_status": "human deductive proof; finite identity regression-tested",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "theorem.exact_all_n_counterexample",
+      "label": "The repeated-root example works exactly for every n",
+      "kind": "THEOREM",
+      "status": "PROVED",
+      "layer": "INTERIOR",
+      "domain": "analysis",
+      "statement": "For f(t)=(t-2)^2, the reduced numerator of Q_n has a zero of exactly order n at x=1 for every n>=1.",
+      "notes": "The nth derivative at zero of 1/(2-exp(t))^2 is a strictly positive convergent series, so the first surviving finite-difference coefficient is nonzero.",
+      "formalization_status": "human deductive proof; not yet formalized in Lean",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "theorem.natural_domain",
+      "label": "Natural-domain correction",
+      "kind": "THEOREM",
+      "status": "DERIVED",
+      "layer": "BOUNDARY",
+      "domain": "source_interpretation",
+      "statement": "The definition requires f(1) nonzero because its i=0 summand is 1/f(1); the printed nonzero real-rooted domain does not ensure this.",
+      "source_ids": [
+        "agoh_2026_a9"
+      ],
+      "uncertainty": 0.0
+    },
+    {
+      "id": "theorem.exact_order_criterion",
+      "label": "Exact-order replacement criterion",
+      "kind": "THEOREM",
+      "status": "PROVED",
+      "layer": "INTERIOR",
+      "domain": "analysis",
+      "statement": "For f(1) nonzero, the zero of Q_n at x=1 has exact order n iff ((t d/dt)^n (1/f(t))) evaluated at t=1 is nonzero.",
+      "notes": "This reframes the meaningful successor problem as classifying excess multiplicity.",
+      "formalization_status": "human deductive proof; not yet formalized in Lean",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "conclusion.only_if_false",
+      "label": "Only-if direction is false",
+      "kind": "THEOREM",
+      "status": "DERIVED",
+      "layer": "INTERIOR",
+      "domain": "algebra",
+      "statement": "The repeated-root polynomial f(t)=(t-2)^2 satisfies the asserted numerator divisibility, so the conjectured only-if classification is false.",
+      "uncertainty": 0.0
+    },
+    {
+      "id": "boundary.priority_review",
+      "label": "External novelty and priority review",
+      "kind": "GAP",
+      "status": "GAP",
+      "layer": "BOUNDARY",
+      "domain": "scholarly_review",
+      "statement": "Confirm with the author/editor and a broader expert literature review that the disproof has not already been reported.",
+      "notes": "This does not affect the internal mathematical validity of the counterexample.",
+      "uncertainty": 0.5
+    }
+  ],
+  "edges": [
+    {
+      "source": "source.agoh_2026_a9",
+      "target": "definition.agoh_qn",
+      "kind": "DEFINES",
+      "status": "ACTIVE",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "source.agoh_2026_a9",
+      "target": "conjecture.agoh_factor_characterization",
+      "kind": "DEFINES",
+      "status": "ACTIVE",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "counterexample.repeated_root_square",
+      "target": "calculation.n2_reduced_fraction",
+      "kind": "DEPENDS_ON",
+      "status": "COMPUTED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "definition.agoh_qn",
+      "target": "calculation.n2_reduced_fraction",
+      "kind": "DEPENDS_ON",
+      "status": "COMPUTED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "calculation.n2_reduced_fraction",
+      "target": "theorem.n2_factorization",
+      "kind": "PROVES",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "theorem.n2_factorization",
+      "target": "conclusion.only_if_false",
+      "kind": "PROVES",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "counterexample.repeated_root_square",
+      "target": "conclusion.only_if_false",
+      "kind": "PROVES",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "theorem.general_finite_difference",
+      "target": "conclusion.only_if_false",
+      "kind": "PROVES",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "theorem.general_finite_difference",
+      "target": "theorem.exact_all_n_counterexample",
+      "kind": "DEPENDS_ON",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "theorem.exact_all_n_counterexample",
+      "target": "conclusion.only_if_false",
+      "kind": "PROVES",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "definition.agoh_qn",
+      "target": "theorem.natural_domain",
+      "kind": "PROVES",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "theorem.general_finite_difference",
+      "target": "theorem.exact_order_criterion",
+      "kind": "DEPENDS_ON",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "conclusion.only_if_false",
+      "target": "conjecture.agoh_factor_characterization",
+      "kind": "BLOCKS",
+      "status": "PROVED",
+      "uncertainty": 0.0
+    },
+    {
+      "source": "boundary.priority_review",
+      "target": "conclusion.only_if_false",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "status": "GAP",
+      "notes": "Constrains novelty/priority only, not the algebraic disproof.",
+      "uncertainty": 0.5
+    }
+  ],
+  "epochs": []
+}

@@ -1,0 +1,273 @@
+{
+  "coordinate_mode": "proof_depth",
+  "description": "Generated theory scaffold. Foundation and framework nodes are declared commitments; open questions and tests remain explicit boundary debt.",
+  "domain_order": [
+    "quantum_gravity"
+  ],
+  "edges": [
+    {
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "is_flow": false,
+      "is_gaplike": false,
+      "is_seam": false,
+      "kind": "DEFINES",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "core.loop_quantum_gravity.foundation_1",
+      "statement": "",
+      "status": "ASSUMED",
+      "target": "model.loop_quantum_gravity",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.72,
+      "weight": 1.0
+    },
+    {
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "is_flow": false,
+      "is_gaplike": false,
+      "is_seam": false,
+      "kind": "DEFINES",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "core.loop_quantum_gravity.foundation_2",
+      "statement": "",
+      "status": "ASSUMED",
+      "target": "model.loop_quantum_gravity",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.72,
+      "weight": 1.0
+    },
+    {
+      "formal_systems": [],
+      "is_flow": false,
+      "is_gaplike": true,
+      "is_seam": false,
+      "kind": "BLOCKS",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "model.loop_quantum_gravity",
+      "statement": "",
+      "status": "GAP",
+      "target": "gap.loop_quantum_gravity.question_1",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.8,
+      "weight": 1.0
+    },
+    {
+      "formal_systems": [],
+      "is_flow": false,
+      "is_gaplike": true,
+      "is_seam": true,
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "model.loop_quantum_gravity",
+      "statement": "",
+      "status": "GAP",
+      "target": "boundary.loop_quantum_gravity.test_1",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.75,
+      "weight": 1.0
+    }
+  ],
+  "epochs": [],
+  "metrics": {
+    "assumption_count": 1,
+    "boundary_count": 2,
+    "closure_ratio": 0.0,
+    "core_count": 2,
+    "cycle_count": 0,
+    "density": 0.0409,
+    "edge_count": 4,
+    "explanatory_volume": 0.49,
+    "gap_count": 2,
+    "hole_count": 2,
+    "node_count": 5,
+    "notes": [
+      "2 boundary/exterior nodes are gaplike or not reachable from the core.",
+      "1 interface or cross-domain seam edges detected.",
+      "2 gaplike nodes require closure work."
+    ],
+    "proof_radius_max": 2.0,
+    "proof_radius_mean": 2.0,
+    "proof_radius_variance": 0.0,
+    "reachable_count": 5,
+    "roundness": 0.0,
+    "seam_count": 1,
+    "surface_area": 22.3499,
+    "uncertainty_thickness": 0.8875,
+    "unexplained_parameter_count": 0
+  },
+  "points": {
+    "boundary.loop_quantum_gravity.test_1": {
+      "active_end": null,
+      "active_start": null,
+      "boundary_weight": 3,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "explanatory_weight": 1.0,
+      "formal_systems": [],
+      "id": "boundary.loop_quantum_gravity.test_1",
+      "kind": "PHENOMENON",
+      "label": "Discriminating test 1",
+      "latitude": -1.0821041362364843,
+      "latitude_deg": -62.0,
+      "layer": "BOUNDARY",
+      "longitude": -0.36,
+      "longitude_deg": -20.626480624709636,
+      "proof_distance": 2,
+      "radius": 1.0,
+      "regime_dimensions": {},
+      "statement": "Model-specific cosmological, black-hole, or propagation signatures.",
+      "status": "GAP",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "thickness": 1.0,
+      "uncertainty": 0.75
+    },
+    "core.loop_quantum_gravity.foundation_1": {
+      "active_end": null,
+      "active_start": null,
+      "boundary_weight": 1.0,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "explanatory_weight": 1.0,
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "id": "core.loop_quantum_gravity.foundation_1",
+      "kind": "AXIOM",
+      "label": "Foundation 1",
+      "latitude": 1.1344640137963142,
+      "latitude_deg": 65.0,
+      "layer": "CORE",
+      "longitude": 0.0,
+      "longitude_deg": 0.0,
+      "proof_distance": 0,
+      "radius": 0.18,
+      "regime_dimensions": {
+        "primary": {}
+      },
+      "statement": "General relativity in connection variables",
+      "status": "CORE",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "thickness": 0.2125,
+      "uncertainty": 0.35
+    },
+    "core.loop_quantum_gravity.foundation_2": {
+      "active_end": null,
+      "active_start": null,
+      "boundary_weight": 1.0,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "explanatory_weight": 1.0,
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "id": "core.loop_quantum_gravity.foundation_2",
+      "kind": "AXIOM",
+      "label": "Foundation 2",
+      "latitude": 1.1344640137963142,
+      "latitude_deg": 65.0,
+      "layer": "CORE",
+      "longitude": 0.18,
+      "longitude_deg": 10.313240312354818,
+      "proof_distance": 0,
+      "radius": 0.18,
+      "regime_dimensions": {
+        "primary": {}
+      },
+      "statement": "Nonperturbative canonical quantization",
+      "status": "CORE",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "thickness": 0.2125,
+      "uncertainty": 0.35
+    },
+    "gap.loop_quantum_gravity.question_1": {
+      "active_end": null,
+      "active_start": null,
+      "boundary_weight": 3,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "explanatory_weight": 1.0,
+      "formal_systems": [],
+      "id": "gap.loop_quantum_gravity.question_1",
+      "kind": "GAP",
+      "label": "Open question 1",
+      "latitude": -1.0821041362364843,
+      "latitude_deg": -62.0,
+      "layer": "BOUNDARY",
+      "longitude": -0.18,
+      "longitude_deg": -10.313240312354818,
+      "proof_distance": 2,
+      "radius": 1.0,
+      "regime_dimensions": {},
+      "statement": "Complete dynamics, semiclassical limit, matter coupling, and unique predictions.",
+      "status": "GAP",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "thickness": 1.0,
+      "uncertainty": 0.8
+    },
+    "model.loop_quantum_gravity": {
+      "active_end": null,
+      "active_start": null,
+      "boundary_weight": 1.0,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "explanatory_weight": 5,
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "id": "model.loop_quantum_gravity",
+      "kind": "MODEL",
+      "label": "Loop quantum gravity",
+      "latitude": 0.0,
+      "latitude_deg": 0.0,
+      "layer": "INTERIOR",
+      "longitude": 0.36,
+      "longitude_deg": 20.626480624709636,
+      "proof_distance": 1,
+      "radius": 0.62,
+      "regime_dimensions": {
+        "primary": {}
+      },
+      "statement": "Background-independent canonical quantization of gravitational geometry using connection variables.",
+      "status": "ASSUMPTION",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "thickness": 0.6160000000000001,
+      "uncertainty": 0.72
+    }
+  },
+  "title": "Loop quantum gravity proof-map scaffold"
+}

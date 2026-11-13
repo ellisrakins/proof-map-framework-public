@@ -1,0 +1,661 @@
+{
+  "description": "A source-backed backbone of the current operational state of fundamental physics. Core nodes are local theory-chart kernels, not claims of final truth; unresolved frontiers are explicit boundary or exterior defects.",
+  "edges": [
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "DEFINES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "core.standard_model_gauge_structure",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "PROVED",
+      "tags": [],
+      "target": "sm.qcd_color_sector",
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "DEFINES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "core.standard_model_gauge_structure",
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_standard_model"
+      ],
+      "statement": "",
+      "status": "PROVED",
+      "tags": [],
+      "target": "sm.electroweak_sector",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "sm.electroweak_sector",
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "sm.higgs_mechanism",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.1,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "DEFINES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "sm.electroweak_sector",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "sm.flavor_mixing_ckm",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "sm.electroweak_sector",
+      "source_ids": [
+        "pdg_neutrino_2025"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "sm.neutrino_oscillation_pmns",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.2,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "Oscillation data establish mass splittings but do not close the underlying mass-generation mechanism.",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "sm.neutrino_oscillation_pmns",
+      "source_ids": [
+        "pdg_neutrino_2025"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.neutrino_mass_mechanism",
+      "theory_ids": [
+        "standard_model",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.75,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "obs.direct_neutrino_mass_limit",
+      "source_ids": [
+        "katrin_2025"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "gap.neutrino_mass_mechanism",
+      "theory_ids": [
+        "standard_model",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.24,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {},
+      "source": "sm.qcd_color_sector",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.confinement_mass_gap",
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.82,
+      "uncertainty_kind": "logical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "sm.higgs_mechanism",
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.hierarchy_naturalness",
+      "theory_ids": [
+        "composite_higgs",
+        "electroweak_theory",
+        "extra_dimensions",
+        "standard_model",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.68,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "PROVES",
+      "last_verified": "2026-06-05",
+      "notes": "Interpretation depends on hadronic/theory-baseline work.",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "core.standard_model_gauge_structure",
+      "source_ids": [
+        "doe_muon_g2_2025",
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "APPROXIMATE",
+      "tags": [],
+      "target": "obs.muon_g2_precision",
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.34,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    }
+  ],
+  "epochs": [],
+  "metadata": {
+    "checked_date": "2026-06-05",
+    "purpose": "current_physics_backbone",
+    "source_registry": "examples/sources/current_physics_sources.json",
+    "theory_catalog": "examples/theories/physics_theory_catalog.json",
+    "theory_profile_ids": [
+      "standard_model"
+    ],
+    "version": "0.5"
+  },
+  "nodes": [
+    {
+      "boundary_weight": 1.0,
+      "domain": "standard_model",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 10,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.standard_model_gauge_structure",
+      "kind": "PRIMITIVE_LAW",
+      "label": "Standard Model gauge structure",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "tested particle physics below direct new-physics thresholds"
+      },
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_standard_model"
+      ],
+      "statement": "SU(3)c x SU(2)L x U(1)Y gauge structure organizes known nongravitational fundamental interactions.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "tested particle physics below direct new-physics thresholds"
+    },
+    {
+      "boundary_weight": 4,
+      "domain": "qcd",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.confinement_mass_gap",
+      "kind": "GAP",
+      "label": "Confinement and Yang-Mills mass gap",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 8,
+      "regime_dimensions": {
+        "description": "four-dimensional nonabelian gauge theory"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Nonperturbative confinement is physically established, but a rigorous four-dimensional Yang-Mills mass-gap proof remains open.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.82,
+      "uncertainty_kind": "logical",
+      "validity_regime": "four-dimensional nonabelian gauge theory"
+    },
+    {
+      "boundary_weight": 3.5,
+      "domain": "higgs",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.hierarchy_naturalness",
+      "kind": "GAP",
+      "label": "Higgs hierarchy/naturalness",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "Higgs-sector UV sensitivity"
+      },
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "The stability and naturalness of the Higgs mass remain an organizing open problem for beyond-Standard-Model physics.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "composite_higgs",
+        "extra_dimensions",
+        "standard_model",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.7,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "Higgs-sector UV sensitivity"
+    },
+    {
+      "boundary_weight": 4,
+      "domain": "neutrino",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.neutrino_mass_mechanism",
+      "kind": "GAP",
+      "label": "Neutrino mass mechanism",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "beyond-minimal-SM neutrino mass generation"
+      },
+      "source_ids": [
+        "pdg_neutrino_2025",
+        "katrin_2025"
+      ],
+      "statement": "Neutrino masses are established phenomenologically, but the underlying Dirac/Majorana and mass-generation mechanism remains open.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "standard_model",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.76,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "beyond-minimal-SM neutrino mass generation"
+    },
+    {
+      "boundary_weight": 2.5,
+      "domain": "neutrino",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 4,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "obs.direct_neutrino_mass_limit",
+      "kind": "OBSERVATION",
+      "label": "Direct neutrino-mass limit",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {
+        "description": "tritium beta endpoint measurement"
+      },
+      "source_ids": [
+        "katrin_2025"
+      ],
+      "statement": "KATRIN sets a model-independent direct upper bound on effective electron-neutrino mass.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.2,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "tritium beta endpoint measurement"
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "precision_tests",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "obs.muon_g2_precision",
+      "kind": "OBSERVATION",
+      "label": "Muon g-2 precision benchmark",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "muon anomalous magnetic moment"
+      },
+      "source_ids": [
+        "doe_muon_g2_2025"
+      ],
+      "statement": "The final Fermilab Muon g-2 result is an extremely precise benchmark whose new-physics interpretation depends on theory-baseline resolution.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.32,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "muon anomalous magnetic moment"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "electroweak",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.electroweak_sector",
+      "kind": "DEFINITION",
+      "label": "Electroweak sector",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "tested electroweak energies and precision observables"
+      },
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_standard_model"
+      ],
+      "statement": "SU(2)L x U(1)Y gauge theory describes weak and electromagnetic interactions after symmetry breaking.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.05,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "tested electroweak energies and precision observables"
+    },
+    {
+      "boundary_weight": 2.5,
+      "domain": "flavor",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.flavor_mixing_ckm",
+      "kind": "CONSTANT",
+      "label": "CKM flavor mixing",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {
+        "description": "quark charged-current weak interactions"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Quark flavor mixing is encoded by empirical CKM parameters.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "quark charged-current weak interactions"
+    },
+    {
+      "boundary_weight": 2.5,
+      "domain": "higgs",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 8,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.higgs_mechanism",
+      "kind": "MODEL",
+      "label": "Higgs mechanism",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "LHC-tested Higgs couplings and electroweak precision regime"
+      },
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "The Higgs field mechanism accounts for electroweak symmetry breaking and observed massive W/Z bosons and fermion couplings.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.08,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "LHC-tested Higgs couplings and electroweak precision regime"
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "neutrino",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.neutrino_oscillation_pmns",
+      "kind": "PHENOMENON",
+      "label": "Neutrino oscillation and PMNS mixing",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "three-active-neutrino oscillation phenomenology"
+      },
+      "source_ids": [
+        "pdg_neutrino_2025"
+      ],
+      "statement": "Neutrino flavor oscillations require nonzero mass splittings and flavor/mass-basis mismatch.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "three-active-neutrino oscillation phenomenology"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "qcd",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.qcd_color_sector",
+      "kind": "DEFINITION",
+      "label": "QCD color sector",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "strong interactions in Standard Model regime"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "SU(3)c gauge dynamics describes quarks and gluons.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.06,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "strong interactions in Standard Model regime"
+    }
+  ],
+  "title": "Current Physics Backbone Map [standard_model]"
+}

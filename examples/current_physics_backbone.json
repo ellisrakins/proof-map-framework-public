@@ -1,0 +1,2657 @@
+{
+  "description": "A source-backed backbone of the current operational state of fundamental physics. Core nodes are local theory-chart kernels, not claims of final truth; unresolved frontiers are explicit boundary or exterior defects.",
+  "edges": [
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "core.quantum_mechanics",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "ACTIVE",
+      "tags": [],
+      "target": "core.quantum_field_theory",
+      "theory_ids": [
+        "quantum_field_theory",
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.08,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "core.special_relativity",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "ACTIVE",
+      "tags": [],
+      "target": "core.quantum_field_theory",
+      "theory_ids": [
+        "quantum_field_theory",
+        "special_relativity"
+      ],
+      "uncertainty": 0.06,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "DEFINES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "core.quantum_field_theory",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "PROVED",
+      "tags": [],
+      "target": "bridge.lagrangian_field_theory",
+      "theory_ids": [
+        "quantum_field_theory"
+      ],
+      "uncertainty": 0.05,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "PROVES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "bridge.lagrangian_field_theory",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "PROVED",
+      "tags": [],
+      "target": "bridge.noether_symmetry_conservation",
+      "theory_ids": [],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "PROVES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "core.quantum_field_theory",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "ACTIVE",
+      "tags": [],
+      "target": "bridge.renormalization_group",
+      "theory_ids": [
+        "effective_field_theory",
+        "quantum_field_theory"
+      ],
+      "uncertainty": 0.12,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "bridge.renormalization_group",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "ACTIVE",
+      "tags": [],
+      "target": "bridge.effective_field_theory",
+      "theory_ids": [
+        "effective_field_theory",
+        "quantum_field_theory"
+      ],
+      "uncertainty": 0.15,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "core.statistical_mechanics",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "APPROXIMATE",
+      "tags": [],
+      "target": "effective.thermodynamic_limit",
+      "theory_ids": [
+        "statistical_mechanics",
+        "thermodynamics"
+      ],
+      "uncertainty": 0.22,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "LIMITS_TO",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "effective.thermodynamic_limit",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "APPROXIMATE",
+      "tags": [],
+      "target": "effective.hydrodynamics",
+      "theory_ids": [
+        "hydrodynamics",
+        "statistical_mechanics",
+        "thermodynamics"
+      ],
+      "uncertainty": 0.25,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "DEFINES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "core.standard_model_gauge_structure",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "PROVED",
+      "tags": [],
+      "target": "sm.qcd_color_sector",
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "DEFINES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "core.standard_model_gauge_structure",
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_standard_model"
+      ],
+      "statement": "",
+      "status": "PROVED",
+      "tags": [],
+      "target": "sm.electroweak_sector",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "sm.electroweak_sector",
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "sm.higgs_mechanism",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.1,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "DEFINES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "sm.electroweak_sector",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "sm.flavor_mixing_ckm",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "sm.electroweak_sector",
+      "source_ids": [
+        "pdg_neutrino_2025"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "sm.neutrino_oscillation_pmns",
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.2,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "Oscillation data establish mass splittings but do not close the underlying mass-generation mechanism.",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "sm.neutrino_oscillation_pmns",
+      "source_ids": [
+        "pdg_neutrino_2025"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.neutrino_mass_mechanism",
+      "theory_ids": [
+        "standard_model",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.75,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "obs.direct_neutrino_mass_limit",
+      "source_ids": [
+        "katrin_2025"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "gap.neutrino_mass_mechanism",
+      "theory_ids": [
+        "standard_model",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.24,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {},
+      "source": "sm.qcd_color_sector",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.confinement_mass_gap",
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.82,
+      "uncertainty_kind": "logical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "bridge.lattice_qcd",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "COMPUTED",
+      "tags": [],
+      "target": "gap.confinement_mass_gap",
+      "theory_ids": [
+        "lattice_gauge_theory",
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.32,
+      "uncertainty_kind": "computational",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "sm.higgs_mechanism",
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.hierarchy_naturalness",
+      "theory_ids": [
+        "composite_higgs",
+        "electroweak_theory",
+        "extra_dimensions",
+        "standard_model",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.68,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "PROVES",
+      "last_verified": "2026-06-05",
+      "notes": "Interpretation depends on hadronic/theory-baseline work.",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "core.standard_model_gauge_structure",
+      "source_ids": [
+        "doe_muon_g2_2025",
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "APPROXIMATE",
+      "tags": [],
+      "target": "obs.muon_g2_precision",
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.34,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "core.standard_model_gauge_structure",
+      "source_ids": [
+        "cern_standard_model",
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.baryon_asymmetry",
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm",
+        "standard_model"
+      ],
+      "uncertainty": 0.76,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "LIMITS_TO",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "core.general_relativity",
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "",
+      "status": "ACTIVE",
+      "tags": [],
+      "target": "bridge.flrw_cosmology",
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.12,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "bridge.flrw_cosmology",
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "",
+      "status": "COMPUTED",
+      "tags": [],
+      "target": "cosmo.lambda_cdm_model",
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "cosmo.lambda_cdm_model",
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "obs.cmb_planck_lambdacdm",
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.12,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "cosmo.lambda_cdm_model",
+      "source_ids": [
+        "desi_dr2_2025"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "obs.bao_desi_dr2",
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.22,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "PROVES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "bridge.linear_perturbation_theory",
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "",
+      "status": "COMPUTED",
+      "tags": [],
+      "target": "cosmo.structure_formation",
+      "theory_ids": [
+        "inflationary_cosmology",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.24,
+      "uncertainty_kind": "computational",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "cosmo.structure_formation",
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "tension.s8_growth",
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.58,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "obs.cmb_planck_lambdacdm",
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "tension.hubble_constant",
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.62,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "obs.bao_desi_dr2",
+      "source_ids": [
+        "desi_dr2_2025",
+        "planck_2018_parameters"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.dark_energy_microphysics",
+      "theory_ids": [
+        "dynamical_dark_energy",
+        "general_relativity",
+        "lambda_cdm",
+        "modified_gravity"
+      ],
+      "uncertainty": 0.78,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "cosmo.lambda_cdm_model",
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.dark_matter_identity",
+      "theory_ids": [
+        "axion_models",
+        "dark_photon_models",
+        "lambda_cdm",
+        "mond",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.82,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "PROVES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "core.general_relativity",
+      "source_ids": [
+        "lvk_gwtc5_2026"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "obs.gravitational_wave_catalog",
+      "theory_ids": [
+        "general_relativity"
+      ],
+      "uncertainty": 0.16,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {},
+      "source": "core.general_relativity",
+      "source_ids": [
+        "planck_2018_parameters",
+        "lvk_gwtc5_2026"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.quantum_gravity",
+      "theory_ids": [
+        "asymptotic_safety",
+        "causal_dynamical_triangulations",
+        "causal_set_theory",
+        "emergent_spacetime",
+        "general_relativity",
+        "group_field_theory",
+        "holographic_duality",
+        "loop_quantum_gravity",
+        "noncommutative_geometry",
+        "string_m_theory",
+        "twistor_theory"
+      ],
+      "uncertainty": 0.9,
+      "uncertainty_kind": "logical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "bridge.flrw_cosmology",
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.initial_conditions_inflation",
+      "theory_ids": [
+        "general_relativity",
+        "inflationary_cosmology",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.74,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {},
+      "source": "obs.bao_desi_dr2",
+      "source_ids": [
+        "desi_dr2_2025"
+      ],
+      "statement": "",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "target": "external.bsm_frameworks",
+      "theory_ids": [
+        "axion_models",
+        "composite_higgs",
+        "dark_photon_models",
+        "extra_dimensions",
+        "general_relativity",
+        "grand_unification",
+        "lambda_cdm",
+        "sterile_neutrino_models",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.45,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "gap.dark_matter_identity",
+      "source_ids": [
+        "pdg_rpp_2024",
+        "lz_2025"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "external.bsm_frameworks",
+      "theory_ids": [
+        "axion_models",
+        "composite_higgs",
+        "dark_photon_models",
+        "extra_dimensions",
+        "grand_unification",
+        "lambda_cdm",
+        "mond",
+        "sterile_neutrino_models",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.75,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "gap.dark_energy_microphysics",
+      "source_ids": [
+        "desi_dr2_2025"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "external.bsm_frameworks",
+      "theory_ids": [
+        "axion_models",
+        "composite_higgs",
+        "dark_photon_models",
+        "dynamical_dark_energy",
+        "extra_dimensions",
+        "grand_unification",
+        "lambda_cdm",
+        "modified_gravity",
+        "sterile_neutrino_models",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.78,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "external.bsm_frameworks",
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_higgs_2022"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.hierarchy_naturalness",
+      "theory_ids": [
+        "axion_models",
+        "composite_higgs",
+        "dark_photon_models",
+        "extra_dimensions",
+        "grand_unification",
+        "standard_model",
+        "sterile_neutrino_models",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.65,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "core.quantum_mechanics",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "APPROXIMATE",
+      "tags": [],
+      "target": "bridge.decoherence_effective_classicality",
+      "theory_ids": [
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.28,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BLOCKS",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "bridge.decoherence_effective_classicality",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.measurement_problem",
+      "theory_ids": [
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.7,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "APPROXIMATES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "core.quantum_mechanics",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "COMPUTED",
+      "tags": [],
+      "target": "effective.chemistry",
+      "theory_ids": [
+        "density_functional_theory",
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.24,
+      "uncertainty_kind": "computational",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "APPROXIMATES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {},
+      "source": "bridge.effective_field_theory",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "APPROXIMATE",
+      "tags": [],
+      "target": "effective.condensed_matter",
+      "theory_ids": [
+        "bcs_theory",
+        "density_functional_theory",
+        "effective_field_theory",
+        "quantum_field_theory",
+        "quantum_mechanics",
+        "statistical_mechanics"
+      ],
+      "uncertainty": 0.28,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "derivation",
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "kind": "BRIDGES",
+      "last_verified": "2026-06-05",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {},
+      "source": "core.statistical_mechanics",
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "",
+      "status": "APPROXIMATE",
+      "tags": [],
+      "target": "effective.condensed_matter",
+      "theory_ids": [
+        "bcs_theory",
+        "density_functional_theory",
+        "quantum_mechanics",
+        "statistical_mechanics"
+      ],
+      "uncertainty": 0.26,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "",
+      "weight": 1.0
+    }
+  ],
+  "epochs": [],
+  "metadata": {
+    "checked_date": "2026-06-05",
+    "purpose": "current_physics_backbone",
+    "source_registry": "examples/sources/current_physics_sources.json",
+    "theory_catalog": "examples/theories/physics_theory_catalog.json",
+    "theory_profile_ids": [
+      "asymptotic_safety",
+      "axion_models",
+      "bcs_theory",
+      "causal_dynamical_triangulations",
+      "causal_set_theory",
+      "composite_higgs",
+      "dark_photon_models",
+      "density_functional_theory",
+      "dynamical_dark_energy",
+      "effective_field_theory",
+      "electroweak_theory",
+      "emergent_spacetime",
+      "extra_dimensions",
+      "general_relativity",
+      "grand_unification",
+      "group_field_theory",
+      "holographic_duality",
+      "hydrodynamics",
+      "inflationary_cosmology",
+      "lambda_cdm",
+      "lattice_gauge_theory",
+      "loop_quantum_gravity",
+      "modified_gravity",
+      "mond",
+      "noncommutative_geometry",
+      "quantum_chromodynamics",
+      "quantum_field_theory",
+      "quantum_mechanics",
+      "special_relativity",
+      "standard_model",
+      "statistical_mechanics",
+      "sterile_neutrino_models",
+      "string_m_theory",
+      "supersymmetry",
+      "thermodynamics",
+      "twistor_theory"
+    ],
+    "version": "0.5"
+  },
+  "nodes": [
+    {
+      "boundary_weight": 1.0,
+      "domain": "foundation",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 8,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.quantum_mechanics",
+      "kind": "AXIOM",
+      "label": "Quantum mechanics",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "microscopic systems through tested quantum regimes"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "State spaces, observables, amplitudes, unitary dynamics, and measurement probabilities define the quantum formal substrate.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.03,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "microscopic systems through tested quantum regimes"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "spacetime",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.special_relativity",
+      "kind": "PRIMITIVE_LAW",
+      "label": "Special relativity",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "nongravitational local inertial frames"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Lorentz symmetry and invariant light speed organize high-energy and spacetime kinematics.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "special_relativity"
+      ],
+      "uncertainty": 0.02,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "nongravitational local inertial frames"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "foundation",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 9,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.quantum_field_theory",
+      "kind": "AXIOM",
+      "label": "Quantum field theory",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 6,
+      "regime_dimensions": {
+        "description": "tested collider and low-energy particle regimes"
+      },
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_standard_model"
+      ],
+      "statement": "Relativistic quantum fields provide the operational language for particle interactions.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "quantum_field_theory"
+      ],
+      "uncertainty": 0.08,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "tested collider and low-energy particle regimes"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "standard_model",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 10,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.standard_model_gauge_structure",
+      "kind": "PRIMITIVE_LAW",
+      "label": "Standard Model gauge structure",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "tested particle physics below direct new-physics thresholds"
+      },
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_standard_model"
+      ],
+      "statement": "SU(3)c x SU(2)L x U(1)Y gauge structure organizes known nongravitational fundamental interactions.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "tested particle physics below direct new-physics thresholds"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 9,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.general_relativity",
+      "kind": "PRIMITIVE_LAW",
+      "label": "General relativity",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "classical gravitational fields outside quantum-gravity regime"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "lvk_gwtc5_2026"
+      ],
+      "statement": "Classical spacetime geometry relates curvature to stress-energy and governs gravitation in its tested regime.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity"
+      ],
+      "uncertainty": 0.05,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "classical gravitational fields outside quantum-gravity regime"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "thermodynamics",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.statistical_mechanics",
+      "kind": "PRIMITIVE_LAW",
+      "label": "Statistical mechanics",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "many-degree-of-freedom systems under controlled coarse-graining"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Ensembles, entropy, coarse-graining, and thermodynamic limits bridge microphysics to macroscopic behavior.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "statistical_mechanics"
+      ],
+      "uncertainty": 0.06,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "many-degree-of-freedom systems under controlled coarse-graining"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "measurement",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "core.measurement_statistics",
+      "kind": "AXIOM",
+      "label": "Measurement statistics",
+      "last_verified": "2026-06-05",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "reported experimental measurements and limits"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Experimental claims are mediated by likelihoods, uncertainties, systematics, and reproducibility criteria.",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.05,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "reported experimental measurements and limits"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "foundation",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.lagrangian_field_theory",
+      "kind": "BRIDGE",
+      "label": "Lagrangian field-theory bridge",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "local field-theory descriptions"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Symmetry, fields, and action principles generate equations of motion and interaction terms.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [],
+      "uncertainty": 0.08,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "local field-theory descriptions"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "qft",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.renormalization_group",
+      "kind": "BRIDGE",
+      "label": "Renormalization group",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "QFT and EFT regimes with controlled scale separation"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Scale dependence and effective descriptions connect high- and low-energy charts.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [
+        "effective_field_theory",
+        "quantum_field_theory"
+      ],
+      "uncertainty": 0.12,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "QFT and EFT regimes with controlled scale separation"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "qft",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.effective_field_theory",
+      "kind": "BRIDGE",
+      "label": "Effective field theory",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "below explicit cutoff or breakdown scale"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Local operators and power counting encode finite-regime physics without requiring UV completion.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [
+        "effective_field_theory",
+        "quantum_field_theory"
+      ],
+      "uncertainty": 0.15,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "below explicit cutoff or breakdown scale"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "foundation",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "derivation",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.noether_symmetry_conservation",
+      "kind": "THEOREM",
+      "label": "Noether symmetry-conservation bridge",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "field theories with applicable differentiable symmetries"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Continuous symmetries yield conserved currents in appropriate variational systems.",
+      "status": "PROVED",
+      "tags": [],
+      "theory_ids": [],
+      "uncertainty": 0.04,
+      "uncertainty_kind": "logical",
+      "validity_regime": "field theories with applicable differentiable symmetries"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.flrw_cosmology",
+      "kind": "MODEL",
+      "label": "FLRW cosmology",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "large-scale cosmological averages"
+      },
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "Homogeneous and isotropic spacetime models connect GR to expansion-history observables.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.14,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "large-scale cosmological averages"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.linear_perturbation_theory",
+      "kind": "MODEL",
+      "label": "Cosmological perturbation theory",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "linear and weakly nonlinear cosmological perturbations"
+      },
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "Perturbation calculations connect early-universe fluctuations to CMB anisotropies and structure formation.",
+      "status": "COMPUTED",
+      "tags": [],
+      "theory_ids": [
+        "inflationary_cosmology",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "computational",
+      "validity_regime": "linear and weakly nonlinear cosmological perturbations"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "qcd",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "simulation",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.lattice_qcd",
+      "kind": "BRIDGE",
+      "label": "Lattice QCD",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "observables with controlled lattice systematics"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Numerical Euclidean-lattice calculations provide nonperturbative QCD estimates with discretization and finite-volume controls.",
+      "status": "COMPUTED",
+      "tags": [],
+      "theory_ids": [
+        "lattice_gauge_theory",
+        "quantum_chromodynamics"
+      ],
+      "uncertainty": 0.24,
+      "uncertainty_kind": "computational",
+      "validity_regime": "observables with controlled lattice systematics"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "measurement",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "bridge.decoherence_effective_classicality",
+      "kind": "BRIDGE",
+      "label": "Decoherence and effective classicality",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "open quantum systems with environmental coupling"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Environment-induced decoherence explains stable effective classical records without by itself resolving all measurement-foundation questions.",
+      "status": "APPROXIMATION",
+      "tags": [],
+      "theory_ids": [
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.3,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "open quantum systems with environmental coupling"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "qcd",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.qcd_color_sector",
+      "kind": "DEFINITION",
+      "label": "QCD color sector",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "strong interactions in Standard Model regime"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "SU(3)c gauge dynamics describes quarks and gluons.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.06,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "strong interactions in Standard Model regime"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "electroweak",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.electroweak_sector",
+      "kind": "DEFINITION",
+      "label": "Electroweak sector",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "tested electroweak energies and precision observables"
+      },
+      "source_ids": [
+        "pdg_rpp_2024",
+        "cern_standard_model"
+      ],
+      "statement": "SU(2)L x U(1)Y gauge theory describes weak and electromagnetic interactions after symmetry breaking.",
+      "status": "DERIVED",
+      "tags": [],
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.05,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "tested electroweak energies and precision observables"
+    },
+    {
+      "boundary_weight": 2.5,
+      "domain": "higgs",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 8,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.higgs_mechanism",
+      "kind": "MODEL",
+      "label": "Higgs mechanism",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "LHC-tested Higgs couplings and electroweak precision regime"
+      },
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "The Higgs field mechanism accounts for electroweak symmetry breaking and observed massive W/Z bosons and fermion couplings.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "electroweak_theory",
+        "standard_model"
+      ],
+      "uncertainty": 0.08,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "LHC-tested Higgs couplings and electroweak precision regime"
+    },
+    {
+      "boundary_weight": 2.5,
+      "domain": "flavor",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.flavor_mixing_ckm",
+      "kind": "CONSTANT",
+      "label": "CKM flavor mixing",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {
+        "description": "quark charged-current weak interactions"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Quark flavor mixing is encoded by empirical CKM parameters.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "quark charged-current weak interactions"
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "neutrino",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "sm.neutrino_oscillation_pmns",
+      "kind": "PHENOMENON",
+      "label": "Neutrino oscillation and PMNS mixing",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "description": "three-active-neutrino oscillation phenomenology"
+      },
+      "source_ids": [
+        "pdg_neutrino_2025"
+      ],
+      "statement": "Neutrino flavor oscillations require nonzero mass splittings and flavor/mass-basis mismatch.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "three-active-neutrino oscillation phenomenology"
+    },
+    {
+      "boundary_weight": 2.5,
+      "domain": "neutrino",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 4,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "obs.direct_neutrino_mass_limit",
+      "kind": "OBSERVATION",
+      "label": "Direct neutrino-mass limit",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 2,
+      "regime_dimensions": {
+        "description": "tritium beta endpoint measurement"
+      },
+      "source_ids": [
+        "katrin_2025"
+      ],
+      "statement": "KATRIN sets a model-independent direct upper bound on effective electron-neutrino mass.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.2,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "tritium beta endpoint measurement"
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "precision_tests",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "obs.muon_g2_precision",
+      "kind": "OBSERVATION",
+      "label": "Muon g-2 precision benchmark",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "muon anomalous magnetic moment"
+      },
+      "source_ids": [
+        "doe_muon_g2_2025"
+      ],
+      "statement": "The final Fermilab Muon g-2 result is an extremely precise benchmark whose new-physics interpretation depends on theory-baseline resolution.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "standard_model"
+      ],
+      "uncertainty": 0.32,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "muon anomalous magnetic moment"
+    },
+    {
+      "boundary_weight": 3.5,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 8,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "obs.cmb_planck_lambdacdm",
+      "kind": "OBSERVATION",
+      "label": "Planck CMB LambdaCDM anchor",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "CMB anisotropy and lensing data interpreted through LambdaCDM"
+      },
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "Planck CMB data support a six-parameter base LambdaCDM fit while constraining extensions.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.12,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "CMB anisotropy and lensing data interpreted through LambdaCDM"
+    },
+    {
+      "boundary_weight": 3.5,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "obs.bao_desi_dr2",
+      "kind": "OBSERVATION",
+      "label": "DESI DR2 BAO expansion history",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "large-scale BAO standard ruler measurements"
+      },
+      "source_ids": [
+        "desi_dr2_2025"
+      ],
+      "statement": "DESI DR2 BAO measurements constrain expansion history and sharpen late-time dark-energy tests.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.22,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "large-scale BAO standard ruler measurements"
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "obs.gravitational_wave_catalog",
+      "kind": "OBSERVATION",
+      "label": "GWTC-5.0 gravitational-wave catalog",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "compact binary coalescence observations"
+      },
+      "source_ids": [
+        "lvk_gwtc5_2026"
+      ],
+      "statement": "The LVK catalog provides strong-field GR and compact-binary population anchors.",
+      "status": "EMPIRICAL",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity"
+      ],
+      "uncertainty": 0.16,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "compact binary coalescence observations"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 8,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "cosmo.lambda_cdm_model",
+      "kind": "MODEL",
+      "label": "Base LambdaCDM model",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "large-scale cosmology with cold dark matter and cosmological constant parameterization"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "A spatially flat six-parameter LambdaCDM model summarizes the dominant current cosmological fit.",
+      "status": "COMPUTED",
+      "tags": [],
+      "theory_ids": [
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.18,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "large-scale cosmology with cold dark matter and cosmological constant parameterization"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "cosmo.structure_formation",
+      "kind": "MODEL",
+      "label": "Structure formation",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "linear plus calibrated nonlinear structure formation"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "Perturbation growth and simulations connect initial fluctuations to observed large-scale structure.",
+      "status": "COMPUTED",
+      "tags": [],
+      "theory_ids": [
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.25,
+      "uncertainty_kind": "computational",
+      "validity_regime": "linear plus calibrated nonlinear structure formation"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "thermodynamics",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "effective.thermodynamic_limit",
+      "kind": "BRIDGE",
+      "label": "Thermodynamic limit",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "large systems with stable macroscopic variables"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Large-N limits and coarse-graining bridge reversible microdynamics to macroscopic thermodynamics.",
+      "status": "APPROXIMATION",
+      "tags": [],
+      "theory_ids": [
+        "statistical_mechanics",
+        "thermodynamics"
+      ],
+      "uncertainty": 0.22,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "large systems with stable macroscopic variables"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "emergence",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "effective.hydrodynamics",
+      "kind": "MODEL",
+      "label": "Hydrodynamics",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "near-continuum, near-equilibrium long-wavelength regimes"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Continuum fluid equations describe long-wavelength conserved densities under closure assumptions.",
+      "status": "APPROXIMATION",
+      "tags": [],
+      "theory_ids": [
+        "hydrodynamics",
+        "statistical_mechanics"
+      ],
+      "uncertainty": 0.24,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "near-continuum, near-equilibrium long-wavelength regimes"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "emergence",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "effective.condensed_matter",
+      "kind": "MODEL",
+      "label": "Condensed-matter effective theories",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 4,
+      "regime_dimensions": {
+        "description": "material-specific low-energy effective descriptions"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Many-body effective theories explain phases, quasiparticles, and collective phenomena in material systems.",
+      "status": "APPROXIMATION",
+      "tags": [],
+      "theory_ids": [
+        "bcs_theory",
+        "density_functional_theory",
+        "quantum_mechanics",
+        "statistical_mechanics"
+      ],
+      "uncertainty": 0.28,
+      "uncertainty_kind": "approximation",
+      "validity_regime": "material-specific low-energy effective descriptions"
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "emergence",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "effective.chemistry",
+      "kind": "MODEL",
+      "label": "Chemistry from quantum many-body approximations",
+      "last_verified": "2026-06-05",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "molecular and condensed chemical regimes with approximation controls"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Electronic structure and many-body approximations bridge QED/QM to chemical bonding and reactions.",
+      "status": "COMPUTED",
+      "tags": [],
+      "theory_ids": [
+        "density_functional_theory",
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.24,
+      "uncertainty_kind": "computational",
+      "validity_regime": "molecular and condensed chemical regimes with approximation controls"
+    },
+    {
+      "boundary_weight": 5,
+      "domain": "gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 9,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.quantum_gravity",
+      "kind": "GAP",
+      "label": "Quantum gravity",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 10,
+      "regime_dimensions": {
+        "description": "Planck-scale gravity, singularities, black-hole quantum regimes"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "lvk_gwtc5_2026"
+      ],
+      "statement": "No experimentally confirmed theory unifies quantum mechanics and dynamical spacetime at Planck-scale regimes.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "asymptotic_safety",
+        "causal_dynamical_triangulations",
+        "causal_set_theory",
+        "emergent_spacetime",
+        "group_field_theory",
+        "holographic_duality",
+        "loop_quantum_gravity",
+        "noncommutative_geometry",
+        "string_m_theory",
+        "twistor_theory"
+      ],
+      "uncertainty": 0.92,
+      "uncertainty_kind": "logical",
+      "validity_regime": "Planck-scale gravity, singularities, black-hole quantum regimes"
+    },
+    {
+      "boundary_weight": 5,
+      "domain": "dark_sector",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 9,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.dark_matter_identity",
+      "kind": "GAP",
+      "label": "Dark matter identity",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 8,
+      "regime_dimensions": {
+        "description": "cosmological and direct-detection dark-matter searches"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "lz_2025"
+      ],
+      "statement": "Cosmology and astrophysics require nonluminous gravitating matter, but the particle or field identity remains unknown.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "axion_models",
+        "dark_photon_models",
+        "lambda_cdm",
+        "mond",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.85,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "cosmological and direct-detection dark-matter searches"
+    },
+    {
+      "boundary_weight": 5,
+      "domain": "dark_sector",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 8,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.dark_energy_microphysics",
+      "kind": "GAP",
+      "label": "Dark-energy microphysics",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 8,
+      "regime_dimensions": {
+        "description": "late-time cosmic acceleration and expansion history"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "Late-time acceleration is well parameterized, but the microphysical origin and possible dynamics of dark energy remain unresolved.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "dynamical_dark_energy",
+        "lambda_cdm",
+        "modified_gravity"
+      ],
+      "uncertainty": 0.82,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "late-time cosmic acceleration and expansion history"
+    },
+    {
+      "boundary_weight": 4,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.baryon_asymmetry",
+      "kind": "GAP",
+      "label": "Baryon asymmetry",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "early-universe baryogenesis"
+      },
+      "source_ids": [
+        "cern_standard_model",
+        "pdg_rpp_2024"
+      ],
+      "statement": "The observed matter-antimatter asymmetry lacks a confirmed complete origin within the established Standard Model history.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.78,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "early-universe baryogenesis"
+    },
+    {
+      "boundary_weight": 4,
+      "domain": "neutrino",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.neutrino_mass_mechanism",
+      "kind": "GAP",
+      "label": "Neutrino mass mechanism",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "beyond-minimal-SM neutrino mass generation"
+      },
+      "source_ids": [
+        "pdg_neutrino_2025",
+        "katrin_2025"
+      ],
+      "statement": "Neutrino masses are established phenomenologically, but the underlying Dirac/Majorana and mass-generation mechanism remains open.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "standard_model",
+        "sterile_neutrino_models"
+      ],
+      "uncertainty": 0.76,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "beyond-minimal-SM neutrino mass generation"
+    },
+    {
+      "boundary_weight": 3.5,
+      "domain": "higgs",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.hierarchy_naturalness",
+      "kind": "GAP",
+      "label": "Higgs hierarchy/naturalness",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "Higgs-sector UV sensitivity"
+      },
+      "source_ids": [
+        "cern_higgs_2022",
+        "pdg_rpp_2024"
+      ],
+      "statement": "The stability and naturalness of the Higgs mass remain an organizing open problem for beyond-Standard-Model physics.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "composite_higgs",
+        "extra_dimensions",
+        "standard_model",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.7,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "Higgs-sector UV sensitivity"
+    },
+    {
+      "boundary_weight": 4,
+      "domain": "qcd",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.confinement_mass_gap",
+      "kind": "GAP",
+      "label": "Confinement and Yang-Mills mass gap",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 8,
+      "regime_dimensions": {
+        "description": "four-dimensional nonabelian gauge theory"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "Nonperturbative confinement is physically established, but a rigorous four-dimensional Yang-Mills mass-gap proof remains open.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "quantum_chromodynamics",
+        "standard_model"
+      ],
+      "uncertainty": 0.82,
+      "uncertainty_kind": "logical",
+      "validity_regime": "four-dimensional nonabelian gauge theory"
+    },
+    {
+      "boundary_weight": 4,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 7,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.initial_conditions_inflation",
+      "kind": "GAP",
+      "label": "Initial conditions and inflation selection",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "early-universe pre-recombination physics"
+      },
+      "source_ids": [
+        "planck_2018_parameters"
+      ],
+      "statement": "The initial-condition problem and specific inflationary model selection remain open in early-universe cosmology.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "inflationary_cosmology",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.74,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "early-universe pre-recombination physics"
+    },
+    {
+      "boundary_weight": 3.5,
+      "domain": "measurement",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "gap.measurement_problem",
+      "kind": "GAP",
+      "label": "Quantum measurement problem",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 7,
+      "regime_dimensions": {
+        "description": "foundations of quantum mechanics"
+      },
+      "source_ids": [
+        "pdg_rpp_2024"
+      ],
+      "statement": "The relation between unitary quantum dynamics, definite outcomes, and interpretation remains a foundational seam.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "quantum_mechanics"
+      ],
+      "uncertainty": 0.72,
+      "uncertainty_kind": "semantic",
+      "validity_regime": "foundations of quantum mechanics"
+    },
+    {
+      "boundary_weight": 3.5,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "tension.hubble_constant",
+      "kind": "UNCERTAINTY",
+      "label": "Hubble-constant tension",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "cosmic distance ladder and CMB-inferred expansion"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "Early- and late-universe inferences of H0 remain a live cosmological tension.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.62,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "cosmic distance ladder and CMB-inferred expansion"
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "cosmology",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "collaboration_result",
+      "explanatory_weight": 5,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "tension.s8_growth",
+      "kind": "UNCERTAINTY",
+      "label": "S8/growth tension",
+      "last_verified": "2026-06-05",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 5,
+      "regime_dimensions": {
+        "description": "large-scale structure and weak-lensing growth inference"
+      },
+      "source_ids": [
+        "planck_2018_parameters",
+        "desi_dr2_2025"
+      ],
+      "statement": "Matter clustering amplitude comparisons create a boundary tension between probes and modeling assumptions.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "general_relativity",
+        "lambda_cdm"
+      ],
+      "uncertainty": 0.58,
+      "uncertainty_kind": "empirical",
+      "validity_regime": "large-scale structure and weak-lensing growth inference"
+    },
+    {
+      "boundary_weight": 4,
+      "domain": "beyond_standard_model",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "review",
+      "explanatory_weight": 6,
+      "formal_systems": [],
+      "formalization_status": "scaffold",
+      "id": "external.bsm_frameworks",
+      "kind": "GAP",
+      "label": "Beyond-Standard-Model frameworks",
+      "last_verified": "2026-06-05",
+      "layer": "EXTERIOR",
+      "notes": "",
+      "proof_cost": 8,
+      "regime_dimensions": {
+        "description": "beyond-current-standard-framework hypotheses"
+      },
+      "source_ids": [
+        "pdg_rpp_2024",
+        "lz_2025",
+        "desi_dr2_2025"
+      ],
+      "statement": "Supersymmetry, hidden sectors, axions, sterile neutrinos, modified gravity, and related frameworks remain candidate exterior charts constrained but not confirmed.",
+      "status": "EXTERNAL",
+      "tags": [],
+      "theory_ids": [
+        "axion_models",
+        "composite_higgs",
+        "dark_photon_models",
+        "extra_dimensions",
+        "grand_unification",
+        "sterile_neutrino_models",
+        "supersymmetry"
+      ],
+      "uncertainty": 0.78,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "beyond-current-standard-framework hypotheses"
+    }
+  ],
+  "title": "Current Physics Backbone Map"
+}

@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:alpha-acceptance:1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "contract_id": {
+      "const": "paper-ci-alpha"
+    },
+    "target_version": {
+      "const": "0.8.0a1"
+    },
+    "baseline_ref": {
+      "const": "acceptance/mandatory_requirements.json"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "original_section": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "area": {
+            "type": "string",
+            "pattern": "^C(0[1-9]|1[0-2])$"
+          },
+          "normative_behavior": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "supported_domain": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "implementation": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "positive_tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tests/[^\\s]+\\.py::[^\\s]+$"
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "negative_tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tests/[^\\s]+\\.py::[^\\s]+$"
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "required_profiles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "required_jobs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "expected_artifacts": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "isolated-paper-outcomes",
+                "alpha-isolated-scenarios",
+                "alpha-offline-scenarios",
+                "benchmark",
+                "wheel",
+                "dependency-audit",
+                "installed-regression-outcomes",
+                "partitioned-regression-outcomes"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "implementation_status": {
+            "enum": [
+              "already_implemented",
+              "needs_work"
+            ]
+          },
+          "gap": {
+            "type": "string"
+          },
+          "test_profiles": {
+            "minItems": 1,
+            "maxItems": 256,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "maxLength": 4096,
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "original_section",
+          "source",
+          "area",
+          "normative_behavior",
+          "supported_domain",
+          "implementation",
+          "positive_tests",
+          "negative_tests",
+          "required_profiles",
+          "required_jobs",
+          "expected_artifacts",
+          "implementation_status",
+          "gap"
+        ]
+      },
+      "maxItems": 256
+    },
+    "fixture_categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^F(0[1-9]|1[0-2])$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "positive_tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tests/[^\\s]+\\.py::[^\\s]+$"
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "negative_tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tests/[^\\s]+\\.py::[^\\s]+$"
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "gap": {
+            "type": "string"
+          },
+          "required_profiles": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required_jobs": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "test_profiles": {
+            "minItems": 1,
+            "maxItems": 256,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "maxLength": 4096,
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "positive_tests",
+          "negative_tests",
+          "gap",
+          "required_profiles",
+          "required_jobs"
+        ]
+      },
+      "maxItems": 12
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "positive_tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tests/[^\\s]+\\.py::[^\\s]+$"
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "negative_tests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tests/[^\\s]+\\.py::[^\\s]+$"
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "required_profiles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "required_jobs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "expected_artifacts": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "isolated-paper-outcomes",
+                "alpha-isolated-scenarios",
+                "alpha-offline-scenarios",
+                "benchmark",
+                "wheel",
+                "dependency-audit",
+                "installed-regression-outcomes",
+                "partitioned-regression-outcomes"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "implementation_status": {
+            "enum": [
+              "already_implemented",
+              "needs_work"
+            ]
+          },
+          "gap": {
+            "type": "string"
+          },
+          "test_profiles": {
+            "minItems": 1,
+            "maxItems": 256,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "minLength": 1,
+              "maxLength": 4096,
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "positive_tests",
+          "negative_tests",
+          "required_profiles",
+          "required_jobs",
+          "expected_artifacts",
+          "implementation_status",
+          "gap"
+        ]
+      },
+      "maxItems": 5
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "original_section": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "authority": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "id",
+          "original_section",
+          "source",
+          "authority",
+          "description"
+        ]
+      },
+      "maxItems": 64
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_id",
+    "target_version",
+    "baseline_ref",
+    "requirements",
+    "fixture_categories",
+    "scenarios",
+    "exclusions"
+  ]
+}

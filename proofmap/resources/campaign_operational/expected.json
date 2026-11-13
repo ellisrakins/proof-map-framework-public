@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "provenance": "Original software-test manuscripts and independent expected labels authored for this campaign milestone; no scientific-paper or external-pilot claim.",
+  "papers": {
+    "identities.tex": {"labels": ["shift-square"], "supported": 1, "valid": 1},
+    "independent.tex": {"labels": ["independent-identity", "deliberately-invalid"], "supported": 2, "valid": 1},
+    "unsupported.tex": {"labels": ["real-domain-identity", "unsupported-primes"], "supported": 0, "valid": 0}
+  }
+}

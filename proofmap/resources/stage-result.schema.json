@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:stage-result:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "record_type", "schema_version", "revision", "analysis", "stage", "inputs", "implementation", "parents", "namespace", "outcome", "output_digest", "findings", "coverage", "resource_use", "cache_provenance"],
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "digests": {"type": "object", "additionalProperties": {"$ref": "#/$defs/digest"}}
+  },
+  "properties": {
+    "id": {"$ref": "#/$defs/digest"},
+    "record_type": {"const": "StageResult"},
+    "schema_version": {"const": "1.0"},
+    "revision": {"$ref": "#/$defs/digest"},
+    "analysis": {"$ref": "#/$defs/digest"},
+    "stage": {"type": "string", "minLength": 1},
+    "inputs": {"$ref": "#/$defs/digests"},
+    "implementation": {"type": "string", "minLength": 1},
+    "parents": {"$ref": "#/$defs/digests"},
+    "namespace": {"type": "string", "minLength": 1},
+    "outcome": {"enum": ["PASS", "PARTIAL", "FAIL", "ERROR", "TIMEOUT", "UNAVAILABLE", "NOT_RUN", "NOT_APPLICABLE"]},
+    "output_digest": {"$ref": "#/$defs/digest"},
+    "findings": {"type": "array", "items": {"type": "object"}},
+    "coverage": {"type": "object"},
+    "resource_use": {"type": "object", "additionalProperties": {"type": ["number", "null"], "minimum": 0}},
+    "cache_provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["namespace", "origin", "trust"],
+      "properties": {
+        "namespace": {"type": "string"},
+        "origin": {"const": "controller-stage"},
+        "trust": {"const": "UNTRUSTED_ANALYSIS_NOT_EVIDENCE"}
+      }
+    }
+  }
+}

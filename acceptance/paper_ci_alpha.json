@@ -1,0 +1,3311 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "paper-ci-alpha",
+  "target_version": "0.8.0a1",
+  "baseline_ref": "acceptance/mandatory_requirements.json",
+  "requirements": [
+    {
+      "id": "R001",
+      "original_section": "3.1 baseline, inventory, branch, old requirements",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C01",
+      "normative_behavior": "Identify the actual source checkout and reconcile every inherited mandatory requirement without overwriting local work.",
+      "supported_domain": "Current repository source and bounded-alpha requirement inventory.",
+      "implementation": [
+        "REPO_STATUS.md",
+        "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+        "scripts/check_alpha_acceptance.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_acceptance.py::test_repository_contract_is_complete_and_matches_frozen_scope",
+        "tests/test_alpha_acceptance.py::test_current_positive_and_negative_execution_satisfies_contract",
+        "tests/test_alpha_evidence.py::test_identity_binds_actual_dirty_untracked_deleted_and_manifest_bytes"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_acceptance.py::test_deleted_mandatory_contract_members_fail",
+        "tests/test_alpha_acceptance.py::test_stale_or_mixed_identity_fails"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R002",
+      "original_section": "3.1 threat model and scientific boundaries",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C01",
+      "normative_behavior": "Document and enforce the distinction between source assertions, candidate interpretations, verified formal subjects and policy acceptance.",
+      "supported_domain": "Offline source analysis and restricted authenticated Lean/Std evidence.",
+      "implementation": [
+        "docs/advancement/ARCHITECTURE_AND_THREAT_MODEL.md",
+        "proofmap/paper_evidence.py",
+        "proofmap/paper_records.py",
+        "proofmap/semantic_candidates.py",
+        "proofmap/formalize.py"
+      ],
+      "positive_tests": [
+        "tests/test_core_record_contracts.py::test_dimension_assessment_is_versioned_immutable_and_not_acceptance",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees",
+        "tests/test_core_record_contracts.py::test_emitted_assessment_dimensions_preserve_formal_and_paper_boundary",
+        "tests/test_semantic_candidates.py::test_prose_decomposition_retains_anchored_conflicts_and_coverage",
+        "tests/test_semantic_candidates.py::test_real_http_decomposition_and_independent_fidelity_disagreement"
+      ],
+      "negative_tests": [
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance",
+        "tests/test_semantic_candidates.py::test_forged_decomposition_cannot_create_source_or_authority",
+        "tests/test_semantic_candidates.py::test_fidelity_unavailable_and_stale_binding_stay_explicit",
+        "tests/test_semantic_candidates.py::test_fidelity_stored_event_fields_must_match_raw_replay"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R003",
+      "original_section": "3.2 early CI",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Provide bounded mandatory CI with read-only permissions and fail-closed aggregation.",
+      "supported_domain": "Existing software workflow jobs; optional paid hosted features are excluded.",
+      "implementation": [
+        ".github/workflows/ci.yml",
+        "scripts/ci_required.py"
+      ],
+      "positive_tests": [
+        "tests/test_ci_required.py::test_complete_success",
+        "tests/test_ci_required.py::test_workflow_has_same_fixed_required_set"
+      ],
+      "negative_tests": [
+        "tests/test_ci_required.py::test_non_success_always_fails",
+        "tests/test_ci_required.py::test_missing_and_unexpected_fails"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R004",
+      "original_section": "4.1 shared claims, contexts, inference, evidence, assessments",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Use shared typed claims, contexts, inferences, evidence and dimension-specific assessments with complete persistence and relation contracts.",
+      "supported_domain": "Legacy migration and supported paper argument maps.",
+      "implementation": [
+        "proofmap/kernel.py",
+        "proofmap/paper_store.py",
+        "proofmap/evidence_records.py",
+        "proofmap/paper_records.py",
+        "proofmap/resources/assessment-record.schema.json",
+        "proofmap/resources/paper-records.schema.json",
+        "proofmap/resources/pipeline-assessment.schema.json",
+        "proofmap/formalize.py"
+      ],
+      "positive_tests": [
+        "tests/test_core_record_contracts.py::test_dimension_assessment_is_versioned_immutable_and_not_acceptance",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees",
+        "tests/test_core_record_contracts.py::test_emitted_assessment_dimensions_preserve_formal_and_paper_boundary",
+        "tests/test_paper_record_contracts.py::test_current_bundle_validates_all_public_tables_without_authority"
+      ],
+      "negative_tests": [
+        "tests/test_core_record_contracts.py::test_kernel_loader_rejects_malformed_contracts",
+        "tests/test_core_record_contracts.py::test_assessment_provenance_rejects_malformed_fields",
+        "tests/test_core_record_contracts.py::test_complete_environment_requires_exact_typed_material",
+        "tests/test_core_record_contracts.py::test_record_boundaries_reject_empty_limits_reversed_and_unsafe_locators",
+        "tests/test_core_record_contracts.py::test_rehashed_acceptance_cannot_violate_policy_state",
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R005",
+      "original_section": "4.2 AND/OR fixed point, no cyclic seeding",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Require all conjunctive premises, retain alternative derivations and never seed closure from unsupported cycles.",
+      "supported_domain": "Context-qualified shared-kernel deductive closure.",
+      "implementation": [
+        "proofmap/kernel.py"
+      ],
+      "positive_tests": [
+        "tests/test_kernel.py::test_f01_conjunction_not_reachability",
+        "tests/test_kernel.py::test_or_alternatives_preserve_minimal_assumptions"
+      ],
+      "negative_tests": [
+        "tests/test_kernel.py::test_cycles_labels_unsigned_and_stale_never_close"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R006",
+      "original_section": "4.2 subject/context/policy/evidence matching",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Accept only evidence matching the exact subject, context and policy; reject stale, mismatched or untrusted artifacts.",
+      "supported_domain": "Shared-kernel evidence selection and authenticated restricted-profile bindings.",
+      "implementation": [
+        "proofmap/kernel.py",
+        "proofmap/evidence_adapter.py"
+      ],
+      "positive_tests": [
+        "tests/test_execution.py::test_formal_encoding_precedes_authenticated_fidelity_and_revocation"
+      ],
+      "negative_tests": [
+        "tests/test_kernel.py::test_support_does_not_credit_untrusted_extra_artifact",
+        "tests/test_kernel.py::test_cycles_labels_unsigned_and_stale_never_close"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R007",
+      "original_section": "4.3 hypotheses, scope, explicit foundations",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Keep local hypotheses and optional research assumptions distinct from foundations and implement supported checked antecedent discharge.",
+      "supported_domain": "Bounded source scopes and restricted Lean/Std implication cases.",
+      "implementation": [
+        "proofmap/kernel.py",
+        "proofmap/paper_sources.py",
+        "proofmap/formalize.py",
+        "proofmap/source_semantics.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_core_record_contracts.py::test_relation_contracts_have_distinct_views_directions_and_no_proof_authority"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_core_record_contracts.py::test_relation_cycles_endpoints_context_and_symmetry_are_enforced"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R008",
+      "original_section": "4.4 policies, independent dimensions",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Keep deductive, computational, fidelity, contradiction and novelty assessments independent and bind each to policy, evidence, actor and time.",
+      "supported_domain": "Named supported acceptance policies; novelty may remain NOT_ASSESSED.",
+      "implementation": [
+        "proofmap/kernel.py",
+        "proofmap/paper_evidence.py",
+        "proofmap/evidence_records.py",
+        "proofmap/paper_records.py",
+        "proofmap/resources/assessment-record.schema.json",
+        "proofmap/resources/paper-records.schema.json",
+        "proofmap/resources/pipeline-assessment.schema.json",
+        "proofmap/formalize.py"
+      ],
+      "positive_tests": [
+        "tests/test_core_record_contracts.py::test_dimension_assessment_is_versioned_immutable_and_not_acceptance",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees",
+        "tests/test_core_record_contracts.py::test_emitted_assessment_dimensions_preserve_formal_and_paper_boundary",
+        "tests/test_paper_record_contracts.py::test_current_bundle_validates_all_public_tables_without_authority"
+      ],
+      "negative_tests": [
+        "tests/test_core_record_contracts.py::test_kernel_loader_rejects_malformed_contracts",
+        "tests/test_core_record_contracts.py::test_assessment_provenance_rejects_malformed_fields",
+        "tests/test_core_record_contracts.py::test_complete_environment_requires_exact_typed_material",
+        "tests/test_core_record_contracts.py::test_record_boundaries_reject_empty_limits_reversed_and_unsafe_locators",
+        "tests/test_core_record_contracts.py::test_rehashed_acceptance_cannot_violate_policy_state",
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R009",
+      "original_section": "4.5 support alternatives, assumptions, contradictions",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Report support alternatives, assumptions and contradictions while distinguishing missing, stale, invalid and untrusted evidence.",
+      "supported_domain": "Bounded shared-kernel support explanations.",
+      "implementation": [
+        "proofmap/kernel.py",
+        "proofmap/paper_records.py"
+      ],
+      "positive_tests": [
+        "tests/test_core_record_contracts.py::test_evidence_failure_reasons_are_distinct",
+        "tests/test_paper_record_contracts.py::test_current_bundle_validates_all_public_tables_without_authority"
+      ],
+      "negative_tests": [
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance",
+        "tests/test_core_record_contracts.py::test_cached_acceptance_and_dimension_projections_require_actual_event"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R010",
+      "original_section": "5.1 strict parsing and semantic validation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Reject malformed serialized data and expose uniform structured validation issues at load, store, CLI and assessment boundaries.",
+      "supported_domain": "All supported serialized records and legacy compatibility boundaries.",
+      "implementation": [
+        "proofmap/integrity.py",
+        "proofmap/model.py",
+        "proofmap/kernel.py",
+        "proofmap/schema.py",
+        "proofmap/paper_records.py",
+        "proofmap/formalize.py",
+        "proofmap/source_semantics.py"
+      ],
+      "positive_tests": [
+        "tests/test_core_record_contracts.py::test_dimension_assessment_is_versioned_immutable_and_not_acceptance",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees",
+        "tests/test_core_record_contracts.py::test_emitted_assessment_dimensions_preserve_formal_and_paper_boundary",
+        "tests/test_paper_record_contracts.py::test_current_bundle_validates_all_public_tables_without_authority"
+      ],
+      "negative_tests": [
+        "tests/test_core_record_contracts.py::test_kernel_loader_rejects_malformed_contracts",
+        "tests/test_core_record_contracts.py::test_assessment_provenance_rejects_malformed_fields",
+        "tests/test_core_record_contracts.py::test_complete_environment_requires_exact_typed_material",
+        "tests/test_core_record_contracts.py::test_record_boundaries_reject_empty_limits_reversed_and_unsafe_locators",
+        "tests/test_core_record_contracts.py::test_rehashed_acceptance_cannot_violate_policy_state",
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance",
+        "tests/test_source_semantics.py::test_formalization_rejects_ast_free_variable_and_subject_substitution",
+        "tests/test_source_semantics.py::test_exact_certificate_is_recomputed_from_ast"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R011",
+      "original_section": "5.2 identity and insertion invariance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Keep canonical structured graph identity invariant to unrelated collection order without asserting mathematical equivalence.",
+      "supported_domain": "Shared-kernel graph identity.",
+      "implementation": [
+        "proofmap/integrity.py",
+        "proofmap/kernel.py"
+      ],
+      "positive_tests": [
+        "tests/test_extended_boundaries.py::test_property_graph_order_does_not_change_identity"
+      ],
+      "negative_tests": [
+        "tests/test_kernel.py::test_kernel_additional_validation_boundaries"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R012",
+      "original_section": "5.2 complete analysis/environment identities",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Separate source, formal, analysis, stage and run identities and fingerprint every admitted semantic and environment dependency.",
+      "supported_domain": "Supported parser/model/configuration/policy and restricted formal environment.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/execution.py",
+        "proofmap/paper_stages.py",
+        "proofmap/paper_revision.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_paper_revision_reuse.py::test_model_or_prompt_change_reexecutes_recorded_stage_and_preserves_history"
+      ],
+      "negative_tests": [
+        "tests/test_paper_revision_reuse.py::test_unresolved_surrounding_context_is_conservative",
+        "tests/test_paper_revision_reuse.py::test_rehashed_reuse_forgery_rejected_by_store",
+        "tests/test_paper_revision_reuse.py::test_unknown_policy_cannot_reuse_or_publish",
+        "tests/test_paper_revision_reuse.py::test_rehashed_checker_wrong_source_is_rejected",
+        "tests/test_paper_revision_reuse.py::test_configuration_change_invalidates_pure_execution",
+        "tests/test_paper_revision_reuse.py::test_analysis_contract_change_executes_checks_again",
+        "tests/test_extractor_prompt_history.py::test_historical_prompt_mode_still_rejects_record_substitution"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R013",
+      "original_section": "5.3 conservative idempotent migration",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Migrate legacy data idempotently without promoting authored status or inventing trusted foundations; preserve original provenance.",
+      "supported_domain": "Existing legacy map schema to shared kernel.",
+      "implementation": [
+        "proofmap/kernel.py"
+      ],
+      "positive_tests": [
+        "tests/test_kernel.py::test_migration_is_idempotent_conservative_and_preserves_original"
+      ],
+      "negative_tests": [
+        "tests/test_kernel.py::test_status_is_not_proof_and_paper_policy_cannot_accept"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R014",
+      "original_section": "5.4 metrics and immutable scenarios",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C05",
+      "normative_behavior": "Propose evidence actions from actual closure failures and keep actual and hypothetical closure separate without fabricating authority.",
+      "supported_domain": "Named planning heuristics over supported kernel and paper evidence failures.",
+      "implementation": [
+        "proofmap/optimizer.py",
+        "proofmap/metrics.py",
+        "proofmap/hypothesis.py",
+        "proofmap/paper_actions.py",
+        "proofmap/resources/action-planning.schema.json",
+        "docs/EVIDENCE_ACTIONS.md"
+      ],
+      "positive_tests": [
+        "tests/test_paper_actions.py::test_missing_premise_and_certificate_have_distinct_exact_actions",
+        "tests/test_paper_actions.py::test_counterfactual_and_witnesses_do_not_mutate_actual_claims_or_evidence",
+        "tests/test_paper_actions.py::test_current_verified_subject_needs_review_not_another_premise_proof",
+        "tests/test_paper_actions.py::test_historical_execution_reuse_still_requires_current_reviews",
+        "tests/test_paper_actions.py::test_automatic_source_has_exact_binding_plan_without_running_verification"
+      ],
+      "negative_tests": [
+        "tests/test_paper_actions.py::test_visual_relations_cannot_improve_actual_or_hypothetical_closure",
+        "tests/test_paper_actions.py::test_cached_authority_labels_cannot_satisfy_reviews_or_verification",
+        "tests/test_paper_actions.py::test_context_discharge_is_an_action_but_no_guessed_simulated_proof",
+        "tests/test_paper_actions.py::test_cross_revision_and_substituted_subjects_rejected",
+        "tests/test_paper_actions.py::test_requests_are_auditable_but_never_run_or_sign"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R015",
+      "original_section": "6.1 centralized receipt semantics",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Validate receipt verdict, return code, scope, policy, identities and axioms consistently before loading, signing or using it.",
+      "supported_domain": "Historical and current proof-attempt receipt contract.",
+      "implementation": [
+        "proofmap/attempts.py",
+        "proofmap/trust.py"
+      ],
+      "positive_tests": [
+        "tests/test_proof_attempts.py::test_verified_attempt_records_provenance_and_does_not_mutate_map",
+        "tests/test_proof_attempts.py::test_emitted_records_validate_against_json_schemas"
+      ],
+      "negative_tests": [
+        "tests/test_trust_regressions.py::test_f05_verdict_reload_rejects_semantic_forgery",
+        "tests/test_trust_regressions.py::test_f05_empty_stored_receipt_hash_rejected"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R016",
+      "original_section": "6.2 exact-byte DSSE and external roles/scopes/revocation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Authenticate exact content bytes under external role/scope/time/revocation policy without equating content signatures with observed execution.",
+      "supported_domain": "DSSE content, execution and fidelity role contracts using ephemeral test keys.",
+      "implementation": [
+        "proofmap/trust.py",
+        "proofmap/evidence_adapter.py"
+      ],
+      "positive_tests": [
+        "tests/test_trust.py::test_pae_utf8_lengths",
+        "tests/test_trust.py::test_signature_authenticates_content_not_execution"
+      ],
+      "negative_tests": [
+        "tests/test_trust.py::test_signature_fail_closed",
+        "tests/test_trust.py::test_external_trust_schema_rejected"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R017",
+      "original_section": "6.2 production execution signatures/key lifecycle",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Implement scoped controller execution signatures and authority lifecycle checks while keeping private keys outside workers and committed fixtures.",
+      "supported_domain": "Software authority lifecycle tested with ephemeral keys; production provisioning is explicitly excluded by closeout section 2.",
+      "implementation": [
+        "proofmap/execution.py",
+        "proofmap/trust.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_well_bound_isolated_artifact_contract",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_execution.py::test_execution_role_revocation_scope_and_validity"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_complete_label_cannot_hide_wrong_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_execution_requires_matching_envelope",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_ephemeral_authority_is_still_checked",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_candidate_bytes_must_match_material",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R018",
+      "original_section": "6.3 portable replay, inert historical paths, parent event",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Replay exact portable proof material in a fresh isolated run with parent lineage; treat historical paths as inert metadata.",
+      "supported_domain": "Restricted pinned Lean/Std replay; no host fallback.",
+      "implementation": [
+        "proofmap/replay.py",
+        "proofmap/execution.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_well_bound_isolated_artifact_contract",
+        "tests/test_execution.py::test_replay_uses_fresh_executor_and_rejects_changed_candidate"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_complete_label_cannot_hide_wrong_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_execution_requires_matching_envelope",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_ephemeral_authority_is_still_checked",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_candidate_bytes_must_match_material"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R019",
+      "original_section": "6.3 complete resolved imports/compiler/environment",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Verify exact compiler, library, checker, tactic policy and all admitted imports before formal execution.",
+      "supported_domain": "Existing restricted Lean/Std profile; arbitrary Mathlib and metaprogramming are excluded.",
+      "implementation": [
+        "proofmap/execution.py",
+        "proofmap/lean_worker.py",
+        "scripts/provision_lean_profile.py",
+        "proofmap/evidence_records.py",
+        "proofmap/evidence_adapter.py",
+        "scripts/paper_e2e_isolated.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_well_bound_isolated_artifact_contract",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_complete_label_cannot_hide_wrong_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_execution_requires_matching_envelope",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_ephemeral_authority_is_still_checked",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_candidate_bytes_must_match_material",
+        "tests/test_core_record_contracts.py::test_historical_reuse_fails_closed_for_changed_material"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R020",
+      "original_section": "6.4 pinned offline nonroot bounded worker",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Require pinned offline nonroot workers with read-only mounts and bounded time/output; refuse unavailable isolation.",
+      "supported_domain": "Generic Linux sandbox and restricted Lean worker controller.",
+      "implementation": [
+        "proofmap/runner.py"
+      ],
+      "positive_tests": [
+        "tests/test_runner_contract.py::test_controller_contract"
+      ],
+      "negative_tests": [
+        "tests/test_runner.py::test_runner_requires_pin_and_never_falls_back"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R021",
+      "original_section": "6.4 actual isolation controls",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Actually exercise nonroot execution, network denial, protected mounts, secret/socket absence, timeout and output limits.",
+      "supported_domain": "Acquired pinned generic Python Linux container; this does not substitute for isolated paper verification.",
+      "implementation": [
+        "proofmap/runner.py",
+        ".github/workflows/ci.yml"
+      ],
+      "positive_tests": [
+        "tests/test_runner.py::test_real_linux_isolation_and_limits"
+      ],
+      "negative_tests": [
+        "tests/test_runner.py::test_real_linux_isolation_and_limits"
+      ],
+      "required_profiles": [
+        "linux-sandbox"
+      ],
+      "required_jobs": [
+        "sandbox-security"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R022",
+      "original_section": "6.4 separate TeX/Lean profiles and host compatibility",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Keep manuscript parsing nonexecuting, paper verification isolated-only and legacy trusted-host compatibility explicit with consistent exits.",
+      "supported_domain": "Supported TeX source analysis and legacy/restricted Lean modes.",
+      "implementation": [
+        "proofmap/paper_sources.py",
+        "proofmap/attempts.py",
+        "proofmap/paper_cli.py",
+        "proofmap/execution.py",
+        "proofmap/cli.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_operations.py::test_legacy_host_mode_is_explicit_and_compatible"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_operations.py::test_host_verifier_failure_exits_are_not_acceptance",
+        "tests/test_alpha_operations.py::test_invalid_host_timeout_is_input_error_without_execution",
+        "tests/test_alpha_operations.py::test_paper_exports_work_offline_without_host_fallback_or_entitlement",
+        "tests/test_alpha_operations.py::test_attempt_exit_conventions_with_dispatch_double"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R023",
+      "original_section": "6.5 legacy HTML injection",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Keep source-controlled labels and embedded explorer data inert in an actual browser.",
+      "supported_domain": "Existing offline proof-surface explorer.",
+      "implementation": [
+        "proofmap/surface_visualize.py"
+      ],
+      "positive_tests": [
+        "tests/test_browser_security.py::test_paper_labels_remain_inert_in_real_browser"
+      ],
+      "negative_tests": [
+        "tests/test_browser_security.py::test_paper_labels_remain_inert_in_real_browser"
+      ],
+      "required_profiles": [
+        "chromium"
+      ],
+      "required_jobs": [
+        "browser-security"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R024",
+      "original_section": "6.5 report/CSV/Lean injection boundaries",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Escape report, Markdown, URL, CSV and generated Lean boundaries without changing mathematical source content.",
+      "supported_domain": "Supported offline exports and Lean scaffold generation.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/paper_reports.py",
+        "proofmap/integrity.py",
+        "proofmap/lean_export.py",
+        "proofmap/report.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_operations.py::test_safe_exports_preserve_mathematical_source"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_operations.py::test_lean_scaffold_and_sarif_url_boundaries"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "chromium"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "browser-security"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R025",
+      "original_section": "7.1 stage schemas, provenance, resume/cache",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Validate versioned stage outputs, dependency identities and provenance and recover interrupted pure stages without trusting cached verdicts.",
+      "supported_domain": "All supported analysis stages; cache entries never supply execution authority.",
+      "implementation": [
+        "proofmap/paper_stages.py",
+        "proofmap/paper_store.py",
+        "proofmap/paper_revision.py",
+        "proofmap/paper_records.py",
+        "proofmap/resources/checker-result.schema.json",
+        "proofmap/resources/formalization-result.schema.json"
+      ],
+      "positive_tests": [
+        "tests/test_paper_store_stages.py::test_stage_interruption_resume_and_no_duplicate_events",
+        "tests/test_paper_store_stages.py::test_stage_config_and_revision_isolation",
+        "tests/test_paper_record_contracts.py::test_current_bundle_validates_all_public_tables_without_authority",
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_paper_revision_reuse.py::test_model_or_prompt_change_reexecutes_recorded_stage_and_preserves_history"
+      ],
+      "negative_tests": [
+        "tests/test_paper_store_stages.py::test_corrupt_output_and_partial_write_cannot_resume",
+        "tests/test_paper_store_stages.py::test_parent_corruption_checked_and_verdicts_never_cache_hits",
+        "tests/test_paper_store_stages.py::test_immutable_stage_collision_and_invalid_record",
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance",
+        "tests/test_paper_revision_reuse.py::test_unresolved_surrounding_context_is_conservative",
+        "tests/test_paper_revision_reuse.py::test_rehashed_reuse_forgery_rejected_by_store",
+        "tests/test_paper_revision_reuse.py::test_unknown_policy_cannot_reuse_or_publish",
+        "tests/test_paper_revision_reuse.py::test_rehashed_checker_wrong_source_is_rejected",
+        "tests/test_extractor_prompt_history.py::test_historical_prompt_mode_still_rejects_record_substitution"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R026",
+      "original_section": "7.2 local bounded input contracts",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Acquire bounded local TeX/PDF/directory/ZIP/tar inputs with unambiguous entrypoints and safe portable paths.",
+      "supported_domain": "Offline local manuscript acquisition; links, collisions, escapes and ambiguous roots fail closed.",
+      "implementation": [
+        "proofmap/paper_sources.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_sources.py::test_real_syntax_parser_and_exact_anchors",
+        "tests/test_paper_sources.py::test_pdf_real_adapter_without_invented_offsets"
+      ],
+      "negative_tests": [
+        "tests/test_paper_sources.py::test_archive_escape_rejected",
+        "tests/test_paper_sources.py::test_duplicate_case_and_ambiguous_entrypoint"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R027",
+      "original_section": "7.3 real syntax parser, includes, labels/refs/proofs/math/macros",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Parse supported source syntax and includes with lexical definitions, local bibliography and justified proof associations.",
+      "supported_domain": "Customary LaTeX constructs without executing TeX or guessing unsupported scopes.",
+      "implementation": [
+        "proofmap/paper_sources.py",
+        "proofmap/source_semantics.py"
+      ],
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation",
+        "tests/test_source_semantics.py::test_bibitem_and_external_proof_are_inspectable"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups",
+        "tests/test_source_semantics.py::test_ambiguous_and_missing_citations_and_explicit_proof_targets",
+        "tests/test_source_semantics.py::test_structural_macro_redefinition_cannot_keep_parser_meaning"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R028",
+      "original_section": "7.4 real offline PDF fallback",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Reconstruct born-digital PDF page text offline with exact excerpts and explicit NEEDS_OCR for unsupported scans.",
+      "supported_domain": "Existing pypdf adapter; no OCR, invented boxes or universal PDF theorem semantics.",
+      "implementation": [
+        "proofmap/paper_sources.py"
+      ],
+      "positive_tests": [
+        "tests/test_extended_boundaries.py::test_born_digital_and_scanned_pdf_fixtures"
+      ],
+      "negative_tests": [
+        "tests/test_paper_fragment.py::test_pdf_forged_excerpt_and_page_rejected"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R029",
+      "original_section": "7.5 locators and provenance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C02",
+      "normative_behavior": "Validate exact TeX UTF-8 byte anchors and independently reconstructed PDF page excerpts against source artifacts.",
+      "supported_domain": "Supported TeX and born-digital PDF locators, including Unicode and CRLF.",
+      "implementation": [
+        "proofmap/paper_sources.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_sources.py::test_real_syntax_parser_and_exact_anchors"
+      ],
+      "negative_tests": [
+        "tests/test_paper_fragment.py::test_pdf_forged_excerpt_and_page_rejected"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R030",
+      "original_section": "8.1 source assertions versus accepted evidence",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Retain AUTHOR_ASSERTED source claims and unresolved interpretations independently from authenticated current-policy acceptance.",
+      "supported_domain": "Supported source statements, generated formal subjects and separate fidelity dimensions.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/paper_evidence.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_evidence_pipeline.py::test_source_formalization_without_infrastructure_still_indexes"
+      ],
+      "negative_tests": [
+        "tests/test_kernel.py::test_status_is_not_proof_and_paper_policy_cannot_accept"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R031",
+      "original_section": "8.2 scoped symbols and argument structure",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C03",
+      "normative_behavior": "Represent scoped symbols, hypotheses, quantifiers and explicit conjunctive/alternative inference groups without treating citations as proof.",
+      "supported_domain": "Supported lexical and discourse scope with conservative unresolved candidates.",
+      "implementation": [
+        "proofmap/paper_sources.py",
+        "proofmap/paper.py",
+        "proofmap/kernel.py",
+        "proofmap/source_semantics.py",
+        "proofmap/resources/document-ir.schema.json"
+      ],
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R032",
+      "original_section": "8.3 genuine optional model protocol/replay",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Provide real configured HTTP extraction, offline none and exact recorded replay while rejecting forged IDs, statuses and stale responses.",
+      "supported_domain": "Existing Ollama protocol implementation tested against local fake provider; no paid/live model required.",
+      "implementation": [
+        "proofmap/extractor.py",
+        "proofmap/paper.py"
+      ],
+      "positive_tests": [
+        "tests/test_extractor.py::test_real_http_protocol_fake_provider_and_offline_replay"
+      ],
+      "negative_tests": [
+        "tests/test_extractor.py::test_model_cannot_promote_or_invent_sources"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R033",
+      "original_section": "8.3 prose/implicit-reference and formalization stages",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Produce anchored candidate quantifier/hypothesis/conclusion/reference/symbol decomposition and source-derived supported formal obligations.",
+      "supported_domain": "Bounded semantic candidates and restricted integer-polynomial/antecedent formalization.",
+      "implementation": [
+        "proofmap/extractor.py",
+        "proofmap/formalize.py",
+        "proofmap/paper.py",
+        "proofmap/semantic_candidates.py",
+        "proofmap/source_semantics.py"
+      ],
+      "positive_tests": [
+        "tests/test_semantic_candidates.py::test_prose_decomposition_retains_anchored_conflicts_and_coverage",
+        "tests/test_semantic_candidates.py::test_real_http_decomposition_and_independent_fidelity_disagreement",
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation"
+      ],
+      "negative_tests": [
+        "tests/test_semantic_candidates.py::test_forged_decomposition_cannot_create_source_or_authority",
+        "tests/test_semantic_candidates.py::test_fidelity_unavailable_and_stale_binding_stay_explicit",
+        "tests/test_semantic_candidates.py::test_fidelity_stored_event_fields_must_match_raw_replay",
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R034",
+      "original_section": "8.4 source/citation/dependency checkers",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Use consistent checker records and trusted PASS/PARTIAL eligibility with supported citation and dependency analysis.",
+      "supported_domain": "Source-bound advisory and exact/formal checker contracts.",
+      "implementation": [
+        "proofmap/paper_checkers.py",
+        "proofmap/paper.py",
+        "proofmap/source_semantics.py",
+        "proofmap/resources/checker-result.schema.json"
+      ],
+      "positive_tests": [
+        "tests/test_checker_contract.py::test_execution_partial_is_allowed_only_by_explicit_trusted_profile",
+        "tests/test_checker_contract.py::test_findings_retain_classification_source_remediation_and_certificate_binding",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives"
+      ],
+      "negative_tests": [
+        "tests/test_checker_contract.py::test_distinct_nonpass_states_never_satisfy_pass_or_partial_policy",
+        "tests/test_checker_contract.py::test_checker_record_rejects_malformed_or_impossible_claims",
+        "tests/test_checker_contract.py::test_required_stage_cannot_omit_the_versioned_execution_contract",
+        "tests/test_source_semantics.py::test_ambiguous_and_missing_citations_and_explicit_proof_targets"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R035",
+      "original_section": "8.4 exact computation/counterexample",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Derive bounded exact checks from supported source and distinguish false identities from proof-search failure and unreviewed encoding.",
+      "supported_domain": "Restricted source integer-polynomial identities and bounded rational-polynomial computation.",
+      "implementation": [
+        "proofmap/exact_check.py",
+        "proofmap/formalize.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_fragment.py::test_runtime_ast_and_exact_statement"
+      ],
+      "negative_tests": [
+        "tests/test_paper_pipeline.py::test_exact_language_rejects_unsafe_or_unbounded",
+        "tests/test_paper_pipeline.py::test_exact_manifest_is_separate_from_fidelity_and_missing_formal_fails",
+        "tests/test_source_semantics.py::test_exact_certificate_is_recomputed_from_ast"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R036",
+      "original_section": "8.4 author-required formal artifacts",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C08",
+      "normative_behavior": "Execute required generated formal subjects only in the authenticated restricted isolated profile and fail explicitly if unavailable.",
+      "supported_domain": "Source-derived supported polynomial obligations; actual worker execution is required for success.",
+      "implementation": [
+        "proofmap/formalize.py",
+        "proofmap/execution.py",
+        "proofmap/paper.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_well_bound_isolated_artifact_contract",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_complete_label_cannot_hide_wrong_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_execution_requires_matching_envelope",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_ephemeral_authority_is_still_checked",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_candidate_bytes_must_match_material",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_execution.py::test_fresh_no_runtime_returns_unavailable_without_host_fallback"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R037",
+      "original_section": "8.5 outcome vector/denominators/exit status",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C04",
+      "normative_behavior": "Report source/formal/verified/reviewed/accepted denominators and distinct failure/capability outcomes without collapsing scientific states.",
+      "supported_domain": "All supported paper checker outcomes and public CLI exits.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/paper_checkers.py",
+        "proofmap/paper_evidence.py",
+        "proofmap/paper_records.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_record_contracts.py::test_current_bundle_validates_all_public_tables_without_authority",
+        "tests/test_checker_contract.py::test_execution_partial_is_allowed_only_by_explicit_trusted_profile",
+        "tests/test_checker_contract.py::test_findings_retain_classification_source_remediation_and_certificate_binding",
+        "tests/test_semantic_candidates.py::test_prose_decomposition_retains_anchored_conflicts_and_coverage",
+        "tests/test_semantic_candidates.py::test_real_http_decomposition_and_independent_fidelity_disagreement"
+      ],
+      "negative_tests": [
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance",
+        "tests/test_checker_contract.py::test_distinct_nonpass_states_never_satisfy_pass_or_partial_policy",
+        "tests/test_checker_contract.py::test_checker_record_rejects_malformed_or_impossible_claims",
+        "tests/test_checker_contract.py::test_required_stage_cannot_omit_the_versioned_execution_contract",
+        "tests/test_paper_pipeline.py::test_empty_assertion_coverage_is_unknown"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R038",
+      "original_section": "8.6 automatic store/CAS/rebuild",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Persist immutable automatic ingestion, stage dependencies, audit records and queries so rebuild and interrupted transactions preserve lineage.",
+      "supported_domain": "Local SQLite/CAS and supported run/stage/evidence records.",
+      "implementation": [
+        "proofmap/paper_store.py",
+        "proofmap/paper_stages.py",
+        "proofmap/paper_revision.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_store_stages.py::test_stage_interruption_resume_and_no_duplicate_events",
+        "tests/test_paper_store_stages.py::test_stage_config_and_revision_isolation",
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_paper_revision_reuse.py::test_model_or_prompt_change_reexecutes_recorded_stage_and_preserves_history"
+      ],
+      "negative_tests": [
+        "tests/test_paper_store_stages.py::test_corrupt_output_and_partial_write_cannot_resume",
+        "tests/test_paper_store_stages.py::test_parent_corruption_checked_and_verdicts_never_cache_hits",
+        "tests/test_paper_store_stages.py::test_immutable_stage_collision_and_invalid_record",
+        "tests/test_paper_revision_reuse.py::test_unresolved_surrounding_context_is_conservative",
+        "tests/test_paper_revision_reuse.py::test_rehashed_reuse_forgery_rejected_by_store",
+        "tests/test_paper_revision_reuse.py::test_unknown_policy_cannot_reuse_or_publish",
+        "tests/test_paper_revision_reuse.py::test_rehashed_checker_wrong_source_is_rejected",
+        "tests/test_extractor_prompt_history.py::test_historical_prompt_mode_still_rejects_record_substitution"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R039",
+      "original_section": "8.7 review and acceptance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C07",
+      "normative_behavior": "Apply exact-bound authenticated fidelity reviews and immutable interpretation overrides, recomputing affected views and rejecting stale or forged input.",
+      "supported_domain": "Source/formal review roles and bounded interpretation changes; test authority is not production review.",
+      "implementation": [
+        "proofmap/paper_evidence.py",
+        "proofmap/paper.py",
+        "proofmap/paper_store.py",
+        "proofmap/paper_overrides.py",
+        "proofmap/paper_reports.py",
+        "proofmap/paper_cli.py",
+        "proofmap/resources/interpretation-override.schema.json"
+      ],
+      "positive_tests": [
+        "tests/test_paper_review_workflow.py::test_override_recomputes_map_preserves_raw_source_and_history",
+        "tests/test_paper_review_workflow.py::test_reports_and_query_share_claims_versions_and_safe_source",
+        "tests/test_paper_review_workflow.py::test_cli_exports_applies_queries_inspects_and_reports"
+      ],
+      "negative_tests": [
+        "tests/test_paper_review_workflow.py::test_stale_forged_or_authority_creating_override_is_rejected",
+        "tests/test_paper_review_workflow.py::test_override_rejects_rehashed_derived_tampering_and_existing_output"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R040",
+      "original_section": "8.8 useful offline reports/source browser",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C07",
+      "normative_behavior": "Provide navigable source/context/formal/evidence/review views and consistent accessible JSON, Markdown, HTML and SARIF.",
+      "supported_domain": "Offline CLI and local reports; no hosted web application.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/paper_reports.py",
+        "proofmap/paper_cli.py",
+        "proofmap/paper_overrides.py",
+        "proofmap/resources/interpretation-override.schema.json"
+      ],
+      "positive_tests": [
+        "tests/test_paper_review_workflow.py::test_browser_navigates_source_context_formal_evidence_reviews_without_scripts",
+        "tests/test_browser_security.py::test_static_paper_report_keeps_source_inert_and_readable"
+      ],
+      "negative_tests": [
+        "tests/test_paper_review_workflow.py::test_browser_navigates_source_context_formal_evidence_reviews_without_scripts"
+      ],
+      "required_profiles": [
+        "chromium"
+      ],
+      "required_jobs": [
+        "browser-security"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "chromium"
+      ]
+    },
+    {
+      "id": "R041",
+      "original_section": "9.1 revision diff and invalidation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Resolve dependency-aware revision changes and safely reuse independent pure/formal artifacts with fresh bindings and current trust/fidelity.",
+      "supported_domain": "Supported A/B independent theorem branches and conservative unresolved-scope fallback.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/paper_stages.py",
+        "proofmap/paper_store.py",
+        "proofmap/paper_revision.py",
+        "proofmap/evidence_adapter.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_paper_revision_reuse.py::test_model_or_prompt_change_reexecutes_recorded_stage_and_preserves_history"
+      ],
+      "negative_tests": [
+        "tests/test_paper_revision_reuse.py::test_unresolved_surrounding_context_is_conservative",
+        "tests/test_paper_revision_reuse.py::test_rehashed_reuse_forgery_rejected_by_store",
+        "tests/test_paper_revision_reuse.py::test_unknown_policy_cannot_reuse_or_publish",
+        "tests/test_paper_revision_reuse.py::test_rehashed_checker_wrong_source_is_rejected",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_core_record_contracts.py::test_historical_reuse_fails_closed_for_changed_material",
+        "tests/test_extractor_prompt_history.py::test_historical_prompt_mode_still_rejects_record_substitution"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R042",
+      "original_section": "9.2 labeled golden evaluation",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C09",
+      "normative_behavior": "Evaluate every original fixture category with independent labels, stratified counts, measured reuse/replay and honest unknown statistics.",
+      "supported_domain": "Original supported alpha corpus with separate development and held-out fixtures.",
+      "implementation": [
+        "proofmap/benchmark.py",
+        "tests/fixtures/papers/golden.json",
+        "proofmap/benchmark_scenarios.py",
+        "proofmap/benchmark_validation.py"
+      ],
+      "positive_tests": [
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata",
+        "tests/test_benchmark_evaluation.py::test_measured_events_compare_to_labels_without_promoting_proof",
+        "tests/test_benchmark_evaluation.py::test_recorded_fidelity_mistake_is_measured_without_network_or_acceptance",
+        "tests/test_alpha_benchmark_artifact.py::test_complete_measured_corpus_preserves_imperfect_advisory_metrics"
+      ],
+      "negative_tests": [
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "expected_artifacts": [
+        "benchmark"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R043",
+      "original_section": "9.3 bounded processing/performance",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C06",
+      "normative_behavior": "Bound processing and resources while preserving interrupted recovery and measuring dependency-safe reuse at supported test sizes.",
+      "supported_domain": "Source parser/model/graph/expression limits and local stage persistence.",
+      "implementation": [
+        "proofmap/paper_sources.py",
+        "proofmap/extractor.py",
+        "proofmap/kernel.py",
+        "proofmap/paper_store.py",
+        "proofmap/paper_revision.py",
+        "proofmap/benchmark_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_paper_store_stages.py::test_stage_interruption_resume_and_no_duplicate_events",
+        "tests/test_paper_store_stages.py::test_stage_config_and_revision_isolation",
+        "tests/test_extended_boundaries.py::test_large_iterative_graph",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata",
+        "tests/test_benchmark_evaluation.py::test_measured_events_compare_to_labels_without_promoting_proof",
+        "tests/test_benchmark_evaluation.py::test_recorded_fidelity_mistake_is_measured_without_network_or_acceptance",
+        "tests/test_alpha_benchmark_artifact.py::test_complete_measured_corpus_preserves_imperfect_advisory_metrics",
+        "tests/test_paper_revision_reuse.py::test_model_or_prompt_change_reexecutes_recorded_stage_and_preserves_history"
+      ],
+      "negative_tests": [
+        "tests/test_paper_store_stages.py::test_corrupt_output_and_partial_write_cannot_resume",
+        "tests/test_paper_store_stages.py::test_parent_corruption_checked_and_verdicts_never_cache_hits",
+        "tests/test_paper_store_stages.py::test_immutable_stage_collision_and_invalid_record",
+        "tests/test_paper_evidence_pipeline.py::test_parser_timeout_is_not_a_reusable_success",
+        "tests/test_paper_pipeline.py::test_exact_language_rejects_unsafe_or_unbounded",
+        "tests/test_extractor_prompt_history.py::test_historical_prompt_mode_still_rejects_record_substitution"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R044",
+      "original_section": "10 CLI/resources/bundle/exits",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Expose compatible public commands and complete installed schemas/resources with consistent validation and exit behavior.",
+      "supported_domain": "Installed wheel/sdist public CLI and API paths outside the source checkout.",
+      "implementation": [
+        "proofmap/cli.py",
+        "proofmap/paper_cli.py",
+        "proofmap/schema.py",
+        "scripts/wheel_smoke.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_operations.py::test_legacy_host_mode_is_explicit_and_compatible",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees",
+        "tests/test_alpha_offline_driver.py::test_offline_scenarios_execute_public_interfaces_and_remain_source_evidence"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_operations.py::test_public_cli_invalid_records_exit_cleanly"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-wheel",
+        "installed-alpha-offline"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "alpha-offline-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R045",
+      "original_section": "11.1 workflow security",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Keep immutable action pins, read-only tokens, nonpersisted credentials, bounded jobs/artifacts and trusted manuscript separation.",
+      "supported_domain": "Software and manuscript workflows; no PR secrets or paid-feature dependency.",
+      "implementation": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/paper-ci.yml",
+        "scripts/workflow_security.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_operations.py::test_all_workflows_obey_bounded_read_only_policy"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_operations.py::test_workflow_policy_rejects_individual_unsafe_step"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R046",
+      "original_section": "11.2 matrix/lint/types/tests/audit/package",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Qualify the actual candidate with existing Python/OS matrix, lint/types, dependency audit and installed distribution checks.",
+      "supported_domain": "Existing required software CI jobs and unchanged coverage thresholds.",
+      "implementation": [
+        ".github/workflows/ci.yml",
+        "scripts/check_types.py",
+        "scripts/check_critical_coverage.py",
+        "scripts/wheel_smoke.py",
+        "scripts/check_alpha_acceptance.py",
+        "scripts/test_installed_wheel.py",
+        "scripts/windows_pytest_partitions.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_acceptance.py::test_repository_contract_is_complete_and_matches_frozen_scope",
+        "tests/test_alpha_acceptance.py::test_current_positive_and_negative_execution_satisfies_contract",
+        "tests/test_alpha_acceptance.py::test_current_wheel_bytes_and_metadata_are_checked",
+        "tests/test_installed_regression_driver.py::test_source_snapshot_matches_capture_and_stages_only_identical_test_material",
+        "tests/test_installed_regression_driver.py::test_installed_outcome_validator_retains_real_outcome_dimensions"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_acceptance.py::test_missing_malformed_unbound_or_unsafe_artifacts_fail",
+        "tests/test_alpha_acceptance.py::test_stale_or_mixed_identity_fails",
+        "tests/test_alpha_acceptance.py::test_release_version_cannot_be_promoted_by_green_tests",
+        "tests/test_alpha_acceptance.py::test_mandatory_nonpass_is_never_success",
+        "tests/test_installed_regression_driver.py::test_wheel_must_match_current_source_inventory_bytes_and_version",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_escaping_or_ambiguous_paths",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_source_drift_and_package_insertion",
+        "tests/test_installed_regression_driver.py::test_installed_outcomes_reject_missing_drifted_filtered_or_promoted_evidence",
+        "tests/test_installed_regression_driver.py::test_launcher_preserves_failures_without_claiming_execution",
+        "tests/test_installed_regression_driver.py::test_gate_requires_separately_collected_matching_installed_pytest"
+      ],
+      "required_profiles": [
+        "python-linux-3.10",
+        "python-linux-3.11",
+        "python-linux-3.12",
+        "python-linux-3.13",
+        "python-linux-3.14",
+        "python-windows-3.12",
+        "python-windows-3.14",
+        "installed-wheel",
+        "installed-alpha-offline",
+        "host-lean",
+        "chromium",
+        "linux-sandbox",
+        "linux-isolated",
+        "linux-alpha-isolated",
+        "linux-unit",
+        "benchmark",
+        "quality",
+        "dependency-audit",
+        "installed-regression",
+        "partitioned-regression"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build",
+        "verification-real",
+        "browser-security",
+        "sandbox-security",
+        "paper-e2e-isolated",
+        "paper-ci-fixtures",
+        "quality",
+        "schema-migration",
+        "semantic-properties",
+        "dependency-audit",
+        "workflow-security",
+        "windows-regression"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "benchmark",
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios",
+        "alpha-offline-scenarios",
+        "dependency-audit",
+        "installed-regression-outcomes",
+        "partitioned-regression-outcomes"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R047",
+      "original_section": "11.3 fail-closed required status",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Require exact success from every fixed mandatory job and reject omitted, unexpected, skipped, cancelled or failed results.",
+      "supported_domain": "Existing ci-required aggregation, extended by the alpha-readiness contract.",
+      "implementation": [
+        "scripts/ci_required.py",
+        ".github/workflows/ci.yml"
+      ],
+      "positive_tests": [
+        "tests/test_ci_required.py::test_complete_success",
+        "tests/test_ci_required.py::test_workflow_has_same_fixed_required_set"
+      ],
+      "negative_tests": [
+        "tests/test_ci_required.py::test_non_success_always_fails",
+        "tests/test_ci_required.py::test_missing_and_unexpected_fails"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "R048",
+      "original_section": "11.4 trusted-base manuscript workflow",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Validate manuscript data through an installed trusted validator with recorded immutable revisions and guarded manual dispatch.",
+      "supported_domain": "Data-only manuscript workflow; source code from submission is never imported as validator.",
+      "implementation": [
+        ".github/workflows/paper-ci.yml",
+        "scripts/paper_ci_corpus.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/workflow_security.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_operations.py::test_all_workflows_obey_bounded_read_only_policy",
+        "tests/test_paper_e2e_driver.py::test_data_only_checks_both_immutable_revisions"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_operations.py::test_manuscript_workflow_rejects_submission_as_validator",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R049",
+      "original_section": "11.5 optional hosted features",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C10",
+      "normative_behavior": "Provide local downloadable diagnostics and capability-gate optional paid hosted scanning/attestation features.",
+      "supported_domain": "Local SARIF and manual optional CodeQL; no entitlement or native-attestation requirement.",
+      "implementation": [
+        ".github/workflows/codeql.yml",
+        "proofmap/paper_reports.py",
+        "scripts/workflow_security.py",
+        "proofmap/paper_cli.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_operations.py::test_paper_exports_work_offline_without_host_fallback_or_entitlement"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_operations.py::test_optional_hosted_features_cannot_become_required"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R050",
+      "original_section": "11.6 updates/build-only release/protection",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C12",
+      "normative_behavior": "Keep dependency updates reviewable and release workflow build-only with documented protection guidance.",
+      "supported_domain": "Software configuration and unpublished artifacts only; server settings, tags and publication require separate authorization.",
+      "implementation": [
+        ".github/dependabot.yml",
+        ".github/workflows/release.yml",
+        "docs/BRANCH_PROTECTION.md",
+        "scripts/workflow_security.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_operations.py::test_dependency_updates_and_release_remain_reviewable"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_operations.py::test_release_rejects_publication_and_server_mutation"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R051",
+      "original_section": "12 mandatory test catalog",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C09",
+      "normative_behavior": "Preserve all original mandatory supported fixture categories and integrated acceptance scenarios with actual execution evidence.",
+      "supported_domain": "Twelve corpus categories and five installed-package scenarios defined by closeout.",
+      "implementation": [
+        "tests/fixtures/papers/golden.json",
+        "proofmap/benchmark.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/paper_alpha_offline.py",
+        "scripts/check_alpha_scenarios.py",
+        "proofmap/benchmark_validation.py",
+        "scripts/test_installed_wheel.py",
+        "scripts/windows_pytest_partitions.py"
+      ],
+      "positive_tests": [
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata",
+        "tests/test_benchmark_evaluation.py::test_measured_events_compare_to_labels_without_promoting_proof",
+        "tests/test_benchmark_evaluation.py::test_recorded_fidelity_mistake_is_measured_without_network_or_acceptance",
+        "tests/test_alpha_benchmark_artifact.py::test_complete_measured_corpus_preserves_imperfect_advisory_metrics",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_alpha_offline_driver.py::test_offline_scenarios_execute_public_interfaces_and_remain_source_evidence",
+        "tests/test_installed_regression_driver.py::test_source_snapshot_matches_capture_and_stages_only_identical_test_material",
+        "tests/test_installed_regression_driver.py::test_installed_outcome_validator_retains_real_outcome_dimensions"
+      ],
+      "negative_tests": [
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_alpha_offline_driver.py::test_missing_or_promoted_offline_outcomes_fail",
+        "tests/test_installed_regression_driver.py::test_wheel_must_match_current_source_inventory_bytes_and_version",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_escaping_or_ambiguous_paths",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_source_drift_and_package_insertion",
+        "tests/test_installed_regression_driver.py::test_installed_outcomes_reject_missing_drifted_filtered_or_promoted_evidence",
+        "tests/test_installed_regression_driver.py::test_launcher_preserves_failures_without_claiming_execution"
+      ],
+      "required_profiles": [
+        "python-linux-3.10",
+        "python-linux-3.11",
+        "python-linux-3.12",
+        "python-linux-3.13",
+        "python-linux-3.14",
+        "python-windows-3.12",
+        "python-windows-3.14",
+        "installed-wheel",
+        "installed-alpha-offline",
+        "host-lean",
+        "chromium",
+        "linux-sandbox",
+        "linux-isolated",
+        "linux-alpha-isolated",
+        "linux-unit",
+        "benchmark",
+        "quality",
+        "dependency-audit",
+        "installed-regression",
+        "partitioned-regression"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build",
+        "verification-real",
+        "browser-security",
+        "sandbox-security",
+        "paper-e2e-isolated",
+        "paper-ci-fixtures",
+        "quality",
+        "schema-migration",
+        "semantic-properties",
+        "dependency-audit",
+        "workflow-security",
+        "windows-regression"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "benchmark",
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios",
+        "alpha-offline-scenarios",
+        "dependency-audit",
+        "installed-regression-outcomes",
+        "partitioned-regression-outcomes"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "R052",
+      "original_section": "13 docs/release hygiene/evidence",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "area": "C12",
+      "normative_behavior": "Close the software alpha only after all capabilities/scenarios/readiness gates pass and qualify matching versioned distributions.",
+      "supported_domain": "Target 0.8.0a1 after capability gates; publication and production authority remain separate.",
+      "implementation": [
+        "pyproject.toml",
+        "README.md",
+        "CHANGELOG.md",
+        "REPO_STATUS.md",
+        "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+        "scripts/check_alpha_acceptance.py",
+        "acceptance/paper_ci_alpha.json",
+        "scripts/wheel_smoke.py",
+        "scripts/test_installed_wheel.py",
+        "scripts/windows_pytest_partitions.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_acceptance.py::test_repository_contract_is_complete_and_matches_frozen_scope",
+        "tests/test_alpha_acceptance.py::test_current_positive_and_negative_execution_satisfies_contract",
+        "tests/test_alpha_acceptance.py::test_current_wheel_bytes_and_metadata_are_checked",
+        "tests/test_installed_regression_driver.py::test_source_snapshot_matches_capture_and_stages_only_identical_test_material",
+        "tests/test_installed_regression_driver.py::test_installed_outcome_validator_retains_real_outcome_dimensions"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_acceptance.py::test_missing_malformed_unbound_or_unsafe_artifacts_fail",
+        "tests/test_alpha_acceptance.py::test_stale_or_mixed_identity_fails",
+        "tests/test_alpha_acceptance.py::test_release_version_cannot_be_promoted_by_green_tests",
+        "tests/test_alpha_acceptance.py::test_mandatory_nonpass_is_never_success",
+        "tests/test_installed_regression_driver.py::test_wheel_must_match_current_source_inventory_bytes_and_version",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_escaping_or_ambiguous_paths",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_source_drift_and_package_insertion",
+        "tests/test_installed_regression_driver.py::test_installed_outcomes_reject_missing_drifted_filtered_or_promoted_evidence",
+        "tests/test_installed_regression_driver.py::test_launcher_preserves_failures_without_claiming_execution",
+        "tests/test_installed_regression_driver.py::test_gate_requires_separately_collected_matching_installed_pytest"
+      ],
+      "required_profiles": [
+        "python-linux-3.10",
+        "python-linux-3.11",
+        "python-linux-3.12",
+        "python-linux-3.13",
+        "python-linux-3.14",
+        "python-windows-3.12",
+        "python-windows-3.14",
+        "installed-wheel",
+        "installed-alpha-offline",
+        "host-lean",
+        "chromium",
+        "linux-sandbox",
+        "linux-isolated",
+        "linux-alpha-isolated",
+        "linux-unit",
+        "benchmark",
+        "quality",
+        "dependency-audit",
+        "installed-regression",
+        "partitioned-regression"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build",
+        "verification-real",
+        "browser-security",
+        "sandbox-security",
+        "paper-e2e-isolated",
+        "paper-ci-fixtures",
+        "quality",
+        "schema-migration",
+        "semantic-properties",
+        "dependency-audit",
+        "workflow-security",
+        "windows-regression"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "benchmark",
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios",
+        "alpha-offline-scenarios",
+        "dependency-audit",
+        "installed-regression-outcomes",
+        "partitioned-regression-outcomes"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C01",
+      "original_section": "3; hierarchy in 2",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C01",
+      "normative_behavior": "Reconcile every inherited mandatory row into a deletion-resistant requirement/evidence contract and maintain truthful current and historical status.",
+      "supported_domain": "Bounded software-alpha requirements, excluding production setup and originally deferred domains.",
+      "implementation": [
+        "acceptance/paper_ci_alpha.json",
+        "acceptance/mandatory_requirements.json",
+        "scripts/check_alpha_acceptance.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_acceptance.py::test_repository_contract_is_complete_and_matches_frozen_scope",
+        "tests/test_alpha_acceptance.py::test_current_positive_and_negative_execution_satisfies_contract"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_acceptance.py::test_deleted_mandatory_contract_members_fail",
+        "tests/test_alpha_acceptance.py::test_stale_or_mixed_identity_fails"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "C02",
+      "original_section": "4 C02",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C02",
+      "normative_behavior": "Provide strict versioned schemas, semantic validators and structured issues for every emitted record, preserving independent identities and assessment dimensions.",
+      "supported_domain": "Source/IR, symbol/scope, assertion/candidate, inference/context, stage/cache, formal/execution/review/evidence/assessment and run/revision records.",
+      "implementation": [
+        "proofmap/schema.py",
+        "proofmap/integrity.py",
+        "proofmap/evidence_records.py",
+        "proofmap/paper_store.py",
+        "proofmap/paper_records.py",
+        "proofmap/resources/assessment-record.schema.json",
+        "proofmap/resources/paper-records.schema.json",
+        "proofmap/resources/pipeline-assessment.schema.json",
+        "proofmap/formalize.py"
+      ],
+      "positive_tests": [
+        "tests/test_core_record_contracts.py::test_dimension_assessment_is_versioned_immutable_and_not_acceptance",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees",
+        "tests/test_core_record_contracts.py::test_emitted_assessment_dimensions_preserve_formal_and_paper_boundary",
+        "tests/test_paper_record_contracts.py::test_current_bundle_validates_all_public_tables_without_authority"
+      ],
+      "negative_tests": [
+        "tests/test_core_record_contracts.py::test_kernel_loader_rejects_malformed_contracts",
+        "tests/test_core_record_contracts.py::test_assessment_provenance_rejects_malformed_fields",
+        "tests/test_core_record_contracts.py::test_complete_environment_requires_exact_typed_material",
+        "tests/test_core_record_contracts.py::test_record_boundaries_reject_empty_limits_reversed_and_unsafe_locators",
+        "tests/test_core_record_contracts.py::test_rehashed_acceptance_cannot_violate_policy_state",
+        "tests/test_paper_record_contracts.py::test_rehashed_malformed_import_cannot_gain_status",
+        "tests/test_paper_record_contracts.py::test_load_bundle_rejects_rehashed_aggregate_acceptance",
+        "tests/test_source_semantics.py::test_exact_certificate_is_recomputed_from_ast"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C03",
+      "original_section": "4 C03",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C03",
+      "normative_behavior": "Implement bounded lexical/discourse scopes, token-exact macro bindings, typed hypotheses, checked antecedents and relation-specific semantics.",
+      "supported_domain": "Supported static LaTeX declarations and restricted Lean/Std implication cases; dynamic TeX and arbitrary theory discharge are unsupported.",
+      "implementation": [
+        "proofmap/paper_sources.py",
+        "proofmap/formalize.py",
+        "proofmap/kernel.py",
+        "proofmap/source_semantics.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_core_record_contracts.py::test_relation_contracts_have_distinct_views_directions_and_no_proof_authority"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_core_record_contracts.py::test_relation_cycles_endpoints_context_and_symmetry_are_enforced",
+        "tests/test_source_semantics.py::test_exact_certificate_is_recomputed_from_ast"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C04",
+      "original_section": "4 C04",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C04",
+      "normative_behavior": "Complete local bibliography, justified proof links, anchored candidate decomposition, independent candidate-fidelity and consistent checker outcomes.",
+      "supported_domain": "Existing-provider configured HTTP/replay and offline analysis; model interpretations remain advisory.",
+      "implementation": [
+        "proofmap/extractor.py",
+        "proofmap/paper_sources.py",
+        "proofmap/paper_checkers.py",
+        "proofmap/formalize.py",
+        "proofmap/source_semantics.py",
+        "proofmap/semantic_candidates.py",
+        "scripts/paper_alpha_offline.py"
+      ],
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation",
+        "tests/test_semantic_candidates.py::test_prose_decomposition_retains_anchored_conflicts_and_coverage",
+        "tests/test_semantic_candidates.py::test_real_http_decomposition_and_independent_fidelity_disagreement",
+        "tests/test_checker_contract.py::test_execution_partial_is_allowed_only_by_explicit_trusted_profile",
+        "tests/test_checker_contract.py::test_findings_retain_classification_source_remediation_and_certificate_binding",
+        "tests/test_alpha_offline_driver.py::test_offline_scenarios_execute_public_interfaces_and_remain_source_evidence"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups",
+        "tests/test_semantic_candidates.py::test_forged_decomposition_cannot_create_source_or_authority",
+        "tests/test_semantic_candidates.py::test_fidelity_unavailable_and_stale_binding_stay_explicit",
+        "tests/test_semantic_candidates.py::test_fidelity_stored_event_fields_must_match_raw_replay",
+        "tests/test_checker_contract.py::test_distinct_nonpass_states_never_satisfy_pass_or_partial_policy",
+        "tests/test_checker_contract.py::test_checker_record_rejects_malformed_or_impossible_claims",
+        "tests/test_checker_contract.py::test_required_stage_cannot_omit_the_versioned_execution_contract",
+        "tests/test_alpha_offline_driver.py::test_missing_or_promoted_offline_outcomes_fail"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-wheel",
+        "installed-alpha-offline"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "alpha-offline-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C05",
+      "original_section": "4 C05",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C05",
+      "normative_behavior": "Derive exact evidence actions from closure failures and simulate named counterfactual conditions without mutating accepted state.",
+      "supported_domain": "Supported evidence/review/context failures and versioned planning heuristics.",
+      "implementation": [
+        "proofmap/optimizer.py",
+        "proofmap/metrics.py",
+        "proofmap/paper_actions.py",
+        "proofmap/resources/action-planning.schema.json",
+        "docs/EVIDENCE_ACTIONS.md"
+      ],
+      "positive_tests": [
+        "tests/test_paper_actions.py::test_missing_premise_and_certificate_have_distinct_exact_actions",
+        "tests/test_paper_actions.py::test_counterfactual_and_witnesses_do_not_mutate_actual_claims_or_evidence",
+        "tests/test_paper_actions.py::test_current_verified_subject_needs_review_not_another_premise_proof",
+        "tests/test_paper_actions.py::test_historical_execution_reuse_still_requires_current_reviews",
+        "tests/test_paper_actions.py::test_automatic_source_has_exact_binding_plan_without_running_verification"
+      ],
+      "negative_tests": [
+        "tests/test_paper_actions.py::test_visual_relations_cannot_improve_actual_or_hypothetical_closure",
+        "tests/test_paper_actions.py::test_cached_authority_labels_cannot_satisfy_reviews_or_verification",
+        "tests/test_paper_actions.py::test_context_discharge_is_an_action_but_no_guessed_simulated_proof",
+        "tests/test_paper_actions.py::test_cross_revision_and_substituted_subjects_rejected",
+        "tests/test_paper_actions.py::test_requests_are_auditable_but_never_run_or_sign"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C06",
+      "original_section": "4 C06",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C06",
+      "normative_behavior": "Track dependencies, classify revisions and actually reuse independent pure/formal artifacts with fresh source bindings and current authority/fidelity checks.",
+      "supported_domain": "Source moves and statement/domain/definition/proof/citation/configuration/environment/trust changes, with conservative unresolved fallback.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/paper_stages.py",
+        "proofmap/paper_store.py",
+        "proofmap/paper_revision.py",
+        "proofmap/evidence_adapter.py",
+        "scripts/paper_e2e_isolated.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_paper_revision_reuse.py::test_model_or_prompt_change_reexecutes_recorded_stage_and_preserves_history"
+      ],
+      "negative_tests": [
+        "tests/test_paper_revision_reuse.py::test_unresolved_surrounding_context_is_conservative",
+        "tests/test_paper_revision_reuse.py::test_rehashed_reuse_forgery_rejected_by_store",
+        "tests/test_paper_revision_reuse.py::test_unknown_policy_cannot_reuse_or_publish",
+        "tests/test_paper_revision_reuse.py::test_rehashed_checker_wrong_source_is_rejected",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_core_record_contracts.py::test_historical_reuse_fails_closed_for_changed_material",
+        "tests/test_extractor_prompt_history.py::test_historical_prompt_mode_still_rejects_record_substitution"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C07",
+      "original_section": "4 C07",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C07",
+      "normative_behavior": "Complete navigable offline review/query/report paths and immutable scoped interpretation overrides with recomputation.",
+      "supported_domain": "Existing CLI, SQLite and escaped local HTML/Markdown/JSON/SARIF; no hosted application.",
+      "implementation": [
+        "proofmap/paper.py",
+        "proofmap/paper_cli.py",
+        "proofmap/paper_reports.py",
+        "proofmap/paper_store.py",
+        "proofmap/paper_overrides.py",
+        "proofmap/resources/interpretation-override.schema.json"
+      ],
+      "positive_tests": [
+        "tests/test_paper_review_workflow.py::test_override_recomputes_map_preserves_raw_source_and_history",
+        "tests/test_paper_review_workflow.py::test_reports_and_query_share_claims_versions_and_safe_source",
+        "tests/test_paper_review_workflow.py::test_cli_exports_applies_queries_inspects_and_reports"
+      ],
+      "negative_tests": [
+        "tests/test_paper_review_workflow.py::test_stale_forged_or_authority_creating_override_is_rejected",
+        "tests/test_paper_review_workflow.py::test_override_rejects_rehashed_derived_tampering_and_existing_output"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C08",
+      "original_section": "4 C08",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C08",
+      "normative_behavior": "Preserve and qualify exact restricted-profile materials, independent execution/replay, signature roles, isolated key boundaries and explicit host compatibility.",
+      "supported_domain": "Pinned Lean/Std approved programs and ephemeral test authority, not arbitrary hostile metaprogramming or production approval.",
+      "implementation": [
+        "proofmap/execution.py",
+        "proofmap/lean_worker.py",
+        "proofmap/replay.py",
+        "proofmap/trust.py",
+        "scripts/paper_e2e_isolated.py",
+        "proofmap/evidence_records.py",
+        "proofmap/evidence_adapter.py",
+        "scripts/check_alpha_scenarios.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_well_bound_isolated_artifact_contract",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_core_record_contracts.py::test_all_execution_schema_resources_are_public_and_nested_material_agrees",
+        "tests/test_alpha_operations.py::test_legacy_host_mode_is_explicit_and_compatible"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_complete_label_cannot_hide_wrong_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_execution_requires_matching_envelope",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_ephemeral_authority_is_still_checked",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_candidate_bytes_must_match_material",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_core_record_contracts.py::test_historical_reuse_fails_closed_for_changed_material",
+        "tests/test_alpha_operations.py::test_host_verifier_failure_exits_are_not_acceptance",
+        "tests/test_alpha_operations.py::test_invalid_host_timeout_is_input_error_without_execution",
+        "tests/test_alpha_operations.py::test_paper_exports_work_offline_without_host_fallback_or_entitlement"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C09",
+      "original_section": "5 C09",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C09",
+      "normative_behavior": "Cover all twelve original fixture categories with independent labels, stratified quantitative results and honest unknowns.",
+      "supported_domain": "Original development/held-out corpus, bounded supported semantics and measured resource/reuse/replay outcomes.",
+      "implementation": [
+        "proofmap/benchmark.py",
+        "tests/fixtures/papers/golden.json",
+        "proofmap/benchmark_scenarios.py",
+        "proofmap/benchmark_validation.py"
+      ],
+      "positive_tests": [
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata",
+        "tests/test_benchmark_evaluation.py::test_measured_events_compare_to_labels_without_promoting_proof",
+        "tests/test_benchmark_evaluation.py::test_recorded_fidelity_mistake_is_measured_without_network_or_acceptance",
+        "tests/test_alpha_benchmark_artifact.py::test_complete_measured_corpus_preserves_imperfect_advisory_metrics"
+      ],
+      "negative_tests": [
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "expected_artifacts": [
+        "benchmark"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C10",
+      "original_section": "6 C10",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C10",
+      "normative_behavior": "Make readiness consume same-candidate collected tests and execution artifacts, reject missing/stale/skipped evidence and gate every existing mandatory CI job.",
+      "supported_domain": "Read-only bounded CI, installed distributions and distinct source/run/manifest identities; no paid hosted requirement.",
+      "implementation": [
+        "scripts/check_alpha_acceptance.py",
+        "scripts/ci_required.py",
+        ".github/workflows/ci.yml"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_acceptance.py::test_repository_contract_is_complete_and_matches_frozen_scope",
+        "tests/test_alpha_acceptance.py::test_current_positive_and_negative_execution_satisfies_contract",
+        "tests/test_ci_required.py::test_alpha_readiness_consumes_existing_jobs_without_a_dependency_cycle"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_acceptance.py::test_deleted_mandatory_contract_members_fail",
+        "tests/test_alpha_acceptance.py::test_stale_or_mixed_identity_fails",
+        "tests/test_alpha_acceptance.py::test_mandatory_nonpass_is_never_success",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material"
+      ],
+      "required_profiles": [
+        "python-linux-3.12"
+      ],
+      "required_jobs": [
+        "python-tests"
+      ],
+      "expected_artifacts": [],
+      "implementation_status": "already_implemented",
+      "gap": ""
+    },
+    {
+      "id": "C11",
+      "original_section": "7 C11",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C11",
+      "normative_behavior": "Run all five integrated scenarios from an installed wheel outside checkout, demonstrating exact acceptance, independent reuse, offline behavior and edge-case review.",
+      "supported_domain": "Original fixtures and ephemeral test authority; real isolated execution is distinct from worker doubles.",
+      "implementation": [
+        "scripts/paper_e2e_isolated.py",
+        "scripts/wheel_smoke.py",
+        "scripts/paper_alpha_offline.py",
+        "scripts/check_alpha_scenarios.py",
+        "proofmap/benchmark_validation.py",
+        "scripts/test_installed_wheel.py",
+        "scripts/windows_pytest_partitions.py"
+      ],
+      "positive_tests": [
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata",
+        "tests/test_benchmark_evaluation.py::test_measured_events_compare_to_labels_without_promoting_proof",
+        "tests/test_benchmark_evaluation.py::test_recorded_fidelity_mistake_is_measured_without_network_or_acceptance",
+        "tests/test_alpha_benchmark_artifact.py::test_complete_measured_corpus_preserves_imperfect_advisory_metrics",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_alpha_offline_driver.py::test_offline_scenarios_execute_public_interfaces_and_remain_source_evidence",
+        "tests/test_installed_regression_driver.py::test_source_snapshot_matches_capture_and_stages_only_identical_test_material",
+        "tests/test_installed_regression_driver.py::test_installed_outcome_validator_retains_real_outcome_dimensions"
+      ],
+      "negative_tests": [
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_alpha_offline_driver.py::test_missing_or_promoted_offline_outcomes_fail",
+        "tests/test_installed_regression_driver.py::test_wheel_must_match_current_source_inventory_bytes_and_version",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_escaping_or_ambiguous_paths",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_source_drift_and_package_insertion",
+        "tests/test_installed_regression_driver.py::test_installed_outcomes_reject_missing_drifted_filtered_or_promoted_evidence",
+        "tests/test_installed_regression_driver.py::test_launcher_preserves_failures_without_claiming_execution",
+        "tests/test_installed_regression_driver.py::test_gate_requires_separately_collected_matching_installed_pytest"
+      ],
+      "required_profiles": [
+        "python-linux-3.10",
+        "python-linux-3.11",
+        "python-linux-3.12",
+        "python-linux-3.13",
+        "python-linux-3.14",
+        "python-windows-3.12",
+        "python-windows-3.14",
+        "installed-wheel",
+        "installed-alpha-offline",
+        "host-lean",
+        "chromium",
+        "linux-sandbox",
+        "linux-isolated",
+        "linux-alpha-isolated",
+        "linux-unit",
+        "benchmark",
+        "quality",
+        "dependency-audit",
+        "installed-regression",
+        "partitioned-regression"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build",
+        "verification-real",
+        "browser-security",
+        "sandbox-security",
+        "paper-e2e-isolated",
+        "paper-ci-fixtures",
+        "quality",
+        "schema-migration",
+        "semantic-properties",
+        "dependency-audit",
+        "workflow-security",
+        "windows-regression"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "benchmark",
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios",
+        "alpha-offline-scenarios",
+        "dependency-audit",
+        "installed-regression-outcomes",
+        "partitioned-regression-outcomes"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C12",
+      "original_section": "8 C12",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "area": "C12",
+      "normative_behavior": "Advance to and qualify 0.8.0a1 only after all mandatory capabilities/scenarios pass, reporting separate readiness/production/publication/scholarly states.",
+      "supported_domain": "Software release readiness; publication/tagging and production identities remain separately authorized.",
+      "implementation": [
+        "pyproject.toml",
+        "CHANGELOG.md",
+        "README.md",
+        "REPO_STATUS.md",
+        "scripts/check_alpha_acceptance.py",
+        "acceptance/paper_ci_alpha.json",
+        "scripts/wheel_smoke.py",
+        "scripts/test_installed_wheel.py",
+        "scripts/windows_pytest_partitions.py"
+      ],
+      "positive_tests": [
+        "tests/test_alpha_acceptance.py::test_repository_contract_is_complete_and_matches_frozen_scope",
+        "tests/test_alpha_acceptance.py::test_current_positive_and_negative_execution_satisfies_contract",
+        "tests/test_alpha_acceptance.py::test_current_wheel_bytes_and_metadata_are_checked",
+        "tests/test_installed_regression_driver.py::test_source_snapshot_matches_capture_and_stages_only_identical_test_material",
+        "tests/test_installed_regression_driver.py::test_installed_outcome_validator_retains_real_outcome_dimensions"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_acceptance.py::test_missing_malformed_unbound_or_unsafe_artifacts_fail",
+        "tests/test_alpha_acceptance.py::test_stale_or_mixed_identity_fails",
+        "tests/test_alpha_acceptance.py::test_release_version_cannot_be_promoted_by_green_tests",
+        "tests/test_alpha_acceptance.py::test_mandatory_nonpass_is_never_success",
+        "tests/test_installed_regression_driver.py::test_wheel_must_match_current_source_inventory_bytes_and_version",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_escaping_or_ambiguous_paths",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_source_drift_and_package_insertion",
+        "tests/test_installed_regression_driver.py::test_installed_outcomes_reject_missing_drifted_filtered_or_promoted_evidence",
+        "tests/test_installed_regression_driver.py::test_launcher_preserves_failures_without_claiming_execution",
+        "tests/test_installed_regression_driver.py::test_gate_requires_separately_collected_matching_installed_pytest"
+      ],
+      "required_profiles": [
+        "python-linux-3.10",
+        "python-linux-3.11",
+        "python-linux-3.12",
+        "python-linux-3.13",
+        "python-linux-3.14",
+        "python-windows-3.12",
+        "python-windows-3.14",
+        "installed-wheel",
+        "installed-alpha-offline",
+        "host-lean",
+        "chromium",
+        "linux-sandbox",
+        "linux-isolated",
+        "linux-alpha-isolated",
+        "linux-unit",
+        "benchmark",
+        "quality",
+        "dependency-audit",
+        "installed-regression",
+        "partitioned-regression"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build",
+        "verification-real",
+        "browser-security",
+        "sandbox-security",
+        "paper-e2e-isolated",
+        "paper-ci-fixtures",
+        "quality",
+        "schema-migration",
+        "semantic-properties",
+        "dependency-audit",
+        "workflow-security",
+        "windows-regression"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "benchmark",
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios",
+        "alpha-offline-scenarios",
+        "dependency-audit",
+        "installed-regression-outcomes",
+        "partitioned-regression-outcomes"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    }
+  ],
+  "fixture_categories": [
+    {
+      "id": "F01",
+      "description": "Correct small LaTeX paper with theorem, definition, proof, equation and explicit dependency.",
+      "positive_tests": [
+        "tests/test_paper_sources.py::test_real_syntax_parser_and_exact_anchors",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_paper_sources.py::test_heldout_missing_refs_and_proof_quality",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F02",
+      "description": "Multi-file source, custom environment, supported macro and use/definition provenance.",
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F03",
+      "description": "Same notation in distinct scopes with shadowing and restoration.",
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_local_unresolved_prose_does_not_become_sibling_hypothesis",
+        "tests/test_source_semantics.py::test_redefined_builtin_binder_cannot_keep_original_domain_meaning",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F04",
+      "description": "Source-derived conjunctive premises and an explicit alternative derivation.",
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F05",
+      "description": "Missing local citation/label and genuinely ambiguous proof association.",
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_bibitem_and_external_proof_are_inspectable",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_ambiguous_and_missing_citations_and_explicit_proof_targets",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F06",
+      "description": "Explicit quantified antecedents and checked local hypothesis containment/discharge.",
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_false_conditional_has_exact_counterexample_not_failed_search",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures",
+        "paper-e2e-isolated"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F07",
+      "description": "Unsupported macro and prose-only candidate analysis with honest coverage.",
+      "positive_tests": [
+        "tests/test_semantic_candidates.py::test_prose_decomposition_retains_anchored_conflicts_and_coverage",
+        "tests/test_semantic_candidates.py::test_real_http_decomposition_and_independent_fidelity_disagreement",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_semantic_candidates.py::test_forged_decomposition_cannot_create_source_or_authority",
+        "tests/test_semantic_candidates.py::test_fidelity_unavailable_and_stale_binding_stay_explicit",
+        "tests/test_semantic_candidates.py::test_fidelity_stored_event_fields_must_match_raw_replay",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F08",
+      "description": "Archive/path/TeX hooks, HTML payloads and model prompt-injection boundaries.",
+      "positive_tests": [
+        "tests/test_paper_sources.py::test_real_syntax_parser_and_exact_anchors",
+        "tests/test_extractor.py::test_real_http_protocol_fake_provider_and_offline_replay",
+        "tests/test_paper_review_workflow.py::test_override_recomputes_map_preserves_raw_source_and_history",
+        "tests/test_paper_review_workflow.py::test_reports_and_query_share_claims_versions_and_safe_source",
+        "tests/test_paper_review_workflow.py::test_cli_exports_applies_queries_inspects_and_reports",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_paper_sources.py::test_archive_escape_rejected",
+        "tests/test_extractor.py::test_model_cannot_promote_or_invent_sources",
+        "tests/test_trust_regressions.py::test_f07_inert_script_data",
+        "tests/test_source_semantics.py::test_structural_macro_redefinition_cannot_keep_parser_meaning",
+        "tests/test_semantic_candidates.py::test_forged_decomposition_cannot_create_source_or_authority",
+        "tests/test_semantic_candidates.py::test_fidelity_unavailable_and_stale_binding_stay_explicit",
+        "tests/test_semantic_candidates.py::test_fidelity_stored_event_fields_must_match_raw_replay",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures",
+        "browser-security",
+        "sandbox-security",
+        "package-build"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark",
+        "chromium",
+        "linux-sandbox",
+        "installed-alpha-offline"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F09",
+      "description": "Formatting/relocation, definition/hypothesis changes, independent-branch reuse and trust revocation.",
+      "positive_tests": [
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_paper_revision_reuse.py::test_unresolved_surrounding_context_is_conservative",
+        "tests/test_paper_revision_reuse.py::test_rehashed_reuse_forgery_rejected_by_store",
+        "tests/test_paper_revision_reuse.py::test_unknown_policy_cannot_reuse_or_publish",
+        "tests/test_paper_revision_reuse.py::test_rehashed_checker_wrong_source_is_rejected",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures",
+        "paper-e2e-isolated"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F10",
+      "description": "Real born-digital PDF reconstruction and unsupported scan with NEEDS_OCR.",
+      "positive_tests": [
+        "tests/test_extended_boundaries.py::test_born_digital_and_scanned_pdf_fixtures",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_paper_fragment.py::test_pdf_forged_excerpt_and_page_rejected",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F11",
+      "description": "True and false exact identities derived from source.",
+      "positive_tests": [
+        "tests/test_paper_fragment.py::test_runtime_ast_and_exact_statement",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_false_conditional_has_exact_counterexample_not_failed_search",
+        "tests/test_paper_fragment.py::test_unparsed_scope_and_notation_block_formalization",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "F12",
+      "description": "Reflexivity and Agoh integration anchors with explicitly synthetic/adapted mini-paper provenance.",
+      "positive_tests": [
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata",
+        "tests/test_benchmark_evaluation.py::test_measured_events_compare_to_labels_without_promoting_proof",
+        "tests/test_benchmark_evaluation.py::test_recorded_fidelity_mistake_is_measured_without_network_or_acceptance",
+        "tests/test_alpha_benchmark_artifact.py::test_complete_measured_corpus_preserves_imperfect_advisory_metrics"
+      ],
+      "negative_tests": [
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid"
+      ],
+      "gap": "",
+      "required_jobs": [
+        "python-tests",
+        "paper-ci-fixtures",
+        "verification-real",
+        "package-build"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "benchmark",
+        "host-lean",
+        "installed-alpha-offline"
+      ],
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "A",
+      "description": "Manuscript to accepted-under-policy claim via anchored scopes, source formalization, real isolated Lean/replay and current authenticated fidelity decisions.",
+      "positive_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_well_bound_isolated_artifact_contract",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_replay_cannot_change_subject_or_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_complete_label_cannot_hide_wrong_material",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_execution_requires_matching_envelope",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_ephemeral_authority_is_still_checked",
+        "tests/test_alpha_isolated_artifact.py::test_synthetic_candidate_bytes_must_match_material",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "B",
+      "description": "Independent A/B branches: invalidate changed dependencies, actually reuse B artifacts, preserve historical evidence and require current fidelity/revocation handling.",
+      "positive_tests": [
+        "tests/test_paper_revision_reuse.py::test_definition_change_executes_only_affected_branch",
+        "tests/test_paper_revision_reuse.py::test_source_only_move_reanchors_without_formalization_producer_execution",
+        "tests/test_paper_revision_reuse.py::test_changed_local_material_preserves_independent_branch",
+        "tests/test_paper_revision_reuse.py::test_proof_descendant_dependencies_invalidate_only_owner",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent"
+      ],
+      "negative_tests": [
+        "tests/test_paper_revision_reuse.py::test_unresolved_surrounding_context_is_conservative",
+        "tests/test_paper_revision_reuse.py::test_rehashed_reuse_forgery_rejected_by_store",
+        "tests/test_paper_revision_reuse.py::test_unknown_policy_cannot_reuse_or_publish",
+        "tests/test_paper_revision_reuse.py::test_rehashed_checker_wrong_source_is_rejected",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "linux-isolated",
+        "linux-alpha-isolated"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "paper-e2e-isolated"
+      ],
+      "expected_artifacts": [
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "C",
+      "description": "Installed public interfaces ingest/index/report without optional services and return explicit nonzero required-formal unavailability.",
+      "positive_tests": [
+        "tests/test_alpha_offline_driver.py::test_offline_scenarios_execute_public_interfaces_and_remain_source_evidence"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_offline_driver.py::test_missing_or_promoted_offline_outcomes_fail"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-wheel",
+        "installed-alpha-offline"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "alpha-offline-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "D",
+      "description": "Installed multi-file scope/citation/proof links, configured protocol/replay, real PDF and interpretation override update graphs/reports without source mutation or promotion.",
+      "positive_tests": [
+        "tests/test_source_semantics.py::test_literal_macro_scope_dependencies_are_local_and_expansions_anchored",
+        "tests/test_source_semantics.py::test_multifile_bibliography_proof_and_explicit_alternatives",
+        "tests/test_source_semantics.py::test_explicit_integer_antecedent_is_implication_not_foundation",
+        "tests/test_semantic_candidates.py::test_prose_decomposition_retains_anchored_conflicts_and_coverage",
+        "tests/test_semantic_candidates.py::test_real_http_decomposition_and_independent_fidelity_disagreement",
+        "tests/test_paper_review_workflow.py::test_override_recomputes_map_preserves_raw_source_and_history",
+        "tests/test_paper_review_workflow.py::test_reports_and_query_share_claims_versions_and_safe_source",
+        "tests/test_paper_review_workflow.py::test_cli_exports_applies_queries_inspects_and_reports",
+        "tests/test_alpha_offline_driver.py::test_offline_scenarios_execute_public_interfaces_and_remain_source_evidence"
+      ],
+      "negative_tests": [
+        "tests/test_source_semantics.py::test_unsupported_antecedent_does_not_disappear",
+        "tests/test_source_semantics.py::test_unresolved_macro_and_discourse_remain_unsupported",
+        "tests/test_source_semantics.py::test_tampered_semantic_context_is_rejected",
+        "tests/test_source_semantics.py::test_citation_adjacency_does_not_invent_groups",
+        "tests/test_semantic_candidates.py::test_forged_decomposition_cannot_create_source_or_authority",
+        "tests/test_semantic_candidates.py::test_fidelity_unavailable_and_stale_binding_stay_explicit",
+        "tests/test_semantic_candidates.py::test_fidelity_stored_event_fields_must_match_raw_replay",
+        "tests/test_paper_review_workflow.py::test_stale_forged_or_authority_creating_override_is_rejected",
+        "tests/test_paper_review_workflow.py::test_override_rejects_rehashed_derived_tampering_and_existing_output",
+        "tests/test_alpha_offline_driver.py::test_missing_or_promoted_offline_outcomes_fail"
+      ],
+      "required_profiles": [
+        "python-linux-3.12",
+        "installed-wheel",
+        "installed-alpha-offline"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "alpha-offline-scenarios"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    },
+    {
+      "id": "E",
+      "description": "Complete installed package/regression qualification across kernel/schema/trust/security/math/provider/store/revision/CLI/workflow/benchmark boundaries at unchanged coverage gates.",
+      "positive_tests": [
+        "tests/test_alpha_acceptance.py::test_repository_contract_is_complete_and_matches_frozen_scope",
+        "tests/test_alpha_acceptance.py::test_current_positive_and_negative_execution_satisfies_contract",
+        "tests/test_alpha_acceptance.py::test_current_wheel_bytes_and_metadata_are_checked",
+        "tests/test_benchmark_evaluation.py::test_corpus_has_independent_labels_provenance_and_category_strata",
+        "tests/test_benchmark_evaluation.py::test_measured_events_compare_to_labels_without_promoting_proof",
+        "tests/test_benchmark_evaluation.py::test_recorded_fidelity_mistake_is_measured_without_network_or_acceptance",
+        "tests/test_alpha_benchmark_artifact.py::test_complete_measured_corpus_preserves_imperfect_advisory_metrics",
+        "tests/test_alpha_revision_artifact.py::test_simulated_revision_contract_requires_actual_stage_lineage",
+        "tests/test_paper_e2e_driver.py::test_independent_revision_fixture_is_source_derived_and_contains_checked_antecedent",
+        "tests/test_alpha_offline_driver.py::test_offline_scenarios_execute_public_interfaces_and_remain_source_evidence",
+        "tests/test_installed_regression_driver.py::test_source_snapshot_matches_capture_and_stages_only_identical_test_material",
+        "tests/test_installed_regression_driver.py::test_installed_outcome_validator_retains_real_outcome_dimensions"
+      ],
+      "negative_tests": [
+        "tests/test_alpha_acceptance.py::test_missing_malformed_unbound_or_unsafe_artifacts_fail",
+        "tests/test_alpha_acceptance.py::test_stale_or_mixed_identity_fails",
+        "tests/test_alpha_acceptance.py::test_release_version_cannot_be_promoted_by_green_tests",
+        "tests/test_alpha_acceptance.py::test_mandatory_nonpass_is_never_success",
+        "tests/test_benchmark_evaluation.py::test_strata_expose_a_small_failure_hidden_by_stress_counts",
+        "tests/test_alpha_benchmark_artifact.py::test_incomplete_or_fabricated_c09_evidence_is_rejected",
+        "tests/test_alpha_benchmark_artifact.py::test_measured_benchmark_mismatches_remain_invalid",
+        "tests/test_alpha_revision_artifact.py::test_revision_artifact_rejects_tampering",
+        "tests/test_alpha_offline_driver.py::test_missing_or_promoted_offline_outcomes_fail",
+        "tests/test_installed_regression_driver.py::test_wheel_must_match_current_source_inventory_bytes_and_version",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_escaping_or_ambiguous_paths",
+        "tests/test_installed_regression_driver.py::test_staging_rejects_source_drift_and_package_insertion",
+        "tests/test_installed_regression_driver.py::test_installed_outcomes_reject_missing_drifted_filtered_or_promoted_evidence",
+        "tests/test_installed_regression_driver.py::test_launcher_preserves_failures_without_claiming_execution"
+      ],
+      "required_profiles": [
+        "python-linux-3.10",
+        "python-linux-3.11",
+        "python-linux-3.12",
+        "python-linux-3.13",
+        "python-linux-3.14",
+        "python-windows-3.12",
+        "python-windows-3.14",
+        "installed-wheel",
+        "installed-alpha-offline",
+        "host-lean",
+        "chromium",
+        "linux-sandbox",
+        "linux-isolated",
+        "linux-alpha-isolated",
+        "linux-unit",
+        "benchmark",
+        "quality",
+        "dependency-audit",
+        "installed-regression",
+        "partitioned-regression"
+      ],
+      "required_jobs": [
+        "python-tests",
+        "package-build",
+        "verification-real",
+        "browser-security",
+        "sandbox-security",
+        "paper-e2e-isolated",
+        "paper-ci-fixtures",
+        "quality",
+        "schema-migration",
+        "semantic-properties",
+        "dependency-audit",
+        "workflow-security",
+        "windows-regression"
+      ],
+      "expected_artifacts": [
+        "wheel",
+        "benchmark",
+        "isolated-paper-outcomes",
+        "alpha-isolated-scenarios",
+        "alpha-offline-scenarios",
+        "dependency-audit",
+        "installed-regression-outcomes",
+        "partitioned-regression-outcomes"
+      ],
+      "implementation_status": "already_implemented",
+      "gap": "",
+      "test_profiles": [
+        "python-linux-3.12"
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "X01",
+      "original_section": "2 explicitly deferred work",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "authority": "Original alpha section 2; closeout section 2 explicit non-blockers.",
+      "description": "Crawling, universal solving, arbitrary TeX execution, autonomous whole-paper proof, hosted journal/billing and unrestricted platform expansion are outside bounded alpha."
+    },
+    {
+      "id": "X02",
+      "original_section": "License/production keys/server policy/publishing",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "authority": "Closeout sections 2, 6 and 8 separate authority from software readiness.",
+      "description": "Relicensing, production key provisioning, repository settings, tags/releases/publication and deployment require separate authority; none is a mandatory software-alpha execution gate."
+    },
+    {
+      "id": "X03",
+      "original_section": "11.5 optional hosted features",
+      "source": "docs/advancement/REQUIREMENTS_TRACEABILITY.md",
+      "authority": "Closeout sections 2 and 6 explicitly exclude paid entitlements.",
+      "description": "Paid CodeQL/SARIF/native-attestation entitlements are optional. R049 still requires honest capability gating and local diagnostics."
+    },
+    {
+      "id": "X04",
+      "original_section": "2 bounded alpha non-blockers",
+      "source": "CODEX_PROMPT_PROOFMAP_COMPLETE_ALPHA.md",
+      "authority": "Closeout section 2 explicit non-blockers.",
+      "description": "OCR, universal PDF semantics, arbitrary Mathlib/metaprogramming, new providers, live paid models, production reviewers and scholarly/novelty acceptance are not software-alpha prerequisites."
+    }
+  ]
+}

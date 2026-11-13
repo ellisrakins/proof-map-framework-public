@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:paper-records:1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "run_manifest", "assertions", "symbols", "findings"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_manifest": {"$ref": "#/$defs/run"},
+    "assertions": {"type": "array", "maxItems": 20000, "items": {"$ref": "#/$defs/assertion"}},
+    "symbols": {"type": "array", "maxItems": 20000, "items": {"$ref": "urn:proofmap:document-ir:1#/properties/elements/items"}},
+    "findings": {"type": "array", "maxItems": 100000, "items": {"$ref": "#/$defs/finding"}}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "id": {"type": "string", "minLength": 1, "maxLength": 512},
+    "text": {"type": "string", "maxLength": 4000000},
+    "ids": {"type": "array", "maxItems": 20000, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "hashes": {"type": "array", "maxItems": 20000, "uniqueItems": true, "items": {"$ref": "#/$defs/hash"}},
+    "hash_map": {"type": "object", "additionalProperties": {"$ref": "#/$defs/hash"}},
+    "run": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "run_id", "revision", "analysis_digest", "policy_digest", "bundle_digests"],
+      "properties": {
+        "schema_version": {"const": "1.0"}, "record_contract_version": {"const": "1.0"},
+        "run_id": {"$ref": "#/$defs/id"}, "parent_run_id": {"$ref": "#/$defs/id"},
+        "revision": {"$ref": "#/$defs/hash"}, "analysis_digest": {"$ref": "#/$defs/hash"},
+        "policy_digest": {"$ref": "#/$defs/hash"}, "bundle_digests": {"$ref": "#/$defs/hash_map"},
+        "duration_seconds": {"type": "number", "minimum": 0},
+        "exit_code": {"type": "integer", "minimum": 0, "maximum": 255},
+        "cache_provenance": {
+          "type": "object", "additionalProperties": false,
+          "required": ["reused_stages", "resume_requested", "namespace"],
+          "properties": {
+            "reused_stages": {"$ref": "#/$defs/hashes"},
+            "resume_requested": {"type": "boolean"}, "namespace": {"$ref": "#/$defs/id"}
+          }
+        },
+        "analysis_context": {"$ref": "#/$defs/analysis_context"}
+      }
+    },
+    "analysis_context": {
+      "type": "object", "additionalProperties": false,
+      "required": ["config", "parser_requested", "extractor_mode", "policy", "execution_profile", "require_formal", "candidate_overrides", "parser_packages", "pipeline_revision", "parser_actual", "trust"],
+      "properties": {
+        "config": {"$ref": "#/$defs/config"},
+        "candidate_fidelity_config": {"anyOf": [{"$ref": "urn:proofmap:extractor-config:1"}, {"type": "null"}]},
+        "parser_requested": {"$ref": "#/$defs/id"},
+        "extractor_mode": {"enum": ["none", "configured", "replay"]},
+        "policy": {"$ref": "#/$defs/policy"},
+        "execution_profile": {"anyOf": [{"$ref": "urn:proofmap:verifier-profile:1"}, {"type": "null"}]},
+        "require_formal": {"type": "boolean"},
+        "candidate_overrides": {"$ref": "#/$defs/hash_map"},
+        "parser_packages": {"type": "object", "additionalProperties": {"$ref": "#/$defs/id"}},
+        "pipeline_revision": {"$ref": "#/$defs/hash"},
+        "extractor_contract": {
+          "type": "object", "additionalProperties": false,
+          "required": ["classification_prompt", "decomposition_prompt", "fidelity_prompt", "classification_schema"],
+          "properties": {"classification_prompt": {"$ref": "#/$defs/hash"}, "decomposition_prompt": {"$ref": "#/$defs/hash"}, "fidelity_prompt": {"$ref": "#/$defs/hash"}, "classification_schema": {"$ref": "#/$defs/hash"}}
+        },
+        "parser_actual": {"$ref": "#/$defs/parser"}, "trust": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "config": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "extractor": {"type": "object", "maxProperties": 32, "description": "Raw attempted configuration. Runtime requires the strict extractor contract except for explicit failure diagnostics without extraction evidence."}, "required_stages": {"$ref": "#/$defs/ids"},
+        "exact_checks": {"type": "array", "maxItems": 1000, "items": {"$ref": "#/$defs/expression"}}
+      }
+    },
+    "policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "version", "source_required", "author_assertions_are_proof", "model_suggestions_are_evidence", "allow_partial_extraction", "formal_execution"],
+      "properties": {
+        "id": {"const": "paper-ci-alpha-v1"}, "version": {"type": "integer", "const": 1},
+        "source_required": {"const": true}, "author_assertions_are_proof": {"const": false},
+        "model_suggestions_are_evidence": {"const": false}, "allow_partial_extraction": {"const": true},
+        "formal_execution": {"const": "isolated-only"}
+      }
+    },
+    "parser": {
+      "type": "object", "additionalProperties": false, "required": ["name"],
+      "properties": {
+        "name": {"$ref": "#/$defs/id"}, "version": {"$ref": "#/$defs/id"},
+        "execution": {"enum": ["COMPLETED", "TIMEOUT", "ERROR", "UNAVAILABLE"]},
+        "timeout_seconds": {"type": "number", "minimum": 0},
+        "deadline_seconds": {"type": "number", "minimum": 0}, "ocr": {"const": false},
+        "boxes": {"const": "UNAVAILABLE"},
+        "options": {"type": "object", "additionalProperties": false, "required": ["extraction_mode", "strict"], "properties": {"extraction_mode": {"const": "plain"}, "strict": {"const": true}}}
+      }
+    },
+    "assertion": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "revision", "source_ids", "statement", "scope"],
+      "properties": {
+        "id": {"$ref": "#/$defs/hash"}, "revision": {"$ref": "#/$defs/hash"},
+        "source_ids": {"$ref": "#/$defs/hashes"}, "statement": {"$ref": "#/$defs/text"},
+        "scope": {"$ref": "#/$defs/id"}, "status": {"const": "AUTHOR_ASSERTED"},
+        "role": {"enum": ["THEOREM", "LEMMA", "PROPOSITION", "COROLLARY", "CONJECTURE", "DEFINITION", "ASSUMPTION", "EXAMPLE", "REMARK", "UNRESOLVED"]},
+        "hypotheses": {"const": "UNRESOLVED_IN_SOURCE_TEXT"},
+        "quantifiers": {"const": "UNRESOLVED_IN_SOURCE_TEXT"}, "conclusion": {"const": "UNRESOLVED_IN_SOURCE_TEXT"},
+        "proof_ids": {"$ref": "#/$defs/hashes"}, "fidelity": {"const": "NOT_REVIEWED"},
+        "formal_obligation_digest": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+        "assessment": {
+          "type": "object", "additionalProperties": false, "required": ["subject", "dimensions"],
+          "properties": {
+            "subject": {"$ref": "#/$defs/id"},
+            "dimensions": {
+              "type": "object", "additionalProperties": false,
+              "required": ["deductive", "computational", "empirical_support", "empirical_contradiction", "approximation", "source_fidelity", "formal_fidelity", "independent_review", "novelty"],
+              "properties": {"deductive": {"const": "NOT_ASSESSED"}, "computational": {"const": "NOT_ASSESSED"}, "empirical_support": {"const": "NOT_ASSESSED"}, "empirical_contradiction": {"const": "NOT_ASSESSED"}, "approximation": {"const": "NOT_ASSESSED"}, "source_fidelity": {"const": "NOT_ASSESSED"}, "formal_fidelity": {"const": "NOT_ASSESSED"}, "independent_review": {"const": "NOT_ASSESSED"}, "novelty": {"const": "NOT_ASSESSED"}}
+            }
+          }
+        },
+        "source_context": {"type": "array", "maxItems": 20000, "items": {"$ref": "urn:proofmap:document-ir:1#/$defs/mathematical_context"}},
+        "interpretation_digest": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "expression": {"type": "object", "additionalProperties": false, "required": ["label", "left", "right"], "properties": {"label": {"$ref": "#/$defs/id"}, "left": {"$ref": "#/$defs/text"}, "right": {"$ref": "#/$defs/text"}}},
+    "finding": {
+      "type": "object", "additionalProperties": false, "required": ["code"],
+      "properties": {
+        "code": {"$ref": "#/$defs/id"}, "source": {"anyOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]},
+        "source_ids": {"$ref": "#/$defs/ids"}, "detail": {"$ref": "#/$defs/text"},
+        "classification": {"$ref": "#/$defs/id"}, "blocking_eligible": {"const": false},
+        "severity": {"enum": ["info", "warning", "error"]}, "message": {"$ref": "#/$defs/text"},
+        "remediation": {"$ref": "#/$defs/text"}, "entity": {"anyOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]},
+        "path": {"$ref": "#/$defs/text"}, "unprocessed_chunks": {"type": "integer", "minimum": 0},
+        "expression": {"$ref": "#/$defs/expression"}, "domain": {"const": "Q[x]"},
+        "fidelity": {"const": "NOT_REVIEWED"}, "certificate_digest": {"$ref": "#/$defs/hash"}
+      }
+    }
+  }
+}

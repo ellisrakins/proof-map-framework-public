@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "corpus_id": "historical-mathematical-excerpts-v1",
+  "composition": "Three independently authored public-domain historical mathematical source excerpts; wrappers are adaptations, not independently authored modern papers.",
+  "samples": [
+    {
+      "id": "euclid-casey-1885",
+      "author": "Euclid; John Casey (editor)",
+      "title": "The First Six Books of the Elements of Euclid",
+      "catalog_url": "https://www.gutenberg.org/ebooks/21076",
+      "source_url": "https://www.gutenberg.org/files/21076/21076-pdf.pdf",
+      "locator": "Original PDF page index 17 (printed page 8); Book I Proposition I and surrounding page text",
+      "path": "euclid/book-i-proposition-i.pdf",
+      "entrypoint": null,
+      "format": "born-digital-pdf",
+      "transformation": "One page extracted from original typeset text-bearing PDF using pypdf; no text regenerated, OCR or scientific relabeling.",
+      "rights": "Public domain in the USA, confirmed official Project Gutenberg catalog on 2026-10-02; mathematical excerpt retained without Project Gutenberg branding.",
+      "rights_url": "https://www.gutenberg.org/ebooks/21076",
+      "checked_date": "2026-10-02",
+      "original_source_sha256": "fa77c91ea6b1e31fe09dea4d9a4310e7f8345dba5be0563603f62e7742ffce5c",
+      "retained_artifacts": [
+        {
+          "path": "euclid/book-i-proposition-i.pdf",
+          "sha256": "7f30ab0bb4e7ba82bf54a90c2812b9967ea449aedee6f144113e644d480dac76",
+          "bytes": 119013
+        }
+      ],
+      "independent_labels": {
+        "supported_formal_claims": 0,
+        "fidelity": null,
+        "novelty": null,
+        "false_hard_blocks": null
+      }
+    },
+    {
+      "id": "dedekind-beman-1901",
+      "author": "Richard Dedekind; Wooster Woodruff Beman (translator)",
+      "title": "Essays on the Theory of Numbers",
+      "catalog_url": "https://www.gutenberg.org/ebooks/21016",
+      "source_url": "https://www.gutenberg.org/files/21016/21016-t/21016-t.tex",
+      "locator": "Second essay sections 26 (first sentence, bracketed German gloss omitted), 30 and 31",
+      "path": "dedekind",
+      "entrypoint": "main.tex",
+      "format": "multi-file-tex",
+      "transformation": "Small source excerpt split into definition.tex and claims.tex; paragraph markers become theorem/definition/proof wrappers and source labels; original mathematical body retained; surrounding sections omitted.",
+      "rights": "Public domain in the USA, confirmed official Project Gutenberg catalog on 2026-10-02; mathematical excerpt retained without Project Gutenberg branding.",
+      "rights_url": "https://www.gutenberg.org/ebooks/21016",
+      "checked_date": "2026-10-02",
+      "original_source_sha256": "f837b8376cbbfca11690cea3bc0fac14fffecb88ae669e4f15158f096c915f44",
+      "retained_artifacts": [
+        {
+          "path": "dedekind/claims.tex",
+          "sha256": "a26f6662ed1e0ee5aa25a3a791471582bef6d7e1e6654dcea911e6ab18d053b4",
+          "bytes": 1082
+        },
+        {
+          "path": "dedekind/definition.tex",
+          "sha256": "30ed0873f84f55c750c927ddbc1b668e72c611164348cad26bb337eb8ca789be",
+          "bytes": 260
+        },
+        {
+          "path": "dedekind/main.tex",
+          "sha256": "c70abd189d4cb6e2bac5e80a67ce1d8808c33293b594feb58bf1a6358171bd6d",
+          "bytes": 95
+        }
+      ],
+      "independent_labels": {
+        "supported_formal_claims": 0,
+        "fidelity": null,
+        "novelty": null,
+        "false_hard_blocks": null
+      }
+    },
+    {
+      "id": "hardy-1921",
+      "author": "G. H. Hardy",
+      "title": "A Course of Pure Mathematics, Third Edition",
+      "catalog_url": "https://www.gutenberg.org/ebooks/38769",
+      "source_url": "https://www.gutenberg.org/files/38769/38769-t/38769-t.tex",
+      "locator": "Chapter I, section 3, Remark beginning The following alternative proof",
+      "path": "hardy/rational-square.tex",
+      "entrypoint": null,
+      "format": "tex",
+      "transformation": "Retained complete short Remark with article/document wrapper, lower-case remark environment and local label; original mathematical body retained.",
+      "rights": "Public domain in the USA, confirmed official Project Gutenberg catalog on 2026-10-02; mathematical excerpt retained without Project Gutenberg branding.",
+      "rights_url": "https://www.gutenberg.org/ebooks/38769",
+      "checked_date": "2026-10-02",
+      "original_source_sha256": "4e891eb4e230801bcd7e8edca49a45b6256f04e23ba03d1705fd5e613c6b47ed",
+      "retained_artifacts": [
+        {
+          "path": "hardy/rational-square.tex",
+          "sha256": "2a28bdc76a1fadad4eccc393f7e14f817cbaed8e486b7d1e1756e514abf0fec2",
+          "bytes": 684
+        }
+      ],
+      "independent_labels": {
+        "supported_formal_claims": 0,
+        "fidelity": null,
+        "novelty": null,
+        "false_hard_blocks": null
+      }
+    }
+  ]
+}

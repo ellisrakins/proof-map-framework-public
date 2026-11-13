@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_type",
+    "schema_version",
+    "id",
+    "binding_digest",
+    "revision_id",
+    "assertion_id",
+    "obligation_digest",
+    "profile_digest",
+    "dimension",
+    "decision",
+    "reviewer_id",
+    "method",
+    "supersedes"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "ReviewDecision"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "binding_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "assertion_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "obligation_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "dimension": {
+      "enum": [
+        "source-fidelity",
+        "formal-fidelity"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "APPROVE",
+        "REJECT"
+      ]
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "supersedes": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

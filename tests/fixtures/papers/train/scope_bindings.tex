@@ -1,0 +1,18 @@
+% Original repository regression fixture; no third-party manuscript content.
+\documentclass{article}
+\newcommand{\localvalue}{1}
+\newcommand{\localvaluelong}{9}
+\begin{document}
+\section{Global declaration}
+\begin{theorem}\label{scope:global}
+For every $x\in\mathbb{Z}$, \[x+\localvalue=x+1.\]
+\end{theorem}
+{\renewcommand{\localvalue}{2}
+\begin{theorem}\label{scope:local}
+For every $x\in\mathbb{Z}$, \[x+\localvalue=x+2.\]
+\end{theorem}}
+\section{Restored binding across a section}
+\begin{theorem}\label{scope:restored}
+For every $x\in\mathbb{Z}$, \[x+\localvalue+\localvaluelong=x+10.\]
+\end{theorem}
+\end{document}

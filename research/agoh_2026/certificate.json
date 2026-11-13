@@ -1,0 +1,49 @@
+{
+  "arithmetic": "exact rational polynomial arithmetic",
+  "cofactor": [
+    12,
+    4,
+    -7,
+    -2,
+    1
+  ],
+  "cofactor_at_one": 8,
+  "common_denominator": [
+    16,
+    -16,
+    -12,
+    16,
+    0,
+    -4,
+    1
+  ],
+  "denominator_at_one": 1,
+  "f": [
+    4,
+    -4,
+    1
+  ],
+  "f_has_double_root_at": 2,
+  "factor_x_minus_one_squared": [
+    1,
+    -2,
+    1
+  ],
+  "finite_difference_identity_checked_through_n": 16,
+  "numerator_root_multiplicity_at_one": 2,
+  "polynomial_coefficients": "ascending degree order",
+  "polynomial_gcd": [
+    1
+  ],
+  "reduced_numerator": [
+    12,
+    -20,
+    -3,
+    16,
+    -2,
+    -4,
+    1
+  ],
+  "status": "verified"
+}
+

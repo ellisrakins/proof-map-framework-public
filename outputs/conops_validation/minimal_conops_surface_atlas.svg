@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1080" viewBox="0 0 1680 1080">
+<defs>
+  <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#fbfdff'/><stop offset='100%' stop-color='#eef6ff'/></linearGradient>
+  <filter id='shadow'><feDropShadow dx='0' dy='4' stdDeviation='7' flood-opacity='0.15'/></filter>
+  <marker id='arrowDefault' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#8395a7'/></marker>
+  <marker id='arrowFlow' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#0b6efd'/></marker>
+  <marker id='arrowSeam' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#d97706'/></marker>
+  <marker id='arrowGap' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto' markerUnits='strokeWidth'><path d='M 0 0 L 10 4 L 0 8 z' fill='#b00020'/></marker>
+</defs>
+<rect width='100%' height='100%' fill='url(#bg)'/>
+<text x='840.0' y='58' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='36' font-weight='800' fill='#0b1f4d'>Minimal CONOPS Validation Map — Proof Surface Atlas</text>
+<text x='840.0' y='88' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' fill='#4b5d78'>longitude = domain/local chart; latitude = derivational distance from core</text>
+<rect x='70' y='150' width='1080' height='650' rx='20' fill='#ffffff' stroke='#234f8d' stroke-width='2' filter='url(#shadow)'/>
+<clipPath id='atlasClip'><rect x='70' y='150' width='1080' height='650' rx='20'/></clipPath>
+<rect x='70' y='150' width='1080' height='650' rx='20' fill='#f3f8ff'/>
+<line x1='160.0' y1='150' x2='160.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='250.0' y1='150' x2='250.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='340.0' y1='150' x2='340.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='430.0' y1='150' x2='430.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='520.0' y1='150' x2='520.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='610.0' y1='150' x2='610.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='700.0' y1='150' x2='700.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='790.0' y1='150' x2='790.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='880.0' y1='150' x2='880.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='970.0' y1='150' x2='970.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='1060.0' y1='150' x2='1060.0' y2='800' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='258.3' x2='1150' y2='258.3' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='366.7' x2='1150' y2='366.7' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='475.0' x2='1150' y2='475.0' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='583.3' x2='1150' y2='583.3' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='691.7' x2='1150' y2='691.7' stroke='#d7e4f5' stroke-width='1'/>
+<line x1='70' y1='475.0' x2='1150' y2='475.0' stroke='#9fb9dc' stroke-width='1.6' stroke-dasharray='8 6'/>
+<text x='250.0' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>experiment</text>
+<text x='610.0' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>instrumentation</text>
+<line x1='430.0' y1='150' x2='430.0' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<text x='970.0' y='135' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='700' fill='#234f8d'>mechanics</text>
+<line x1='790.0' y1='150' x2='790.0' y2='800' stroke='#b9cdea' stroke-width='1.4' stroke-dasharray='5 5'/>
+<g clip-path='url(#atlasClip)'>
+<path d='M 908.1,240.3 Q 970.0,367.6 1031.9,475.0' fill='none' stroke='#8395a7' stroke-width='1.2' opacity='0.85' marker-end='url(#arrowDefault)'/>
+<path d='M 610.0,727.8 Q 399.1,723.3 188.1,698.9' fill='none' stroke='#d97706' stroke-width='2.2' opacity='0.71' marker-end='url(#arrowSeam)' stroke-dasharray='7 5'/>
+<path d='M 311.9,698.9 Q 250.0,708.9 188.1,698.9' fill='none' stroke='#b00020' stroke-width='2.8' opacity='0.50' marker-end='url(#arrowGap)' stroke-dasharray='3 4'/>
+</g>
+<circle cx='188.1' cy='698.9' r='15.4' fill='#B9D6FF' fill-opacity='0.17' stroke='#B9D6FF' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='311.9' cy='698.9' r='32.0' fill='#FF6B6B' fill-opacity='0.17' stroke='#FF6B6B' stroke-opacity='0.22' stroke-width='1.2'/>
+<circle cx='188.1' cy='698.9' r='11.5' fill='#B9D6FF' opacity='0.95' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<text x='201.1' y='698.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Sensor measurement</text>
+<circle cx='311.9' cy='698.9' r='12.8' fill='#FF6B6B' opacity='0.95' stroke='#831c1c' stroke-width='2.2' filter='url(#shadow)'/>
+<text x='324.9' y='698.9' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='10.5' fill='#17223b'>Air-drag residual</text>
+<circle cx='908.1' cy='240.3' r='6.8' fill='#FFD166' opacity='0.78' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<circle cx='610.0' cy='727.8' r='7.8' fill='#F8B26A' opacity='0.6' stroke='#9a5a00' stroke-width='2.0' filter='url(#shadow)'/>
+<circle cx='1031.9' cy='475.0' r='7.8' fill='#4CC9F0' opacity='0.6' stroke='#1b2a41' stroke-width='1.2' filter='url(#shadow)'/>
+<rect x='78' y='159.0' width='188' height='21' rx='8' fill='#f8fbff' fill-opacity='0.82'/>
+<text x='88' y='174.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#53627a'>near core</text>
+<rect x='78' y='452.0' width='188' height='21' rx='8' fill='#f8fbff' fill-opacity='0.82'/>
+<text x='88' y='467.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#53627a'>interior derivation belt</text>
+<rect x='78' y='769.0' width='188' height='21' rx='8' fill='#f8fbff' fill-opacity='0.82'/>
+<text x='88' y='784.0' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#53627a'>boundary / disconnected gaps</text>
+<rect x='1190' y='150' width='420' height='330' rx='18' fill='#ffffff' stroke='#234f8d' stroke-width='2' filter='url(#shadow)'/>
+<rect x='1190' y='150' width='420' height='56' rx='18' fill='#123b79'/>
+<text x='1400.0' y='186' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='800' fill='white'>Surface Diagnostics</text>
+<text x='1214' y='238' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Volume</text>
+<text x='1586' y='238' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>4.4415</text>
+<line x1='1210' y1='250' x2='1590' y2='250' stroke='#e1e8f5'/>
+<text x='1214' y='274' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Surface area</text>
+<text x='1586' y='274' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>14.1347</text>
+<line x1='1210' y1='286' x2='1590' y2='286' stroke='#e1e8f5'/>
+<text x='1214' y='310' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Roundness</text>
+<text x='1586' y='310' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>0.2132</text>
+<line x1='1210' y1='322' x2='1590' y2='322' stroke='#e1e8f5'/>
+<text x='1214' y='346' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Closure</text>
+<text x='1586' y='346' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>0.2132</text>
+<line x1='1210' y1='358' x2='1590' y2='358' stroke='#e1e8f5'/>
+<text x='1214' y='382' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Thickness</text>
+<text x='1586' y='382' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>0.525</text>
+<line x1='1210' y1='394' x2='1590' y2='394' stroke='#e1e8f5'/>
+<text x='1214' y='418' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#0b1f4d'>Gaps / seams / holes</text>
+<text x='1586' y='418' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#1f5eb8'>1 / 4 / 1</text>
+<line x1='1210' y1='430' x2='1590' y2='430' stroke='#e1e8f5'/>
+<rect x='1190' y='515' width='420' height='300' rx='18' fill='#ffffff' stroke='#58677d' stroke-width='1.7' filter='url(#shadow)'/>
+<text x='1212' y='549' font-family='Helvetica, Arial, sans-serif' font-size='19' font-weight='800' fill='#0b1f4d'>Visual grammar</text>
+<line x1='1214' y1='585' x2='1280' y2='585' stroke='#0b6efd' stroke-width='3' marker-end='url(#arrowDefault)'/>
+<text x='1295' y='580' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>solid arrow</text>
+<text x='1295' y='597' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>entropy/time or physical flow along surface</text>
+<line x1='1214' y1='632' x2='1280' y2='632' stroke='#d97706' stroke-width='3' marker-end='url(#arrowDefault)' stroke-dasharray='7 5'/>
+<text x='1295' y='627' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>dashed arrow</text>
+<text x='1295' y='644' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>seam: bridge, approximation, interface tension</text>
+<line x1='1214' y1='679' x2='1280' y2='679' stroke='#b00020' stroke-width='3' marker-end='url(#arrowDefault)' stroke-dasharray='7 5'/>
+<text x='1295' y='674' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>red dashed</text>
+<text x='1295' y='691' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>gap/blockage that deforms the boundary</text>
+<line x1='1214' y1='726' x2='1280' y2='726' stroke='#8395a7' stroke-width='3' marker-end='url(#arrowDefault)'/>
+<text x='1295' y='721' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='700' fill='#17223b'>thin fiber</text>
+<text x='1295' y='738' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#53627a'>proof dependency or radial support</text>
+<rect x='70' y='835' width='1540' height='175' rx='18' fill='#ffffff' stroke='#c7d6eb' stroke-width='1.6' filter='url(#shadow)'/>
+<text x='95' y='869' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='800' fill='#0b1f4d'>Surface interpretation</text>
+<text x='95' y='902' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>• Boundary nodes are surface contact points: observations, phenomena, interfaces, gaps, or empirical attachments.</text>
+<text x='95' y='927' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>• Halos are uncertainty thickness: probability, approximation, measurement, computation, or proof debt.</text>
+<text x='95' y='952' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>• A rounder map would show shorter, more uniform proof fibers and fewer thick seams or disconnected holes.</text>
+<text x='95' y='982' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='700' fill='#14539a'>Proof-depth read:</text>
+<text x='220' y='982' font-family='Helvetica, Arial, sans-serif' font-size='14' fill='#32425f'>deep boundary points are farther from the compact core; exterior points are unclosed or speculative attachments.</text>
+</svg>

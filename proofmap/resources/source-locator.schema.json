@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:source-locator:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact", "artifact_sha256", "format", "start", "end", "page", "excerpt_sha256", "offsets"],
+  "properties": {
+    "artifact": {"type": "string", "minLength": 1},
+    "artifact_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "format": {"enum": ["tex", "pdf"]},
+    "start": {"type": ["integer", "null"], "minimum": 0},
+    "end": {"type": ["integer", "null"], "minimum": 0},
+    "page": {"type": ["integer", "null"], "minimum": 1},
+    "excerpt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "offsets": {"enum": ["utf8-bytes-half-open", "reconstructed-text-no-source-offsets"]},
+    "text_start": {"type": ["integer", "null"], "minimum": 0},
+    "text_end": {"type": ["integer", "null"], "minimum": 0},
+    "parser_version": {"type": ["string", "null"]}
+  }
+}

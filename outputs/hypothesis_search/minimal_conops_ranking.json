@@ -1,0 +1,120 @@
+{
+  "baseline_metrics": {
+    "assumption_count": 1,
+    "boundary_count": 2,
+    "closure_ratio": 0.2132,
+    "core_count": 1,
+    "cycle_count": 0,
+    "density": 0.3019,
+    "edge_count": 5,
+    "explanatory_volume": 4.4415,
+    "gap_count": 1,
+    "hole_count": 1,
+    "node_count": 5,
+    "notes": [
+      "1 boundary/exterior nodes are gaplike or not reachable from the core.",
+      "4 interface or cross-domain seam edges detected.",
+      "1 gaplike nodes require closure work."
+    ],
+    "proof_radius_max": 2.0,
+    "proof_radius_mean": 2.0,
+    "proof_radius_variance": 0.0,
+    "reachable_count": 4,
+    "roundness": 0.2132,
+    "seam_count": 4,
+    "surface_area": 14.1347,
+    "uncertainty_thickness": 0.525,
+    "unexplained_parameter_count": 0
+  },
+  "catalog_title": "Minimal CONOPS competing mechanisms",
+  "evaluations": [
+    {
+      "assumptions": [
+        "The object remains in the quadratic-drag regime.",
+        "Air density is measured independently."
+      ],
+      "complexity_penalty": 0.68,
+      "delta_closure_ratio": 0.2268,
+      "delta_density": -0.0066,
+      "delta_roundness": 0.2268,
+      "delta_surface_area": -2.4653,
+      "delta_thickness": -0.3133,
+      "delta_volume": 1.827,
+      "hypothesis_id": "hypothesis.quadratic_drag",
+      "label": "Quadratic air-drag model",
+      "plausibility_bonus": 0.63,
+      "predictions": [
+        "Residual magnitude scales approximately with velocity squared.",
+        "Residual changes predictably with air density.",
+        "Vacuum runs suppress the residual."
+      ],
+      "proposed_status": "APPROXIMATION",
+      "proposed_uncertainty": 0.16,
+      "score": 4.3175,
+      "structural_gain": 2.4975,
+      "target_nodes": [
+        "boundary.drag_residual"
+      ],
+      "testability_bonus": 1.87,
+      "valid": true,
+      "validation_errors": []
+    },
+    {
+      "assumptions": [
+        "The timing offset is stable within each run."
+      ],
+      "complexity_penalty": 0.384,
+      "delta_closure_ratio": 0.2106,
+      "delta_density": 0.0159,
+      "delta_roundness": 0.2106,
+      "delta_surface_area": -1.9211,
+      "delta_thickness": -0.2631,
+      "delta_volume": 1.614,
+      "hypothesis_id": "hypothesis.clock_bias",
+      "label": "Sensor clock-bias model",
+      "plausibility_bonus": 0.42,
+      "predictions": [
+        "The residual is approximately independent of drop height.",
+        "An external timing reference reproduces the offset."
+      ],
+      "proposed_status": "APPROXIMATION",
+      "proposed_uncertainty": 0.22,
+      "score": 3.8616,
+      "structural_gain": 2.2756,
+      "target_nodes": [
+        "boundary.drag_residual"
+      ],
+      "testability_bonus": 1.55,
+      "valid": true,
+      "validation_errors": []
+    },
+    {
+      "assumptions": [
+        "The fitted correction remains valid outside the observed sample."
+      ],
+      "complexity_penalty": 1.14,
+      "delta_closure_ratio": 0.162,
+      "delta_density": 0.0007,
+      "delta_roundness": 0.162,
+      "delta_surface_area": -1.6685,
+      "delta_thickness": -0.146,
+      "delta_volume": 1.22,
+      "hypothesis_id": "hypothesis.free_correction",
+      "label": "Unconstrained empirical correction",
+      "plausibility_bonus": 0.28,
+      "predictions": [],
+      "proposed_status": "APPROXIMATION",
+      "proposed_uncertainty": 0.4,
+      "score": 0.9035,
+      "structural_gain": 1.6235,
+      "target_nodes": [
+        "boundary.drag_residual"
+      ],
+      "testability_bonus": 0.14,
+      "valid": true,
+      "validation_errors": []
+    }
+  ],
+  "map_title": "Minimal CONOPS Validation Map",
+  "warning": "Conditional value-of-information ranking; not evidence that a hypothesis is true."
+}

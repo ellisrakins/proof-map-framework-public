@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<defs>
+  <radialGradient id='coreGlow' cx='50%' cy='50%' r='50%'><stop offset='0%' stop-color='#fff4b8'/><stop offset='60%' stop-color='#ffd166'/><stop offset='100%' stop-color='#f4a261'/></radialGradient>
+  <filter id='softShadow'><feDropShadow dx='0' dy='3' stdDeviation='5' flood-opacity='0.18'/></filter>
+</defs>
+<rect width='100%' height='100%' fill='#fbfdff'/>
+<text x='700.0' y='58' text-anchor='middle' font-size='34' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Loop quantum gravity proof-map scaffold</text>
+<text x='700.0' y='88' text-anchor='middle' font-size='14' font-family='Helvetica, Arial' fill='#3c4a66'>Generated theory scaffold. Foundation and framework nodes are declared commitments; open</text>
+<text x='700.0' y='106' text-anchor='middle' font-size='14' font-family='Helvetica, Arial' fill='#3c4a66'>questions and tests remain explicit boundary debt.</text>
+<circle cx='588.0' cy='500.0' r='355' fill='#e8eef8' fill-opacity='0.42' stroke='#8ca6d9' stroke-width='2' stroke-dasharray='8 6'/>
+<text x='959.0' y='171.0' font-size='15' font-family='Helvetica, Arial' font-weight='700' fill='#8ca6d9'>Unexplained / speculative exterior</text>
+<circle cx='588.0' cy='500.0' r='275' fill='#edf5ff' fill-opacity='0.42' stroke='#3867c8' stroke-width='2'/>
+<text x='879.0' y='251.0' font-size='15' font-family='Helvetica, Arial' font-weight='700' fill='#3867c8'>Proof boundary / phenomena</text>
+<circle cx='588.0' cy='500.0' r='170' fill='#eaf9f4' fill-opacity='0.42' stroke='#00a38a' stroke-width='2'/>
+<text x='774.0' y='356.0' font-size='15' font-family='Helvetica, Arial' font-weight='700' fill='#00a38a'>Explanatory volume</text>
+<circle cx='588.0' cy='500.0' r='55' fill='#fff4cc' fill-opacity='0.85' stroke='#f4a100' stroke-width='2'/>
+<circle cx='588.0' cy='500.0' r='46' fill='url(#coreGlow)' stroke='#a66a00' stroke-width='2' filter='url(#softShadow)'/>
+<line x1='581.2' y1='475.9' x2='588.0' y2='330.0' stroke='#8aa3bd' stroke-width='1.1' opacity='0.45'/>
+<line x1='598.0' y1='464.4' x2='588.0' y2='330.0' stroke='#8aa3bd' stroke-width='1.1' opacity='0.45'/>
+<line x1='588.0' y1='330.0' x2='662.7' y2='235.3' stroke='#8aa3bd' stroke-width='1.1' opacity='0.40'/>
+<line x1='588.0' y1='330.0' x2='513.3' y2='235.3' stroke='#c0392b' stroke-width='2.4' opacity='0.43' stroke-dasharray='6 4'/>
+<circle cx='581.2' cy='475.9' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='565.2' y='475.9' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Foundation 1</text>
+<circle cx='598.0' cy='464.4' r='15' fill='#FFD166' stroke='#24415f' stroke-width='1.2' filter='url(#softShadow)'/>
+<text x='614.0' y='464.4' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Foundation 2</text>
+<circle cx='588.0' cy='330.0' r='11' fill='#FFE8A3' stroke='#b36b00' stroke-width='2' filter='url(#softShadow)'/>
+<text x='604.0' y='326.0' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Loop quantum</text>
+<text x='604.0' y='339.0' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>gravity</text>
+<circle cx='662.7' cy='235.3' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='678.7' y='235.3' text-anchor='start' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Open question 1</text>
+<circle cx='513.3' cy='235.3' r='11' fill='#FF7B72' stroke='#831c1c' stroke-width='2.5' filter='url(#softShadow)'/>
+<text x='497.3' y='231.3' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>Discriminating test</text>
+<text x='497.3' y='244.3' text-anchor='end' font-size='11' font-family='Helvetica, Arial' fill='#17223b'>1</text>
+<rect x='1010' y='135' width='340' height='390' rx='18' fill='#ffffff' stroke='#194b96' stroke-width='2' filter='url(#softShadow)'/>
+<rect x='1010' y='135' width='340' height='56' rx='18' fill='#123b79'/>
+<text x='1180.0' y='171' text-anchor='middle' font-size='20' font-family='Helvetica, Arial' font-weight='700' fill='white'>Boundary Metrics</text>
+<text x='1034' y='221' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Explanatory volume</text>
+<text x='1326' y='221' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.49</text>
+<line x1='1030' y1='233' x2='1330' y2='233' stroke='#e1e8f5'/>
+<text x='1034' y='260' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Surface area</text>
+<text x='1326' y='260' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>22.3499</text>
+<line x1='1030' y1='272' x2='1330' y2='272' stroke='#e1e8f5'/>
+<text x='1034' y='299' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Roundness</text>
+<text x='1326' y='299' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.0</text>
+<line x1='1030' y1='311' x2='1330' y2='311' stroke='#e1e8f5'/>
+<text x='1034' y='338' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Density</text>
+<text x='1326' y='338' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.0409</text>
+<line x1='1030' y1='350' x2='1330' y2='350' stroke='#e1e8f5'/>
+<text x='1034' y='377' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Closure ratio</text>
+<text x='1326' y='377' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.0</text>
+<line x1='1030' y1='389' x2='1330' y2='389' stroke='#e1e8f5'/>
+<text x='1034' y='416' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Uncertainty thickness</text>
+<text x='1326' y='416' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>0.8875</text>
+<line x1='1030' y1='428' x2='1330' y2='428' stroke='#e1e8f5'/>
+<text x='1034' y='455' font-size='14' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Gaps / seams / holes</text>
+<text x='1326' y='455' text-anchor='end' font-size='14' font-family='Helvetica, Arial' fill='#1f5eb8'>2 / 1 / 2</text>
+<line x1='1030' y1='467' x2='1330' y2='467' stroke='#e1e8f5'/>
+<rect x='1010' y='555' width='340' height='365' rx='18' fill='#ffffff' stroke='#9b1c31' stroke-width='2' filter='url(#softShadow)'/>
+<text x='1032' y='591' font-size='19' font-family='Helvetica, Arial' font-weight='700' fill='#9b1c31'>Highest-severity defects</text>
+<text x='1032' y='623' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: boundary.loop_quantum_gravity.tes…</text>
+<text x='1326' y='623' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 4</text>
+<text x='1032' y='638' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>experiment + bridge theorem</text>
+<text x='1032' y='662' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>proof_gap: gap.loop_quantum_gravity.question…</text>
+<text x='1326' y='662' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 4</text>
+<text x='1032' y='677' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>modeling + proof</text>
+<text x='1032' y='701' font-size='12' font-family='Helvetica, Arial' font-weight='700' fill='#17223b'>seam_or_interface_tension: model.loop_quantu…</text>
+<text x='1326' y='701' text-anchor='end' font-size='12' font-family='Helvetica, Arial' fill='#9b1c31'>sev 2.625</text>
+<text x='1032' y='716' font-size='10' font-family='Helvetica, Arial' fill='#53627a'>classify as proof, limit theorem, approximation theorem</text>
+<rect x='60' y='855' width='720' height='94' rx='14' fill='#ffffff' stroke='#bdcbe6' filter='url(#softShadow)'/>
+<text x='78' y='885' font-size='16' font-family='Helvetica, Arial' font-weight='700' fill='#0b1f4d'>Interpretation</text>
+<text x='78' y='909' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Time/entropy flow is tangent to boundary phenomena.</text>
+<text x='78' y='925' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Proof/explanation flow is radial from core to surface.</text>
+<text x='78' y='941' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Seams mark cross-domain or approximation interfaces.</text>
+<text x='78' y='957' font-size='12' font-family='Helvetica, Arial' fill='#2e3d55'>Holes mark unreachable or unresolved regions.</text>
+</svg>

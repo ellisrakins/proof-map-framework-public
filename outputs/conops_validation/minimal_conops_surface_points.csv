@@ -1,0 +1,6 @@
+id,label,domain,layer,kind,status,theory_ids,formal_systems,regime_dimensions,longitude_deg,latitude_deg,radius,proof_distance,uncertainty,thickness,boundary_weight,active_start,active_end,energy_scale_gev,statement
+boundary.drag_residual,Air-drag residual,experiment,BOUNDARY,GAP,GAP,,,{},-99.37351937529039,-62.0,1.0,2,0.65,1.0,3,,,,The residual between ideal prediction and measurement needs a drag or calibration closure.
+boundary.sensor_measurement,Sensor measurement,experiment,BOUNDARY,OBSERVATION,EMPIRICAL,,,{},-140.62648062470964,-62.0,1.0,2,0.18,0.31,2,,,,A sensor reports the observed drop time in the validation run.
+bridge.calibration_model,Calibration bridge,instrumentation,INTERIOR,BRIDGE,APPROXIMATION,,,{},0.0,-70.0,0.62,,0.25,0.3375,1.0,,,,A provisional sensor calibration maps raw timestamps into the measured drop time.
+core.motion_law,Ideal motion law,mechanics,CORE,PRIMITIVE_LAW,CORE,,,{},99.37351937529039,65.0,0.18,0,0.02,0.031,1.0,,,,A simplified constant-acceleration law governs the test object.
+model.drop_prediction,Drop-time prediction,mechanics,INTERIOR,THEOREM,DERIVED,,,{},140.62648062470964,0.0,0.62,1,0.05,0.0675,1.0,,,,The ideal law predicts a drop time from height and acceleration.

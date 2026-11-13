@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "paper-ci-alpha-preserved-for-campaign-beta",
+  "baseline_version": "0.8.0a1",
+  "successor_version": "0.9.0b1",
+  "alpha_manifest": "acceptance/paper_ci_alpha.json",
+  "alpha_manifest_sha256": "7ff8e38f9fa0aad8a2eb396406dd8042817cef19add80c2475cd13985ca9dfc0",
+  "mandatory_inventory": "acceptance/mandatory_requirements.json",
+  "mandatory_inventory_sha256": "1d8f46267600b65eaee74755d1bc86845da60cb29d1a48e1486b3064d11fe30e",
+  "requirements_preserved": 81,
+  "capability_scope": "All frozen bounded-alpha obligations, tests, artifacts, profiles and producer identities remain required for the actual successor source and package. No historical PASS is imported."
+}

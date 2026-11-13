@@ -1,0 +1,36 @@
+name: Release candidate build only
+on: [workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  build-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt '.[paper,trust]' build twine pip-audit
+      - name: Build distributions from committed source only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git archive --format=tar HEAD > "$RUNNER_TEMP/source.tar"
+          mkdir "$RUNNER_TEMP/release-source"
+          tar -xf "$RUNNER_TEMP/source.tar" -C "$RUNNER_TEMP/release-source"
+          python -m build --outdir "$GITHUB_WORKSPACE/dist" "$RUNNER_TEMP/release-source"
+      - run: python -m twine check dist/*
+      - run: python -m pip_audit --format cyclonedx-json --output dist/sbom.json
+      - run: python -m pip list --format=freeze > dist/dependency-inventory.txt
+      - run: sha256sum dist/* > checksums.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1; Dependabot PR #3
+        with:
+          name: unpublished-build
+          path: |
+            dist
+            checksums.txt
+            docs/advancement/IMPLEMENTATION_REPORT.md
+          retention-days: 7

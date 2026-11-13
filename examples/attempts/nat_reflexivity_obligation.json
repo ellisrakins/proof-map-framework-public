@@ -1,0 +1,15 @@
+{
+  "id": "obligation.nat_reflexivity",
+  "target_node_id": "theorem.nat_reflexivity",
+  "statement": "∀ n : Nat, n = n",
+  "declaration_name": "proofmap_nat_reflexivity",
+  "imports": [],
+  "allowed_axioms": [],
+  "toolchain": "leanprover/lean4:v4.30.0",
+  "statement_sha256": "e1f2432232d8966dcfcd79144e403dd6e0a57aeae732cc3aebc1c564e33ac7d7",
+  "notes": "The candidate must prove this exact statement without placeholders or extra axioms.",
+  "metadata": {
+    "semantic_review": "The formal statement is an intentionally direct encoding of the demo node."
+  },
+  "formal_system": "lean4"
+}

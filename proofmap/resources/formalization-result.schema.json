@@ -1,0 +1,1388 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:formalization-result:1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "assertion_id": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "method": {
+      "enum": [
+        "integer-polynomial-v1",
+        "integer-polynomial-v2"
+      ]
+    },
+    "status": {
+      "enum": [
+        "SUPPORTED",
+        "UNSUPPORTED"
+      ]
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "context_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "definition_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_locators": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {
+        "$ref": "#/$defs/locator"
+      }
+    },
+    "fidelity": {
+      "const": "NOT_REVIEWED"
+    },
+    "source_ast": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quantifier": {
+          "const": "forall"
+        },
+        "variable": {
+          "type": "string",
+          "pattern": "^[a-z]$"
+        },
+        "domain": {
+          "const": "Int"
+        },
+        "left": {
+          "$ref": "#/$defs/node"
+        },
+        "right": {
+          "$ref": "#/$defs/node"
+        },
+        "hypotheses": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "EQUALITY_ANTECEDENT"
+              },
+              "left": {
+                "$ref": "#/$defs/node"
+              },
+              "right": {
+                "$ref": "#/$defs/node"
+              }
+            },
+            "required": [
+              "kind",
+              "left",
+              "right"
+            ]
+          }
+        },
+        "expression_offsets": {
+          "const": "expanded-expression-characters"
+        }
+      },
+      "required": [
+        "quantifier",
+        "variable",
+        "domain",
+        "left",
+        "right"
+      ]
+    },
+    "source_spans": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "binder": {
+          "$ref": "#/$defs/span"
+        },
+        "equation": {
+          "$ref": "#/$defs/span"
+        },
+        "left": {
+          "$ref": "#/$defs/span"
+        },
+        "right": {
+          "$ref": "#/$defs/span"
+        },
+        "hypotheses": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "$ref": "#/$defs/span"
+          }
+        }
+      },
+      "required": [
+        "binder",
+        "equation",
+        "left",
+        "right"
+      ]
+    },
+    "obligation": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:proofmap:legacy:formal_obligation:1",
+      "title": "Proof Map Formal Obligation",
+      "type": "object",
+      "required": [
+        "id",
+        "target_node_id",
+        "statement",
+        "toolchain",
+        "statement_sha256",
+        "formal_system"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "declaration_name": {
+          "type": "string"
+        },
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowed_axioms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "toolchain": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+:v[0-9]+\\.[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+        },
+        "statement_sha256": {
+          "type": "string",
+          "pattern": "^$|^[0-9a-f]{64}$"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "formal_system": {
+          "const": "lean4"
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "string"
+    },
+    "candidate_method": {
+      "const": "AUTHOR_SUPPLIED_APPROVED_PROGRAM"
+    },
+    "exact_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "EXACT_COMPUTATION"
+        },
+        "equal": {
+          "type": "boolean"
+        },
+        "left_coefficients": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[0-9]{1,2}$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(?:/[1-9][0-9]*)?$"
+          }
+        },
+        "right_coefficients": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[0-9]{1,2}$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(?:/[1-9][0-9]*)?$"
+          }
+        },
+        "authority": {
+          "const": "LOCAL_ANALYSIS_NOT_FORMAL_EVIDENCE"
+        },
+        "condition_value": {
+          "type": "integer",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        "scope": {
+          "const": "IMPLICATION_UNDER_EXPLICIT_EQUALITY"
+        },
+        "counterexample": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 1,
+          "propertyNames": {
+            "pattern": "^[a-z]$"
+          },
+          "additionalProperties": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "mode",
+        "equal",
+        "left_coefficients",
+        "right_coefficients",
+        "authority"
+      ]
+    },
+    "expansions": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },
+          "replacement": {
+            "type": "string",
+            "pattern": "^-?[0-9]{1,7}$"
+          },
+          "use_locator": {
+            "$ref": "#/$defs/locator"
+          },
+          "definition_locator": {
+            "$ref": "#/$defs/locator"
+          }
+        },
+        "required": [
+          "symbol",
+          "definition",
+          "replacement",
+          "use_locator",
+          "definition_locator"
+        ]
+      }
+    },
+    "binding": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "schema_version",
+        "id",
+        "revision_id",
+        "assertion_id",
+        "assertion_digest",
+        "source_locators",
+        "context_digest",
+        "definition_digest",
+        "obligation_digest",
+        "method",
+        "candidate_digest"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "FormalizationBinding"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "revision_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "assertion_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "assertion_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_locators": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {
+            "oneOf": [
+              {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "$id": "urn:proofmap:source-locator:1",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "artifact",
+                  "artifact_sha256",
+                  "format",
+                  "start",
+                  "end",
+                  "page",
+                  "excerpt_sha256",
+                  "offsets"
+                ],
+                "properties": {
+                  "artifact": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "artifact_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "format": {
+                    "enum": [
+                      "tex",
+                      "pdf"
+                    ]
+                  },
+                  "start": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "end": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "page": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 1
+                  },
+                  "excerpt_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "offsets": {
+                    "enum": [
+                      "utf8-bytes-half-open",
+                      "reconstructed-text-no-source-offsets"
+                    ]
+                  },
+                  "text_start": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "text_end": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "parser_version": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "file",
+                  "start",
+                  "end"
+                ],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 512
+                  },
+                  "start": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "end": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "context_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "definition_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "obligation_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "candidate_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "execution_event": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "accepted": {
+          "type": "boolean"
+        },
+        "formal_verified": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "execution_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "trusted_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 256
+        },
+        "graph": {
+          "type": "object"
+        },
+        "artifact": {
+          "type": "object"
+        },
+        "verification_event": {
+          "type": "object"
+        },
+        "closure": {
+          "type": "object"
+        },
+        "historical": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "parent_run_id": {
+              "type": "string"
+            },
+            "parent_revision": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "binding_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "current_binding_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "parent_run_id",
+            "parent_revision",
+            "binding_digest",
+            "current_binding_digest"
+          ]
+        }
+      },
+      "required": [
+        "accepted",
+        "formal_verified",
+        "reason",
+        "execution_digest",
+        "trusted_evidence"
+      ]
+    },
+    "historical_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "parent_run_id": {
+          "type": "string"
+        },
+        "parent_revision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "binding": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "record_type",
+            "schema_version",
+            "id",
+            "revision_id",
+            "assertion_id",
+            "assertion_digest",
+            "source_locators",
+            "context_digest",
+            "definition_digest",
+            "obligation_digest",
+            "method",
+            "candidate_digest"
+          ],
+          "properties": {
+            "record_type": {
+              "const": "FormalizationBinding"
+            },
+            "schema_version": {
+              "const": "1.0"
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "revision_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "assertion_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "assertion_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "source_locators": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 256,
+              "items": {
+                "oneOf": [
+                  {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "urn:proofmap:source-locator:1",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "artifact",
+                      "artifact_sha256",
+                      "format",
+                      "start",
+                      "end",
+                      "page",
+                      "excerpt_sha256",
+                      "offsets"
+                    ],
+                    "properties": {
+                      "artifact": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "artifact_sha256": {
+                        "type": "string",
+                        "pattern": "^[a-f0-9]{64}$"
+                      },
+                      "format": {
+                        "enum": [
+                          "tex",
+                          "pdf"
+                        ]
+                      },
+                      "start": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "end": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "page": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 1
+                      },
+                      "excerpt_sha256": {
+                        "type": "string",
+                        "pattern": "^[a-f0-9]{64}$"
+                      },
+                      "offsets": {
+                        "enum": [
+                          "utf8-bytes-half-open",
+                          "reconstructed-text-no-source-offsets"
+                        ]
+                      },
+                      "text_start": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "text_end": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "parser_version": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "file",
+                      "start",
+                      "end"
+                    ],
+                    "properties": {
+                      "file": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 512
+                      },
+                      "start": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "end": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "context_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "definition_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "obligation_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "method": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "candidate_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "obligation": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "urn:proofmap:legacy:formal_obligation:1",
+          "title": "Proof Map Formal Obligation",
+          "type": "object",
+          "required": [
+            "id",
+            "target_node_id",
+            "statement",
+            "toolchain",
+            "statement_sha256",
+            "formal_system"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "target_node_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "statement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "declaration_name": {
+              "type": "string"
+            },
+            "imports": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allowed_axioms": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "toolchain": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+:v[0-9]+\\.[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+            },
+            "statement_sha256": {
+              "type": "string",
+              "pattern": "^$|^[0-9a-f]{64}$"
+            },
+            "notes": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "object"
+            },
+            "formal_system": {
+              "const": "lean4"
+            }
+          },
+          "additionalProperties": false
+        },
+        "execution": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "event": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "record_type",
+                "schema_version",
+                "id",
+                "binding_digest",
+                "revision_id",
+                "assertion_id",
+                "obligation_digest",
+                "profile_digest",
+                "candidate_digest",
+                "wrapper_digest",
+                "snapshot_digest",
+                "controller_digest",
+                "controller_id",
+                "parent_event",
+                "environment",
+                "outcome",
+                "compiler_outcome",
+                "checker_outcome",
+                "axioms",
+                "outputs",
+                "output_digests",
+                "duration_seconds",
+                "assurance"
+              ],
+              "properties": {
+                "record_type": {
+                  "const": "ExecutionEvent"
+                },
+                "schema_version": {
+                  "const": "1.0"
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "binding_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "revision_id": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "assertion_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512
+                },
+                "obligation_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "profile_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "candidate_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "wrapper_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "snapshot_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "controller_digest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "controller_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512
+                },
+                "parent_event": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "environment": {
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "record_type",
+                    "schema_version",
+                    "id",
+                    "profile_digest",
+                    "complete",
+                    "actual",
+                    "completeness_scope",
+                    "reason"
+                  ],
+                  "properties": {
+                    "record_type": {
+                      "const": "EnvironmentManifest"
+                    },
+                    "schema_version": {
+                      "const": "1.0"
+                    },
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "profile_digest": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "actual": {
+                      "type": "object"
+                    },
+                    "completeness_scope": {
+                      "const": "lean-std-int-polynomial-v1"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "maxLength": 1000000
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "complete": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "actual": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "lean_sha256",
+                              "library_digest",
+                              "checker_digest",
+                              "version",
+                              "platform",
+                              "executable",
+                              "search_path",
+                              "image"
+                            ],
+                            "properties": {
+                              "lean_sha256": {
+                                "type": "string",
+                                "pattern": "^[a-f0-9]{64}$"
+                              },
+                              "library_digest": {
+                                "type": "string",
+                                "pattern": "^[a-f0-9]{64}$"
+                              },
+                              "checker_digest": {
+                                "type": "string",
+                                "pattern": "^[a-f0-9]{64}$"
+                              },
+                              "version": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 512
+                              },
+                              "platform": {
+                                "enum": [
+                                  "linux/amd64",
+                                  "linux/arm64"
+                                ]
+                              },
+                              "executable": {
+                                "const": "/opt/lean/bin/lean"
+                              },
+                              "search_path": {
+                                "const": "/opt/lean/lib/lean"
+                              },
+                              "image": {
+                                "type": "string",
+                                "pattern": "^(sha256:[a-f0-9]{64}|[a-zA-Z0-9./:_-]+@sha256:[a-f0-9]{64})$"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "outcome": {
+                  "enum": [
+                    "VERIFIED",
+                    "COMPILER_REJECTED",
+                    "UNAVAILABLE",
+                    "ERROR",
+                    "TIMEOUT",
+                    "VERIFIER_ERROR"
+                  ]
+                },
+                "compiler_outcome": {
+                  "enum": [
+                    "PASS",
+                    "FAIL",
+                    "NOT_RUN"
+                  ]
+                },
+                "checker_outcome": {
+                  "enum": [
+                    "PASS",
+                    "FAIL",
+                    "NOT_RUN"
+                  ]
+                },
+                "axioms": {
+                  "type": "array",
+                  "maxItems": 256,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 512
+                  },
+                  "uniqueItems": true
+                },
+                "outputs": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "worker_stdout",
+                    "worker_stderr",
+                    "candidate_source"
+                  ],
+                  "properties": {
+                    "worker_stdout": {
+                      "type": "string",
+                      "maxLength": 1000000
+                    },
+                    "worker_stderr": {
+                      "type": "string",
+                      "maxLength": 1000000
+                    },
+                    "candidate_source": {
+                      "type": "string",
+                      "maxLength": 1000000
+                    }
+                  }
+                },
+                "output_digests": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "worker_stdout",
+                    "worker_stderr",
+                    "candidate_source"
+                  ],
+                  "properties": {
+                    "worker_stdout": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "worker_stderr": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "candidate_source": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  }
+                },
+                "duration_seconds": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "assurance": {
+                  "const": "TRUSTED_RESTRICTED_SOURCE_KERNEL_RECHECK"
+                }
+              }
+            },
+            "envelope": {
+              "type": [
+                "object",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "event",
+            "envelope"
+          ]
+        }
+      },
+      "required": [
+        "parent_run_id",
+        "parent_revision",
+        "binding",
+        "obligation",
+        "execution"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "assertion_id",
+    "revision",
+    "method",
+    "status",
+    "reason",
+    "context_digest",
+    "definition_digest",
+    "source_locators",
+    "fidelity"
+  ],
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "op": {
+          "enum": [
+            "int",
+            "var",
+            "group",
+            "neg",
+            "pos",
+            "pow",
+            "add",
+            "sub",
+            "mul"
+          ]
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z]$"
+        },
+        "exponent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "child": {
+          "$ref": "#/$defs/node"
+        },
+        "left": {
+          "$ref": "#/$defs/node"
+        },
+        "right": {
+          "$ref": "#/$defs/node"
+        }
+      },
+      "required": [
+        "op",
+        "start",
+        "end"
+      ]
+    },
+    "span": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "artifact": {
+          "type": "string"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excerpt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "offsets": {
+          "const": "utf8-bytes-half-open"
+        }
+      },
+      "required": [
+        "artifact",
+        "start",
+        "end",
+        "excerpt_sha256",
+        "offsets"
+      ]
+    },
+    "locator": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:proofmap:source-locator:1",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact",
+        "artifact_sha256",
+        "format",
+        "start",
+        "end",
+        "page",
+        "excerpt_sha256",
+        "offsets"
+      ],
+      "properties": {
+        "artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "format": {
+          "enum": [
+            "tex",
+            "pdf"
+          ]
+        },
+        "start": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "end": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "excerpt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "offsets": {
+          "enum": [
+            "utf8-bytes-half-open",
+            "reconstructed-text-no-source-offsets"
+          ]
+        },
+        "text_start": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "text_end": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "parser_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SUPPORTED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "source_ast",
+          "source_spans",
+          "obligation",
+          "candidate",
+          "exact_check"
+        ],
+        "properties": {
+          "reason": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "source_ast"
+              ]
+            },
+            {
+              "required": [
+                "obligation"
+              ]
+            },
+            {
+              "required": [
+                "candidate"
+              ]
+            },
+            {
+              "required": [
+                "binding"
+              ]
+            },
+            {
+              "required": [
+                "exact_check"
+              ]
+            },
+            {
+              "required": [
+                "execution_event"
+              ]
+            },
+            {
+              "required": [
+                "historical_execution"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

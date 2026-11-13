@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:checker-result:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "checker",
+    "checker_version",
+    "execution_status",
+    "revision",
+    "source_ids",
+    "findings",
+    "coverage",
+    "configuration_digest",
+    "certificate_digest",
+    "certificate_references",
+    "trust",
+    "blocking_eligible",
+    "resource_use"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "checker": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "checker_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "execution_status": {
+      "enum": [
+        "PASS",
+        "PARTIAL",
+        "FAIL",
+        "ERROR",
+        "TIMEOUT",
+        "UNAVAILABLE",
+        "UNSUPPORTED",
+        "NOT_RUN",
+        "NOT_APPLICABLE",
+        "REJECTED",
+        "COUNTEREXAMPLE"
+      ]
+    },
+    "revision": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 20000,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "findings": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "severity",
+          "source",
+          "classification",
+          "message",
+          "remediation",
+          "blocking_eligible"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "warning",
+              "error"
+            ]
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "classification": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "message": {
+            "type": "string"
+          },
+          "remediation": {
+            "type": "string"
+          },
+          "blocking_eligible": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempted",
+        "eligible",
+        "supported",
+        "denominator",
+        "reason"
+      ],
+      "properties": {
+        "attempted": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "eligible": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "supported": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "denominator": {
+          "type": "string"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "configuration_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "certificate_digest": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "certificate_references": {
+      "type": "array",
+      "maxItems": 10000,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "trust": {
+      "const": "LOCAL_ANALYSIS_NOT_PROOF"
+    },
+    "blocking_eligible": {
+      "type": "boolean"
+    },
+    "resource_use": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seconds",
+        "peak_memory_bytes"
+      ],
+      "properties": {
+        "seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "peak_memory_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

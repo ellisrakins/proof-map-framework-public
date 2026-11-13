@@ -1,0 +1,308 @@
+{
+  "description": "Generated theory scaffold. Foundation and framework nodes are declared commitments; open questions and tests remain explicit boundary debt.",
+  "edges": [
+    {
+      "evidence_class": "theory_profile",
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "formalization_status": "none",
+      "kind": "DEFINES",
+      "last_verified": "2026-07-26",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "core.loop_quantum_gravity.foundation_1",
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "",
+      "status": "ASSUMED",
+      "tags": [],
+      "target": "model.loop_quantum_gravity",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.72,
+      "uncertainty_kind": "",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "theory_profile",
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "formalization_status": "none",
+      "kind": "DEFINES",
+      "last_verified": "2026-07-26",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "core.loop_quantum_gravity.foundation_2",
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "",
+      "status": "ASSUMED",
+      "tags": [],
+      "target": "model.loop_quantum_gravity",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.72,
+      "uncertainty_kind": "",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "theory_profile",
+      "formal_systems": [],
+      "formalization_status": "none",
+      "kind": "BLOCKS",
+      "last_verified": "2026-07-26",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "model.loop_quantum_gravity",
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "gap.loop_quantum_gravity.question_1",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.8,
+      "uncertainty_kind": "",
+      "validity_regime": "",
+      "weight": 1.0
+    },
+    {
+      "evidence_class": "theory_profile",
+      "formal_systems": [],
+      "formalization_status": "none",
+      "kind": "EMPIRICALLY_CONSTRAINS",
+      "last_verified": "2026-07-26",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source": "model.loop_quantum_gravity",
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "",
+      "status": "GAP",
+      "tags": [],
+      "target": "boundary.loop_quantum_gravity.test_1",
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.75,
+      "uncertainty_kind": "",
+      "validity_regime": "",
+      "weight": 1.0
+    }
+  ],
+  "epochs": [],
+  "metadata": {
+    "generated_from_theory_profile": true,
+    "theory_catalog_version": "1.0",
+    "theory_profile_ids": [
+      "loop_quantum_gravity"
+    ]
+  },
+  "nodes": [
+    {
+      "boundary_weight": 1.0,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "theory_profile",
+      "explanatory_weight": 1.0,
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "formalization_status": "none",
+      "id": "core.loop_quantum_gravity.foundation_1",
+      "kind": "AXIOM",
+      "label": "Foundation 1",
+      "last_verified": "2026-07-26",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {
+        "primary": {}
+      },
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "General relativity in connection variables",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.35,
+      "uncertainty_kind": "",
+      "validity_regime": "Planck-scale quantum geometry with classical and semiclassical limits under study."
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "theory_profile",
+      "explanatory_weight": 1.0,
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "formalization_status": "none",
+      "id": "core.loop_quantum_gravity.foundation_2",
+      "kind": "AXIOM",
+      "label": "Foundation 2",
+      "last_verified": "2026-07-26",
+      "layer": "CORE",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {
+        "primary": {}
+      },
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "Nonperturbative canonical quantization",
+      "status": "CORE",
+      "tags": [],
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.35,
+      "uncertainty_kind": "",
+      "validity_regime": "Planck-scale quantum geometry with classical and semiclassical limits under study."
+    },
+    {
+      "boundary_weight": 1.0,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "theory_profile",
+      "explanatory_weight": 5,
+      "formal_systems": [
+        "constraint_algebras",
+        "representation_theory",
+        "spin_networks"
+      ],
+      "formalization_status": "none",
+      "id": "model.loop_quantum_gravity",
+      "kind": "MODEL",
+      "label": "Loop quantum gravity",
+      "last_verified": "2026-07-26",
+      "layer": "INTERIOR",
+      "notes": "",
+      "proof_cost": 3,
+      "regime_dimensions": {
+        "primary": {}
+      },
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "Background-independent canonical quantization of gravitational geometry using connection variables.",
+      "status": "ASSUMPTION",
+      "tags": [],
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.72,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": "Planck-scale quantum geometry with classical and semiclassical limits under study."
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "theory_profile",
+      "explanatory_weight": 1.0,
+      "formal_systems": [],
+      "formalization_status": "none",
+      "id": "gap.loop_quantum_gravity.question_1",
+      "kind": "GAP",
+      "label": "Open question 1",
+      "last_verified": "2026-07-26",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "Complete dynamics, semiclassical limit, matter coupling, and unique predictions.",
+      "status": "GAP",
+      "tags": [],
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.8,
+      "uncertainty_kind": "theoretical",
+      "validity_regime": ""
+    },
+    {
+      "boundary_weight": 3,
+      "domain": "quantum_gravity",
+      "energy_scale_gev": null,
+      "epoch_end": null,
+      "epoch_start": null,
+      "evidence_class": "theory_profile",
+      "explanatory_weight": 1.0,
+      "formal_systems": [],
+      "formalization_status": "none",
+      "id": "boundary.loop_quantum_gravity.test_1",
+      "kind": "PHENOMENON",
+      "label": "Discriminating test 1",
+      "last_verified": "2026-07-26",
+      "layer": "BOUNDARY",
+      "notes": "",
+      "proof_cost": 1.0,
+      "regime_dimensions": {},
+      "source_ids": [
+        "rovelli_lqg_2008",
+        "barrau_qg_overview_2017"
+      ],
+      "statement": "Model-specific cosmological, black-hole, or propagation signatures.",
+      "status": "GAP",
+      "tags": [
+        "discriminating_test"
+      ],
+      "theory_ids": [
+        "loop_quantum_gravity"
+      ],
+      "uncertainty": 0.75,
+      "uncertainty_kind": "empirical",
+      "validity_regime": ""
+    }
+  ],
+  "title": "Loop quantum gravity proof-map scaffold"
+}

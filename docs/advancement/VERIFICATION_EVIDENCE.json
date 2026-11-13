@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "record_type": "local_implementation_evidence_not_attestation",
+  "date": "2026-09-23",
+  "publication_note": "Historical measurements only; original source identifiers omitted from this public copy.",
+  "working_tree": "uncommitted implementation",
+  "package_version": "0.6.0",
+  "alpha_complete": false,
+  "platform": "Windows",
+  "python": "3.12.14",
+  "full_suite": {
+    "exit_code": 0,
+    "passed": 182,
+    "skipped": 1,
+    "failed": 0,
+    "duration_seconds": 67.08,
+    "skip_reason": "Actual Linux Docker isolation unavailable locally",
+    "real_lean_selected": true,
+    "real_chromium_selected": true,
+    "junit_local_path": ".work-junit.xml",
+    "coverage_local_path": ".work-coverage.json"
+  },
+  "coverage": {
+    "combined_percent": 86.9315736623153,
+    "covered_statements": 4714,
+    "statements": 5213,
+    "covered_branches": 1346,
+    "branches": 1758,
+    "excluded_lines": 0,
+    "critical_combined_percent": {
+      "integrity": 90.3409090909091,
+      "kernel": 95.6989247311828,
+      "replay": 95.50561797752809,
+      "runner": 96.47887323943662,
+      "trust": 98.01980198019803
+    }
+  },
+  "lean": {
+    "version": "4.30.0",
+    "compiler_commit": "d024af099ca4bf2c86f649261ebf59565dc8c622",
+    "execution": "trusted_host_not_isolated",
+    "reflexivity_axioms": [],
+    "agoh_factorization_axioms": ["Classical.choice", "Quot.sound", "propext"],
+    "exact_certificate_reproduced": true
+  },
+  "benchmark": {
+    "papers": 2,
+    "train_papers": 1,
+    "heldout_papers": 1,
+    "labelled_assertions": 3,
+    "correct_assertions": 3,
+    "labelled_explicit_dependencies": 1,
+    "correct_explicit_dependencies": 1,
+    "valid_anchors": 21,
+    "total_anchors": 21,
+    "fidelity_accuracy": null,
+    "finding_precision": null,
+    "population_accuracy": null
+  },
+  "hosted_actions_observed": false,
+  "live_model_called": false,
+  "published": false,
+  "historical_research_artifacts_modified": false,
+  "limitations_report": "IMPLEMENTATION_REPORT.md"
+}

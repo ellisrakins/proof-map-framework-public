@@ -1,0 +1,492 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  # Preserve the same source bytes on Linux and Windows without changing user Git config.
+  GIT_CONFIG_COUNT: '1'
+  GIT_CONFIG_KEY_0: core.autocrlf
+  GIT_CONFIG_VALUE_0: 'false'
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python -m ruff check proofmap tests scripts/ci_required.py scripts/check_alpha_acceptance.py scripts/check_campaign_acceptance.py scripts/campaign_installed_scenarios.py scripts/alpha_evidence.py scripts/paper_ci_corpus.py scripts/paper_e2e_isolated.py scripts/provision_lean_profile.py scripts/workflow_security.py scripts/check_types.py scripts/wheel_smoke.py scripts/paper_alpha_offline.py scripts/check_alpha_scenarios.py scripts/test_installed_wheel.py scripts/windows_pytest_partitions.py
+      - run: python -m ruff format --check proofmap tests scripts/ci_required.py scripts/check_alpha_acceptance.py scripts/check_campaign_acceptance.py scripts/campaign_installed_scenarios.py scripts/alpha_evidence.py scripts/paper_ci_corpus.py scripts/paper_e2e_isolated.py scripts/provision_lean_profile.py scripts/workflow_security.py scripts/check_types.py scripts/wheel_smoke.py scripts/paper_alpha_offline.py scripts/check_alpha_scenarios.py scripts/test_installed_wheel.py scripts/windows_pytest_partitions.py
+      - run: python scripts/alpha_evidence.py command --job quality --profile quality --out .work/alpha/quality/evidence.json -- python scripts/check_types.py
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-quality
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  schema-migration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/schema-migration/evidence.json --alpha-job schema-migration --alpha-profile linux-unit tests/test_extended_boundaries.py tests/test_trust_regressions.py -q
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-schema-migration
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  semantic-properties:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/semantic-properties/evidence.json --alpha-job semantic-properties --alpha-profile linux-unit tests/test_kernel.py tests/test_extended_boundaries.py -q
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-semantic-properties
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  verification-real:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python scripts/provision_lean_profile.py --host-dir "$RUNNER_TEMP/lean-host" --out "$RUNNER_TEMP/lean-host.json"
+      - name: Legacy trusted host compatibility
+        run: |
+          PROOFMAP_LEAN="$(python -c 'import json,os; print(json.load(open(os.environ["RUNNER_TEMP"] + "/lean-host.json"))["executable"])')" python scripts/alpha_evidence.py command --job verification-real --profile host-lean --out .work/alpha/verification-real/evidence.json -- python scripts/verify_real.py
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-verification-real
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  sandbox-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: docker pull python@sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9
+      - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/sandbox-security/evidence.json --alpha-job sandbox-security --alpha-profile linux-sandbox tests/test_runner.py -q
+        env:
+          PROOFMAP_SANDBOX_TEST: '1'
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-sandbox-security
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  paper-ci-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/paper-ci-fixtures/evidence.json --alpha-job paper-ci-fixtures --alpha-profile linux-unit tests/test_paper_sources.py tests/test_paper_pipeline.py tests/test_extractor.py -q
+      - run: python scripts/alpha_evidence.py command --job paper-ci-fixtures --profile benchmark --out .work/alpha/paper-ci-fixtures/benchmark-evidence.json --artifact benchmark=.work/alpha/paper-ci-fixtures/benchmark.json -- python -m proofmap.cli paper benchmark --corpus tests/fixtures/papers --out .work/alpha/paper-ci-fixtures/benchmark.json
+      - name: Observe independently authored retained source intake
+        run: python scripts/alpha_evidence.py command --job paper-ci-fixtures --profile campaign-realism --out .work/campaign/paper-ci-fixtures/evidence.json --artifact campaign-realism-outcomes=.work/campaign/paper-ci-fixtures/realism/realism-outcomes.json -- python -m proofmap.campaign.pilot --corpus tests/fixtures/campaign/realism --out .work/campaign/paper-ci-fixtures/realism
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: campaign-evidence-paper-ci-fixtures
+          path: .work/campaign
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-paper-ci-fixtures
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  paper-e2e-isolated:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[paper,trust,dev]'
+      - run: python -m build
+      - name: Acquire and validate profile before offline evaluation
+        run: python scripts/provision_lean_profile.py --out "$RUNNER_TEMP/lean-profile.json"
+      - name: Installed wheel paper to authenticated evidence and review
+        run: python scripts/alpha_evidence.py command --job paper-e2e-isolated --profile linux-isolated --out .work/alpha/paper-e2e-isolated/evidence.json --artifact isolated-paper-outcomes=.work/alpha/paper-e2e-isolated/diagnostics/outcomes.json -- python scripts/paper_e2e_isolated.py --wheel dist/*.whl --profile "$RUNNER_TEMP/lean-profile.json" --out .work/alpha/paper-e2e-isolated/diagnostics
+      - name: Authenticate installed independent revision scenarios
+        run: python scripts/alpha_evidence.py command --job paper-e2e-isolated --profile linux-alpha-isolated --out .work/alpha/paper-e2e-isolated/alpha-evidence.json --artifact alpha-isolated-scenarios=.work/alpha/paper-e2e-isolated/alpha-scenarios.json -- python scripts/check_alpha_scenarios.py --kind alpha-isolated-scenarios --source .work/alpha/paper-e2e-isolated/diagnostics/outcomes.json --out .work/alpha/paper-e2e-isolated/alpha-scenarios.json
+      - name: Observe installed campaign with the same prepared verifier image
+        run: python scripts/alpha_evidence.py command --job paper-e2e-isolated --profile installed-campaign-isolated --out .work/campaign/paper-e2e-isolated/evidence.json --artifact campaign-isolated-outcomes=.work/campaign/paper-e2e-isolated/isolated/campaign-outcomes.json -- python scripts/campaign_installed_scenarios.py --wheel dist/*.whl --profile isolated --execution-profile "$RUNNER_TEMP/lean-profile.json" --out .work/campaign/paper-e2e-isolated/isolated
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: campaign-evidence-paper-e2e-isolated
+          path: .work/campaign
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1; Dependabot PR #3
+        if: always()
+        with:
+          name: paper-e2e-isolated-diagnostics
+          path: .work/alpha/paper-e2e-isolated/diagnostics
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-paper-e2e-isolated
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  browser-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python -m playwright install --with-deps chromium
+      - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/browser-security/evidence.json --alpha-job browser-security --alpha-profile chromium tests/test_browser_security.py tests/test_paper_review_workflow.py::test_browser_navigates_source_context_formal_evidence_reviews_without_scripts tests/test_campaign_browser.py tests/test_campaign_dossier.py::test_shared_report_is_read_only_qualified_and_escapes_hostile_text -q
+        env:
+          PROOFMAP_BROWSER_TEST: '1'
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-browser-security
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  package-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python -m build
+      - run: python -m twine check dist/*
+      - run: python scripts/alpha_evidence.py command --job package-build --profile installed-wheel --out .work/alpha/package-build/evidence.json --artifact wheel=.work/alpha/package-build/package.whl -- python scripts/wheel_smoke.py --audit-wheel .work/alpha/package-build/package.whl --offline-outcomes .work/alpha/package-build/offline-produced.json
+      - name: Validate installed offline authoring and review scenarios
+        run: python scripts/alpha_evidence.py command --job package-build --profile installed-alpha-offline --out .work/alpha/package-build/offline-evidence.json --artifact alpha-offline-scenarios=.work/alpha/package-build/offline-scenarios.json -- python scripts/check_alpha_scenarios.py --kind alpha-offline-scenarios --source .work/alpha/package-build/offline-produced.json --out .work/alpha/package-build/offline-scenarios.json
+      - name: Observe installed campaign without external services
+        run: python scripts/alpha_evidence.py command --job package-build --profile installed-campaign-offline --out .work/campaign/package-build/evidence.json --artifact campaign-offline-outcomes=.work/campaign/package-build/offline/campaign-outcomes.json -- python scripts/campaign_installed_scenarios.py --wheel dist/*.whl --profile offline --out .work/campaign/package-build/offline
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: campaign-evidence-package-build
+          path: .work/campaign
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-package-build
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  dependency-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: python -m pip install -c constraints-ci.txt pip-audit
+      - run: python scripts/alpha_evidence.py command --job dependency-audit --profile dependency-audit --out .work/alpha/dependency-audit/evidence.json --artifact dependency-audit=.work/alpha/dependency-audit/audit.json -- python -m pip_audit --format json --output .work/alpha/dependency-audit/audit.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-dependency-audit
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  workflow-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - run: go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
+      - run: '"$(go env GOPATH)/bin/actionlint" -color'
+      - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/workflow-security/evidence.json --alpha-job workflow-security --alpha-profile linux-unit tests/test_ci_required.py tests/test_alpha_acceptance.py tests/test_alpha_evidence.py tests/test_alpha_isolated_artifact.py tests/test_alpha_benchmark_artifact.py tests/test_alpha_dependency_audit.py tests/test_alpha_revision_artifact.py tests/test_alpha_scenario_binding.py tests/test_installed_regression_driver.py tests/test_alpha_operations.py tests/test_windows_pytest_partitions.py -q
+      - run: python scripts/workflow_security.py
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-workflow-security
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  python-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python: ['3.10', '3.11', '3.12', '3.13', '3.14']
+        include:
+          - os: ubuntu-latest
+            profile_os: linux
+          - os: windows-latest
+            python: '3.12'
+            profile_os: windows
+            partition: 0
+          - os: windows-latest
+            python: '3.12'
+            profile_os: windows
+            partition: 1
+          - os: windows-latest
+            python: '3.12'
+            profile_os: windows
+            partition: 2
+          - os: windows-latest
+            python: '3.12'
+            profile_os: windows
+            partition: 3
+          - os: windows-latest
+            python: '3.14'
+            profile_os: windows
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; Dependabot PR #2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0; Dependabot PR #4
+        with:
+          python-version: '${{ matrix.python }}'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - if: matrix.python != '3.12'
+        run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/python-${{ matrix.profile_os }}-${{ matrix.python }}/evidence.json --alpha-job python-tests --alpha-profile python-${{ matrix.profile_os }}-${{ matrix.python }} -q --cov=proofmap --cov-branch --cov-fail-under=85 --cov-report=json:.work/coverage.json
+      - name: Run one exact partition of the Windows 3.12 full inventory
+        if: matrix.profile_os == 'windows' && matrix.python == '3.12'
+        run: python scripts/windows_pytest_partitions.py run --index ${{ matrix.partition }} --out .work/windows-partition-${{ matrix.partition }}
+      - if: matrix.profile_os == 'linux' && matrix.python == '3.12'
+        run: python -m build
+      - name: Complete Linux 3.12 suite from the installed wheel outside checkout
+        if: matrix.profile_os == 'linux' && matrix.python == '3.12'
+        run: python scripts/alpha_evidence.py command --job python-tests --profile installed-regression --out .work/alpha/python-linux-3.12/installed-evidence.json --artifact installed-regression-outcomes=.work/alpha/python-linux-3.12/installed/outcomes.json -- python scripts/test_installed_wheel.py --source-root . --wheel dist/*.whl --out .work/alpha/python-linux-3.12/installed --profile python-linux-3.12 --coverage-out .work/coverage.json
+      - if: matrix.profile_os != 'windows' || matrix.python != '3.12'
+        run: python scripts/check_critical_coverage.py .work/coverage.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1; Dependabot PR #3
+        if: always() && (matrix.profile_os != 'windows' || matrix.python != '3.12')
+        with:
+          name: coverage-${{ matrix.os }}-${{ matrix.python }}
+          path: .work/coverage.json
+          include-hidden-files: true
+          retention-days: 7
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always() && (matrix.profile_os != 'windows' || matrix.python != '3.12')
+        with:
+          name: alpha-evidence-python-${{ matrix.profile_os }}-${{ matrix.python }}
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always() && matrix.profile_os == 'windows' && matrix.python == '3.12'
+        with:
+          name: windows-pytest-partition-${{ matrix.partition }}
+          path: |
+            .work/windows-partition-${{ matrix.partition }}/partition.json
+            .work/windows-partition-${{ matrix.partition }}/collection.json
+            .work/windows-partition-${{ matrix.partition }}/pytest-report.json
+            .work/windows-partition-${{ matrix.partition }}/coverage.data
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  windows-regression:
+    if: always()
+    needs: [python-tests]
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          pattern: windows-pytest-partition-*
+          path: .work/windows-parts
+      - name: Require every test once and apply combined coverage gates
+        if: always()
+        run: python scripts/alpha_evidence.py command --job windows-regression --profile partitioned-regression --out .work/alpha/windows-regression/evidence.json --artifact partitioned-regression-outcomes=.work/alpha/windows-regression/artifacts/outcomes.json -- python scripts/windows_pytest_partitions.py aggregate --parts .work/windows-parts --out .work/alpha/windows-regression/artifacts
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-evidence-windows-regression
+          path: .work/alpha
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  alpha-readiness:
+    if: always()
+    needs: [quality, python-tests, schema-migration, semantic-properties, verification-real, sandbox-security, paper-ci-fixtures, paper-e2e-isolated, browser-security, package-build, dependency-audit, workflow-security, windows-regression]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,trust]' coverage
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          pattern: alpha-evidence-*
+          path: .work/alpha
+          merge-multiple: true
+      - name: Require current evidence for every mandatory alpha requirement
+        if: always()
+        run: python scripts/check_alpha_acceptance.py --evidence-dir .work/alpha --out .work/alpha-acceptance.json --summary .work/alpha-acceptance.md
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: alpha-acceptance
+          path: |
+            .work/alpha-acceptance.json
+            .work/alpha-acceptance.md
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  conops-readiness:
+    if: always()
+    needs: [alpha-readiness]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust]'
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          pattern: alpha-evidence-*
+          path: .work/conops-evidence
+          merge-multiple: true
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          pattern: campaign-evidence-*
+          path: .work/conops-evidence
+          merge-multiple: true
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: alpha-acceptance
+          path: .work/alpha-acceptance
+      - name: Consume current mandatory operational evidence
+        if: always()
+        run: python scripts/check_campaign_acceptance.py --evidence-dir .work/conops-evidence --alpha .work/alpha-acceptance/alpha-acceptance.json --out .work/research-conops-acceptance.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: research-conops-acceptance
+          path: .work/research-conops-acceptance.json
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
+  ci-required:
+    if: always()
+    needs: [quality, python-tests, schema-migration, semantic-properties, verification-real, sandbox-security, paper-ci-fixtures, paper-e2e-isolated, browser-security, package-build, dependency-audit, workflow-security, windows-regression, alpha-readiness, conops-readiness]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: All mandatory jobs must succeed
+        env:
+          NEEDS_JSON: ${{ toJSON(needs) }}
+        run: |
+          python - <<'PY'
+          import json, os
+          required = ["quality","python-tests","schema-migration","semantic-properties","verification-real","sandbox-security","paper-ci-fixtures","paper-e2e-isolated","browser-security","package-build","dependency-audit","workflow-security","windows-regression","alpha-readiness","conops-readiness"]
+          results = json.loads(os.environ['NEEDS_JSON'])
+          assert set(results) == set(required), 'Missing or unexpected mandatory job'
+          assert all(results[name].get('result') == 'success' for name in required), 'Mandatory job failed, skipped, or cancelled'
+          PY

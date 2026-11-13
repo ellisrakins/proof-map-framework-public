@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/proofmap.formal-obligation.schema.json",
+  "title": "Proof Map Formal Obligation",
+  "type": "object",
+  "required": ["id", "target_node_id", "statement", "toolchain", "statement_sha256", "formal_system"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "target_node_id": {"type": "string", "minLength": 1},
+    "statement": {"type": "string", "minLength": 1},
+    "declaration_name": {"type": "string"},
+    "imports": {"type": "array", "items": {"type": "string"}},
+    "allowed_axioms": {"type": "array", "items": {"type": "string"}},
+    "toolchain": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+:v[0-9]+\\.[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+    },
+    "statement_sha256": {
+      "type": "string",
+      "pattern": "^$|^[0-9a-f]{64}$"
+    },
+    "notes": {"type": "string"},
+    "metadata": {"type": "object"},
+    "formal_system": {"const": "lean4"}
+  },
+  "additionalProperties": false
+}

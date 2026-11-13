@@ -1,0 +1,397 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "policy",
+    "outcomes",
+    "checkers",
+    "missing_required_stages",
+    "closure",
+    "warning"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "source_required",
+        "author_assertions_are_proof",
+        "model_suggestions_are_evidence",
+        "allow_partial_extraction",
+        "formal_execution"
+      ],
+      "properties": {
+        "id": {
+          "const": "paper-ci-alpha-v1"
+        },
+        "version": {
+          "type": "integer",
+          "const": 1
+        },
+        "source_required": {
+          "const": true
+        },
+        "author_assertions_are_proof": {
+          "const": false
+        },
+        "model_suggestions_are_evidence": {
+          "const": false
+        },
+        "allow_partial_extraction": {
+          "const": true
+        },
+        "formal_execution": {
+          "const": "isolated-only"
+        }
+      }
+    },
+    "outcomes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pipeline_execution",
+        "source_integrity",
+        "extraction_quality",
+        "coverage",
+        "structural_consistency",
+        "computational",
+        "formal_compilation",
+        "kernel_verification",
+        "formal_statement_fidelity",
+        "scholarly_acceptance"
+      ],
+      "properties": {
+        "pipeline_execution": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "ERROR"
+          ]
+        },
+        "source_integrity": {
+          "const": "PASS"
+        },
+        "extraction_quality": {
+          "enum": [
+            "PASS",
+            "PARTIAL"
+          ]
+        },
+        "coverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authored_assertions",
+            "theorem_like_claims",
+            "supported_formal_obligations",
+            "kernel_verified",
+            "reviewed_claims",
+            "accepted_claims",
+            "kernel_verified_fraction"
+          ],
+          "properties": {
+            "authored_assertions": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "theorem_like_claims": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "supported_formal_obligations": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "kernel_verified": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "reviewed_claims": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "accepted_claims": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "kernel_verified_fraction": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "structural_consistency": {
+          "const": "PARTIAL"
+        },
+        "computational": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "ERROR",
+            "TIMEOUT",
+            "UNAVAILABLE",
+            "NOT_RUN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "formal_compilation": {
+          "enum": [
+            "PASS",
+            "PARTIAL",
+            "FAIL",
+            "ERROR",
+            "TIMEOUT",
+            "UNAVAILABLE",
+            "NOT_RUN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "kernel_verification": {
+          "enum": [
+            "PASS",
+            "NOT_RUN",
+            "NOT_VERIFIED"
+          ]
+        },
+        "formal_statement_fidelity": {
+          "const": "NOT_REVIEWED"
+        },
+        "scholarly_acceptance": {
+          "const": "NOT_ASSESSED"
+        }
+      }
+    },
+    "checkers": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "$ref": "urn:proofmap:checker-result:1"
+      }
+    },
+    "missing_required_stages": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 200000,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2048
+      }
+    },
+    "closure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "graph_digest",
+        "policy",
+        "policy_digest",
+        "dimension",
+        "contexts",
+        "foundations",
+        "closed",
+        "open",
+        "conditional",
+        "contradictions",
+        "justifications",
+        "unresolved_premises",
+        "evidence_issues",
+        "warnings",
+        "truncated"
+      ],
+      "properties": {
+        "graph_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "policy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "policy_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "dimension": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "contexts": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 200000,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "foundations": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 200000,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "closed": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 200000,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "open": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 200000,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "conditional": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 200000,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "contradictions": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "justifications": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assumptions",
+                "foundations",
+                "inferences",
+                "evidence"
+              ],
+              "properties": {
+                "assumptions": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "maxItems": 200000,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  }
+                },
+                "foundations": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "maxItems": 200000,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  }
+                },
+                "inferences": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "maxItems": 200000,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  }
+                },
+                "evidence": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "maxItems": 200000,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  }
+                }
+              }
+            }
+          }
+        },
+        "unresolved_premises": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 200000,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "evidence_issues": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 200000,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "truncated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "warning": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:pipeline-assessment:1"
+}

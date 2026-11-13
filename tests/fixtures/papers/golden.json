@@ -1,0 +1,1595 @@
+{
+  "description": "Original and explicitly synthetic/adapted finite regression corpus. Expected labels are authored from source intent before measurement, not copied from parser output. Category membership inventories cases; it does not certify capabilities, proofs or population accuracy.",
+  "fixtures": [
+    {
+      "path": "train/basic.tex",
+      "split": "train",
+      "assertion_labels": [
+        "def:double",
+        "thm:double"
+      ],
+      "proof_count": 1,
+      "dependencies": [
+        [
+          "def:double",
+          "thm:double"
+        ]
+      ],
+      "categories": [
+        "F01"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/basic.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "feature_family": "basic-source-structure",
+      "roles": {
+        "def:double": "DEFINITION",
+        "thm:double": "THEOREM"
+      },
+      "proof_targets": [
+        "thm:double"
+      ],
+      "finding_codes": [],
+      "supported_formalizations": 0,
+      "formalization_status": {
+        "thm:double": "UNSUPPORTED"
+      }
+    },
+    {
+      "path": "heldout/missing.tex",
+      "split": "heldout",
+      "assertion_labels": [
+        "lem:one"
+      ],
+      "proof_count": 1,
+      "dependencies": [],
+      "categories": [
+        "F05",
+        "F07"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/missing.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "feature_family": "missing-references-and-omitted-proof",
+      "roles": {
+        "lem:one": "LEMMA"
+      },
+      "proof_targets": [
+        "lem:one"
+      ],
+      "supported_formalizations": 0,
+      "formalization_status": {
+        "lem:one": "UNSUPPORTED"
+      },
+      "finding_labels": {
+        "MISSING_OR_AMBIGUOUS_REFERENCE": true,
+        "UNRESOLVED_CITATION": true,
+        "AMBIGUOUS_CITATION": false
+      }
+    },
+    {
+      "path": "train/shifted_square.tex",
+      "split": "train",
+      "feature_family": "shifted-square",
+      "assertion_labels": [
+        "train:shift"
+      ],
+      "roles": {
+        "train:shift": "THEOREM"
+      },
+      "proof_count": 1,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F01",
+        "F11"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/shifted_square.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [
+        "train:shift"
+      ],
+      "exact_identities": {
+        "train:shift": true
+      },
+      "formalization_status": {
+        "train:shift": "SUPPORTED"
+      }
+    },
+    {
+      "path": "train/false_linear.tex",
+      "split": "train",
+      "feature_family": "false-affine",
+      "assertion_labels": [
+        "train:false"
+      ],
+      "roles": {
+        "train:false": "CONJECTURE"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F11"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/false_linear.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "exact_identities": {
+        "train:false": false
+      },
+      "formalization_status": {
+        "train:false": "SUPPORTED"
+      }
+    },
+    {
+      "path": "train/macro_scope.tex",
+      "split": "train",
+      "feature_family": "macro-ambiguity",
+      "assertion_labels": [
+        "train:offset",
+        "train:macro"
+      ],
+      "roles": {
+        "train:offset": "DEFINITION",
+        "train:macro": "THEOREM"
+      },
+      "proof_count": 1,
+      "dependencies": [
+        [
+          "train:offset",
+          "train:macro"
+        ]
+      ],
+      "supported_formalizations": 0,
+      "categories": [
+        "F02",
+        "F11"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/macro_scope.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [
+        "train:macro"
+      ],
+      "formalization_status": {
+        "train:macro": "UNSUPPORTED"
+      }
+    },
+    {
+      "path": "train/implicit_reference.tex",
+      "split": "train",
+      "feature_family": "implicit-reference",
+      "assertion_labels": [
+        "train:base",
+        "train:implicit"
+      ],
+      "roles": {
+        "train:base": "LEMMA",
+        "train:implicit": "THEOREM"
+      },
+      "proof_count": 1,
+      "dependencies": [],
+      "supported_formalizations": 2,
+      "categories": [
+        "F04",
+        "F07"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/implicit_reference.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [
+        "train:implicit"
+      ],
+      "evaluation_labels": {
+        "candidate_dependencies": [
+          [
+            "train:base",
+            "train:implicit"
+          ]
+        ],
+        "fidelity_decisions": {
+          "implicit-dependency-candidate": "UNCERTAIN"
+        }
+      },
+      "exact_identities": {
+        "train:base": true,
+        "train:implicit": true
+      },
+      "formalization_status": {
+        "train:base": "SUPPORTED",
+        "train:implicit": "SUPPORTED"
+      }
+    },
+    {
+      "path": "heldout/cubic_binomial.tex",
+      "split": "heldout",
+      "feature_family": "cubic-binomial",
+      "assertion_labels": [
+        "hold:cube"
+      ],
+      "roles": {
+        "hold:cube": "THEOREM"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F11"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/cubic_binomial.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "exact_identities": {
+        "hold:cube": true
+      },
+      "formalization_status": {
+        "hold:cube": "SUPPORTED"
+      }
+    },
+    {
+      "path": "heldout/difference_squares.tex",
+      "split": "heldout",
+      "feature_family": "difference-of-squares-products",
+      "assertion_labels": [
+        "hold:factor"
+      ],
+      "roles": {
+        "hold:factor": "PROPOSITION"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F11"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/difference_squares.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "exact_identities": {
+        "hold:factor": true
+      },
+      "formalization_status": {
+        "hold:factor": "SUPPORTED"
+      }
+    },
+    {
+      "path": "heldout/zero_power.tex",
+      "split": "heldout",
+      "feature_family": "zero-power",
+      "assertion_labels": [
+        "hold:zero"
+      ],
+      "roles": {
+        "hold:zero": "COROLLARY"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F11"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/zero_power.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "exact_identities": {
+        "hold:zero": true
+      },
+      "formalization_status": {
+        "hold:zero": "SUPPORTED"
+      }
+    },
+    {
+      "path": "heldout/negative_distribution.tex",
+      "split": "heldout",
+      "feature_family": "unary-negative-distribution",
+      "assertion_labels": [
+        "hold:negative",
+        "hold:example",
+        "hold:remark"
+      ],
+      "roles": {
+        "hold:negative": "LEMMA",
+        "hold:example": "EXAMPLE",
+        "hold:remark": "REMARK"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F11"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/negative_distribution.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "exact_identities": {
+        "hold:negative": true
+      },
+      "formalization_status": {
+        "hold:negative": "SUPPORTED"
+      }
+    },
+    {
+      "path": "heldout/revision_before.tex",
+      "split": "heldout",
+      "feature_family": "hypothesis-revision-before",
+      "assertion_labels": [
+        "hold:revision"
+      ],
+      "roles": {
+        "hold:revision": "THEOREM"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F09"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/revision_before.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "exact_identities": {
+        "hold:revision": true
+      },
+      "formalization_status": {
+        "hold:revision": "SUPPORTED"
+      }
+    },
+    {
+      "path": "heldout/revision_after.tex",
+      "split": "heldout",
+      "feature_family": "hypothesis-revision-after",
+      "assertion_labels": [
+        "hold:revision"
+      ],
+      "roles": {
+        "hold:revision": "THEOREM"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 0,
+      "categories": [
+        "F06",
+        "F09"
+      ],
+      "resource_stress": false,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/revision_after.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "formalization_status": {
+        "hold:revision": "UNSUPPORTED"
+      }
+    },
+    {
+      "path": "train/long_context.tex",
+      "split": "train",
+      "feature_family": "long-input",
+      "assertion_labels": [
+        "train:context:0",
+        "train:context:1",
+        "train:context:2",
+        "train:context:3",
+        "train:context:4",
+        "train:context:5",
+        "train:context:6",
+        "train:context:7",
+        "train:context:8",
+        "train:context:9",
+        "train:context:10",
+        "train:context:11",
+        "train:context:12",
+        "train:context:13",
+        "train:context:14",
+        "train:context:15",
+        "train:context:16",
+        "train:context:17",
+        "train:context:18",
+        "train:context:19",
+        "train:context:20",
+        "train:context:21",
+        "train:context:22",
+        "train:context:23",
+        "train:context:24",
+        "train:context:25",
+        "train:context:26",
+        "train:context:27",
+        "train:context:28",
+        "train:context:29",
+        "train:context:30",
+        "train:context:31",
+        "train:context:32",
+        "train:context:33",
+        "train:context:34",
+        "train:context:35",
+        "train:context:36",
+        "train:context:37",
+        "train:context:38",
+        "train:context:39",
+        "train:context:40",
+        "train:context:41",
+        "train:context:42",
+        "train:context:43",
+        "train:context:44",
+        "train:context:45",
+        "train:context:46",
+        "train:context:47",
+        "train:context:48",
+        "train:context:49",
+        "train:context:50",
+        "train:context:51",
+        "train:context:52",
+        "train:context:53",
+        "train:context:54",
+        "train:context:55",
+        "train:context:56",
+        "train:context:57",
+        "train:context:58",
+        "train:context:59",
+        "train:context:60",
+        "train:context:61",
+        "train:context:62",
+        "train:context:63",
+        "train:context:64",
+        "train:context:65",
+        "train:context:66",
+        "train:context:67",
+        "train:context:68",
+        "train:context:69",
+        "train:context:70",
+        "train:context:71",
+        "train:context:72",
+        "train:context:73",
+        "train:context:74",
+        "train:context:75",
+        "train:context:76",
+        "train:context:77",
+        "train:context:78",
+        "train:context:79",
+        "train:context:80",
+        "train:context:81",
+        "train:context:82",
+        "train:context:83",
+        "train:context:84",
+        "train:context:85",
+        "train:context:86",
+        "train:context:87",
+        "train:context:88",
+        "train:context:89",
+        "train:context:90",
+        "train:context:91",
+        "train:context:92",
+        "train:context:93",
+        "train:context:94",
+        "train:context:95",
+        "train:context:96",
+        "train:context:97",
+        "train:context:98",
+        "train:context:99",
+        "train:context:100",
+        "train:context:101",
+        "train:context:102",
+        "train:context:103",
+        "train:context:104",
+        "train:context:105",
+        "train:context:106",
+        "train:context:107",
+        "train:context:108",
+        "train:context:109",
+        "train:context:110",
+        "train:context:111",
+        "train:context:112",
+        "train:context:113",
+        "train:context:114",
+        "train:context:115",
+        "train:context:116",
+        "train:context:117",
+        "train:context:118",
+        "train:context:119",
+        "train:context:120",
+        "train:context:121",
+        "train:context:122",
+        "train:context:123",
+        "train:context:124",
+        "train:context:125",
+        "train:context:126",
+        "train:context:127",
+        "train:context:128",
+        "train:context:129",
+        "train:context:130",
+        "train:context:131",
+        "train:context:132",
+        "train:context:133",
+        "train:context:134",
+        "train:context:135",
+        "train:context:136",
+        "train:context:137",
+        "train:context:138",
+        "train:context:139",
+        "train:context:140",
+        "train:context:141",
+        "train:context:142",
+        "train:context:143",
+        "train:context:144",
+        "train:context:145",
+        "train:context:146",
+        "train:context:147",
+        "train:context:148",
+        "train:context:149",
+        "train:context:150",
+        "train:context:151",
+        "train:context:152",
+        "train:context:153",
+        "train:context:154",
+        "train:context:155",
+        "train:context:156",
+        "train:context:157",
+        "train:context:158",
+        "train:context:159",
+        "train:context:160",
+        "train:context:161",
+        "train:context:162",
+        "train:context:163",
+        "train:context:164",
+        "train:context:165",
+        "train:context:166",
+        "train:context:167",
+        "train:context:168",
+        "train:context:169",
+        "train:context:170",
+        "train:context:171",
+        "train:context:172",
+        "train:context:173",
+        "train:context:174",
+        "train:context:175",
+        "train:context:176",
+        "train:context:177",
+        "train:context:178",
+        "train:context:179",
+        "train:context:180",
+        "train:context:181",
+        "train:context:182",
+        "train:context:183",
+        "train:context:184",
+        "train:context:185",
+        "train:context:186",
+        "train:context:187",
+        "train:context:188",
+        "train:context:189",
+        "train:context:190",
+        "train:context:191",
+        "train:context:192",
+        "train:context:193",
+        "train:context:194",
+        "train:context:195",
+        "train:context:196",
+        "train:context:197",
+        "train:context:198",
+        "train:context:199",
+        "train:context:200",
+        "train:context:201",
+        "train:context:202",
+        "train:context:203",
+        "train:context:204",
+        "train:context:205",
+        "train:context:206",
+        "train:context:207",
+        "train:context:208",
+        "train:context:209",
+        "train:context:210",
+        "train:context:211",
+        "train:context:212",
+        "train:context:213",
+        "train:context:214",
+        "train:context:215",
+        "train:context:216",
+        "train:context:217",
+        "train:context:218",
+        "train:context:219",
+        "train:context:220",
+        "train:context:221",
+        "train:context:222",
+        "train:context:223",
+        "train:context:224",
+        "train:context:225",
+        "train:context:226",
+        "train:context:227",
+        "train:context:228",
+        "train:context:229",
+        "train:context:230",
+        "train:context:231",
+        "train:context:232",
+        "train:context:233",
+        "train:context:234",
+        "train:context:235",
+        "train:context:236",
+        "train:context:237",
+        "train:context:238",
+        "train:context:239",
+        "train:context:240",
+        "train:context:241",
+        "train:context:242",
+        "train:context:243",
+        "train:context:244",
+        "train:context:245",
+        "train:context:246",
+        "train:context:247",
+        "train:context:248",
+        "train:context:249",
+        "train:context:250",
+        "train:context:251",
+        "train:context:252",
+        "train:context:253",
+        "train:context:254",
+        "train:context:255",
+        "train:context:256",
+        "train:context:257",
+        "train:context:258",
+        "train:context:259",
+        "train:context:260",
+        "train:context:261",
+        "train:context:262",
+        "train:context:263",
+        "train:context:264",
+        "train:context:265",
+        "train:context:266",
+        "train:context:267",
+        "train:context:268",
+        "train:context:269",
+        "train:long"
+      ],
+      "roles": {
+        "train:context:0": "REMARK",
+        "train:context:1": "REMARK",
+        "train:context:2": "REMARK",
+        "train:context:3": "REMARK",
+        "train:context:4": "REMARK",
+        "train:context:5": "REMARK",
+        "train:context:6": "REMARK",
+        "train:context:7": "REMARK",
+        "train:context:8": "REMARK",
+        "train:context:9": "REMARK",
+        "train:context:10": "REMARK",
+        "train:context:11": "REMARK",
+        "train:context:12": "REMARK",
+        "train:context:13": "REMARK",
+        "train:context:14": "REMARK",
+        "train:context:15": "REMARK",
+        "train:context:16": "REMARK",
+        "train:context:17": "REMARK",
+        "train:context:18": "REMARK",
+        "train:context:19": "REMARK",
+        "train:context:20": "REMARK",
+        "train:context:21": "REMARK",
+        "train:context:22": "REMARK",
+        "train:context:23": "REMARK",
+        "train:context:24": "REMARK",
+        "train:context:25": "REMARK",
+        "train:context:26": "REMARK",
+        "train:context:27": "REMARK",
+        "train:context:28": "REMARK",
+        "train:context:29": "REMARK",
+        "train:context:30": "REMARK",
+        "train:context:31": "REMARK",
+        "train:context:32": "REMARK",
+        "train:context:33": "REMARK",
+        "train:context:34": "REMARK",
+        "train:context:35": "REMARK",
+        "train:context:36": "REMARK",
+        "train:context:37": "REMARK",
+        "train:context:38": "REMARK",
+        "train:context:39": "REMARK",
+        "train:context:40": "REMARK",
+        "train:context:41": "REMARK",
+        "train:context:42": "REMARK",
+        "train:context:43": "REMARK",
+        "train:context:44": "REMARK",
+        "train:context:45": "REMARK",
+        "train:context:46": "REMARK",
+        "train:context:47": "REMARK",
+        "train:context:48": "REMARK",
+        "train:context:49": "REMARK",
+        "train:context:50": "REMARK",
+        "train:context:51": "REMARK",
+        "train:context:52": "REMARK",
+        "train:context:53": "REMARK",
+        "train:context:54": "REMARK",
+        "train:context:55": "REMARK",
+        "train:context:56": "REMARK",
+        "train:context:57": "REMARK",
+        "train:context:58": "REMARK",
+        "train:context:59": "REMARK",
+        "train:context:60": "REMARK",
+        "train:context:61": "REMARK",
+        "train:context:62": "REMARK",
+        "train:context:63": "REMARK",
+        "train:context:64": "REMARK",
+        "train:context:65": "REMARK",
+        "train:context:66": "REMARK",
+        "train:context:67": "REMARK",
+        "train:context:68": "REMARK",
+        "train:context:69": "REMARK",
+        "train:context:70": "REMARK",
+        "train:context:71": "REMARK",
+        "train:context:72": "REMARK",
+        "train:context:73": "REMARK",
+        "train:context:74": "REMARK",
+        "train:context:75": "REMARK",
+        "train:context:76": "REMARK",
+        "train:context:77": "REMARK",
+        "train:context:78": "REMARK",
+        "train:context:79": "REMARK",
+        "train:context:80": "REMARK",
+        "train:context:81": "REMARK",
+        "train:context:82": "REMARK",
+        "train:context:83": "REMARK",
+        "train:context:84": "REMARK",
+        "train:context:85": "REMARK",
+        "train:context:86": "REMARK",
+        "train:context:87": "REMARK",
+        "train:context:88": "REMARK",
+        "train:context:89": "REMARK",
+        "train:context:90": "REMARK",
+        "train:context:91": "REMARK",
+        "train:context:92": "REMARK",
+        "train:context:93": "REMARK",
+        "train:context:94": "REMARK",
+        "train:context:95": "REMARK",
+        "train:context:96": "REMARK",
+        "train:context:97": "REMARK",
+        "train:context:98": "REMARK",
+        "train:context:99": "REMARK",
+        "train:context:100": "REMARK",
+        "train:context:101": "REMARK",
+        "train:context:102": "REMARK",
+        "train:context:103": "REMARK",
+        "train:context:104": "REMARK",
+        "train:context:105": "REMARK",
+        "train:context:106": "REMARK",
+        "train:context:107": "REMARK",
+        "train:context:108": "REMARK",
+        "train:context:109": "REMARK",
+        "train:context:110": "REMARK",
+        "train:context:111": "REMARK",
+        "train:context:112": "REMARK",
+        "train:context:113": "REMARK",
+        "train:context:114": "REMARK",
+        "train:context:115": "REMARK",
+        "train:context:116": "REMARK",
+        "train:context:117": "REMARK",
+        "train:context:118": "REMARK",
+        "train:context:119": "REMARK",
+        "train:context:120": "REMARK",
+        "train:context:121": "REMARK",
+        "train:context:122": "REMARK",
+        "train:context:123": "REMARK",
+        "train:context:124": "REMARK",
+        "train:context:125": "REMARK",
+        "train:context:126": "REMARK",
+        "train:context:127": "REMARK",
+        "train:context:128": "REMARK",
+        "train:context:129": "REMARK",
+        "train:context:130": "REMARK",
+        "train:context:131": "REMARK",
+        "train:context:132": "REMARK",
+        "train:context:133": "REMARK",
+        "train:context:134": "REMARK",
+        "train:context:135": "REMARK",
+        "train:context:136": "REMARK",
+        "train:context:137": "REMARK",
+        "train:context:138": "REMARK",
+        "train:context:139": "REMARK",
+        "train:context:140": "REMARK",
+        "train:context:141": "REMARK",
+        "train:context:142": "REMARK",
+        "train:context:143": "REMARK",
+        "train:context:144": "REMARK",
+        "train:context:145": "REMARK",
+        "train:context:146": "REMARK",
+        "train:context:147": "REMARK",
+        "train:context:148": "REMARK",
+        "train:context:149": "REMARK",
+        "train:context:150": "REMARK",
+        "train:context:151": "REMARK",
+        "train:context:152": "REMARK",
+        "train:context:153": "REMARK",
+        "train:context:154": "REMARK",
+        "train:context:155": "REMARK",
+        "train:context:156": "REMARK",
+        "train:context:157": "REMARK",
+        "train:context:158": "REMARK",
+        "train:context:159": "REMARK",
+        "train:context:160": "REMARK",
+        "train:context:161": "REMARK",
+        "train:context:162": "REMARK",
+        "train:context:163": "REMARK",
+        "train:context:164": "REMARK",
+        "train:context:165": "REMARK",
+        "train:context:166": "REMARK",
+        "train:context:167": "REMARK",
+        "train:context:168": "REMARK",
+        "train:context:169": "REMARK",
+        "train:context:170": "REMARK",
+        "train:context:171": "REMARK",
+        "train:context:172": "REMARK",
+        "train:context:173": "REMARK",
+        "train:context:174": "REMARK",
+        "train:context:175": "REMARK",
+        "train:context:176": "REMARK",
+        "train:context:177": "REMARK",
+        "train:context:178": "REMARK",
+        "train:context:179": "REMARK",
+        "train:context:180": "REMARK",
+        "train:context:181": "REMARK",
+        "train:context:182": "REMARK",
+        "train:context:183": "REMARK",
+        "train:context:184": "REMARK",
+        "train:context:185": "REMARK",
+        "train:context:186": "REMARK",
+        "train:context:187": "REMARK",
+        "train:context:188": "REMARK",
+        "train:context:189": "REMARK",
+        "train:context:190": "REMARK",
+        "train:context:191": "REMARK",
+        "train:context:192": "REMARK",
+        "train:context:193": "REMARK",
+        "train:context:194": "REMARK",
+        "train:context:195": "REMARK",
+        "train:context:196": "REMARK",
+        "train:context:197": "REMARK",
+        "train:context:198": "REMARK",
+        "train:context:199": "REMARK",
+        "train:context:200": "REMARK",
+        "train:context:201": "REMARK",
+        "train:context:202": "REMARK",
+        "train:context:203": "REMARK",
+        "train:context:204": "REMARK",
+        "train:context:205": "REMARK",
+        "train:context:206": "REMARK",
+        "train:context:207": "REMARK",
+        "train:context:208": "REMARK",
+        "train:context:209": "REMARK",
+        "train:context:210": "REMARK",
+        "train:context:211": "REMARK",
+        "train:context:212": "REMARK",
+        "train:context:213": "REMARK",
+        "train:context:214": "REMARK",
+        "train:context:215": "REMARK",
+        "train:context:216": "REMARK",
+        "train:context:217": "REMARK",
+        "train:context:218": "REMARK",
+        "train:context:219": "REMARK",
+        "train:context:220": "REMARK",
+        "train:context:221": "REMARK",
+        "train:context:222": "REMARK",
+        "train:context:223": "REMARK",
+        "train:context:224": "REMARK",
+        "train:context:225": "REMARK",
+        "train:context:226": "REMARK",
+        "train:context:227": "REMARK",
+        "train:context:228": "REMARK",
+        "train:context:229": "REMARK",
+        "train:context:230": "REMARK",
+        "train:context:231": "REMARK",
+        "train:context:232": "REMARK",
+        "train:context:233": "REMARK",
+        "train:context:234": "REMARK",
+        "train:context:235": "REMARK",
+        "train:context:236": "REMARK",
+        "train:context:237": "REMARK",
+        "train:context:238": "REMARK",
+        "train:context:239": "REMARK",
+        "train:context:240": "REMARK",
+        "train:context:241": "REMARK",
+        "train:context:242": "REMARK",
+        "train:context:243": "REMARK",
+        "train:context:244": "REMARK",
+        "train:context:245": "REMARK",
+        "train:context:246": "REMARK",
+        "train:context:247": "REMARK",
+        "train:context:248": "REMARK",
+        "train:context:249": "REMARK",
+        "train:context:250": "REMARK",
+        "train:context:251": "REMARK",
+        "train:context:252": "REMARK",
+        "train:context:253": "REMARK",
+        "train:context:254": "REMARK",
+        "train:context:255": "REMARK",
+        "train:context:256": "REMARK",
+        "train:context:257": "REMARK",
+        "train:context:258": "REMARK",
+        "train:context:259": "REMARK",
+        "train:context:260": "REMARK",
+        "train:context:261": "REMARK",
+        "train:context:262": "REMARK",
+        "train:context:263": "REMARK",
+        "train:context:264": "REMARK",
+        "train:context:265": "REMARK",
+        "train:context:266": "REMARK",
+        "train:context:267": "REMARK",
+        "train:context:268": "REMARK",
+        "train:context:269": "REMARK",
+        "train:long": "THEOREM"
+      },
+      "proof_count": 0,
+      "dependencies": [],
+      "supported_formalizations": 1,
+      "categories": [
+        "F07"
+      ],
+      "resource_stress": true,
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/long_context.tex",
+        "permission": "Repository-authored regression input; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "hard_block_codes": [],
+      "proof_targets": [],
+      "exact_identities": {
+        "train:long": true
+      },
+      "formalization_status": {
+        "train:long": "SUPPORTED"
+      }
+    },
+    {
+      "path": "pdf/born_digital.pdf",
+      "split": "heldout",
+      "feature_family": "pdf-reconstructed-text",
+      "assertion_labels": [],
+      "roles": {},
+      "proof_count": 0,
+      "proof_targets": [],
+      "dependencies": [],
+      "categories": [
+        "F10"
+      ],
+      "supported_formalizations": 0,
+      "resource_stress": false,
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "pdf/born_digital.pdf",
+        "permission": "Original regression input authored for this repository; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "finding_codes": [],
+      "formalization_status": {},
+      "symbol_bindings": []
+    },
+    {
+      "path": "pdf/scan.pdf",
+      "split": "heldout",
+      "feature_family": "pdf-needs-ocr",
+      "assertion_labels": [],
+      "roles": {},
+      "proof_count": 0,
+      "proof_targets": [],
+      "dependencies": [],
+      "categories": [
+        "F10"
+      ],
+      "supported_formalizations": 0,
+      "resource_stress": false,
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "pdf/scan.pdf",
+        "permission": "Original regression input authored for this repository; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "finding_codes": [
+        "NEEDS_OCR"
+      ],
+      "formalization_status": {},
+      "symbol_bindings": []
+    },
+    {
+      "path": "heldout/agoh_synthetic.tex",
+      "split": "heldout",
+      "feature_family": "synthetic-agoh-anchor",
+      "assertion_labels": [
+        "agoh:factor"
+      ],
+      "roles": {
+        "agoh:factor": "THEOREM"
+      },
+      "proof_count": 1,
+      "proof_targets": [
+        "agoh:factor"
+      ],
+      "dependencies": [],
+      "categories": [
+        "F12"
+      ],
+      "supported_formalizations": 0,
+      "resource_stress": false,
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "synthetic_adaptation",
+        "source": "research/agoh_2026",
+        "permission": "Synthetic repository test text adapted from existing repository artifacts; not a copy of the original manuscript.",
+        "scope": "Polynomial illustration only; not Agoh's original source, automatic discovery or a novelty claim.",
+        "evaluation_only": true
+      },
+      "formalization_status": {
+        "agoh:factor": "UNSUPPORTED"
+      }
+    },
+    {
+      "path": "train/reflexivity.tex",
+      "split": "train",
+      "feature_family": "synthetic-reflexivity-anchor",
+      "assertion_labels": [
+        "anchor:reflexivity"
+      ],
+      "roles": {
+        "anchor:reflexivity": "THEOREM"
+      },
+      "proof_count": 1,
+      "proof_targets": [
+        "anchor:reflexivity"
+      ],
+      "dependencies": [],
+      "categories": [
+        "F11",
+        "F12"
+      ],
+      "supported_formalizations": 1,
+      "resource_stress": false,
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/reflexivity.tex",
+        "permission": "Original regression input authored for this repository; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "finding_codes": [],
+      "formalization_status": {
+        "anchor:reflexivity": "SUPPORTED"
+      },
+      "exact_identities": {
+        "anchor:reflexivity": true
+      }
+    },
+    {
+      "path": "heldout/prose_only.tex",
+      "split": "heldout",
+      "feature_family": "prose-and-untrusted-instructions",
+      "assertion_labels": [],
+      "roles": {},
+      "proof_count": 0,
+      "proof_targets": [],
+      "dependencies": [],
+      "categories": [
+        "F07",
+        "F08"
+      ],
+      "supported_formalizations": 0,
+      "resource_stress": false,
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "heldout/prose_only.tex",
+        "permission": "Original regression input authored for this repository; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "formalization_status": {},
+      "evaluation_labels": {
+        "candidate_dependencies": []
+      }
+    },
+    {
+      "path": "train/scope_bindings.tex",
+      "split": "train",
+      "feature_family": "lexical-shadowing-restoration",
+      "assertion_labels": [
+        "scope:global",
+        "scope:local",
+        "scope:restored"
+      ],
+      "roles": {
+        "scope:global": "THEOREM",
+        "scope:local": "THEOREM",
+        "scope:restored": "THEOREM"
+      },
+      "proof_count": 0,
+      "proof_targets": [],
+      "dependencies": [],
+      "categories": [
+        "F02",
+        "F03",
+        "F11"
+      ],
+      "supported_formalizations": 3,
+      "resource_stress": false,
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "train/scope_bindings.tex",
+        "permission": "Original regression input authored for this repository; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "formalization_status": {
+        "scope:global": "SUPPORTED",
+        "scope:local": "SUPPORTED",
+        "scope:restored": "SUPPORTED"
+      },
+      "symbol_bindings": [
+        [
+          "localvalue",
+          "scope:global",
+          0,
+          "\\newcommand{\\localvalue}{1}",
+          "RESOLVED"
+        ],
+        [
+          "localvalue",
+          "scope:local",
+          0,
+          "\\renewcommand{\\localvalue}{2}",
+          "RESOLVED"
+        ],
+        [
+          "localvalue",
+          "scope:restored",
+          0,
+          "\\newcommand{\\localvalue}{1}",
+          "RESOLVED"
+        ],
+        [
+          "localvaluelong",
+          "scope:restored",
+          0,
+          "\\newcommand{\\localvaluelong}{9}",
+          "RESOLVED"
+        ]
+      ],
+      "exact_identities": {
+        "scope:global": true,
+        "scope:local": true,
+        "scope:restored": true
+      }
+    },
+    {
+      "path": "review_override/main.tex",
+      "split": "train",
+      "feature_family": "attributed-interpretation-override",
+      "assertion_labels": [
+        "claim:custom",
+        "claim:second"
+      ],
+      "roles": {
+        "claim:custom": "UNRESOLVED",
+        "claim:second": "THEOREM"
+      },
+      "proof_count": 1,
+      "proof_targets": [
+        null
+      ],
+      "dependencies": [],
+      "categories": [
+        "F02",
+        "F05",
+        "F07"
+      ],
+      "supported_formalizations": 0,
+      "resource_stress": false,
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "review_override/main.tex",
+        "permission": "Original regression input authored for this repository; no third-party paper content is incorporated.",
+        "evaluation_only": true
+      },
+      "formalization_status": {
+        "claim:second": "UNSUPPORTED"
+      },
+      "evaluation_labels": {
+        "candidate_dependencies": [
+          [
+            "claim:custom",
+            "claim:second"
+          ]
+        ],
+        "fidelity_decisions": {
+          "attributed-role-change": "UNCERTAIN"
+        }
+      }
+    },
+    {
+      "path": "alpha_semantics",
+      "entrypoint": "main.tex",
+      "split": "train",
+      "feature_family": "multifile-bibliography-and-alternatives",
+      "assertion_labels": [
+        "branch-a",
+        "branch-b",
+        "branch-c",
+        "combined"
+      ],
+      "roles": {
+        "branch-a": "LEMMA",
+        "branch-b": "LEMMA",
+        "branch-c": "LEMMA",
+        "combined": "THEOREM"
+      },
+      "proof_count": 1,
+      "proof_targets": [
+        "combined"
+      ],
+      "dependencies": [
+        [
+          "branch-a",
+          "combined"
+        ],
+        [
+          "branch-b",
+          "combined"
+        ],
+        [
+          "branch-c",
+          "combined"
+        ]
+      ],
+      "inference_alternatives": [
+        {
+          "conclusion": "combined",
+          "premises": [
+            "branch-a",
+            "branch-b"
+          ]
+        },
+        {
+          "conclusion": "combined",
+          "premises": [
+            "branch-c"
+          ]
+        }
+      ],
+      "categories": [
+        "F01",
+        "F02",
+        "F04",
+        "F05"
+      ],
+      "supported_formalizations": 4,
+      "resource_stress": false,
+      "formalization_status": {
+        "branch-a": "SUPPORTED",
+        "branch-b": "SUPPORTED",
+        "branch-c": "SUPPORTED",
+        "combined": "SUPPORTED"
+      },
+      "exact_identities": {
+        "branch-a": true,
+        "branch-b": true,
+        "branch-c": true,
+        "combined": true
+      },
+      "symbol_bindings": [
+        [
+          "branchvalue",
+          "branch-a",
+          0,
+          "\\newcommand{\\branchvalue}{2}",
+          "RESOLVED"
+        ],
+        [
+          "branchvalue",
+          "branch-a",
+          1,
+          "\\newcommand{\\branchvalue}{2}",
+          "RESOLVED"
+        ]
+      ],
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "alpha_semantics/main.tex and branches.tex",
+        "permission": "Original synthetic source and bibliographic record authored for this repository; no external manuscript content.",
+        "evaluation_only": true
+      },
+      "finding_labels": {
+        "MISSING_OR_AMBIGUOUS_REFERENCE": false,
+        "UNRESOLVED_CITATION": false,
+        "AMBIGUOUS_CITATION": false,
+        "MISSING_BIBLIOGRAPHY": false
+      }
+    },
+    {
+      "path": "alpha_semantics/antecedent.tex",
+      "split": "heldout",
+      "feature_family": "checked-equality-antecedent",
+      "assertion_labels": [
+        "conditional"
+      ],
+      "roles": {
+        "conditional": "THEOREM"
+      },
+      "proof_count": 1,
+      "proof_targets": [
+        "conditional"
+      ],
+      "dependencies": [],
+      "categories": [
+        "F06",
+        "F11"
+      ],
+      "supported_formalizations": 1,
+      "resource_stress": false,
+      "formalization_status": {
+        "conditional": "SUPPORTED"
+      },
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "alpha_semantics/antecedent.tex",
+        "permission": "Original bounded implication fixture authored for this repository; no third-party source.",
+        "evaluation_only": true
+      },
+      "exact_identities": {
+        "conditional": true
+      }
+    },
+    {
+      "path": "heldout/semantic_interpretations.tex",
+      "split": "heldout",
+      "feature_family": "recorded-semantic-fidelity-and-replay",
+      "assertion_labels": [
+        "semantic:base",
+        "semantic:conditional",
+        "semantic:independent"
+      ],
+      "roles": {
+        "semantic:base": "LEMMA",
+        "semantic:conditional": "THEOREM",
+        "semantic:independent": "THEOREM"
+      },
+      "proof_count": 1,
+      "proof_targets": [
+        "semantic:conditional"
+      ],
+      "dependencies": [
+        [
+          "semantic:base",
+          "semantic:conditional"
+        ]
+      ],
+      "categories": [
+        "F04",
+        "F06",
+        "F07",
+        "F08"
+      ],
+      "supported_formalizations": 3,
+      "resource_stress": false,
+      "formalization_status": {
+        "semantic:base": "SUPPORTED",
+        "semantic:conditional": "SUPPORTED",
+        "semantic:independent": "SUPPORTED"
+      },
+      "exact_identities": {
+        "semantic:base": true,
+        "semantic:conditional": true,
+        "semantic:independent": true
+      },
+      "hard_block_codes": [],
+      "recorded_semantics": {
+        "element_label": "semantic:conditional",
+        "quantifier_text": "$x\\in\\mathbb{Z}$",
+        "hypothesis_text": "$x=2$",
+        "dependency_proposals": [
+          [
+            "semantic:base",
+            "semantic:conditional"
+          ],
+          [
+            "semantic:base",
+            "semantic:independent"
+          ]
+        ],
+        "fidelity_verdicts": {
+          "complete": "AGREE",
+          "missing-hypothesis": "DISAGREE"
+        }
+      },
+      "evaluation_labels": {
+        "candidate_dependencies": [
+          [
+            "semantic:base",
+            "semantic:conditional"
+          ]
+        ],
+        "fidelity_decisions": {
+          "complete": "AGREE",
+          "missing-hypothesis": "DISAGREE"
+        },
+        "replay": {
+          "semantic_roundtrip": "REPLAY_MATCH",
+          "stale_request": "BINDING_REJECTED"
+        }
+      },
+      "provenance": {
+        "origin": "original_recorded_provider_fixture",
+        "source": "heldout/semantic_interpretations.tex",
+        "permission": "Original source and canned provider responses authored for this repository, with a deliberate spurious dependency and omitted-antecedent interpretation.",
+        "scope": "Protocol/replay regression, not model population accuracy or authenticated human review.",
+        "evaluation_only": true
+      }
+    },
+    {
+      "path": "revision_before",
+      "entrypoint": "paper.tex",
+      "split": "heldout",
+      "feature_family": "independent-branch-definition-before",
+      "assertion_labels": [
+        "a",
+        "b"
+      ],
+      "roles": {
+        "a": "THEOREM",
+        "b": "THEOREM"
+      },
+      "proof_count": 0,
+      "proof_targets": [],
+      "dependencies": [],
+      "categories": [
+        "F03",
+        "F09",
+        "F11"
+      ],
+      "supported_formalizations": 2,
+      "resource_stress": false,
+      "formalization_status": {
+        "a": "SUPPORTED",
+        "b": "SUPPORTED"
+      },
+      "exact_identities": {
+        "a": true,
+        "b": true
+      },
+      "hard_block_codes": [],
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "revision_before/paper.tex",
+        "permission": "Original paired regression inputs for an A-only definition change, authored for this repository.",
+        "scope": "Pure stage execution/reuse measurement; isolated formal execution is qualified separately.",
+        "evaluation_only": true
+      }
+    },
+    {
+      "path": "revision_after",
+      "entrypoint": "paper.tex",
+      "split": "heldout",
+      "feature_family": "independent-branch-definition-after",
+      "assertion_labels": [
+        "a",
+        "b"
+      ],
+      "roles": {
+        "a": "THEOREM",
+        "b": "THEOREM"
+      },
+      "proof_count": 0,
+      "proof_targets": [],
+      "dependencies": [],
+      "categories": [
+        "F03",
+        "F09",
+        "F11"
+      ],
+      "supported_formalizations": 2,
+      "resource_stress": false,
+      "formalization_status": {
+        "a": "SUPPORTED",
+        "b": "SUPPORTED"
+      },
+      "exact_identities": {
+        "a": true,
+        "b": true
+      },
+      "hard_block_codes": [],
+      "revision_before": "revision_before",
+      "evaluation_labels": {
+        "invalidation": {
+          "a": true,
+          "b": false
+        },
+        "reuse": {
+          "a": false,
+          "b": true
+        }
+      },
+      "provenance": {
+        "origin": "original_repository_fixture",
+        "source": "revision_after/paper.tex",
+        "permission": "Original paired regression inputs for an A-only definition change, authored for this repository.",
+        "scope": "Pure stage execution/reuse measurement; isolated formal execution is qualified separately.",
+        "evaluation_only": true
+      }
+    }
+  ],
+  "schema_version": "2.0",
+  "categories": {
+    "F01": "Correct small LaTeX paper: theorem, definition, proof, equation and explicit dependency.",
+    "F02": "Multi-file source, custom environment, supported macros and anchored definition/use provenance.",
+    "F03": "Notation in distinct scopes, including shadowing/restoration and global bindings across sections.",
+    "F04": "Conjunctive premises and an explicit alternative derivation, with unsupported implicit grouping kept advisory.",
+    "F05": "Missing local citation/label and genuinely ambiguous proof association.",
+    "F06": "Explicit quantified antecedents and checked local hypothesis containment/discharge.",
+    "F07": "Unsupported macro and prose-only analysis with honest coverage.",
+    "F08": "Archive/path/TeX hooks, HTML payloads and model prompt-injection boundaries.",
+    "F09": "Formatting/relocation, changed definitions/hypotheses, independent reuse and authority revocation.",
+    "F10": "Actual born-digital PDF reconstruction and unsupported scan with NEEDS_OCR.",
+    "F11": "True and false exact identities with inputs derived from source.",
+    "F12": "Reflexivity and Agoh integration anchors, explicitly synthetic/adapted without novelty claims."
+  }
+}

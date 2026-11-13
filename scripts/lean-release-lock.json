@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "repository": "leanprover/lean4",
+  "tag": "v4.30.0",
+  "release_id": 329471000,
+  "published_at": "2026-05-26T14:45:52Z",
+  "metadata_source": "https://api.github.com/repos/leanprover/lean4/releases/tags/v4.30.0",
+  "provenance": "REVIEWED_OFFICIAL_RELEASE_METADATA",
+  "assets": {
+    "linux/amd64": {
+      "id": 430245352,
+      "name": "lean-4.30.0-linux.tar.zst",
+      "size": 529208534,
+      "digest": "sha256:4dad74141c2c119ca1aa626656be83b8e14238afba97271fd7bf1eb3f081b319",
+      "url": "https://github.com/leanprover/lean4/releases/download/v4.30.0/lean-4.30.0-linux.tar.zst"
+    },
+    "linux/arm64": {
+      "id": 430245351,
+      "name": "lean-4.30.0-linux_aarch64.tar.zst",
+      "size": 529256235,
+      "digest": "sha256:c99c6f0edd446956d4758c59d4383e8e6411ff6cc71a01f9caabe5eba454121d",
+      "url": "https://github.com/leanprover/lean4/releases/download/v4.30.0/lean-4.30.0-linux_aarch64.tar.zst"
+    }
+  }
+}

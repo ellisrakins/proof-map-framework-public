@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_type",
+    "schema_version",
+    "id",
+    "binding_digest",
+    "revision_id",
+    "assertion_id",
+    "obligation_digest",
+    "profile_digest",
+    "candidate_digest",
+    "wrapper_digest",
+    "snapshot_digest",
+    "controller_digest",
+    "controller_id",
+    "parent_event",
+    "environment",
+    "outcome",
+    "compiler_outcome",
+    "checker_outcome",
+    "axioms",
+    "outputs",
+    "output_digests",
+    "duration_seconds",
+    "assurance"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "ExecutionEvent"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "binding_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "assertion_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "obligation_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "candidate_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "wrapper_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "snapshot_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "controller_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "controller_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "parent_event": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "environment": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "schema_version",
+        "id",
+        "profile_digest",
+        "complete",
+        "actual",
+        "completeness_scope",
+        "reason"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "EnvironmentManifest"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "profile_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "actual": {
+          "type": "object"
+        },
+        "completeness_scope": {
+          "const": "lean-std-int-polynomial-v1"
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 1000000
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "complete": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "actual": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "lean_sha256",
+                  "library_digest",
+                  "checker_digest",
+                  "version",
+                  "platform",
+                  "executable",
+                  "search_path",
+                  "image"
+                ],
+                "properties": {
+                  "lean_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "library_digest": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "checker_digest": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 512
+                  },
+                  "platform": {
+                    "enum": [
+                      "linux/amd64",
+                      "linux/arm64"
+                    ]
+                  },
+                  "executable": {
+                    "const": "/opt/lean/bin/lean"
+                  },
+                  "search_path": {
+                    "const": "/opt/lean/lib/lean"
+                  },
+                  "image": {
+                    "type": "string",
+                    "pattern": "^(sha256:[a-f0-9]{64}|[a-zA-Z0-9./:_-]+@sha256:[a-f0-9]{64})$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "outcome": {
+      "enum": [
+        "VERIFIED",
+        "COMPILER_REJECTED",
+        "UNAVAILABLE",
+        "ERROR",
+        "TIMEOUT",
+        "VERIFIER_ERROR"
+      ]
+    },
+    "compiler_outcome": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN"
+      ]
+    },
+    "checker_outcome": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN"
+      ]
+    },
+    "axioms": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512
+      },
+      "uniqueItems": true
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "worker_stdout",
+        "worker_stderr",
+        "candidate_source"
+      ],
+      "properties": {
+        "worker_stdout": {
+          "type": "string",
+          "maxLength": 1000000
+        },
+        "worker_stderr": {
+          "type": "string",
+          "maxLength": 1000000
+        },
+        "candidate_source": {
+          "type": "string",
+          "maxLength": 1000000
+        }
+      }
+    },
+    "output_digests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "worker_stdout",
+        "worker_stderr",
+        "candidate_source"
+      ],
+      "properties": {
+        "worker_stdout": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "worker_stderr": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "candidate_source": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "duration_seconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "assurance": {
+      "const": "TRUSTED_RESTRICTED_SOURCE_KERNEL_RECHECK"
+    }
+  }
+}

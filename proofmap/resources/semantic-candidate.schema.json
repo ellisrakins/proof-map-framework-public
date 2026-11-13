@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:semantic-candidate:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "revision",
+    "element",
+    "quantifiers",
+    "hypotheses",
+    "conclusion",
+    "references",
+    "symbol_bindings",
+    "authority",
+    "status",
+    "event_digest",
+    "config_digest",
+    "replayed"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "element": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "quantifiers": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "conclusion": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "references": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "symbol_bindings": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "use",
+          "definition"
+        ],
+        "properties": {
+          "use": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        }
+      }
+    },
+    "authority": {
+      "const": "MODEL_SUGGESTION"
+    },
+    "status": {
+      "enum": [
+        "REVIEW_REQUIRED",
+        "CONFLICT_REVIEW_REQUIRED"
+      ]
+    },
+    "event_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "replayed": {
+      "type": "boolean"
+    }
+  }
+}

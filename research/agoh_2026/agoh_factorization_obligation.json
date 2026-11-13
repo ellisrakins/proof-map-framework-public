@@ -1,0 +1,21 @@
+{
+  "id": "obligation.agoh_n2_factorization",
+  "target_node_id": "theorem.n2_factorization",
+  "statement": "∀ x : Int, ((x - 2) ^ 2 * (x ^ 2 - 2) ^ 2 - 2 * (x ^ 2 - 2) ^ 2 + (x - 2) ^ 2) = (x - 1) ^ 2 * (x ^ 4 - 2 * x ^ 3 - 7 * x ^ 2 + 4 * x + 12)",
+  "declaration_name": "agoh_n2_factorization",
+  "imports": [
+    "Std.Tactic"
+  ],
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "toolchain": "leanprover/lean4:v4.30.0",
+  "statement_sha256": "6955e33027111b65ec195df1ab05f9a6eb31a77ebe4d2290f6c91c0d220778b7",
+  "notes": "This obligation proves the exact common-numerator factorization for f(t)=(t-2)^2 and n=2 over the integers. It permits Lean's three standard logical axioms but never sorryAx.",
+  "metadata": {
+    "semantic_review": "The identity is the algebraic core of the explicit counterexample; reducedness and source fidelity are checked separately."
+  },
+  "formal_system": "lean4"
+}

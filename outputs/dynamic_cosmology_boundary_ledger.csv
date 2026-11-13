@@ -1,0 +1,15 @@
+id,label,kind,status,layer,domain,proof_distance,uncertainty,boundary_weight,statement,notes
+bc.low_entropy_early_state,Low-entropy early boundary,UNCERTAINTY,ASSUMPTION,BOUNDARY,cosmology,2,0.7,5,The observed thermodynamic arrow is anchored to a special early low-entropy condition.,This is a boundary condition unless derived from the core.
+core.quantum_gravity_unknown,Quantum-gravity core,GAP,GAP,CORE,foundation,0,0.95,1.0,A complete proof map needs a quantum-gravity law-kernel or independence result.,Kept as a core-adjacent gap to represent the deepest early-universe boundary.
+flow.entropy_time_orientation,Entropy/time orientation,FLOW,PROBABILISTIC,BOUNDARY,thermodynamics,1,0.35,3.5,Surface histories acquire orientation through entropy gradients and low-entropy boundary conditions.,
+regime.big_bang_nucleosynthesis,Big-bang nucleosynthesis,REGIME,DERIVED,BOUNDARY,nuclear,2,0.25,3,Light nuclei form when temperature/density allow nuclear binding pathways.,
+regime.chemistry,Chemical complexity,REGIME,DERIVED,BOUNDARY,chemistry,3,0.18,2.5,Atoms and molecules create new effective surface rules.,
+regime.formal_proof_maps,Formal proof maps,MODEL,DERIVED,BOUNDARY,metascience,3,0.4,3,The universe contains subsystems that formalize parts of the universe into proof graphs.,
+regime.hot_plasma,Hot early plasma,REGIME,DERIVED,BOUNDARY,cosmology,1,0.25,3,High-temperature fields/particles dominate the active surface.,
+regime.inflation_or_unknown_initial_expansion,Inflation or initial expansion mechanism,REGIME,GAP,BOUNDARY,cosmology,1,0.8,5,Mechanism explaining the early expansion and initial-condition smoothing remains a boundary gap in this map.,
+regime.self_organized_observers,Self-organized observers,PHENOMENON,EMPIRICAL,BOUNDARY,observers,2,0.45,4,"Local entropy-exporting systems form models, records, measurements, and proofs.",
+regime.stellar_free_energy,Stellar free-energy currents,FLOW,DERIVED,BOUNDARY,astrophysics,2,0.2,3,Stars create long-lived energy gradients and synthesize heavier elements.,
+regime.structure_formation,Structure formation,REGIME,COMPUTED,BOUNDARY,gravity,1,0.28,3,"Gravity amplifies density fluctuations into cosmic web, galaxies, and large-scale structure.",
+transition.electroweak_symmetry_breaking,Electroweak symmetry breaking,INTERFACE,DERIVED,BOUNDARY,electroweak,2,0.25,3,Electroweak regime folds into photon + massive W/Z low-energy chart.,
+transition.qcd_hadronization,QCD hadronization,INTERFACE,APPROXIMATION,BOUNDARY,qcd,2,0.55,4,Quark-gluon degrees of freedom transition into hadrons; rigorous confinement proof remains a strong-force gap.,
+transition.recombination_cmb,Recombination / CMB surface,OBSERVATION,EMPIRICAL,BOUNDARY,cosmology,3,0.18,3,"Atoms form and photons decouple, creating a major observational boundary surface.",

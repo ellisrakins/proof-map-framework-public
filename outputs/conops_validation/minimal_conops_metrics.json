@@ -1,0 +1,27 @@
+{
+  "assumption_count": 1,
+  "boundary_count": 2,
+  "closure_ratio": 0.2132,
+  "core_count": 1,
+  "cycle_count": 0,
+  "density": 0.3019,
+  "edge_count": 5,
+  "explanatory_volume": 4.4415,
+  "gap_count": 1,
+  "hole_count": 1,
+  "node_count": 5,
+  "notes": [
+    "1 boundary/exterior nodes are gaplike or not reachable from the core.",
+    "4 interface or cross-domain seam edges detected.",
+    "1 gaplike nodes require closure work."
+  ],
+  "proof_radius_max": 2.0,
+  "proof_radius_mean": 2.0,
+  "proof_radius_variance": 0.0,
+  "reachable_count": 4,
+  "roundness": 0.2132,
+  "seam_count": 4,
+  "surface_area": 14.1347,
+  "uncertainty_thickness": 0.525,
+  "unexplained_parameter_count": 0
+}

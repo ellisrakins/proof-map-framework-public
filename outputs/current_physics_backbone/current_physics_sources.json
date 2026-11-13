@@ -1,0 +1,148 @@
+{
+  "sources": [
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "higgs",
+        "standard_model"
+      ],
+      "id": "cern_higgs_2022",
+      "notes": "",
+      "publication_date": "2022-07-04",
+      "publisher": "CERN",
+      "source_type": "official_status",
+      "title": "The Higgs boson, ten years after its discovery",
+      "url": "https://www.home.cern/news/press-release/physics/higgs-boson-ten-years-after-its-discovery"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "standard_model",
+        "collider"
+      ],
+      "id": "cern_standard_model",
+      "notes": "Used for Standard Model scope and explicit incompleteness boundaries.",
+      "publication_date": "",
+      "publisher": "CERN",
+      "source_type": "official_overview",
+      "title": "The Standard Model",
+      "url": "https://home.cern/science/physics/standard-model/"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "cosmology",
+        "dark_energy",
+        "bao"
+      ],
+      "id": "desi_dr2_2025",
+      "notes": "",
+      "publication_date": "2025-03-19",
+      "publisher": "DESI Collaboration",
+      "source_type": "collaboration_result",
+      "title": "DESI DR2 BAO results guide",
+      "url": "https://www.desi.lbl.gov/2025/03/19/desi-dr2-results-march-19-guide/"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "precision_tests",
+        "standard_model"
+      ],
+      "id": "doe_muon_g2_2025",
+      "notes": "",
+      "publication_date": "2025-06-03",
+      "publisher": "U.S. Department of Energy / Fermilab",
+      "source_type": "collaboration_result",
+      "title": "Muon g-2 final result announcement",
+      "url": "https://www.energy.gov/science/articles/muon-g-2-announces-most-precise-measurement-magnetic-anomaly-muon"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "neutrino",
+        "direct_mass"
+      ],
+      "id": "katrin_2025",
+      "notes": "",
+      "publication_date": "2025",
+      "publisher": "KATRIN Collaboration / KIT",
+      "source_type": "collaboration_result",
+      "title": "Latest KATRIN results",
+      "url": "https://www.katrin.kit.edu/1271.php"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "gravity",
+        "gravitational_waves",
+        "astrophysics"
+      ],
+      "id": "lvk_gwtc5_2026",
+      "notes": "",
+      "publication_date": "2026-05-26",
+      "publisher": "LIGO-Virgo-KAGRA Collaboration",
+      "source_type": "collaboration_result",
+      "title": "GWTC-5.0 O4b catalog",
+      "url": "https://ligo.org/detections/o4b-catalog/"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "dark_matter",
+        "direct_detection"
+      ],
+      "id": "lz_2025",
+      "notes": "",
+      "publication_date": "2025",
+      "publisher": "LZ Collaboration",
+      "source_type": "collaboration_result",
+      "title": "LUX-ZEPLIN dark matter experiment status",
+      "url": "https://lz.lbl.gov/"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "neutrino",
+        "standard_model"
+      ],
+      "id": "pdg_neutrino_2025",
+      "notes": "",
+      "publication_date": "2025",
+      "publisher": "Particle Data Group",
+      "source_type": "review",
+      "title": "Neutrino Masses, Mixing, and Oscillations",
+      "url": "https://pdg.lbl.gov/2025/reviews/rpp2025-rev-neutrino-mixing.pdf"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "particle_physics",
+        "standard_model",
+        "constants"
+      ],
+      "id": "pdg_rpp_2024",
+      "notes": "",
+      "publication_date": "2024",
+      "publisher": "Particle Data Group",
+      "source_type": "review",
+      "title": "Review of Particle Physics 2024",
+      "url": "https://pdg.lbl.gov/2024/index.html"
+    },
+    {
+      "checked_date": "2026-06-05",
+      "domains": [
+        "cosmology",
+        "cmb",
+        "lambda_cdm"
+      ],
+      "id": "planck_2018_parameters",
+      "notes": "",
+      "publication_date": "2018",
+      "publisher": "Planck Collaboration",
+      "source_type": "collaboration_result",
+      "title": "Planck 2018 results. VI. Cosmological parameters",
+      "url": "https://arxiv.org/abs/1807.06209"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "sources": [
+    {
+      "id": "agoh_2026_a9",
+      "title": "An Intrinsic Factor of an Alternating Sum Involving Certain Rational Functions",
+      "url": "https://math.colgate.edu/~integers/aa9/aa9.pdf",
+      "source_type": "primary_paper",
+      "publisher": "INTEGERS",
+      "publication_date": "2026-01-05",
+      "checked_date": "2026-08-05",
+      "notes": "Equation (3.1) defines Q_n; the final conjecture is on page 9.",
+      "domains": [
+        "algebra",
+        "finite_differences",
+        "rational_functions"
+      ]
+    },
+    {
+      "id": "integers_volume_26",
+      "title": "INTEGERS, Volume 26 (2026)",
+      "url": "https://math.colgate.edu/~integers/vol26.html",
+      "source_type": "official_journal_index",
+      "publisher": "INTEGERS",
+      "publication_date": "2026",
+      "checked_date": "2026-08-05",
+      "notes": "The current journal index lists Agoh's paper as article A9 and showed no linked correction when checked.",
+      "domains": [
+        "publication_status"
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:proofmap:kernel:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "claims",
+    "contexts",
+    "inferences",
+    "evidence",
+    "relations",
+    "warnings",
+    "legacy"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:proofmap:kernel:1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "definition_revision",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "definition_revision": {
+            "$ref": "#/$defs/id"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "inferences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/inference"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "target",
+          "kind"
+        ],
+        "properties": {
+          "source": {
+            "$ref": "#/$defs/id"
+          },
+          "target": {
+            "$ref": "#/$defs/id"
+          },
+          "kind": {
+            "enum": [
+              "PROVES",
+              "DEPENDS_ON",
+              "DEFINES",
+              "BRIDGES",
+              "INTERFACE",
+              "LIMITS_TO",
+              "APPROXIMATES",
+              "EMPIRICALLY_CONSTRAINS",
+              "FLOWS_TO",
+              "TRANSFORMS_TO",
+              "BLOCKS",
+              "CONTRADICTS",
+              "CITES",
+              "MODEL_INFERRED_DEPENDENCY"
+            ]
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "warnings": {
+      "$ref": "#/$defs/strings"
+    },
+    "legacy": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "state": {
+      "enum": [
+        "AUTHOR_ASSERTED",
+        "REVIEW_REQUIRED",
+        "PROVED",
+        "CORE",
+        "GAP",
+        "BLOCKED",
+        "REJECTED",
+        "ACTIVE"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "DEDUCTIVE",
+        "COMPUTATIONAL",
+        "EMPIRICAL",
+        "APPROXIMATION",
+        "PAPER_ASSERTION"
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "context",
+        "revision",
+        "status",
+        "scope",
+        "hypotheses",
+        "quantifiers",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/id"
+        },
+        "revision": {
+          "$ref": "#/$defs/id"
+        },
+        "status": {
+          "$ref": "#/$defs/state"
+        },
+        "scope": {
+          "$ref": "#/$defs/id"
+        },
+        "hypotheses": {
+          "$ref": "#/$defs/strings"
+        },
+        "quantifiers": {
+          "$ref": "#/$defs/strings"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "inference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "conclusion",
+        "premises",
+        "context",
+        "mode",
+        "assumptions",
+        "evidence",
+        "status",
+        "scope"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "conclusion": {
+          "$ref": "#/$defs/id"
+        },
+        "premises": {
+          "$ref": "#/$defs/references"
+        },
+        "context": {
+          "$ref": "#/$defs/id"
+        },
+        "mode": {
+          "$ref": "#/$defs/mode"
+        },
+        "assumptions": {
+          "$ref": "#/$defs/references"
+        },
+        "evidence": {
+          "$ref": "#/$defs/references"
+        },
+        "status": {
+          "$ref": "#/$defs/state"
+        },
+        "scope": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "subject",
+        "subject_digest",
+        "context",
+        "definition_revision",
+        "policy_digest",
+        "mode",
+        "outcome",
+        "artifact_digest"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "subject": {
+          "$ref": "#/$defs/id"
+        },
+        "subject_digest": {
+          "$ref": "#/$defs/hash"
+        },
+        "context": {
+          "$ref": "#/$defs/id"
+        },
+        "definition_revision": {
+          "$ref": "#/$defs/id"
+        },
+        "policy_digest": {
+          "$ref": "#/$defs/hash"
+        },
+        "mode": {
+          "$ref": "#/$defs/mode"
+        },
+        "outcome": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "PARTIAL",
+            "NOT_RUN",
+            "UNAVAILABLE",
+            "ERROR",
+            "TIMEOUT"
+          ]
+        },
+        "artifact_digest": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/id"
+      }
+    }
+  }
+}

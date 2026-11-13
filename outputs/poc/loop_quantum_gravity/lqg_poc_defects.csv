@@ -1,0 +1,4 @@
+id,defect_type,severity,description,affected_nodes,suggested_closure_path
+boundary.loop_quantum_gravity.test_1,proof_gap,4.0,"Model-specific cosmological, black-hole, or propagation signatures.",,experiment + bridge theorem
+gap.loop_quantum_gravity.question_1,proof_gap,4.0,"Complete dynamics, semiclassical limit, matter coupling, and unique predictions.",,modeling + proof
+model.loop_quantum_gravity->boundary.loop_quantum_gravity.test_1,seam_or_interface_tension,2.625,Cross-domain/interface edge from quantum_gravity to quantum_gravity,model.loop_quantum_gravity; boundary.loop_quantum_gravity.test_1,"classify as proof, limit theorem, approximation theorem, empirical calibration, or independence result"
