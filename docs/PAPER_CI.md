@@ -45,7 +45,7 @@ kept distinct. Arbitrary TeX execution and general macro interpretation remain
 unsupported; the [restricted formal profile](PAPER_FORMAL_PROFILE.md) can translate
 supported zero-argument integer-literal macros.
 
-PDF uses the maintained pypdf 6.19.0 adapter: it is a substantially smaller
+PDF uses the pypdf adapter pinned in the paper extra: it is a substantially smaller
 offline dependency than Docling and requires no model acquisition. It returns
 page text, original PDF hash and excerpt hash, not invented TeX offsets or
 bounding boxes. Scanned pages are NEEDS_OCR. It does not identify PDF theorems

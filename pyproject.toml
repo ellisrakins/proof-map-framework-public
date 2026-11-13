@@ -12,7 +12,7 @@ dependencies = ["jsonschema>=4.23"]
 
 [project.optional-dependencies]
 test = ["pytest>=8", "jsonschema>=4.23"]
-paper = ["pylatexenc==2.11", "pypdf==6.19.0", "jsonschema>=4.23"]
+paper = ["pylatexenc==2.11", "pypdf==6.21.4", "jsonschema>=4.23"]
 trust = ["cryptography>=46"]
 dev = ["pytest>=8", "pytest-cov>=7", "hypothesis>=6", "ruff>=0.14", "mypy>=1.18", "build>=1.2", "twine>=6", "playwright>=1.55", "reportlab>=4", "jsonschema>=4.23"]
 

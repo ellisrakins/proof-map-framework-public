@@ -25,7 +25,15 @@ MAX_WORKER_OUTPUT = 8_000_000
 CLEANUP_SECONDS = 5
 
 
+def _windows_error() -> OSError:
+    if sys.platform == "win32":
+        return ctypes.WinError(ctypes.get_last_error())
+    return OSError("Windows process ownership is unavailable on this platform")
+
+
 class _WindowsJob:
+    handle: Any
+
     def __init__(self) -> None:
         from ctypes import wintypes
 
@@ -49,6 +57,8 @@ class _WindowsJob:
                 ("memory", ctypes.c_size_t * 4),
             ]
 
+        if sys.platform != "win32":
+            raise _windows_error()
         self.api: Any = ctypes.WinDLL("kernel32", use_last_error=True)
         definitions = {
             "CreateJobObjectW": ([ctypes.c_void_p, wintypes.LPCWSTR], wintypes.HANDLE),
@@ -70,23 +80,23 @@ class _WindowsJob:
             function.argtypes, function.restype = args, result
         self.handle = self.api.CreateJobObjectW(None, None)
         if not self.handle:
-            raise ctypes.WinError(ctypes.get_last_error())
+            raise _windows_error()
         limits = Extended()
         limits.basic.flags = 0x2000  # JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
         if not self.api.SetInformationJobObject(
             self.handle, 9, ctypes.byref(limits), ctypes.sizeof(limits)
         ):
-            error = ctypes.WinError(ctypes.get_last_error())
+            error = _windows_error()
             self.close()
             raise error
 
     def assign(self, pid: int) -> None:
         process = self.api.OpenProcess(0x0100 | 0x0001, False, pid)
         if not process:
-            raise ctypes.WinError(ctypes.get_last_error())
+            raise _windows_error()
         try:
             if not self.api.AssignProcessToJobObject(self.handle, process):
-                raise ctypes.WinError(ctypes.get_last_error())
+                raise _windows_error()
         finally:
             self.api.CloseHandle(process)
 
@@ -103,14 +113,14 @@ class _WindowsJob:
             ]
 
         if not self.api.TerminateJobObject(self.handle, 1):
-            raise ctypes.WinError(ctypes.get_last_error())
+            raise _windows_error()
         deadline = time.monotonic() + CLEANUP_SECONDS
         while True:
             state = Accounting()
             if not self.api.QueryInformationJobObject(
                 self.handle, 1, ctypes.byref(state), ctypes.sizeof(state), None
             ):
-                raise ctypes.WinError(ctypes.get_last_error())
+                raise _windows_error()
             if state.active == 0:
                 return
             if time.monotonic() >= deadline:

@@ -130,7 +130,7 @@ space limits when available. Windows enforces the parent wall deadline and byte
 bounds; an OS memory job-object limit is not implemented. Timeout results retain the
 source revision and explicitly report partial/unavailable parsing.
 
-PDF extraction remains pypdf 6.19.0 plain text reconstruction with strict parsing,
+PDF extraction uses the pinned pypdf release for plain text reconstruction with strict parsing,
 at most 100 pages, and no OCR or theorem reconstruction. A locator declares a page
 and a half-open Unicode-character range in reconstructed page text, with parser
 version. PDF byte `start`/`end` fields remain null. Validation independently
