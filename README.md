@@ -1,5 +1,13 @@
 # Proof Map Boundary Analysis Toolkit
 
+## Interactive Research Studio
+
+A local web interface now supports drag-and-drop TeX/PDF/map intake, an orbitable
+boundary explorer, source-linked claim inspection and diagnostic analysis.
+Run `python -m proofmap.studio` after installing `.[paper]`, then open
+`http://127.0.0.1:8765`. No model calls or proof acceptance occur on import.
+See [Studio setup, limits and validation](docs/RESEARCH_STUDIO.md).
+
 ## Research campaign beta candidate
 
 The **0.9.0b1** candidate adds a persistent local research workflow: automatic

@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Proof Map · Research Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <svg
+      class="icon-defs"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <symbol id="i-map" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <ellipse cx="12" cy="12" rx="4" ry="9" />
+        <path d="M3 12h18M5 6.5h14M5 17.5h14" />
+      </symbol>
+      <symbol id="i-paper" viewBox="0 0 24 24">
+        <path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6" />
+      </symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24">
+        <path d="M4 3v17h17M8 16v-5M13 16V7M18 16V4" />
+      </symbol>
+      <symbol id="i-up" viewBox="0 0 24 24">
+        <path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14m-6-6 6 6-6 6" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="10" cy="10" r="6" />
+        <path d="m15 15 5 5" />
+      </symbol>
+    </svg>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Proof Map home"
+          ><span class="brand-mark">◈</span
+          ><span>PROOF MAP<small>RESEARCH STUDIO</small></span></a
+        >
+        <div class="workspace-label">WORKSPACE <span>01</span></div>
+        <nav aria-label="Main views">
+          <button class="nav active" data-view="map" aria-current="page">
+            <svg><use href="#i-map" /></svg>Boundary explorer<span
+              class="nav-dot"
+            ></span>
+          </button>
+          <button class="nav" data-view="papers">
+            <svg><use href="#i-paper" /></svg>Source library<span
+              id="paper-count"
+              >0</span
+            >
+          </button>
+          <button class="nav" data-view="analysis">
+            <svg><use href="#i-chart" /></svg>Analysis desk
+          </button>
+        </nav>
+        <div class="sidebar-section">
+          <div class="section-label">CURRENT SESSION</div>
+          <div id="session-list" class="session-list">
+            <p class="muted">Your imported sources appear here.</p>
+          </div>
+        </div>
+        <div class="sidebar-bottom">
+          <span class="local-dot"></span
+          ><span>Local workspace<small>No external AI requests</small></span
+          ><span class="version">β</span>
+        </div>
+      </aside>
+      <main>
+        <header class="topbar">
+          <span class="breadcrumb"
+            >Workspace <span>/</span>
+            <strong id="view-name">Boundary explorer</strong></span
+          >
+          <div class="topbar-actions">
+            <span class="local-badge">LOCAL · PRIVATE</span
+            ><button class="button ghost" id="export-json">
+              Export report <span>↗</span>
+            </button>
+          </div>
+        </header>
+        <section class="page-heading">
+          <div>
+            <div class="eyebrow">RESEARCH, WITH THE BOUNDARIES VISIBLE</div>
+            <h1>Explore the edge of what’s known.</h1>
+            <p>
+              Trace claims, inspect dependencies, and see where evidence ends.
+            </p>
+          </div>
+          <button id="import-button" class="button primary">
+            <svg><use href="#i-up" /></svg>Import a paper
+          </button>
+        </section>
+        <div
+          id="status"
+          role="status"
+          aria-live="polite"
+          class="status hidden"
+        ></div>
+        <section class="metrics" aria-label="Analysis summary">
+          <article>
+            <span>Mapped claims</span><strong id="metric-nodes">—</strong
+            ><small>In the selected analysis</small>
+          </article>
+          <article>
+            <span>Dependencies</span><strong id="metric-edges">—</strong
+            ><small>Explicit graph relationships</small>
+          </article>
+          <article>
+            <span id="boundary-label">Boundary nodes</span
+            ><strong class="cyan" id="metric-boundary">—</strong
+            ><small id="boundary-detail">At the edge of the map</small>
+          </article>
+          <article>
+            <span id="last-label">Open gaps</span
+            ><strong class="amber" id="metric-gaps">—</strong
+            ><small id="last-detail">Require further investigation</small>
+          </article>
+        </section>
+        <section id="map-view" class="view active">
+          <div class="explorer-layout">
+            <section class="map-panel panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">INTERACTIVE PROOF GEOMETRY</span>
+                  <h2 id="map-title">Loading the reference map…</h2>
+                </div>
+                <span class="tag" id="mode-tag">REFERENCE</span>
+              </div>
+              <div class="map-toolbar">
+                <label class="search"
+                  ><svg><use href="#i-search" /></svg
+                  ><input
+                    id="search"
+                    type="search"
+                    placeholder="Find a claim…"
+                    aria-label="Find a claim"
+                /></label>
+                <div class="segmented" aria-label="Projection">
+                  <button class="selected" id="sphere-mode" aria-pressed="true">
+                    Sphere</button
+                  ><button id="atlas-mode" aria-pressed="false">Atlas</button>
+                </div>
+              </div>
+              <div class="canvas-wrap" id="canvas-wrap">
+                <canvas
+                  id="map-canvas"
+                  aria-label="Interactive claim dependency map. Drag to rotate, scroll to zoom; use claim list below for keyboard access."
+                ></canvas>
+                <div class="map-caption">
+                  <span class="live-dot"></span
+                  ><span id="graph-caption"
+                    >Dependency geometry · not a proof verdict</span
+                  >
+                </div>
+                <div class="map-controls">
+                  <button title="Zoom in" aria-label="Zoom in" id="zoom-in">
+                    +</button
+                  ><button title="Zoom out" aria-label="Zoom out" id="zoom-out">
+                    −</button
+                  ><button
+                    title="Reset view"
+                    aria-label="Reset view"
+                    id="reset-view"
+                  >
+                    ⌖</button
+                  ><button
+                    title="Toggle rotation"
+                    aria-label="Start automatic rotation"
+                    aria-pressed="false"
+                    id="rotate"
+                  >
+                    ▷</button
+                  ><button
+                    title="Save map image"
+                    aria-label="Save map image"
+                    id="save-image"
+                  >
+                    ↓
+                  </button>
+                </div>
+                <div class="map-hint">
+                  DRAG TO ORBIT <span>·</span> SCROLL TO ZOOM
+                  <span>·</span> SELECT TO INSPECT
+                </div>
+              </div>
+              <div class="map-legend" aria-label="Visible layers">
+                <label
+                  ><input type="checkbox" data-layer="CORE" checked /><i
+                    class="legend-core"
+                  ></i
+                  >Core</label
+                ><label
+                  ><input type="checkbox" data-layer="INTERIOR" checked /><i
+                    class="legend-interior"
+                  ></i
+                  >Interior</label
+                ><label
+                  ><input type="checkbox" data-layer="BOUNDARY" checked /><i
+                    class="legend-boundary"
+                  ></i
+                  >Boundary</label
+                ><label
+                  ><input type="checkbox" data-layer="EXTERIOR" checked /><i
+                    class="legend-exterior"
+                  ></i
+                  >Exterior</label
+                ><span id="visible-count"></span>
+              </div>
+            </section>
+            <aside class="inspector panel">
+              <div class="panel-heading">
+                <span class="eyebrow">CLAIM INSPECTOR</span
+                ><span class="tiny-mark">⌁</span>
+              </div>
+              <div id="inspector-content">
+                <div class="empty-orbit">◎</div>
+                <h3>Select a point.<br />Follow the evidence.</h3>
+                <p class="muted">
+                  Every point represents a claim. Select one to inspect its
+                  statement, authored status, and connections.
+                </p>
+              </div>
+              <div class="inspector-foot">
+                <span>TRUST BOUNDARY</span>
+                <p>
+                  Position, color and connectivity do not establish mathematical
+                  truth.
+                </p>
+              </div>
+            </aside>
+          </div>
+          <div class="lower-grid">
+            <section class="panel claim-panel">
+              <div class="panel-heading">
+                <h2>Claim index</h2>
+                <span class="muted">Keyboard-accessible graph</span>
+              </div>
+              <div id="claim-list" class="claim-list"></div>
+            </section>
+            <section class="panel findings-panel">
+              <div class="panel-heading">
+                <h2>Signals to investigate</h2>
+                <svg><use href="#i-chart" /></svg>
+              </div>
+              <div id="findings-preview"></div>
+            </section>
+          </div>
+        </section>
+        <section id="papers-view" class="view">
+          <div class="library-grid">
+            <section class="panel intake-panel">
+              <div class="eyebrow">SOURCE INTAKE</div>
+              <h2>From manuscript to map.</h2>
+              <p class="muted">
+                Import a text-bearing PDF, a standalone TeX manuscript, or a
+                Proof Map JSON file. Files are analyzed on this computer.
+                Nothing is sent to an AI provider.
+              </p>
+              <button id="drop-zone" class="drop-zone">
+                <svg><use href="#i-up" /></svg
+                ><strong>Drop your papers here</strong
+                ><span>or click to browse</span
+                ><small>.PDF · .TEX · .JSON / 8 MB per file</small>
+              </button>
+              <p class="intake-note">
+                Extraction is bounded. Scanned PDFs need OCR elsewhere;
+                multi-file TeX projects currently use the CLI. Importing a paper
+                does not verify its claims.
+              </p>
+            </section>
+            <section class="panel">
+              <div class="panel-heading">
+                <h2>Session sources</h2>
+                <span class="tag">IN MEMORY</span>
+              </div>
+              <div id="library-list"></div>
+              <div class="library-footer">
+                Session results clear when you reload. Export any analysis you
+                want to keep. Temporary server files are removed after analysis.
+              </div>
+            </section>
+          </div>
+        </section>
+        <section id="analysis-view" class="view">
+          <section class="panel analysis-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">EVIDENCE BEFORE CERTAINTY</span>
+                <h2>Analysis & provenance</h2>
+              </div>
+              <button class="button ghost" id="analysis-export">
+                Download JSON ↗
+              </button>
+            </div>
+            <div class="notice" id="analysis-notice"></div>
+            <div class="analysis-columns">
+              <div>
+                <h3>Diagnostics</h3>
+                <div id="all-findings"></div>
+                <h3>
+                  Next investigations
+                  <small class="muted"> / planning only</small>
+                </h3>
+                <div id="planning"></div>
+                <h3>Measured diagnostics</h3>
+                <div id="diagnostics"></div>
+              </div>
+              <div>
+                <h3>Pipeline checks</h3>
+                <div id="checks"></div>
+                <h3>Method & scope</h3>
+                <div id="provenance"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <footer>
+          <span>PROOF MAP <b>/</b> Boundary Analysis Toolkit</span
+          ><span>Source-anchored exploration. Explicit uncertainty.</span
+          ><button id="load-demo">Load reference map ↗</button>
+        </footer>
+      </main>
+    </div>
+    <input
+      id="file-input"
+      type="file"
+      accept=".pdf,.tex,.json"
+      multiple
+      hidden
+    />
+    <div id="drop-overlay" class="drop-overlay hidden">
+      <svg><use href="#i-up" /></svg>
+      <h2>Drop to analyze locally</h2>
+      <p>PDF, TeX or Proof Map JSON</p>
+    </div>
+  </body>
+</html>

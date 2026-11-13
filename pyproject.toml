@@ -23,6 +23,7 @@ proofmap = "proofmap.cli:main"
 include = ["proofmap*"]
 
 [tool.setuptools.package-data]
+"proofmap" = ["studio_static/*"]
 "proofmap.resources" = ["*.json", "campaign_operational/*.json", "campaign_operational/*.tex"]
 
 [tool.pytest.ini_options]

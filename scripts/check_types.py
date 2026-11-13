@@ -13,6 +13,7 @@ MODULES = [
     "extractor",
     "paper",
     "paper_cli",
+    "studio",
     "paper_store",
     "paper_stages",
     "paper_evidence",
