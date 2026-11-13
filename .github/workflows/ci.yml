@@ -29,7 +29,7 @@ jobs:
       - run: python -m ruff check proofmap tests scripts/ci_required.py scripts/check_alpha_acceptance.py scripts/check_campaign_acceptance.py scripts/campaign_installed_scenarios.py scripts/alpha_evidence.py scripts/paper_ci_corpus.py scripts/paper_e2e_isolated.py scripts/provision_lean_profile.py scripts/workflow_security.py scripts/check_types.py scripts/wheel_smoke.py scripts/paper_alpha_offline.py scripts/check_alpha_scenarios.py scripts/test_installed_wheel.py scripts/windows_pytest_partitions.py
       - run: python -m ruff format --check proofmap tests scripts/ci_required.py scripts/check_alpha_acceptance.py scripts/check_campaign_acceptance.py scripts/campaign_installed_scenarios.py scripts/alpha_evidence.py scripts/paper_ci_corpus.py scripts/paper_e2e_isolated.py scripts/provision_lean_profile.py scripts/workflow_security.py scripts/check_types.py scripts/wheel_smoke.py scripts/paper_alpha_offline.py scripts/check_alpha_scenarios.py scripts/test_installed_wheel.py scripts/windows_pytest_partitions.py
       - run: python scripts/alpha_evidence.py command --job quality --profile quality --out .work/alpha/quality/evidence.json -- python scripts/check_types.py
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-quality
@@ -49,7 +49,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
       - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/schema-migration/evidence.json --alpha-job schema-migration --alpha-profile linux-unit tests/test_extended_boundaries.py tests/test_trust_regressions.py -q
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-schema-migration
@@ -69,7 +69,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
       - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/semantic-properties/evidence.json --alpha-job semantic-properties --alpha-profile linux-unit tests/test_kernel.py tests/test_extended_boundaries.py -q
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-semantic-properties
@@ -92,7 +92,7 @@ jobs:
       - name: Legacy trusted host compatibility
         run: |
           PROOFMAP_LEAN="$(python -c 'import json,os; print(json.load(open(os.environ["RUNNER_TEMP"] + "/lean-host.json"))["executable"])')" python scripts/alpha_evidence.py command --job verification-real --profile host-lean --out .work/alpha/verification-real/evidence.json -- python scripts/verify_real.py
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-verification-real
@@ -115,7 +115,7 @@ jobs:
       - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/sandbox-security/evidence.json --alpha-job sandbox-security --alpha-profile linux-sandbox tests/test_runner.py -q
         env:
           PROOFMAP_SANDBOX_TEST: '1'
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-sandbox-security
@@ -138,7 +138,7 @@ jobs:
       - run: python scripts/alpha_evidence.py command --job paper-ci-fixtures --profile benchmark --out .work/alpha/paper-ci-fixtures/benchmark-evidence.json --artifact benchmark=.work/alpha/paper-ci-fixtures/benchmark.json -- python -m proofmap.cli paper benchmark --corpus tests/fixtures/papers --out .work/alpha/paper-ci-fixtures/benchmark.json
       - name: Observe independently authored retained source intake
         run: python scripts/alpha_evidence.py command --job paper-ci-fixtures --profile campaign-realism --out .work/campaign/paper-ci-fixtures/evidence.json --artifact campaign-realism-outcomes=.work/campaign/paper-ci-fixtures/realism/realism-outcomes.json -- python -m proofmap.campaign.pilot --corpus tests/fixtures/campaign/realism --out .work/campaign/paper-ci-fixtures/realism
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: campaign-evidence-paper-ci-fixtures
@@ -146,7 +146,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
           if-no-files-found: error
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-paper-ci-fixtures
@@ -174,7 +174,7 @@ jobs:
         run: python scripts/alpha_evidence.py command --job paper-e2e-isolated --profile linux-alpha-isolated --out .work/alpha/paper-e2e-isolated/alpha-evidence.json --artifact alpha-isolated-scenarios=.work/alpha/paper-e2e-isolated/alpha-scenarios.json -- python scripts/check_alpha_scenarios.py --kind alpha-isolated-scenarios --source .work/alpha/paper-e2e-isolated/diagnostics/outcomes.json --out .work/alpha/paper-e2e-isolated/alpha-scenarios.json
       - name: Observe installed campaign with the same prepared verifier image
         run: python scripts/alpha_evidence.py command --job paper-e2e-isolated --profile installed-campaign-isolated --out .work/campaign/paper-e2e-isolated/evidence.json --artifact campaign-isolated-outcomes=.work/campaign/paper-e2e-isolated/isolated/campaign-outcomes.json -- python scripts/campaign_installed_scenarios.py --wheel dist/*.whl --profile isolated --execution-profile "$RUNNER_TEMP/lean-profile.json" --out .work/campaign/paper-e2e-isolated/isolated
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: campaign-evidence-paper-e2e-isolated
@@ -182,7 +182,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
           if-no-files-found: error
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1; Dependabot PR #3
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.1; Dependabot PR #3
         if: always()
         with:
           name: paper-e2e-isolated-diagnostics
@@ -190,7 +190,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
           if-no-files-found: error
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-paper-e2e-isolated
@@ -213,7 +213,7 @@ jobs:
       - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/browser-security/evidence.json --alpha-job browser-security --alpha-profile chromium tests/test_browser_security.py tests/test_paper_review_workflow.py::test_browser_navigates_source_context_formal_evidence_reviews_without_scripts tests/test_campaign_browser.py tests/test_campaign_dossier.py::test_shared_report_is_read_only_qualified_and_escapes_hostile_text -q
         env:
           PROOFMAP_BROWSER_TEST: '1'
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-browser-security
@@ -239,7 +239,7 @@ jobs:
         run: python scripts/alpha_evidence.py command --job package-build --profile installed-alpha-offline --out .work/alpha/package-build/offline-evidence.json --artifact alpha-offline-scenarios=.work/alpha/package-build/offline-scenarios.json -- python scripts/check_alpha_scenarios.py --kind alpha-offline-scenarios --source .work/alpha/package-build/offline-produced.json --out .work/alpha/package-build/offline-scenarios.json
       - name: Observe installed campaign without external services
         run: python scripts/alpha_evidence.py command --job package-build --profile installed-campaign-offline --out .work/campaign/package-build/evidence.json --artifact campaign-offline-outcomes=.work/campaign/package-build/offline/campaign-outcomes.json -- python scripts/campaign_installed_scenarios.py --wheel dist/*.whl --profile offline --out .work/campaign/package-build/offline
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: campaign-evidence-package-build
@@ -247,7 +247,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
           if-no-files-found: error
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-package-build
@@ -268,7 +268,7 @@ jobs:
       - run: python -m pip install -c constraints-ci.txt -e '.[test,paper,trust,dev]' types-jsonschema
       - run: python -m pip install -c constraints-ci.txt pip-audit
       - run: python scripts/alpha_evidence.py command --job dependency-audit --profile dependency-audit --out .work/alpha/dependency-audit/evidence.json --artifact dependency-audit=.work/alpha/dependency-audit/audit.json -- python -m pip_audit --format json --output .work/alpha/dependency-audit/audit.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-dependency-audit
@@ -291,7 +291,7 @@ jobs:
       - run: '"$(go env GOPATH)/bin/actionlint" -color'
       - run: python -m pytest -p scripts.alpha_evidence --alpha-evidence .work/alpha/workflow-security/evidence.json --alpha-job workflow-security --alpha-profile linux-unit tests/test_ci_required.py tests/test_alpha_acceptance.py tests/test_alpha_evidence.py tests/test_alpha_isolated_artifact.py tests/test_alpha_benchmark_artifact.py tests/test_alpha_dependency_audit.py tests/test_alpha_revision_artifact.py tests/test_alpha_scenario_binding.py tests/test_installed_regression_driver.py tests/test_alpha_operations.py tests/test_windows_pytest_partitions.py -q
       - run: python scripts/workflow_security.py
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-workflow-security
@@ -349,14 +349,14 @@ jobs:
         run: python scripts/alpha_evidence.py command --job python-tests --profile installed-regression --out .work/alpha/python-linux-3.12/installed-evidence.json --artifact installed-regression-outcomes=.work/alpha/python-linux-3.12/installed/outcomes.json -- python scripts/test_installed_wheel.py --source-root . --wheel dist/*.whl --out .work/alpha/python-linux-3.12/installed --profile python-linux-3.12 --coverage-out .work/coverage.json
       - if: matrix.profile_os != 'windows' || matrix.python != '3.12'
         run: python scripts/check_critical_coverage.py .work/coverage.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1; Dependabot PR #3
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.1; Dependabot PR #3
         if: always() && (matrix.profile_os != 'windows' || matrix.python != '3.12')
         with:
           name: coverage-${{ matrix.os }}-${{ matrix.python }}
           path: .work/coverage.json
           include-hidden-files: true
           retention-days: 7
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && (matrix.profile_os != 'windows' || matrix.python != '3.12')
         with:
           name: alpha-evidence-python-${{ matrix.profile_os }}-${{ matrix.python }}
@@ -364,7 +364,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
           if-no-files-found: error
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && matrix.profile_os == 'windows' && matrix.python == '3.12'
         with:
           name: windows-pytest-partition-${{ matrix.partition }}
@@ -396,7 +396,7 @@ jobs:
       - name: Require every test once and apply combined coverage gates
         if: always()
         run: python scripts/alpha_evidence.py command --job windows-regression --profile partitioned-regression --out .work/alpha/windows-regression/evidence.json --artifact partitioned-regression-outcomes=.work/alpha/windows-regression/artifacts/outcomes.json -- python scripts/windows_pytest_partitions.py aggregate --parts .work/windows-parts --out .work/alpha/windows-regression/artifacts
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-evidence-windows-regression
@@ -425,7 +425,7 @@ jobs:
       - name: Require current evidence for every mandatory alpha requirement
         if: always()
         run: python scripts/check_alpha_acceptance.py --evidence-dir .work/alpha --out .work/alpha-acceptance.json --summary .work/alpha-acceptance.md
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: alpha-acceptance
@@ -465,7 +465,7 @@ jobs:
       - name: Consume current mandatory operational evidence
         if: always()
         run: python scripts/check_campaign_acceptance.py --evidence-dir .work/conops-evidence --alpha .work/alpha-acceptance/alpha-acceptance.json --out .work/research-conops-acceptance.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: research-conops-acceptance
