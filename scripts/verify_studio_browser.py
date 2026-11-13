@@ -1,5 +1,6 @@
 """Browser smoke tests for the local studio; run explicitly with installed Chromium."""
 
+import io
 import json
 import threading
 from pathlib import Path
@@ -87,6 +88,51 @@ def main():
             page.reload()
             expect(page.locator("#mode-tag")).to_have_text("DEMO", timeout=10000)
             assert page.locator("#paper-count").inner_text() == "0"
+            # Synthetic source only: real PDF parsing and candidate graph, no private paper fixtures.
+            from reportlab.pdfgen import canvas
+
+            pdf = io.BytesIO()
+            document = canvas.Canvas(pdf)
+            for y, text in [
+                (750, "Lemma 1. Every positive integer is nonzero."),
+                (720, "Proof. This follows from positivity."),
+                (680, "Theorem 2. If n is positive then n is not zero."),
+                (650, "Proof. By Lemma 1, the assertion follows."),
+            ]:
+                document.drawString(50, y, text)
+            document.save()
+            page.locator("#file-input").set_input_files(
+                {"name": "semantic.pdf", "mimeType": "application/pdf", "buffer": pdf.getvalue()}
+            )
+            expect(page.locator("#mode-tag")).to_have_text("PAPER", timeout=100000)
+            expect(page.locator("#nodes-label")).to_have_text("Extracted candidates")
+            assert int(page.locator("#metric-nodes").inner_text()) == 2
+            assert int(page.locator("#metric-edges").inner_text()) >= 1
+            assert page.locator("#metric-gaps").inner_text() == "0"
+            page.locator(".claim-item").first.click()
+            assert "Page 1" in page.locator("#inspector-content").inner_text()
+            assert "EXTRACTION CANDIDATE" in page.locator("#inspector-content").inner_text().upper()
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            page.screenshot(path=str(out / "semantic-pdf.png"), full_page=True)
+            page.locator("#load-gravity").click()
+            expect(page.locator("#mode-tag")).to_have_text("DEMO")
+            expect(page.locator("#map-title")).to_contain_text("Newton")
+            assert page.locator("#boundary-lab").is_visible()
+            page.get_by_role("button", name="Start boundary analysis", exact=False).click()
+            assert page.locator(".walkthrough-detail").is_visible()
+            assert "Boundary question" in page.locator("#boundary-lab").inner_text()
+            first_count = page.locator(".claim-item").count()
+            assert 0 < first_count < int(page.locator("#metric-nodes").inner_text())
+            for _ in range(page.locator(".walkthrough-steps button").count() - 2):
+                page.get_by_role("button", name="Next analysis step", exact=False).click()
+                assert page.locator(".claim-item").count() > 0
+            assert page.get_by_role("button", name="Return to full map").is_visible()
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            page.screenshot(path=str(out / "gravity.png"), full_page=True)
+            page.get_by_role("button", name="Return to full map").click()
+            assert page.locator(".claim-item").count() == int(
+                page.locator("#metric-nodes").inner_text()
+            )
             browser.close()
     finally:
         server.shutdown()

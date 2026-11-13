@@ -103,11 +103,13 @@
         ></div>
         <section class="metrics" aria-label="Analysis summary">
           <article>
-            <span>Mapped claims</span><strong id="metric-nodes">—</strong
+            <span id="nodes-label">Mapped claims</span
+            ><strong id="metric-nodes">—</strong
             ><small>In the selected analysis</small>
           </article>
           <article>
-            <span>Dependencies</span><strong id="metric-edges">—</strong
+            <span id="edges-label">Dependencies</span
+            ><strong id="metric-edges">—</strong
             ><small>Explicit graph relationships</small>
           </article>
           <article>
@@ -122,6 +124,11 @@
           </article>
         </section>
         <section id="map-view" class="view active">
+          <section
+            id="boundary-lab"
+            class="panel boundary-lab hidden"
+            aria-label="Boundary analysis walkthrough"
+          ></section>
           <div class="explorer-layout">
             <section class="map-panel panel">
               <div class="panel-heading">
@@ -322,6 +329,7 @@
         <footer>
           <span>PROOF MAP <b>/</b> Boundary Analysis Toolkit</span
           ><span>Source-anchored exploration. Explicit uncertainty.</span
+          ><button id="load-gravity">Gravity boundary lab</button
           ><button id="load-demo">Load reference map ↗</button>
         </footer>
       </main>

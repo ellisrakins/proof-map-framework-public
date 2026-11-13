@@ -37,10 +37,19 @@ geometry. No unsupported mathematical certainty or uncertainty score is invented
 A map's authored uncertainty is displayed only when supplied. Absence of findings
 is not correctness. The reference map is labelled as a demonstration.
 
-PDF extraction requires the pinned paper extra. The deterministic PDF parser reconstructs
-page text but does not convert it into theorem-like claims. Successful PDF intake can
-therefore report zero claim nodes; it is not a generated semantic boundary map.
-Use supported theorem-structured TeX or curated ProofMap JSON for claim exploration. Scanned/image-only PDFs need OCR
+PDFs use a local, rule-based semantic candidate pass over reconstructed page text.
+It identifies numbered theorem/lemma/proposition/corollary/conjecture/definition
+headings, associates nearby proof text, and resolves explicit statement references.
+Every candidate and reference carries exact reconstructed-page character spans and
+excerpt hashes. The inspector exposes statement/proof text, uncertainty and reference
+rationales. Mention edges and candidate dependency cues are distinct; neither is a
+verified derivation. Ambiguous/missing targets and truncation are reported for review.
+
+This is not a general mathematical reasoner or a model-generated summary. Layout,
+unnumbered claims, unusual headings, equations, implicit arguments and cross-document
+references can be missed or misread. No probability of mathematical truth is assigned.
+The existing formal acceptance pipeline is unchanged; candidates never become accepted
+claims merely by import. Scanned/image-only PDFs need OCR
 outside the Studio. Multi-file TeX projects should use the existing CLI. Uploads
 are limited to 4,000,000 bytes per PDF/TeX file and 8 MiB per JSON map,
 250 pages per PDF, ten files per UI batch, and one active server
@@ -79,3 +88,17 @@ validation, upload limits and origin/host rejection.
 These checks do not establish full alpha/beta release readiness. The repository's
 existing aggregate CI, platform, Lean and container qualification gates still
 apply to any release candidate.
+
+## Newton, Einstein and entropy-gravity boundary lab
+
+Use the **Gravity boundary lab** button below the workspace to load a curated
+transition map, then click **Start boundary analysis**. Actionable stages focus
+the graph on assumptions, explicit gaps, a candidate GR extension and limit recovery.
+The extension into entropic/emergent gravity is labelled as a research frontier,
+not an established successor. Jacobson and Verlinde approaches are kept distinct.
+Each stage provides a boundary question, evidence, an analysis action and an
+interpretation. **Next analysis step** advances; **Show full map** clears focus.
+It distinguishes special relativity from general relativity,
+exposes the weak-field/slow-motion assumptions of the Newtonian limit and links
+claims to reference sources. See [the case notes](GRAVITY_TRANSITION.md).
+This is a teaching example, not an automatically extracted PDF or a verified proof.

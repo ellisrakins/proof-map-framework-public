@@ -20,6 +20,8 @@ const state = {
   rotate: false,
   points: [],
   busy: false,
+  stage: -1,
+  focusIds: null,
 };
 const canvas = $("map-canvas"),
   ctx = canvas.getContext("2d");
@@ -86,6 +88,8 @@ function selectData(data, index) {
     edges: data.edges || [],
   };
   state.current = index;
+  state.stage = -1;
+  state.focusIds = null;
   state.selected = null;
   state.query = "";
   $("search").value = "";
@@ -98,6 +102,13 @@ function render() {
   if (!state.data) return;
   const d = state.data,
     paper = d.mode === "paper";
+  const semantic = !!d.semantic_extraction;
+  $("nodes-label").textContent = semantic
+    ? "Extracted candidates"
+    : "Mapped claims";
+  $("edges-label").textContent = semantic
+    ? "Referenced relationships"
+    : "Dependencies";
   $("map-title").textContent = d.title;
   $("mode-tag").textContent = human(d.mode || "analysis").toUpperCase();
   $("metric-nodes").textContent = d.nodes.length.toLocaleString();
@@ -109,7 +120,9 @@ function render() {
         d.nodes.filter((n) => n.layer === "BOUNDARY").length,
       );
   $("boundary-label").textContent = paper
-    ? "Source assertions"
+    ? semantic
+      ? "Review required"
+      : "Source assertions"
     : "Boundary nodes";
   $("boundary-detail").textContent = paper
     ? "Not independently verified"
@@ -120,17 +133,135 @@ function render() {
         "gap_count",
         d.nodes.filter((n) => ["GAP", "BLOCKED"].includes(n.status)).length,
       );
-  $("last-label").textContent = paper ? "Accepted claims" : "Open gaps";
+  $("last-label").textContent = paper
+    ? "Accepted claims"
+    : d.boundary_walkthrough?.length
+      ? "Authored gaps"
+      : "Open gaps";
   $("last-detail").textContent = paper
     ? "Import does not certify proof"
     : "Require further investigation";
   $("graph-caption").textContent = paper
-    ? "Source dependency layout · unverified assertions"
+    ? semantic
+      ? "Semantic candidate layout / source-grounded, unverified"
+      : "Source dependency layout · unverified assertions"
     : "Heuristic geometry · not a proof verdict";
+  renderWalkthrough();
   renderSessions();
   renderClaims();
   renderInspector();
   renderFindings();
+  dirty = true;
+}
+function renderWalkthrough() {
+  const panel = $("boundary-lab"),
+    stages = state.data?.boundary_walkthrough || [];
+  panel.replaceChildren();
+  panel.classList.toggle("hidden", !stages.length);
+  if (!stages.length) return;
+  panel.append(
+    el("span", "BOUNDARY ANALYSIS LAB / CURATED CASE", "eyebrow"),
+    el("h2", "Find the gap. Test the bridge. Recover the limit."),
+  );
+  panel.append(
+    el(
+      "p",
+      "Use the graph to inspect where Newtonian assumptions stop explaining the evidence, then evaluate Einstein's framework and the separate entropic/emergent-gravity research frontier. This walkthrough does not derive theories automatically.",
+      "muted",
+    ),
+  );
+  const steps = el("div", undefined, "walkthrough-steps");
+  stages.forEach((stage, index) => {
+    const button = el(
+      "button",
+      `${index + 1}. ${stage.title.replace(/^\d+\.\s*/, "")}`,
+      state.stage === index ? "selected" : "",
+    );
+    button.setAttribute("aria-pressed", String(state.stage === index));
+    button.onclick = () => focusStage(index);
+    steps.append(button);
+  });
+  const all = el("button", "Show full map");
+  all.onclick = () => focusStage(-1);
+  steps.append(all);
+  panel.append(steps);
+  if (state.stage >= 0) {
+    const stage = stages[state.stage],
+      content = el("div", undefined, "walkthrough-detail");
+    content.append(el("h3", stage.title), el("p", stage.detail));
+    [
+      ["Boundary question", stage.question],
+      ["Evidence to inspect", stage.evidence],
+      ["Analysis action", stage.action],
+      ["Interpretation", stage.outcome],
+    ].forEach(([label, value]) => {
+      if (value) {
+        const row = el("div");
+        row.append(
+          el("h4", label),
+          el("p", Array.isArray(value) ? value.join("; ") : value),
+        );
+        content.append(row);
+      }
+    });
+    const focused = state.data.nodes.filter((n) =>
+      stage.node_ids.includes(n.id),
+    );
+    const focusedIds = new Set(focused.map((n) => n.id));
+    const focusedEdges = state.data.edges.filter(
+      (e) => focusedIds.has(e.source) && focusedIds.has(e.target),
+    );
+    const gapCount = focused.filter(
+      (n) => n.kind === "GAP" || n.status === "GAP",
+    ).length;
+    const computed = el("div", undefined, "walkthrough-computed");
+    computed.append(
+      el("h4", "Computed from this graph focus"),
+      el(
+        "p",
+        `${focused.length} nodes · ${focusedEdges.length} internal relationships · ${gapCount} authored gap markers. These counts describe the curated graph, not proof completeness.`,
+      ),
+    );
+    const diagnostics = (state.data.findings || []).filter((f) =>
+      f.nodes?.some((id) => focusedIds.has(id)),
+    );
+    diagnostics
+      .slice(0, 3)
+      .forEach((f) =>
+        computed.append(el("p", `${f.title}: ${f.detail}`, "muted")),
+      );
+    content.append(computed);
+    const next = el(
+      "button",
+      state.stage === stages.length - 1
+        ? "Return to full map"
+        : "Next analysis step →",
+    );
+    next.onclick = () =>
+      focusStage(state.stage === stages.length - 1 ? -1 : state.stage + 1);
+    content.append(next);
+    panel.append(content);
+  } else {
+    const start = el("button", "Start boundary analysis →");
+    start.onclick = () => focusStage(0);
+    panel.append(start);
+  }
+}
+function focusStage(index) {
+  state.stage = index;
+  const stage = state.data.boundary_walkthrough[index];
+  state.focusIds = stage ? new Set(stage.node_ids) : null;
+  state.query = "";
+  $("search").value = "";
+  state.layers = new Set(Object.keys(colors));
+  document
+    .querySelectorAll(".legend input")
+    .forEach((input) => (input.checked = true));
+  state.selected = stage?.node_ids[0] || null;
+  state.zoom = 1;
+  renderWalkthrough();
+  renderClaims();
+  renderInspector();
   dirty = true;
 }
 function renderSessions() {
@@ -185,6 +316,7 @@ function visibleNodes() {
   return (state.data?.nodes || []).filter(
     (n) =>
       state.layers.has(n.layer) &&
+      (!state.focusIds || state.focusIds.has(n.id)) &&
       (!state.query ||
         (n.label + " " + n.statement + " " + n.id)
           .toLowerCase()
@@ -261,7 +393,12 @@ function renderInspector() {
     el("p", node.statement || "No statement supplied.", "claim-statement"),
   );
   const details = [
-    ["Authored status", human(node.status)],
+    [
+      node.status === "EXTRACTION_CANDIDATE"
+        ? "Extraction status"
+        : "Authored status",
+      human(node.status),
+    ],
     ["Domain", node.domain || "Unspecified"],
   ];
   if (Number.isFinite(node.uncertainty))
@@ -269,6 +406,8 @@ function renderInspector() {
       "Authored uncertainty",
       `${Math.round(node.uncertainty * 100)}%`,
     ]);
+  if (node.uncertainty_description)
+    details.push(["Extraction uncertainty", node.uncertainty_description]);
   details.push(["Evidence", "Not certified by this view"]);
   details.forEach(([label, value]) => {
     const row = el("div", undefined, "detail-row");
@@ -276,16 +415,44 @@ function renderInspector() {
     out.append(row);
   });
   if (node.source) {
-    out.append(
-      el("p", "Source anchor", "claim-kind"),
-      el(
-        "p",
-        typeof node.source === "string"
-          ? node.source
-          : JSON.stringify(node.source),
-        "claim-statement",
-      ),
+    out.append(el("p", "Source provenance", "claim-kind"));
+    if (node.source.spans) {
+      node.source.spans.forEach((span) => out.append(sourceSpan(span)));
+    } else {
+      out.append(
+        el(
+          "p",
+          typeof node.source === "string"
+            ? node.source
+            : JSON.stringify(node.source),
+          "claim-statement",
+        ),
+      );
+    }
+  }
+  if (node.sources?.length) {
+    out.append(el("p", "Reference sources", "claim-kind"));
+    node.sources.forEach((source) => {
+      const link = el("a", source.title || source.url, "connection");
+      try {
+        const url = new URL(source.url);
+        if (url.protocol === "https:") {
+          link.href = url.href;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+      } catch (_) {}
+      out.append(link);
+    });
+  }
+  if (node.proof?.text) {
+    const proof = el("details", undefined, "source-proof");
+    proof.append(
+      el("summary", "Inspect associated proof text (not verified)"),
+      el("p", node.proof.text, "claim-statement"),
     );
+    (node.proof.spans || []).forEach((span) => proof.append(sourceSpan(span)));
+    out.append(proof);
   }
   const links = state.data.edges.filter(
     (e) => e.source === node.id || e.target === node.id,
@@ -301,7 +468,31 @@ function renderInspector() {
     );
     b.addEventListener("click", () => selectNode(other));
     out.append(b);
+    if (e.rationale) out.append(el("p", e.rationale, "muted"));
+    if (e.source_anchor) {
+      const evidence = el("details", undefined, "relation-evidence");
+      evidence.append(
+        el("summary", "Inspect reference evidence"),
+        sourceSpan(e.context_anchor || e.source_anchor),
+      );
+      out.append(evidence);
+    }
   });
+}
+function sourceSpan(span) {
+  const box = el("div", undefined, "source-span");
+  box.append(
+    el(
+      "p",
+      `Page ${span.page ?? "?"} / characters ${span.char_start ?? span.start ?? span.text_start ?? "?"}–${span.char_end ?? span.end ?? span.text_end ?? "?"}`,
+      "claim-kind",
+    ),
+  );
+  if (span.text || span.excerpt)
+    box.append(el("p", span.text || span.excerpt, "claim-statement"));
+  const hash = span.excerpt_sha256 || span.sha256;
+  if (hash) box.append(el("small", `Excerpt SHA-256: ${hash}`, "source-hash"));
+  return box;
 }
 function finding(item) {
   const box = el("article", undefined, "finding");
@@ -413,12 +604,15 @@ async function request(path, options) {
     );
   return data;
 }
-async function loadDemo() {
+async function loadDemo(example = "reference") {
   if (state.busy) return;
   setBusy(true);
   setStatus("Loading the bundled reference map…");
   try {
-    selectData(await request("/api/demo"), -1);
+    selectData(
+      await request(example === "gravity" ? "/api/demo/gravity" : "/api/demo"),
+      -1,
+    );
     clearStatus();
     view("map");
   } catch (e) {
@@ -429,7 +623,7 @@ async function loadDemo() {
 }
 function setBusy(busy) {
   state.busy = busy;
-  ["import-button", "drop-zone", "load-demo"].forEach(
+  ["import-button", "drop-zone", "load-demo", "load-gravity"].forEach(
     (id) => ($(id).disabled = busy),
   );
   $("file-input").disabled = busy;
@@ -506,7 +700,8 @@ $("drop-zone").onclick = () => {
   if (!state.busy) $("file-input").click();
 };
 $("file-input").onchange = (e) => importFiles(e.target.files);
-$("load-demo").onclick = loadDemo;
+$("load-demo").onclick = () => loadDemo();
+$("load-gravity").onclick = () => loadDemo("gravity");
 window.addEventListener("dragenter", (e) => {
   if (e.dataTransfer?.types.includes("Files")) {
     e.preventDefault();

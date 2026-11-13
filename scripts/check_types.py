@@ -14,6 +14,8 @@ MODULES = [
     "paper",
     "paper_cli",
     "studio",
+    "pdf_semantics",
+    "gravity_example",
     "paper_store",
     "paper_stages",
     "paper_evidence",

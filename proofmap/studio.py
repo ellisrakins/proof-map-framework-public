@@ -59,9 +59,39 @@ def map_response(pm: ProofMap, mode: str = "map") -> dict[str, Any]:
     }
 
 
-def demo_response() -> dict[str, Any]:
+def demo_response(example: str = "reference") -> dict[str, Any]:
     from .examples import build_strong_weak_interface_map
 
+    if example == "gravity":
+        from .gravity_example import build_gravity_transition_map
+
+        gravity = build_gravity_transition_map()
+        result = map_response(gravity, "demo")
+        result["boundary_walkthrough"] = gravity.metadata.get("boundary_walkthrough", [])
+        result["metrics"]["gap_count"] = sum(node.kind == "GAP" for node in gravity.nodes.values())
+        for node in result["nodes"]:
+            node["uncertainty"] = None
+            node["uncertainty_description"] = "Not assessed; curated teaching example"
+            node["sources"] = [
+                gravity.metadata["sources"][ident] for ident in node.get("source_ids", [])
+            ]
+
+        result["findings"].insert(
+            0,
+            {
+                "title": "Newton to Einstein: suggested route",
+                "detail": gravity.description
+                + " Follow: "
+                + " → ".join(
+                    gravity.nodes[ident].label for ident in gravity.metadata["guided_path"]
+                ),
+            },
+        )
+        result["notice"] = (
+            "Curated Newton-to-Einstein boundary case with a distinct entropy-gravity research frontier; not extracted or verified proof. "
+            + NOTICE
+        )
+        return result
     result = map_response(build_strong_weak_interface_map(), "demo")
     result["notice"] = "Bundled illustrative physics map. " + NOTICE
     return result
@@ -150,7 +180,40 @@ def analyze_file(path: Path, name: str, work: Path) -> dict[str, Any]:
     from .paper import ci
 
     bundle, _code = ci(path, work / "review", work / "store", extractor="none")
-    return paper_response(bundle, name)
+    result = paper_response(bundle, name)
+    if path.suffix.lower() == ".pdf":
+        from .pdf_semantics import analyze_pdf_semantics
+
+        semantic = analyze_pdf_semantics(bundle["document_ir"])
+        result["nodes"] = semantic["nodes"]
+        result["edges"] = semantic["edges"]
+        result["semantic_extraction"] = semantic["extraction"]
+        result["metrics"].update(semantic["metrics"])
+        result["metrics"].update(
+            node_count=len(semantic["nodes"]),
+            edge_count=len(semantic["edges"]),
+            boundary_count=len(semantic["nodes"]),
+            accepted_claims=0,
+        )
+        result["findings"] = semantic["findings"] + [
+            finding
+            for finding in result["findings"]
+            if finding["title"] != "No source assertions extracted"
+        ]
+        result["checks"].append(
+            {
+                "checker": "local-semantic-candidates",
+                "execution_status": "COMPLETED_REVIEW_REQUIRED",
+            }
+        )
+        result["notice"] = (
+            "Local, rule-based semantic candidates anchored to reconstructed PDF text. "
+            "Headings, proof spans and explicit references can be misread or incomplete. "
+            "Mention edges are not logical implications; dependency cues require review. "
+            "No model service, formal verification, fidelity approval or proof acceptance occurred. "
+            "Graph geometry is a navigation layout, not a measured proof boundary."
+        )
+    return result
 
 
 def decode_upload(payload: Any) -> tuple[str, bytes]:
@@ -284,6 +347,8 @@ class StudioHandler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         if path == "/api/demo":
             self._json(200, demo_response())
+        elif path == "/api/demo/gravity":
+            self._json(200, demo_response("gravity"))
         elif path in ASSETS and (STATIC / ASSETS[path]).is_file():
             asset = STATIC / ASSETS[path]
             mime = mimetypes.guess_type(asset.name)[0] or "application/octet-stream"

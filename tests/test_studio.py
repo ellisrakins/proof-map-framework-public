@@ -213,7 +213,10 @@ def test_worker_real_pdf_analysis(tmp_path):
     document.save()
     result = studio.analyze_upload(upload("paper.pdf", path.read_bytes()))
     assert result["metrics"]["source_pages"] == 1
-    assert "Imported 1 PDF pages" in result["findings"][0]["detail"]
+    assert result["semantic_extraction"]["review_required"] is True
+    assert len(result["nodes"]) == 1
+    assert result["nodes"][0]["status"] == "EXTRACTION_CANDIDATE"
+    assert result["nodes"][0]["source"]["spans"][0]["page"] == 1
     assert result["mode"] == "paper"
     assert result["metrics"]["accepted_claims"] == 0
     assert result["outcomes"]["formal_statement_fidelity"] == "NOT_REVIEWED"
@@ -306,3 +309,14 @@ def test_worker_rejects_non_string_error(monkeypatch):
 def test_paper_upload_enforces_parser_byte_limit(name):
     with pytest.raises(ValueError, match="4,000,000-byte"):
         studio.decode_upload(upload(name, b"x" * 4_000_001))
+
+
+def test_gravity_example_endpoint(server):
+    status, body, _headers = request(server, "GET", "/api/demo/gravity")
+    data = json.loads(body)
+    assert status == 200
+    assert data["mode"] == "demo"
+    assert data["metrics"]["accepted_claims"] == 0
+    assert "Newton" in data["title"]
+    assert len(data["boundary_walkthrough"]) >= 6
+    assert all(node["uncertainty"] is None for node in data["nodes"])
